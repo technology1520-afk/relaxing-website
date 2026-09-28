@@ -3,7 +3,7 @@
 
 const bubble = document.getElementById("ai-bubble");
 const panel = document.getElementById("ai-panel");
-const log = document.getElementById("ai-log");
+let log = document.getElementById("ai-log");
 const form = document.getElementById("ai-form");
 const input = document.getElementById("ai-q");
 const closeBtn = document.getElementById("ai-close");
@@ -54,8 +54,38 @@ function addMsg(text, cls) {
   d.className = "ai-msg " + cls;
   d.textContent = text;
   log.appendChild(d);
+  requestAnimationFrame(() => d.classList.add("shown"));
   log.scrollTop = log.scrollHeight;
   return d;
+}
+
+const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function addThinking() {
+  const d = document.createElement("div");
+  d.className = "ai-msg ai-msg--bot ai-msg--wait ai-thinking";
+  d.setAttribute("aria-label", "Relaxagent is thinking");
+  d.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+  log.appendChild(d);
+  requestAnimationFrame(() => d.classList.add("shown"));
+  log.scrollTop = log.scrollHeight;
+  return d;
+}
+
+function typeOut(el, text, speed = 14) {
+  return new Promise((resolve) => {
+    if (reduceMotion() || text.length > 400) { el.textContent = text; log.scrollTop = log.scrollHeight; resolve(); return; }
+    let i = 0;
+    el.classList.add("typing");
+    const tick = () => {
+      i += 2;
+      el.textContent = text.slice(0, i);
+      log.scrollTop = log.scrollHeight;
+      if (i < text.length) setTimeout(tick, speed);
+      else { el.classList.remove("typing"); resolve(); }
+    };
+    tick();
+  });
 }
 
 // Suggested questions when empty
@@ -82,10 +112,12 @@ let busy = false;
 async function ask(q) {
   if (busy || !q.trim()) return;
   busy = true;
+  const logNow = document.getElementById("ai-log");
+  if (logNow && logNow !== log) log = logNow;
   log.querySelector(".ai-sugs")?.remove();
   addMsg(q, "ai-msg--you");
   input.value = "";
-  const wait = addMsg("…", "ai-msg--bot ai-msg--wait");
+  const wait = addThinking();
   const ctx = currentContext();
   try {
     const res = await fetch("/api/ask", {
@@ -94,18 +126,21 @@ async function ask(q) {
       body: JSON.stringify({ question: q, context: ctx }),
     });
     let data = null;
-    try { data = await res.json(); } catch {}
+    try { data = await res.json(); } catch { /* non-JSON: function backend absent */ }
     wait.remove();
-    if (data?.fallback?.answer) {
-      addMsg(data.fallback.answer, "ai-msg--bot");
-    } else if (!res.ok || !data?.answer) {
-      addMsg(data?.error || "Relaxagent is busy. Try again in a moment.", "ai-msg--bot ai-msg--err");
+    if (data?.answer) {
+      await typeOut(addMsg("", "ai-msg--bot"), data.answer);
+    } else if (data?.fallback?.answer) {
+      await typeOut(addMsg("", "ai-msg--bot"), data.fallback.answer);
     } else {
-      addMsg(data.answer, "ai-msg--bot");
+      // No server backend (local preview / offline): answer from the page's own data.
+      const local = localFallback(q, ctx);
+      await typeOut(addMsg("", "ai-msg--bot"), local);
     }
   } catch {
     wait.remove();
-    addMsg("Relaxagent lost connection. Try again when you are back online.", "ai-msg--bot ai-msg--err");
+    const local = localFallback(q, ctx);
+    await typeOut(addMsg("", "ai-msg--bot"), local);
   }
   busy = false;
 }
@@ -115,6 +150,28 @@ form?.addEventListener("submit", (e) => {
   const q = (input.value || "").trim();
   if (q) ask(q);
 });
+
+// Client-side fallback: answers from DESTINATIONS when no server function exists.
+function localFallback(q, ctx) {
+  const s = q.toLowerCase();
+  const DESTS = window.RelaxDestinations || [];
+  let place = ctx?.place ? DESTS.find(d => d.id === ctx.place) : null;
+  if (!place) {
+    place = DESTS.find(d =>
+      s.includes(d.name.toLowerCase().split(",")[0]) ||
+      s.includes(d.name.toLowerCase().split(", ")[1] || "###"));
+  }
+  const has = (...w) => w.some(x => s.includes(x));
+  if (has("who are you", "your name")) return "I'm Relaxagent, the day-off guide of this site. I know the eight quiet places here - their views, seasons, prices and paperwork. Ask me anything about them.";
+  if (has("visa", "passport", "document")) return (place ? `${place.name}: ` : "") + "visa rules depend on your passport - the Documents & visas section lists every rule with official links, and builds you a checklist.";
+  if (has("price", "cost", "expensive", "budget", "cheap")) return (place ? `${place.name}: ` : "") + "every city in the World Explorer has a full price table - meals, hotels, taxis, monthly totals. Use the fair-price checker to test any quote.";
+  if (has("weather", "when", "season", "rain")) return (place ? `${place.name}: ` : "") + "each destination card shows a live 5-day forecast and the best months. Tell me a specific place for its season.";
+  if (has("kid", "child", "family", "baby")) return (place ? `${place.name} with kids: ` : "") + "every destination card has age notes and kid picks - Fiji and Kyoto are the easiest with children.";
+  if (has("view", "photo", "see")) return (place ? `Best view at ${place.name}: ` : "") + "each card names its single best view and exact time to be there.";
+  if (has("where", "suggest", "recommend", "which")) return "Tell me how you want to feel, or try the World Explorer search: type 'quiet beach' or 'foodie city under 100 a day'.";
+  if (place) return `${place.name}: one of the quietest places on this map. Ask me about prices, weather, visa, kids or the best view there.`;
+  return "I know the eight quiet places on this site. Name one - Iceland, Kyoto, Wadi Rum, Fiji - or tell me how you want to feel, and I'll point you somewhere.";
+}
 
 // Quick action: the bubble shows a contextual hint after scrolling
 const HINTS = {

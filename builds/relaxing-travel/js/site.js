@@ -21,6 +21,8 @@ const DESTINATIONS = [
     moods: ["calm", "focus", "still", "mind", "meditate", "think", "clarity", "order", "quiet", "zen", "stop"] },
 ];
 
+window.RelaxDestinations = DESTINATIONS;
+
 const webglOK = (() => {
   try {
     const t = document.createElement("canvas");
