@@ -92,6 +92,19 @@ export function buildDocs() {
 
       <div class="docs-col">
         <div class="docs-panel">
+          <h3>Don't know where yet? Get suggestions + docs</h3>
+          <p class="docs-note">Say what you want (a vibe, a budget, anything). Relaxagent suggests places and lists exactly what each one needs from your passport.</p>
+          <div class="docs-picks">
+            <div class="wx-search">
+              <input id="doc-vibe" type="text" autocomplete="off" maxlength="120"
+                placeholder="quiet beach under 80 a day, foodie city, mountains…">
+              <button class="btn" id="doc-suggest">Suggest</button>
+            </div>
+          </div>
+          <div id="doc-sug-out" class="doc-out"><div class="empty">Suggestions appear here — with the documents each place needs.</div></div>
+        </div>
+
+        <div class="docs-panel">
           <h3>Visa rules for our destinations</h3>
           <p class="docs-note" style="margin-top:-0.4rem">Rules current as of 2026 — always confirm on the official source before booking.</p>
           ${Object.entries(DEST_VISA_NOTES).map(([k, v]) =>
@@ -123,5 +136,49 @@ export function buildDocs() {
       <p class="doc-count">${items.length} documents & preparations for a ${esc(nat)} passport → ${dests.map(d => DEST_VISA_NOTES[d].zone).join(", ")}</p>
       <ol class="doc-list">${items.map(([t, d]) => `<li><strong>${esc(t)}</strong><span>${esc(d)}</span></li>`).join("")}</ol>
       <p class="docs-note">Then ask Relaxagent: "what visa do I need for ${dests.length ? DEST_VISA_NOTES[dests[0]].zone : "my trip"}?" — and verify with the official links above.</p>`;
+  });
+
+  // ---- Suggest places + their docs (vibe search over the world index) ----
+  const sugBtn = wrap.querySelector("#doc-suggest");
+  const sugInput = wrap.querySelector("#doc-vibe");
+  const sugOut = wrap.querySelector("#doc-sug-out");
+  let worldIdx = null;
+  sugBtn?.addEventListener("click", async () => {
+    const q = (sugInput.value || "").trim();
+    if (!q) { sugInput.focus(); return; }
+    sugOut.innerHTML = '<div class="empty">Finding places that match…</div>';
+    if (!worldIdx) {
+      try { worldIdx = await (await fetch("data/prices/index.json")).json(); }
+      catch { sugOut.innerHTML = '<div class="empty">Could not load destinations.</div>'; return; }
+    }
+    // light client scoring: words match tags/city/best_for
+    const words = q.toLowerCase().split(/[^a-z]+/).filter(w => w.length > 2);
+    const scored = worldIdx.map(w => {
+      let s = 0;
+      for (const wd of words) {
+        if (w.city.toLowerCase().includes(wd) || w.country.toLowerCase().includes(wd)) s += 5;
+        if (w.tags.some(t => t.includes(wd))) s += 4;
+        if (w.best_for.some(b => b.toLowerCase().includes(wd))) s += 3;
+      }
+      return { w, s };
+    }).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 3);
+    if (!scored.length) {
+      sugOut.innerHTML = '<div class="empty">No match yet. Try: quiet, beach, mountains, food, budget, adventure, romantic…</div>';
+      return;
+    }
+    // pull docs for the top matches
+    const details = await Promise.all(scored.map(async x => {
+      try { return await (await fetch(`data/prices/${x.w.key}.json`)).json(); }
+      catch { return null; }
+    }));
+    sugOut.innerHTML = details.map((d, i) => d && d.docs ? `
+      <div class="doc-sug">
+        <div class="doc-sug-head"><span>${esc(d.flag)}</span><strong>${esc(d.city)}, ${esc(d.country)}</strong>
+          <span class="doc-sug-price">$${d.prices.daily_budget}–${d.prices.daily_mid}/day</span></div>
+        <p><strong>Entry:</strong> ${esc(d.docs.entry)}</p>
+        <p><strong>Insurance:</strong> ${esc(d.docs.insurance)}</p>
+        ${d.docs.special?.length ? `<p><strong>Bring:</strong> ${esc(d.docs.special.join(" · "))}</p>` : ""}
+        <p><strong>Relaxagent says:</strong> ${esc(d.docs.agency)}</p>
+      </div>` : "").join("");
   });
 }

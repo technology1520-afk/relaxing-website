@@ -66,5 +66,15 @@
  },
  "seasons": "Dry May-Sep (best for Machu Picchu). Dec-Mar rainy. Acclimatise 2 days.",
  "airports": "CUZ (via Lima)",
- "notes": "Machu Picchu tickets sell out; book circuits weeks ahead. Altitude 3400m."
+ "notes": "Machu Picchu tickets sell out; book circuits weeks ahead. Altitude 3400m.",
+ "docs": {
+  "entry": "Most nationalities: 90 days free on arrival.",
+  "insurance": "Machu Picchu treks require rescue-capable insurance.",
+  "special": [
+   "Passport for Machu Picchu entry (same one booked with)",
+   "Student ISIC card for discounts"
+  ],
+  "health": "Altitude 3400m — acclimatise; yellow fever for Amazon side.",
+  "agency": "Book Machu Picchu through licensed operators only; check Cusco agency registry."
+ }
 }

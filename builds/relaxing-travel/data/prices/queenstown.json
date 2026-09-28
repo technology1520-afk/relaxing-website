@@ -67,5 +67,15 @@
  },
  "seasons": "Dec-Feb summer, busiest. Jun-Aug ski. Mar-Apr golden autumn, cheaper.",
  "airports": "ZQN",
- "notes": "Book adventure sports ahead; weather cancels often."
+ "notes": "Book adventure sports ahead; weather cancels often.",
+ "docs": {
+  "entry": "NZeTA required before flying (~NZ$23 + levy), even for visa-free nationalities.",
+  "insurance": "Recommended; adventure sports exclusions matter — declare bungee/skydive.",
+  "special": [
+   "NZeTA via app/website before boarding",
+   "Departure fee at some airports"
+  ],
+  "health": "None required.",
+  "agency": "NZeTA is DIY-only; any 'agent' charging more is a scam."
+ }
 }

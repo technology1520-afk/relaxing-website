@@ -120,6 +120,14 @@ async function openDetail(key) {
       ${sec("Fun & leisure", fmt(d.leisure))}
       ${sec("Things to do", fmt(d.activities))}
       ${sec("Connected", fmt({ "Home internet, month": p.internet_month, "SIM with data": p.sim_data }))}
+      ${d.docs ? `<div class="wx-sec"><h4>Documents & entry</h4>
+        <div class="wx-docs">
+          <p><strong>Entry:</strong> ${esc(d.docs.entry)}</p>
+          <p><strong>Insurance:</strong> ${esc(d.docs.insurance)}</p>
+          ${d.docs.special?.length ? `<p><strong>Prepare:</strong></p><ul>${d.docs.special.map(s => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}
+          <p><strong>Health:</strong> ${esc(d.docs.health)}</p>
+          <p><strong>Agency needed?</strong> ${esc(d.docs.agency)}</p>
+        </div></div>` : ""}
       ${d.seasons ? `<div class="wx-sec"><h4>When to go</h4><p class="wx-note" style="margin:0">${esc(d.seasons)}</p></div>` : ""}
       ${d.airports ? `<div class="wx-sec"><h4>Getting there</h4><p class="wx-note" style="margin:0">${esc(d.airports)}</p></div>` : ""}
       ${d.notes ? `<div class="wx-sec"><h4>Local knowledge</h4><p class="wx-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}

@@ -64,7 +64,9 @@ exports.handler = async (req) => {
 ${placeBlock}
 ${section ? `They are currently in the site's "${section}" section.` : ""}
 
-Answer in 2-4 short sentences, warm and concrete. Use the curated facts where they fit; if the question goes beyond them (visas, flights from a specific city), answer from general knowledge and say what to double-check. Never invent exact prices beyond the curated ones. No exclamation marks. Plain text only.`;
+After answering their question, if they mention a specific place or seem unsure about preparation, add one short sentence pointing them to what to prepare (visa type, insurance, permits) and the site's Documents & visas section.
+
+Answer in 2-4 short sentences, warm and concrete. Use the curated facts where they fit; if the question goes beyond them (visas, flights from a specific city), answer from general knowledge and say what to double-check with official sources. Never invent exact prices beyond the curated ones. No exclamation marks. Plain text only.`;
 
   try {
     const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {

@@ -68,5 +68,14 @@
  },
  "seasons": "Jun-Aug midnight sun and hiking. Sep-Mar aurora. Expensive: buy alcohol duty-free.",
  "airports": "KEF +45min bus",
- "notes": "Tap water glacier-fresh. Bónus supermarkets halve food costs."
+ "notes": "Tap water glacier-fresh. Bónus supermarkets halve food costs.",
+ "docs": {
+  "entry": "Schengen: 90/180 days.",
+  "insurance": "EHIC for EU; otherwise travel insurance (costs high).",
+  "special": [
+   "Schengen insurance €30k if visa required"
+  ],
+  "health": "None required.",
+  "agency": "Schengen via VFS; nothing else needed."
+ }
 }

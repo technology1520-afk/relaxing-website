@@ -70,5 +70,15 @@
  },
  "seasons": "Dry May-Sep (best). Wet Oct-Apr, still warm. Ubud cooler than the coast.",
  "airports": "DPS +1.5h drive",
- "notes": "Scooter essential. Tourist tax on arrival."
+ "notes": "Scooter essential. Tourist tax on arrival.",
+ "docs": {
+  "entry": "Visa on arrival (VoA) ~IDR 500,000 / $35, 30 days + one 30-day extension.",
+  "insurance": "Required by many villas; scooter accidents common — get cover.",
+  "special": [
+   "Scooter licence (international permit)",
+   "Tourist tax IDR 150,000 paid on arrival"
+  ],
+  "health": "Hepatitis A recommended; rabies risk near monkeys.",
+  "agency": "VoA is pay-at-desk; agencies that 'pre-arrange' it overcharge."
+ }
 }

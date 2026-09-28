@@ -67,5 +67,14 @@
  },
  "seasons": "Eternal spring (22-28°C) year-round. Drier Dec-Mar, Jul-Aug.",
  "airports": "MDE / JOH",
- "notes": "Metro + cable car: cleanest system in Latin America. Comuna 13 with licensed guide."
+ "notes": "Metro + cable car: cleanest system in Latin America. Comuna 13 with licensed guide.",
+ "docs": {
+  "entry": "Visa-free 90 days (extendable) for most.",
+  "insurance": "Recommended.",
+  "special": [
+   "Return ticket proof (checked at check-in)"
+  ],
+  "health": "None required; altitude mild.",
+  "agency": "None needed."
+ }
 }

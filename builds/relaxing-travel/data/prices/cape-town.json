@@ -67,5 +67,15 @@
  },
  "seasons": "Best Nov-Mar (dry summer). Jun-Aug rainy, whales. Windy Sep-Oct.",
  "airports": "CPT",
- "notes": "Use Uber, not street taxis. Safety varies by neighbourhood."
+ "notes": "Use Uber, not street taxis. Safety varies by neighbourhood.",
+ "docs": {
+  "entry": "Visa-free 90 days for many; some need visas in advance.",
+  "insurance": "Recommended; public healthcare variable.",
+  "special": [
+   "2 blank pages required in passport",
+   "Birth certificate for minors (strict rules)"
+  ],
+  "health": "None from most countries.",
+  "agency": "Minor-travel rules are strict — unaccompanied/one-parent docs required."
+ }
 }

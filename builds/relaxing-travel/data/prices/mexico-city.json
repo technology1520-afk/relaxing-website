@@ -68,5 +68,14 @@
  },
  "seasons": "Best Mar-May, Oct-Nov (dry, warm). Jun-Sep rainy afternoons. Altitude 2240m.",
  "airports": "MEX / NLU",
- "notes": "Metro costs $0.25. Tacos al pastor $1-2 at night stands."
+ "notes": "Metro costs $0.25. Tacos al pastor $1-2 at night stands.",
+ "docs": {
+  "entry": "Visa-free for ~70 nationalities; FMM tourist card digital.",
+  "insurance": "Recommended.",
+  "special": [
+   "Tourist card kept until departure"
+  ],
+  "health": "Altitude 2240m; tap water never.",
+  "agency": "None needed for tourism."
+ }
 }

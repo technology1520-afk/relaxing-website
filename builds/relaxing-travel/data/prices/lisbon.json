@@ -69,5 +69,14 @@
  },
  "seasons": "Best Mar-Jun, Sep-Oct. Jul-Aug hot and busiest. Winter mild.",
  "airports": "LIS",
- "notes": "Pastéis de nata €1.30. Skip tram 28 queues; walk Alfama."
+ "notes": "Pastéis de nata €1.30. Skip tram 28 queues; walk Alfama.",
+ "docs": {
+  "entry": "Schengen: 90/180 days; EU/EEA citizens free movement.",
+  "insurance": "EHIC covers EU citizens; others get travel insurance.",
+  "special": [
+   "Schengen insurance €30k if visa required"
+  ],
+  "health": "No special vaccines.",
+  "agency": "Schengen visas via VFS Global centres; never pay 'guarantee' agents."
+ }
 }

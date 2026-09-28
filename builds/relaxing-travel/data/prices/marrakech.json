@@ -68,5 +68,14 @@
  },
  "seasons": "Best Mar-May, Oct-Nov. Jun-Aug over 40°C. Winter nights cold.",
  "airports": "RAK",
- "notes": "Agree taxi price before entering. Riads beat hotels on value."
+ "notes": "Agree taxi price before entering. Riads beat hotels on value.",
+ "docs": {
+  "entry": "Visa-free 90 days for ~70 nationalities.",
+  "insurance": "Recommended.",
+  "special": [
+   "ID for hotel check-in (passport)"
+  ],
+  "health": "Hepatitis A recommended.",
+  "agency": "Official 'guides' wear badges in the medina; unlicensed 'helpers' expect tips."
+ }
 }

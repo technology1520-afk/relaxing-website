@@ -68,5 +68,14 @@
  },
  "seasons": "Peak late Mar-Apr (blossom) and Nov (maples). Jun rainy, cheap. Winter quiet.",
  "airports": "KIX +75min / ITM",
- "notes": "Conbini meals are genuinely good. IC card covers all transit."
+ "notes": "Conbini meals are genuinely good. IC card covers all transit.",
+ "docs": {
+  "entry": "Visa-free 90 days for ~70 nationalities; eVisa for others.",
+  "insurance": "Strongly recommended — medical costs high for foreigners.",
+  "special": [
+   "Visit Japan Web registration (speeds immigration)"
+  ],
+  "health": "None required.",
+  "agency": "eVisa via official MOFA site only — fakes exist."
+ }
 }

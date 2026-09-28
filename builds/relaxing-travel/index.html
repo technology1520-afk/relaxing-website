@@ -438,6 +438,11 @@
     text-transform: uppercase; color: var(--sc-accent); margin: 0 0 0.3rem;
   }
   .wx-table tr td:first-child { text-transform: capitalize; }
+  .wx-docs { background: color-mix(in srgb, var(--sc-accent) 7%, transparent); border-radius: 10px; padding: 0.8rem 1rem; }
+  .wx-docs p { font-size: 0.85rem; color: var(--sc-ink-soft); margin: 0.3rem 0; line-height: 1.5; }
+  .wx-docs strong { color: var(--sc-ink); font-weight: 600; }
+  .wx-docs ul { margin: 0.2rem 0 0.2rem 1.1rem; padding: 0; }
+  .wx-docs li { font-size: 0.85rem; color: var(--sc-ink-soft); margin-bottom: 0.2rem; }
 
   /* ---------- Documents & Visas ---------- */
   .docs-sec { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
@@ -472,6 +477,13 @@
   .doc-flag strong { color: #B0533A; font-size: 0.87rem; }
   .doc-flag p { color: var(--sc-ink-soft); font-size: 0.83rem; margin: 0.2rem 0 0; line-height: 1.5; }
   .docs-note { color: var(--sc-ink-soft); font-size: 0.85rem; line-height: 1.55; margin: 0.6rem 0 1rem; }
+  .doc-sug { border: 1px solid color-mix(in srgb, var(--sc-ink) 15%, transparent); border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 0.7rem; }
+  .doc-sug-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .doc-sug-head strong { color: var(--sc-ink); font-size: 0.95rem; }
+  .doc-sug-price { margin-left: auto; font-family: var(--sc-font-mono); font-size: 0.78rem; color: var(--sc-accent); }
+  .doc-sug p { font-size: 0.84rem; color: var(--sc-ink-soft); margin: 0.2rem 0; line-height: 1.5; }
+  .doc-sug strong { color: var(--sc-ink); font-weight: 600; }
+  .docs-picks .wx-search input { border-color: color-mix(in srgb, var(--sc-ink) 25%, transparent); }
   @media (max-width: 900px) { .docs-grid { grid-template-columns: 1fr; } }
 
   /* ---------- Floating AI assistant ---------- */

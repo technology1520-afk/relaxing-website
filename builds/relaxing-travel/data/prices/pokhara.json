@@ -67,5 +67,16 @@
  },
  "seasons": "Trekking Oct-Nov, Mar-Apr (clear skies). Monsoon Jun-Sep. Cold winter nights.",
  "airports": "PKR (or 6h bus)",
- "notes": "Gateway to Annapurna. Permits via agencies in town."
+ "notes": "Gateway to Annapurna. Permits via agencies in town.",
+ "docs": {
+  "entry": "Visa on arrival for most: 15/30/90 days ($30/50/125).",
+  "insurance": "ESSENTIAL for trekking — rescue helicopter evacuations cost $5,000+.",
+  "special": [
+   "Annapurna Conservation Area Permit $25",
+   "TIMS card",
+   "Passport copies + photos for permits"
+  ],
+  "health": "Altitude; water treatment.",
+  "agency": "Permits via official NTB/TAAN offices in Pokhara; trekking agencies must be TAAN-registered — check the registry."
+ }
 }

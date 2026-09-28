@@ -68,5 +68,15 @@
  },
  "seasons": "Best Feb-Apr. Sep-Nov typhoon risk. May-Aug hot but beach season.",
  "airports": "DAD +45min",
- "notes": "Full-moon lantern night monthly. Test tailor with one item first."
+ "notes": "Full-moon lantern night monthly. Test tailor with one item first.",
+ "docs": {
+  "entry": "E-visa 90 days multi-entry for most ($25), or visa-exempt for some ASEAN.",
+  "insurance": "Recommended.",
+  "special": [
+   "E-visa printed copy (borders can be picky)",
+   "Passport photo digital file"
+  ],
+  "health": "None required.",
+  "agency": "E-visa is DIY on the official government site; third-party sites charge 3x."
+ }
 }
