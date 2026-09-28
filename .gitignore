@@ -2,3 +2,6 @@ node_modules/
 lab/
 out/
 *.log
+
+netlify/functions/node_modules/
+netlify/functions/package-lock.json

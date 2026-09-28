@@ -90,6 +90,15 @@
     <div class="panel"><h2>Latest AI calls</h2><div id="p-ai"><div class="empty">No data yet.</div></div></div>
     <div class="panel"><h2>Recent signups</h2><div id="p-signups"><div class="empty">No data yet.</div></div></div>
     <div class="panel"><h2>Price checks</h2><div id="p-price"><div class="empty">No data yet.</div></div></div>
+    <div class="panel"><h2>Agent access (MCP)</h2>
+      <p style="color:var(--sc-ink-soft);font-size:0.85rem;margin:0 0 0.7rem;">Your AI agent connects with its own secret token — separate from your admin login:</p>
+      <div style="font-family:var(--sc-font-mono);font-size:0.78rem;color:var(--sc-ink);background:var(--sc-canvas);border-radius:8px;padding:0.8rem;line-height:1.7;">
+        POST https://relaxdayoff.com/api/mcp<br>
+        Authorization: Bearer $MCP_SECRET<br>
+        {"jsonrpc":"2.0","id":1,"method":"tools/list"}
+      </div>
+      <p style="color:var(--sc-ink-soft);font-size:0.8rem;margin:0.7rem 0 0;">Tools: site.stats · trips.list · questions.list · signups.list · pricechecks.list</p>
+    </div>
   </div>
 </div>
 

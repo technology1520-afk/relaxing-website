@@ -25,6 +25,14 @@
   to = "/.netlify/functions/track"
   status = 200
 
+[[redirects]]
+  from = "/api/mcp"
+  to = "/.netlify/functions/mcp"
+  status = 200
+
+# MCP endpoint is machine-only: block browser cross-origin reads of it via CSP not needed;
+# the secret token is the gate.
+
 [[headers]]
   for = "/assets/*"
   [headers.values]
