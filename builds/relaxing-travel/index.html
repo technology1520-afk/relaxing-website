@@ -73,6 +73,7 @@
     border-radius: 999px; padding: 0.45rem 1.05rem; transition: background 140ms var(--sc-ease-out), color 140ms var(--sc-ease-out);
   }
   .site-bar .bar-cta:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  .site-bar .acct-link { border-style: dashed; }
 
   /* ---------- Signature move: the Dusk Dial ----------
      One control, whole-page regrade: canvas, surface, accent, globe light.
@@ -471,6 +472,7 @@
     <a href="#calm">Find your calm</a>
   </nav>
   <a class="bar-cta" href="#calm">Find your calm</a>
+  <a class="bar-cta acct-link" id="acct-link" href="account.html" hidden>My trips</a>
 </header>
 
 <!-- The Dusk Dial: drag the sun from noon to midnight, the whole page follows -->
@@ -755,6 +757,16 @@
   buildPlanner();
 </script>
 <script src="js/assistant.js"></script>
+<script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
+<script>
+  // Auth-aware nav: show "My trips" when logged in
+  window.netlifyIdentity?.on("init", (user) => {
+    if (user) document.getElementById("acct-link")?.removeAttribute("hidden");
+  });
+  window.netlifyIdentity?.on("login", () => {
+    document.getElementById("acct-link")?.removeAttribute("hidden");
+  });
+</script>
 <script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>

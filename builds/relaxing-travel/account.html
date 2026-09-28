@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Your account · Stillwater</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B1020">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230B1020'/><circle cx='16' cy='16' r='6' fill='%23E8A852'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root {
+    --sc-canvas: #0B1020; --sc-surface: #131A2E; --sc-ink: #F2EEE6;
+    --sc-ink-soft: #9BA3B5; --sc-accent: #E8A852; --sc-accent-ink: #1A1207;
+    --sc-font-display: "Archivo", system-ui, sans-serif;
+    --sc-font-text: "Outfit", system-ui, sans-serif;
+  }
+  body { background: var(--sc-canvas); }
+  .acct { max-width: 46rem; margin: 0 auto; padding: clamp(2rem, 6vh, 4rem) 1.25rem 4rem; }
+  .acct-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.2rem; }
+  .acct-mark { font-family: var(--sc-font-display); font-weight: 600; font-size: 1.2rem; color: var(--sc-ink); text-decoration: none; }
+  .acct-mark em { color: var(--sc-accent); font-style: normal; }
+  .acct-user { display: flex; align-items: center; gap: 0.9rem; }
+  .avatar {
+    width: 2.6rem; height: 2.6rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font-family: var(--sc-font-display); font-weight: 600; font-size: 1.1rem;
+  }
+  .acct-user .u-name { color: var(--sc-ink); font-weight: 500; font-size: 0.95rem; }
+  .acct-user .u-mail { color: var(--sc-ink-soft); font-size: 0.8rem; }
+  .acct h1 { font-family: var(--sc-font-display); font-size: 1.6rem; font-weight: 600; color: var(--sc-ink); margin: 0 0 0.4rem; }
+  .acct-sub { color: var(--sc-ink-soft); font-size: 0.95rem; margin: 0 0 2rem; }
+  .panel {
+    background: color-mix(in srgb, var(--sc-surface) 85%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent);
+    border-radius: 16px; padding: 1.4rem 1.6rem; margin-bottom: 1.2rem;
+  }
+  .panel h2 { font-family: var(--sc-font-display); font-size: 1.05rem; font-weight: 600; color: var(--sc-ink); margin: 0 0 0.9rem; }
+  .trip { padding: 0.8rem 0; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 7%, transparent); }
+  .trip:first-of-type { border-top: 0; }
+  .trip .t-title { color: var(--sc-ink); font-weight: 500; font-size: 0.95rem; }
+  .trip .t-meta { color: var(--sc-ink-soft); font-size: 0.82rem; margin-top: 0.2rem; }
+  .trip .t-places { color: var(--sc-accent); font-size: 0.85rem; margin-top: 0.3rem; }
+  .empty { color: var(--sc-ink-soft); font-size: 0.92rem; }
+  .empty a { color: var(--sc-accent); }
+  .btn-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
+  .btn {
+    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 10px;
+    padding: 0.6rem 1.1rem; font: inherit; font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; display: inline-block; transition: filter 120ms var(--sc-ease-out);
+  }
+  .btn:hover { filter: brightness(1.06); }
+  .btn.ghost { background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent); }
+  .btn.ghost:hover { color: var(--sc-ink); }
+  .loading { color: var(--sc-ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<div class="acct">
+  <div class="acct-head">
+    <a class="acct-mark" href="/">Still<em>water</em></a>
+    <div class="acct-user" id="acct-user" hidden>
+      <div class="avatar" id="avatar">?</div>
+      <div><div class="u-name" id="u-name">…</div><div class="u-mail" id="u-mail"></div></div>
+    </div>
+  </div>
+
+  <div id="gate" class="loading">Checking your session…</div>
+
+  <div id="content" hidden>
+    <h1>Your trips</h1>
+    <p class="acct-sub">Everything you planned, saved as you go.</p>
+
+    <div class="panel">
+      <h2>Saved trips</h2>
+      <div id="trips"><div class="empty">Loading…</div></div>
+      <div class="btn-row"><a class="btn" href="/#plan">Plan a new trip</a></div>
+    </div>
+
+    <div class="panel">
+      <h2>Account</h2>
+      <div class="btn-row">
+        <button class="btn ghost" id="logout">Log out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
+<script>
+const gate = document.getElementById("gate");
+const content = document.getElementById("content");
+
+function trips() { try { return JSON.parse(localStorage.getItem("sw_trips") || "[]"); } catch { return []; } }
+
+function renderTrips(user) {
+  const box = document.getElementById("trips");
+  const all = trips().filter(t => !user.email || t.owner === user.email || !t.owner);
+  if (!all.length) {
+    box.innerHTML = '<div class="empty">No trips yet. <a href="/#plan">Plan your first one</a> — it saves here automatically.</div>';
+    return;
+  }
+  box.innerHTML = all.slice().reverse().map(t => `
+    <div class="trip">
+      <div class="t-title">${t.days} days · ${t.who}</div>
+      <div class="t-places">${(t.places || []).join(" · ")}</div>
+      <div class="t-meta">saved ${new Date(t.at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}${t.budget ? " · " + t.budget : ""}</div>
+    </div>`).join("");
+}
+
+function boot(user) {
+  if (!user) { location.href = "log-in.html"; return; }
+  gate.hidden = true; content.hidden = false;
+  document.getElementById("acct-user").hidden = false;
+  const name = user.user_metadata?.full_name || user.email.split("@")[0];
+  document.getElementById("u-name").textContent = name;
+  document.getElementById("u-mail").textContent = user.email;
+  document.getElementById("avatar").textContent = (name[0] || "?").toUpperCase();
+  renderTrips(user);
+}
+
+window.netlifyIdentity?.on("init", boot);
+window.netlifyIdentity?.on("login", boot);
+window.netlifyIdentity?.on("logout", () => location.href = "log-in.html");
+if (window.netlifyIdentity?.currentUser()) boot(window.netlifyIdentity.currentUser());
+setTimeout(() => { if (!window.netlifyIdentity) { gate.textContent = "Auth is not available in this environment. Deploy to Netlify and enable Identity."; } }, 4000);
+document.getElementById("logout").addEventListener("click", () => window.netlifyIdentity?.logout());
+</script>
+</body>
+</html>

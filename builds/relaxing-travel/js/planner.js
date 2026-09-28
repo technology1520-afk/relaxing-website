@@ -234,6 +234,21 @@ planForm?.addEventListener("submit", async (e) => {
 function renderPlan(data, picks) {
   const names = picks.map(k => PLACE_DATA[k] ? `${PLACE_DATA[k].flag} ${PLACE_DATA[k].name}` : k).join(" · ");
   const budget = data.budget;
+  // Persist the trip (best-effort; visible on account.html when logged in)
+  try {
+    const identity = window.netlifyIdentity;
+    const user = identity?.currentUser();
+    const store = JSON.parse(localStorage.getItem("sw_trips") || "[]");
+    store.push({
+      owner: user?.email || null,
+      at: Date.now(),
+      days: (data.days || []).length,
+      who: (document.getElementById("plan-who").value || "family").slice(0, 60),
+      places: (picks || []).map(k => PLACE_DATA[k]?.name || k),
+      budget: (budget || "").slice(0, 120),
+    });
+    localStorage.setItem("sw_trips", JSON.stringify(store.slice(-50)));
+  } catch {}
   planOut.innerHTML = `
     <div class="plan-route"><strong>${names}</strong></div>
     ${(data.days || []).map(d => `
