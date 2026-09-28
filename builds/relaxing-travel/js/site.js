@@ -89,10 +89,16 @@ const form = document.getElementById("calm-form");
 const input = document.getElementById("mood");
 const answer = document.getElementById("calm-answer");
 
+// Mood chips: one click fills and submits.
+document.querySelectorAll(".mood-chips button").forEach(b =>
+  b.addEventListener("click", () => {
+    input.value = b.dataset.mood;
+    form.requestSubmit();
+  }));
+
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const mood = (input.value || "").trim();
-  if (!mood) { input.focus(); return; }
+  const mood = (input.value || "").trim();  if (!mood) { input.focus(); return; }
   answer.textContent = "The globe is listening…";
   const btn = document.getElementById("calm-go");
   btn.disabled = true;

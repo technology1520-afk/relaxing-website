@@ -51,7 +51,8 @@
     position: fixed; inset: 0 0 auto 0; z-index: 40;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
-    mix-blend-mode: normal;
+    background: color-mix(in srgb, var(--sc-canvas) 55%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   }
   .site-bar .mark {
     font-family: var(--sc-font-display); font-weight: 600; letter-spacing: -0.01em;
@@ -193,6 +194,17 @@
   }
   .foot a { color: var(--sc-ink-soft); }
 
+  .place--wide .place-copy { grid-column: 1 / -1; max-width: 60ch; margin-inline: auto; text-align: center; }
+  .place--wide .place-copy p { margin-inline: auto; }
+  .mood-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.8rem; }
+  .mood-chips button {
+    background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent);
+    border-radius: 999px; padding: 0.35rem 0.85rem; font: inherit; font-size: 0.85rem; cursor: pointer;
+    transition: color 140ms var(--sc-ease-out), border-color 140ms var(--sc-ease-out), background 140ms var(--sc-ease-out);
+  }
+  .mood-chips button:hover { color: var(--sc-accent-ink); background: var(--sc-accent); border-color: var(--sc-accent); }
+  .mood-chips button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+
   @media (max-width: 860px) {
     .place, .place.flip { grid-template-columns: 1fr; }
     .place.flip .place-copy { order: 0; }
@@ -332,6 +344,11 @@
           <input id="mood" name="mood" type="text" autocomplete="off" placeholder="I can't sleep. I need warm water and no people." maxlength="200">
           <button type="submit" id="calm-go">Show me</button>
         </form>
+        <div class="mood-chips" aria-label="Quick moods">
+          <button type="button" data-mood="I need deep sleep and warm water to soak in">Geothermal warmth</button>
+          <button type="button" data-mood="I want to be alone on an empty beach with nobody around">Ocean seclusion</button>
+          <button type="button" data-mood="My mind will not stop. I need stillness and order">Zen focus</button>
+        </div>
         <p class="calm-answer" id="calm-answer" aria-live="polite">The quietest places on earth are waiting. Say one true sentence about your week.</p>
       </div>
     </div>
