@@ -173,7 +173,19 @@ gateLogin.addEventListener("click", () => { gateLogin.hidden = true; window.netl
 window.netlifyIdentity?.on("init", () => load());
 window.netlifyIdentity?.on("login", () => load());
 window.netlifyIdentity?.on("logout", () => location.reload());
-setTimeout(() => { if (!window.netlifyIdentity) { gateMsg.textContent = "Auth unavailable here. Deploy to Netlify with Identity enabled."; } }, 4000);
+setTimeout(() => {
+  const onNetlify = location.hostname.endsWith(".netlify.app") || location.hostname === "relaxdayoff.com";
+  if (!window.netlifyIdentity) { gateMsg.textContent = "Auth unavailable here. Deploy to Netlify with Identity enabled."; return; }
+  if (!window.netlifyIdentity.currentUser()) {
+    if (!onNetlify) {
+      gateMsg.innerHTML = "You are on <b>" + location.hostname + "</b> — the auth backend only exists on the deployed site.<br>Open this page on your Netlify URL or relaxdayoff.com after deploy.";
+      gateLogin.hidden = true;
+    } else {
+      gateMsg.textContent = "You need to log in with an admin account.";
+      gateLogin.hidden = false;
+    }
+  }
+}, 2500);
 </script>
 </body>
 </html>
