@@ -2,6 +2,8 @@
 // Returns { days: [{day, title, plan}], budget } using OpenRouter free models.
 // The API key never reaches the browser.
 
+const { logAdmin } = require("./_log.js");
+
 const NAMES = {
   iceland: "Blue Lagoon, Iceland",
   lofoten: "Reine, Lofoten, Norway",
@@ -76,6 +78,7 @@ Reply ONLY with minified JSON:
       title: String(d.title || "").slice(0, 80),
       plan: String(d.plan || "").slice(0, 700),
     }));
+    await logAdmin("trip", { at: Date.now(), days: outDays.length, who: who.slice(0, 60), places: places.map(k => NAMES[k]), budget: String(parsed.budget || "").slice(0, 120) });
     return json(200, { days: outDays, budget: String(parsed.budget || "").slice(0, 400) }, cors);
   } catch {
     return json(502, { error: "The planner is busy. Try again in a moment." }, cors);

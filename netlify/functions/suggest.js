@@ -2,6 +2,8 @@
 // Returns { ids: [...], line: string } using OpenRouter's free models router.
 // The API key never reaches the browser.
 
+const { logAdmin } = require("./_log.js");
+
 const DESTINATIONS = [
   { id: "iceland",    name: "Blue Lagoon, Iceland" },
   { id: "whitehaven", name: "Hill Inlet, Whitehaven Beach, Australia" },
@@ -58,6 +60,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
     const parsed = m ? JSON.parse(m[0]) : null;
     const valid = new Set(DESTINATIONS.map(d => d.id));
     const ids = (parsed?.ids || []).filter(id => valid.has(id)).slice(0, 3);
+    await logAdmin("suggest", { q: mood.slice(0, 80), ids });
     return json(200, { ids, line: String(parsed?.line || "").slice(0, 160) }, cors);
   } catch {
     return json(502, { error: "The globe stayed quiet. Try again in a moment." }, cors);

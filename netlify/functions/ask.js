@@ -2,6 +2,8 @@
 // The floating journey assistant. OpenRouter free models, key stays server-side.
 // Injects curated place data so answers are grounded in the site's own facts.
 
+const { logAdmin } = require("./_log.js");
+
 const PLACE_DATA = {
   iceland: { name: "Blue Lagoon, Iceland", lat: 63.88, lng: -22.45, bestMonths: "June-Aug light, Feb-Apr northern lights",
     prices: "meal $28, coffee $5.5, taxi $22, hotel $240, lagoon entry $65", crowd: "busy 11:00-16:00, book first/last slot",
@@ -42,6 +44,7 @@ exports.handler = async (req) => {
   const question = String(body.question || "").slice(0, 500).trim();
   if (!question) return json(400, { error: "Ask me something about the trip." }, cors);
   const ctx = body.context || {};
+  await logAdmin("ask", { q: question.slice(0, 80), place: ctx.place || null });
   const placeKey = PLACE_DATA[ctx.place] ? ctx.place : null;
   const section = String(ctx.section || "").slice(0, 60);
 

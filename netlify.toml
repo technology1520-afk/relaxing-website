@@ -15,6 +15,16 @@
   to = "/.netlify/functions/plan"
   status = 200
 
+[[redirects]]
+  from = "/api/admin-data"
+  to = "/.netlify/functions/admin-data"
+  status = 200
+
+[[redirects]]
+  from = "/api/track"
+  to = "/.netlify/functions/track"
+  status = 200
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

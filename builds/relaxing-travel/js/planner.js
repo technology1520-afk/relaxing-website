@@ -176,6 +176,8 @@ export function buildPlanner() {
     if (!val || val <= 0) { out.textContent = "Type the price you were quoted."; return; }
     const f = fairVerdict(val / p.prices[item]);
     out.innerHTML = `<strong class="${f.tone}">${f.verdict}.</strong> ${f.note} <span class="pr-med">Local median $${p.prices[item]}</span>`;
+    fetch("/api/track", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ kind: "price", place: p.key, item, quote: val, verdict: f.verdict }) }).catch(() => {});
   });
 }
 
