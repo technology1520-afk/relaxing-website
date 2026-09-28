@@ -1,0 +1,38 @@
+{
+ "key": "barcelona",
+ "city": "Barcelona",
+ "country": "Spain",
+ "flag": "🇪🇸",
+ "lat": 41.39,
+ "lng": 2.17,
+ "currency": "EUR ~0.92/$",
+ "prices": {
+  "meal_cheap": 15,
+  "coffee": 2.5,
+  "beer": 3.5,
+  "taxi_3km": 6,
+  "transit_ride": 2.4,
+  "hotel_budget": 70,
+  "hotel_mid": 140,
+  "hotel_lux": 320,
+  "internet_month": 35,
+  "sim_data": 20,
+  "meal_mid_rest": 30,
+  "water_bottle": 0.7,
+  "daily_budget": 127,
+  "daily_mid": 227
+ },
+ "tags": [
+  "beach",
+  "architecture",
+  "nightlife",
+  "city",
+  "foodie",
+  "art"
+ ],
+ "best_for": [
+  "gaudi",
+  "mediterranean",
+  "tapas"
+ ]
+}

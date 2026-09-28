@@ -1,0 +1,38 @@
+{
+ "key": "pokhara",
+ "city": "Pokhara",
+ "country": "Nepal",
+ "flag": "🇳🇵",
+ "lat": 28.21,
+ "lng": 83.99,
+ "currency": "NPR ~133/$",
+ "prices": {
+  "meal_cheap": 3.5,
+  "coffee": 1.5,
+  "beer": 2.5,
+  "taxi_3km": 2,
+  "transit_ride": 0.3,
+  "hotel_budget": 15,
+  "hotel_mid": 40,
+  "hotel_lux": 120,
+  "internet_month": 15,
+  "sim_data": 8,
+  "meal_mid_rest": 9,
+  "water_bottle": 0.4,
+  "daily_budget": 31,
+  "daily_mid": 75
+ },
+ "tags": [
+  "mountains",
+  "himalayas",
+  "lakes",
+  "budget",
+  "adventure",
+  "calm"
+ ],
+ "best_for": [
+  "annapurna",
+  "paragliding",
+  "sunrise views"
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "key": "bali-ubud",
+ "city": "Bali (Ubud)",
+ "country": "Indonesia",
+ "flag": "🇮🇩",
+ "lat": -8.51,
+ "lng": 115.26,
+ "currency": "IDR ~16000/$",
+ "prices": {
+  "meal_cheap": 2.8,
+  "coffee": 1.8,
+  "beer": 2.8,
+  "taxi_3km": 2.5,
+  "transit_ride": 0.5,
+  "hotel_budget": 20,
+  "hotel_mid": 55,
+  "hotel_lux": 180,
+  "internet_month": 12,
+  "sim_data": 7,
+  "meal_mid_rest": 15,
+  "water_bottle": 0.4,
+  "daily_budget": 35,
+  "daily_mid": 104
+ },
+ "tags": [
+  "yoga",
+  "rice terraces",
+  "tropical",
+  "budget",
+  "wellness",
+  "digital nomad",
+  "waterfalls"
+ ],
+ "best_for": [
+  "wellness",
+  "yoga retreats",
+  "nature",
+  "remote work"
+ ]
+}

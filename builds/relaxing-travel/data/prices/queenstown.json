@@ -1,0 +1,38 @@
+{
+ "key": "queenstown",
+ "city": "Queenstown",
+ "country": "New Zealand",
+ "flag": "🇳🇿",
+ "lat": -45.03,
+ "lng": 168.66,
+ "currency": "NZD ~0.6/$",
+ "prices": {
+  "meal_cheap": 18,
+  "coffee": 4.2,
+  "beer": 7,
+  "taxi_3km": 10,
+  "transit_ride": 2,
+  "hotel_budget": 75,
+  "hotel_mid": 150,
+  "hotel_lux": 350,
+  "internet_month": 30,
+  "sim_data": 25,
+  "meal_mid_rest": 35,
+  "water_bottle": 0.9,
+  "daily_budget": 140,
+  "daily_mid": 258
+ },
+ "tags": [
+  "adventure",
+  "mountains",
+  "lakes",
+  "expensive",
+  "bungee",
+  "hiking"
+ ],
+ "best_for": [
+  "adrenaline capital",
+  "lord of the rings",
+  "alpine"
+ ]
+}

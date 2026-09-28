@@ -1,0 +1,38 @@
+{
+ "key": "mexico-city",
+ "city": "Mexico City",
+ "country": "Mexico",
+ "flag": "🇲🇽",
+ "lat": 19.43,
+ "lng": -99.13,
+ "currency": "MXN ~18/$",
+ "prices": {
+  "meal_cheap": 6,
+  "coffee": 2.2,
+  "beer": 2.5,
+  "taxi_3km": 3,
+  "transit_ride": 0.4,
+  "hotel_budget": 40,
+  "hotel_mid": 90,
+  "hotel_lux": 220,
+  "internet_month": 25,
+  "sim_data": 12,
+  "meal_mid_rest": 18,
+  "water_bottle": 0.5,
+  "daily_budget": 64,
+  "daily_mid": 146
+ },
+ "tags": [
+  "city",
+  "foodie",
+  "art",
+  "museums",
+  "nightlife",
+  "budget-ish"
+ ],
+ "best_for": [
+  "street tacos",
+  "museums",
+  "urban energy"
+ ]
+}

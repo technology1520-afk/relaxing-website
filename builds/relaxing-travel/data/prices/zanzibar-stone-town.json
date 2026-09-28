@@ -1,0 +1,38 @@
+{
+ "key": "zanzibar-stone-town",
+ "city": "Zanzibar (Stone Town)",
+ "country": "Tanzania",
+ "flag": "🇹🇿",
+ "lat": -6.16,
+ "lng": 39.19,
+ "currency": "TZS ~2600/$",
+ "prices": {
+  "meal_cheap": 6,
+  "coffee": 2,
+  "beer": 3,
+  "taxi_3km": 3,
+  "transit_ride": 0.5,
+  "hotel_budget": 35,
+  "hotel_mid": 85,
+  "hotel_lux": 280,
+  "internet_month": 18,
+  "sim_data": 12,
+  "meal_mid_rest": 16,
+  "water_bottle": 0.6,
+  "daily_budget": 60,
+  "daily_mid": 137
+ },
+ "tags": [
+  "islands",
+  "beaches",
+  "spices",
+  "budget-ish",
+  "tropical",
+  "romantic"
+ ],
+ "best_for": [
+  "white sand",
+  "snorkeling",
+  "spice tours"
+ ]
+}

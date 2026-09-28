@@ -359,6 +359,76 @@
   .plan-budget { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--sc-accent) 9%, transparent); color: var(--sc-ink-soft); font-size: 0.9rem; }
   .plan-note { margin-top: 1rem; font-size: 0.8rem; opacity: 0.75; }
 
+  /* ---------- World Explorer (vibe search + prices) ---------- */
+  .explorer { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
+  .wx-searchbox {
+    background: var(--sc-surface); border: 1.5px solid var(--sc-ink); border-radius: 16px;
+    box-shadow: 6px 6px 0 color-mix(in srgb, var(--sc-ink) 88%, transparent);
+    padding: clamp(1.4rem, 3vw, 2rem); margin-top: 1.8rem;
+  }
+  .wx-search { display: flex; gap: 0.6rem; }
+  .wx-search input {
+    flex: 1; min-width: 0; background: var(--sc-canvas); color: var(--sc-ink);
+    border: 1.5px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
+    border-radius: 10px; padding: 0.8rem 1rem; font: inherit; font-size: 0.98rem;
+  }
+  .wx-search input:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  .wx-search .btn { border-radius: 10px; border: 0; }
+  .wx-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.9rem; }
+  .wx-chips button {
+    background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 20%, transparent);
+    border-radius: 999px; padding: 0.35rem 0.85rem; font: inherit; font-size: 0.84rem; cursor: pointer;
+    transition: all 140ms var(--sc-ease-out);
+  }
+  .wx-chips button:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  .wx-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.9rem; margin-top: 1.4rem; }
+  .wx-none { grid-column: 1/-1; color: var(--sc-ink-soft); font-size: 0.9rem; padding: 0.5rem 0; }
+  .wx-card {
+    background: var(--sc-canvas); border: 1.5px solid color-mix(in srgb, var(--sc-ink) 20%, transparent);
+    border-radius: 12px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem;
+    transition: transform 160ms var(--sc-ease-out), box-shadow 160ms var(--sc-ease-out);
+  }
+  .wx-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--sc-ink); }
+  .wx-top { display: flex; align-items: center; gap: 0.6rem; }
+  .wx-flag { font-size: 1.4rem; }
+  .wx-names { display: flex; flex-direction: column; line-height: 1.2; }
+  .wx-names strong { font-family: var(--sc-font-display); color: var(--sc-ink); font-size: 0.98rem; }
+  .wx-names span { color: var(--sc-ink-soft); font-size: 0.8rem; }
+  .wx-quiet { font-family: var(--sc-font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sc-accent); border: 1px solid var(--sc-accent); border-radius: 4px; padding: 0.1rem 0.4rem; margin-left: auto; }
+  .wprice { margin-left: auto; font-weight: 700; font-size: 1rem; }
+  .wx-top .wx-quiet + .wprice { margin-left: 0.5rem; }
+  .wx-price-row { display: flex; gap: 1.6rem; }
+  .wx-price-row div { display: flex; flex-direction: column; }
+  .wx-price-row i { font-style: normal; font-size: 0.72rem; color: var(--sc-ink-soft); }
+  .wx-price-row b { font-family: var(--sc-font-display); font-size: 1.25rem; color: var(--sc-ink); }
+  .wx-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .wx-tags span { font-size: 0.72rem; color: var(--sc-ink-soft); background: color-mix(in srgb, var(--sc-ink) 6%, transparent); border-radius: 4px; padding: 0.15rem 0.45rem; }
+  .wx-open {
+    align-self: start; background: transparent; border: 1.5px solid var(--sc-ink); border-radius: 8px;
+    padding: 0.4rem 0.9rem; font: inherit; font-size: 0.84rem; font-weight: 500; color: var(--sc-ink); cursor: pointer;
+    transition: all 140ms var(--sc-ease-out);
+  }
+  .wx-open:hover { background: var(--sc-ink); color: var(--sc-canvas); }
+  .wx-world { margin-top: 2.6rem; }
+  .wx-world-title { font-family: var(--sc-font-display); font-weight: 700; font-size: 1.2rem; color: var(--sc-ink); margin: 0 0 1.1rem; }
+  .wx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.9rem; }
+  .wx-modal {
+    position: fixed; inset: 0; z-index: 90; background: color-mix(in srgb, #16130E 60%, transparent);
+    display: grid; place-items: center; padding: 1.2rem;
+  }
+  .wx-modal-card {
+    width: min(30rem, 100%); max-height: 85vh; overflow-y: auto; background: var(--sc-surface);
+    border: 1.5px solid var(--sc-ink); border-radius: 16px; box-shadow: 8px 8px 0 var(--sc-ink);
+    padding: 1.6rem; position: relative;
+  }
+  .wx-close { position: absolute; top: 0.8rem; right: 1rem; background: none; border: 0; font-size: 1.5rem; color: var(--sc-ink-soft); cursor: pointer; }
+  .wx-close:hover { color: var(--sc-ink); }
+  .wx-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .wx-table td { padding: 0.45rem 0.2rem; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 10%, transparent); font-size: 0.9rem; color: var(--sc-ink-soft); }
+  .wx-table td:last-child { text-align: right; color: var(--sc-ink); font-family: var(--sc-font-display); font-weight: 600; }
+  .wx-table tr.wx-total td { border-top: 2px solid var(--sc-ink); color: var(--sc-accent); font-weight: 600; }
+  .wx-note { font-size: 0.78rem; color: var(--sc-ink-soft); margin-top: 0.9rem; }
+
   /* ---------- Floating AI assistant ---------- */
   .ai-bubble {
     position: fixed; left: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
@@ -500,6 +570,7 @@
 <header class="site-bar">
   <a class="mark" href="#top">Relax Day<em>Off</em></a>
   <nav aria-label="Sections">
+    <a href="#explore">Explore</a>
     <a href="#plan">Plan</a>
     <a href="#calm">Find your calm</a>
   </nav>
@@ -741,6 +812,16 @@
     </div>
   </section>
 
+  <!-- 11.5 · WORLD EXPLORER: vibe search + world prices -->
+  <section id="explore" class="sc-section" data-sc-act="flow" data-sc-drift="#F1EDE2">
+    <div class="explorer sc-stack" data-sc-in data-sc-stagger="70">
+      <span class="at">10 — World explorer</span>
+      <h2 class="sc-display sc-display--lg">Search by vibe. See every price.</h2>
+      <p class="atlas-note">Tell the box what kind of place you want — a vibe, a budget, or both. Prices are typical USD medians per day, per item.</p>
+      <div id="explorer"></div>
+    </div>
+  </section>
+
   <!-- 12 · CURIOSITY: the peak. The globe answers in light. -->
   <section id="calm" data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#FAF7F1">
     <div data-sc-stage class="calm">
@@ -791,6 +872,10 @@
   buildPlanner();
 </script>
 <script src="js/assistant.js"></script>
+<script type="module">
+  import { buildExplorer } from "./js/explorer.js";
+  buildExplorer();
+</script>
 <script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
 <script>
   // Auth-aware nav: show "My trips" when logged in

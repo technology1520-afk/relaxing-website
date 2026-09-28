@@ -1,0 +1,38 @@
+{
+ "key": "hoi-an",
+ "city": "Hoi An",
+ "country": "Vietnam",
+ "flag": "🇻🇳",
+ "lat": 15.88,
+ "lng": 108.34,
+ "currency": "VND ~25000/$",
+ "prices": {
+  "meal_cheap": 2.2,
+  "coffee": 1.2,
+  "beer": 1.5,
+  "taxi_3km": 1.5,
+  "transit_ride": 0.4,
+  "hotel_budget": 15,
+  "hotel_mid": 40,
+  "hotel_lux": 120,
+  "internet_month": 12,
+  "sim_data": 6,
+  "meal_mid_rest": 10,
+  "water_bottle": 0.35,
+  "daily_budget": 28,
+  "daily_mid": 75
+ },
+ "tags": [
+  "lanterns",
+  "budget",
+  "calm",
+  "beach nearby",
+  "tailors",
+  "foodie"
+ ],
+ "best_for": [
+  "old town",
+  "cooking classes",
+  "tailored clothes"
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "key": "medellín",
+ "city": "Medellín",
+ "country": "Colombia",
+ "flag": "🇨🇴",
+ "lat": 6.24,
+ "lng": -75.58,
+ "currency": "COP ~4000/$",
+ "prices": {
+  "meal_cheap": 5,
+  "coffee": 1.8,
+  "beer": 2,
+  "taxi_3km": 3,
+  "transit_ride": 0.8,
+  "hotel_budget": 28,
+  "hotel_mid": 65,
+  "hotel_lux": 180,
+  "internet_month": 22,
+  "sim_data": 10,
+  "meal_mid_rest": 14,
+  "water_bottle": 0.5,
+  "daily_budget": 50,
+  "daily_mid": 113
+ },
+ "tags": [
+  "city",
+  "eternal spring",
+  "digital nomad",
+  "nightlife",
+  "budget-ish"
+ ],
+ "best_for": [
+  "comuna 13",
+  "coffee",
+  "spring weather"
+ ]
+}

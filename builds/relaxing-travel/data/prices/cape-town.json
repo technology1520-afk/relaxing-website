@@ -1,0 +1,37 @@
+{
+ "key": "cape-town",
+ "city": "Cape Town",
+ "country": "South Africa",
+ "flag": "🇿🇦",
+ "lat": -33.92,
+ "lng": 18.42,
+ "currency": "ZAR ~18/$",
+ "prices": {
+  "meal_cheap": 8,
+  "coffee": 2,
+  "beer": 2.8,
+  "taxi_3km": 4,
+  "transit_ride": 1.2,
+  "hotel_budget": 35,
+  "hotel_mid": 80,
+  "hotel_lux": 240,
+  "internet_month": 25,
+  "sim_data": 12,
+  "meal_mid_rest": 20,
+  "water_bottle": 0.6,
+  "daily_budget": 68,
+  "daily_mid": 142
+ },
+ "tags": [
+  "ocean",
+  "mountains",
+  "wine",
+  "adventure",
+  "scenic"
+ ],
+ "best_for": [
+  "table mountain",
+  "penguins",
+  "wine country"
+ ]
+}

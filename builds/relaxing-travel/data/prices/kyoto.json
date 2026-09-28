@@ -1,0 +1,38 @@
+{
+ "key": "kyoto",
+ "city": "Kyoto",
+ "country": "Japan",
+ "flag": "🇯🇵",
+ "lat": 35.01,
+ "lng": 135.77,
+ "currency": "JPY ~150/$",
+ "prices": {
+  "meal_cheap": 8,
+  "coffee": 3.8,
+  "beer": 3.5,
+  "taxi_3km": 11,
+  "transit_ride": 1.6,
+  "hotel_budget": 55,
+  "hotel_mid": 105,
+  "hotel_lux": 300,
+  "internet_month": 30,
+  "sim_data": 25,
+  "meal_mid_rest": 25,
+  "water_bottle": 0.8,
+  "daily_budget": 89,
+  "daily_mid": 195
+ },
+ "tags": [
+  "zen",
+  "temples",
+  "tradition",
+  "calm",
+  "gardens",
+  "city"
+ ],
+ "best_for": [
+  "temples",
+  "cherry blossom",
+  "culture"
+ ]
+}

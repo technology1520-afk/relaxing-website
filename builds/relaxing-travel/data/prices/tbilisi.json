@@ -1,0 +1,37 @@
+{
+ "key": "tbilisi",
+ "city": "Tbilisi",
+ "country": "Georgia",
+ "flag": "🇬🇪",
+ "lat": 41.72,
+ "lng": 44.78,
+ "currency": "GEL ~2.7/$",
+ "prices": {
+  "meal_cheap": 7,
+  "coffee": 2,
+  "beer": 2.5,
+  "taxi_3km": 3,
+  "transit_ride": 0.5,
+  "hotel_budget": 25,
+  "hotel_mid": 60,
+  "hotel_lux": 150,
+  "internet_month": 20,
+  "sim_data": 10,
+  "meal_mid_rest": 14,
+  "water_bottle": 0.4,
+  "daily_budget": 52,
+  "daily_mid": 108
+ },
+ "tags": [
+  "budget europe",
+  "wine",
+  "mountains",
+  "city",
+  "digital nomad"
+ ],
+ "best_for": [
+  "sulphur baths",
+  "khinkali",
+  "caucasus"
+ ]
+}

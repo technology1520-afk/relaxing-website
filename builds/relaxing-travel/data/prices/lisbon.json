@@ -1,0 +1,39 @@
+{
+ "key": "lisbon",
+ "city": "Lisbon",
+ "country": "Portugal",
+ "flag": "🇵🇹",
+ "lat": 38.72,
+ "lng": -9.14,
+ "currency": "EUR ~0.92/$",
+ "prices": {
+  "meal_cheap": 12,
+  "coffee": 2.2,
+  "beer": 3,
+  "taxi_3km": 5,
+  "transit_ride": 1.8,
+  "hotel_budget": 55,
+  "hotel_mid": 110,
+  "hotel_lux": 260,
+  "internet_month": 30,
+  "sim_data": 20,
+  "meal_mid_rest": 25,
+  "water_bottle": 0.6,
+  "daily_budget": 101,
+  "daily_mid": 184
+ },
+ "tags": [
+  "ocean",
+  "historic",
+  "pastel streets",
+  "foodie",
+  "affordable europe",
+  "city",
+  "surf"
+ ],
+ "best_for": [
+  "european city break",
+  "coastal walks",
+  "pastries"
+ ]
+}

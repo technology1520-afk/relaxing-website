@@ -1,0 +1,37 @@
+{
+ "key": "kotor",
+ "city": "Kotor",
+ "country": "Montenegro",
+ "flag": "🇲🇪",
+ "lat": 42.42,
+ "lng": 18.77,
+ "currency": "EUR ~0.92/$",
+ "prices": {
+  "meal_cheap": 10,
+  "coffee": 2.5,
+  "beer": 3,
+  "taxi_3km": 4,
+  "transit_ride": 1.5,
+  "hotel_budget": 40,
+  "hotel_mid": 85,
+  "hotel_lux": 220,
+  "internet_month": 25,
+  "sim_data": 15,
+  "meal_mid_rest": 20,
+  "water_bottle": 0.6,
+  "daily_budget": 80,
+  "daily_mid": 148
+ },
+ "tags": [
+  "fjord-like bay",
+  "historic",
+  "budget europe",
+  "calm",
+  "mountains"
+ ],
+ "best_for": [
+  "bay of kotor",
+  "old walls",
+  "boat trips"
+ ]
+}

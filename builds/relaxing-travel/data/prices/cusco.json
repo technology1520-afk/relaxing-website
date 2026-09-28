@@ -1,0 +1,38 @@
+{
+ "key": "cusco",
+ "city": "Cusco",
+ "country": "Peru",
+ "flag": "🇵🇪",
+ "lat": -13.53,
+ "lng": -71.97,
+ "currency": "PEN ~3.7/$",
+ "prices": {
+  "meal_cheap": 5,
+  "coffee": 1.8,
+  "beer": 2.5,
+  "taxi_3km": 3,
+  "transit_ride": 0.5,
+  "hotel_budget": 22,
+  "hotel_mid": 60,
+  "hotel_lux": 160,
+  "internet_month": 20,
+  "sim_data": 10,
+  "meal_mid_rest": 14,
+  "water_bottle": 0.5,
+  "daily_budget": 44,
+  "daily_mid": 108
+ },
+ "tags": [
+  "mountains",
+  "inca",
+  "high altitude",
+  "budget",
+  "adventure",
+  "historic"
+ ],
+ "best_for": [
+  "machu picchu",
+  "hiking",
+  "culture"
+ ]
+}

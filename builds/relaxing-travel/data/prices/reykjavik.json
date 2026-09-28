@@ -1,0 +1,38 @@
+{
+ "key": "reykjavik",
+ "city": "Reykjavik",
+ "country": "Iceland",
+ "flag": "🇮🇸",
+ "lat": 64.15,
+ "lng": -21.94,
+ "currency": "ISK ~140/$",
+ "prices": {
+  "meal_cheap": 28,
+  "coffee": 5.5,
+  "beer": 9,
+  "taxi_3km": 22,
+  "transit_ride": 3.5,
+  "hotel_budget": 120,
+  "hotel_mid": 240,
+  "hotel_lux": 500,
+  "internet_month": 35,
+  "sim_data": 25,
+  "meal_mid_rest": 45,
+  "water_bottle": 1,
+  "daily_budget": 220,
+  "daily_mid": 395
+ },
+ "tags": [
+  "aurora",
+  "geothermal",
+  "nature",
+  "expensive",
+  "adventure",
+  "dark nights"
+ ],
+ "best_for": [
+  "northern lights",
+  "blue lagoon",
+  "road trips"
+ ]
+}

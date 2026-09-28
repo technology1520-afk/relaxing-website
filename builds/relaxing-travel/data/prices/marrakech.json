@@ -1,0 +1,38 @@
+{
+ "key": "marrakech",
+ "city": "Marrakech",
+ "country": "Morocco",
+ "flag": "🇲🇦",
+ "lat": 31.63,
+ "lng": -7.99,
+ "currency": "MAD ~10/$",
+ "prices": {
+  "meal_cheap": 5,
+  "coffee": 2,
+  "beer": 3.5,
+  "taxi_3km": 2.5,
+  "transit_ride": 0.6,
+  "hotel_budget": 30,
+  "hotel_mid": 70,
+  "hotel_lux": 200,
+  "internet_month": 18,
+  "sim_data": 10,
+  "meal_mid_rest": 15,
+  "water_bottle": 0.5,
+  "daily_budget": 52,
+  "daily_mid": 119
+ },
+ "tags": [
+  "souks",
+  "desert",
+  "riads",
+  "budget",
+  "culture",
+  "warm"
+ ],
+ "best_for": [
+  "medina",
+  "desert trips",
+  "hammams"
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "key": "chiang-mai",
+ "city": "Chiang Mai",
+ "country": "Thailand",
+ "flag": "🇹🇭",
+ "lat": 18.79,
+ "lng": 98.98,
+ "currency": "THB ~35/$",
+ "prices": {
+  "meal_cheap": 2.2,
+  "coffee": 1.4,
+  "beer": 1.8,
+  "taxi_3km": 1.8,
+  "transit_ride": 0.7,
+  "hotel_budget": 15,
+  "hotel_mid": 35,
+  "hotel_lux": 90,
+  "internet_month": 14,
+  "sim_data": 8,
+  "meal_mid_rest": 10,
+  "water_bottle": 0.35,
+  "daily_budget": 29,
+  "daily_mid": 71
+ },
+ "tags": [
+  "mountains",
+  "temples",
+  "budget",
+  "digital nomad",
+  "calm",
+  "tropical"
+ ],
+ "best_for": [
+  "long stays",
+  "cooking schools",
+  "nature"
+ ]
+}

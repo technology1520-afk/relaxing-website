@@ -1,0 +1,38 @@
+{
+ "key": "santorini",
+ "city": "Santorini",
+ "country": "Greece",
+ "flag": "🇬🇷",
+ "lat": 36.39,
+ "lng": 25.46,
+ "currency": "EUR ~0.92/$",
+ "prices": {
+  "meal_cheap": 20,
+  "coffee": 3.5,
+  "beer": 5,
+  "taxi_3km": 8,
+  "transit_ride": 2,
+  "hotel_budget": 90,
+  "hotel_mid": 180,
+  "hotel_lux": 450,
+  "internet_month": 30,
+  "sim_data": 20,
+  "meal_mid_rest": 35,
+  "water_bottle": 0.7,
+  "daily_budget": 161,
+  "daily_mid": 283
+ },
+ "tags": [
+  "islands",
+  "romantic",
+  "views",
+  "calm",
+  "luxury-ish",
+  "sunset"
+ ],
+ "best_for": [
+  "caldera views",
+  "white villages",
+  "honeymoon"
+ ]
+}
