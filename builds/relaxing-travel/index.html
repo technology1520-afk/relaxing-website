@@ -113,7 +113,9 @@
     background: linear-gradient(to top, color-mix(in srgb, #05070F 72%, transparent), transparent);
   }
 
-  .fullbleed { position: relative; height: 100vh; overflow: hidden; }
+  /* NOTE: no `position` rule here — the engine makes [data-sc-stage] sticky;
+     any author position override silently breaks the pin. */
+  .fullbleed { height: 100vh; overflow: hidden; }
   .fullbleed .sc-copy { position: absolute; z-index: 2; }
 
   /* Fiji: authored silence. Big air, one line. */
@@ -125,7 +127,7 @@
   .silence p { color: var(--sc-ink-soft); max-width: 30ch; margin: 0 auto; }
 
   /* Find your calm */
-  .calm { min-height: 100vh; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .calm { min-height: 100vh; display: grid; place-items: center; overflow: hidden; }
   .calm-globe-wrap { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0.9; }
   #calm-globe { width: min(78vmin, 640px); height: min(78vmin, 640px); }
   .calm-card {
@@ -337,7 +339,7 @@
       <div class="calm-globe-wrap" data-sc-cue="0 1 0 0" aria-hidden="true">
         <canvas id="calm-globe" width="1280" height="1280"></canvas>
       </div>
-      <div class="calm-card" data-sc-cue="0.06 0.94 0">
+      <div class="calm-card" data-sc-cue="0 0.94 0">
         <h2 class="sc-display sc-display--md" style="margin-bottom: 0.6rem;">Find your calm.</h2>
         <label for="mood">Tell the globe how you want to feel.</label>
         <form class="calm-row" id="calm-form">
