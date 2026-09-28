@@ -1,0 +1,16 @@
+[build]
+  publish = "builds/relaxing-travel"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/suggest"
+  to = "/.netlify/functions/suggest"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
