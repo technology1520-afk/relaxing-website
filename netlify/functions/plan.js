@@ -56,7 +56,7 @@ Reply ONLY with minified JSON:
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
         "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
-        "X-Title": "Stillwater",
+        "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
         model: "openrouter/free",
@@ -65,7 +65,7 @@ Reply ONLY with minified JSON:
         temperature: 0.5,
       }),
     });
-    if (!r.ok) return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
+    if (!r.ok) return json(502, { error: "Relaxagent is busy. Try again in a moment." }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
     const m = text.match(/\{[\s\S]*\}/);
@@ -81,7 +81,7 @@ Reply ONLY with minified JSON:
     await logAdmin("trip", { at: Date.now(), days: outDays.length, who: who.slice(0, 60), places: places.map(k => NAMES[k]), budget: String(parsed.budget || "").slice(0, 120) });
     return json(200, { days: outDays, budget: String(parsed.budget || "").slice(0, 400) }, cors);
   } catch {
-    return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
+    return json(502, { error: "Relaxagent is busy. Try again in a moment." }, cors);
   }
 };
 

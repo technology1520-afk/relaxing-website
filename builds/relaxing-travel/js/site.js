@@ -1,4 +1,4 @@
-// Stillwater site logic: Dusk Dial, twin Cobe globes, MapLibre atlas, calm finder.
+// Relax Day Off site logic: Dusk Dial, twin Cobe globes, MapLibre atlas, calm finder.
 // The engine (scrollcraft.js) is untouched; everything here is page-level.
 
 // ---------- Destinations (single source of truth) ----------
@@ -161,7 +161,7 @@ const input = document.getElementById("mood");
 const answer = document.getElementById("calm-answer");
 
 async function askGlobe(mood) {
-  answer.textContent = "Dayo is thinking…";
+  answer.textContent = "Relaxagent is thinking…";
   const btn = document.getElementById("calm-go");
   btn.disabled = true;
   try {
@@ -172,7 +172,7 @@ async function askGlobe(mood) {
     });
     let data = null;
     try { data = await res.json(); } catch { /* non-JSON response */ }
-    if (!res.ok || !data) throw new Error("Dayo is busy. Try again in a moment.");
+    if (!res.ok || !data) throw new Error("Relaxagent is busy. Try again in a moment.");
     aimAt(data.ids || []);
     const names = (data.ids || []).map(id => DESTINATIONS.find(d => d.id === id)?.name).filter(Boolean);
     answer.innerHTML = "";
@@ -180,7 +180,7 @@ async function askGlobe(mood) {
     strong.textContent = names.length ? names.join(" · ") : "Everywhere on this map.";
     answer.append(strong, document.createTextNode(" " + (data.line || "")));
   } catch (err) {
-    answer.textContent = err.message || "Dayo is busy. Try again in a moment.";
+    answer.textContent = err.message || "Relaxagent is busy. Try again in a moment.";
   } finally {
     btn.disabled = false;
   }

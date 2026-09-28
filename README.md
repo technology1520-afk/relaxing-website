@@ -1,4 +1,4 @@
-# Stillwater · The quietest places on earth
+# Relax Day Off · The quietest places on earth
 
 A premium scroll-driven travel site for people who travel to relax.
 Built with the [scrollcraft](https://github.com/nateherkai/scroll-craft) pattern

@@ -23,7 +23,7 @@ exports.handler = async (req) => {
   let mood = "";
   try { mood = String(JSON.parse(req.body || "{}").mood || "").slice(0, 200); }
   catch { /* fall through */ }
-  if (!mood) return json(400, { error: "Say one true sentence about your week." }, cors);
+  if (!mood) return json(400, { error: "Tell Relaxagent one true sentence about your week." }, cors);
 
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) return json(503, { error: "The suggester is warming up. Add OPENROUTER_API_KEY in your deploy settings." }, cors);
@@ -44,7 +44,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
         "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
-        "X-Title": "Stillwater",
+        "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
         model: "openrouter/free",
@@ -53,7 +53,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
         temperature: 0.6,
       }),
     });
-    if (!r.ok) return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
+    if (!r.ok) return json(502, { error: "Relaxagent is busy. Try again in a moment." }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
     const m = text.match(/\{[\s\S]*\}/);
@@ -63,7 +63,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
     await logAdmin("suggest", { q: mood.slice(0, 80), ids });
     return json(200, { ids, line: String(parsed?.line || "").slice(0, 160) }, cors);
   } catch {
-    return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
+    return json(502, { error: "Relaxagent is busy. Try again in a moment." }, cors);
   }
 };
 
