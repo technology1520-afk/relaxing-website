@@ -132,7 +132,7 @@
   .place {
     display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: clamp(1.5rem, 4vw, 4rem); align-items: center;
-    padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem);
+    padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem);
     max-width: 78rem; margin: 0 auto;
   }
   .place.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
@@ -233,18 +233,30 @@
   .mood-chips button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
 
   /* ---------- The Planner ---------- */
-  .planner { max-width: 78rem; margin: 0 auto; padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem) 4rem; }
-  .spots { display: grid; gap: 1.4rem; margin-top: 2rem; }
+  .planner { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
+  .spots { display: grid; gap: 0.8rem; margin-top: 1.6rem; }
   .spot {
     background: color-mix(in srgb, var(--sc-surface) 82%, transparent);
     border: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent);
-    border-radius: 16px; padding: clamp(1.2rem, 2.5vw, 2rem);
+    border-radius: 16px; padding: 0;
+    overflow: hidden;
   }
-  .spot-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-  .spot-flag { font-size: 1.6rem; }
-  .spot-head h3 { font-size: 1.3rem; font-weight: 600; color: var(--sc-ink); margin: 0; }
-  .spot-country { color: var(--sc-ink-soft); font-weight: 400; font-size: 1rem; }
-  .spot-pick { margin-left: auto; display: flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; color: var(--sc-ink-soft); cursor: pointer; }
+  .spot-head {
+    display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap;
+    padding: 1rem clamp(1rem, 2.5vw, 1.8rem); cursor: pointer; user-select: none;
+  }
+  .spot-head:hover { background: color-mix(in srgb, var(--sc-ink) 4%, transparent); }
+  .spot.open .spot-head { border-bottom: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent); }
+  .spot-caret { margin-left: 0.2rem; color: var(--sc-accent); transition: transform 200ms var(--sc-ease-out); font-size: 0.8rem; }
+  .spot.open .spot-caret { transform: rotate(90deg); }
+  .spot-body { display: none; padding: clamp(1.2rem, 2.5vw, 2rem); }
+  .spot.open .spot-body { display: block; }
+  .spot-flag { font-size: 1.5rem; }
+  .spot-head h3 { font-size: 1.15rem; font-weight: 600; color: var(--sc-ink); margin: 0; }
+  .spot-country { color: var(--sc-ink-soft); font-weight: 400; font-size: 0.95rem; }
+  .spot-mini { margin-left: auto; display: flex; align-items: center; gap: 1.1rem; }
+  .spot-quick { font-size: 0.82rem; color: var(--sc-ink-soft); white-space: nowrap; }
+  .spot-pick { display: flex; align-items: center; gap: 0.45rem; font-size: 0.88rem; color: var(--sc-ink-soft); cursor: pointer; }
   .spot-pick input { width: 1.05rem; height: 1.05rem; accent-color: var(--sc-accent); cursor: pointer; }
   .spot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.4rem 2rem; }
   .spot-col h4 {
@@ -313,6 +325,75 @@
   .plan-day p { margin: 0.25rem 0 0; line-height: 1.55; }
   .plan-budget { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--sc-accent) 9%, transparent); color: var(--sc-ink-soft); font-size: 0.9rem; }
   .plan-note { margin-top: 1rem; font-size: 0.8rem; opacity: 0.75; }
+
+  /* ---------- Floating AI assistant ---------- */
+  .ai-bubble {
+    position: fixed; left: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
+    z-index: 60; display: flex; align-items: center; gap: 0.55rem;
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    border: 0; border-radius: 999px; padding: 0.7rem 1.2rem;
+    font: inherit; font-size: 0.92rem; font-weight: 500; cursor: pointer;
+    box-shadow: var(--sc-e3);
+    transition: transform 140ms var(--sc-ease-out), filter 140ms var(--sc-ease-out);
+  }
+  .ai-bubble:hover { filter: brightness(1.06); }
+  .ai-bubble:active { transform: scale(0.97); }
+  .ai-bubble:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 2px; }
+  .ai-bubble svg { width: 1.05rem; height: 1.05rem; flex: 0 0 auto; }
+  .ai-bubble .ai-hint-pill {
+    display: none; font-weight: 400; opacity: 0.85; font-size: 0.85rem;
+  }
+  .ai-bubble.hint .ai-hint-pill { display: inline; }
+  .ai-panel {
+    position: fixed; left: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
+    z-index: 70; width: min(24rem, calc(100vw - 2rem)); height: min(30rem, 70vh);
+    background: color-mix(in srgb, var(--sc-surface) 96%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent);
+    border-radius: 16px; box-shadow: var(--sc-e3);
+    display: none; flex-direction: column; overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .ai-panel.open { display: flex; }
+  .ai-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 1.1rem; border-bottom: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent);
+  }
+  .ai-head strong { font-family: var(--sc-font-display); font-size: 0.95rem; color: var(--sc-ink); font-weight: 600; }
+  .ai-head .ai-sub { display: block; font-size: 0.75rem; color: var(--sc-ink-soft); font-weight: 400; }
+  #ai-close {
+    background: none; border: 0; color: var(--sc-ink-soft); font-size: 1.2rem; cursor: pointer;
+    padding: 0.2rem 0.5rem; border-radius: 8px;
+  }
+  #ai-close:hover { color: var(--sc-ink); }
+  #ai-log { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .ai-msg {
+    max-width: 88%; padding: 0.6rem 0.9rem; border-radius: 12px;
+    font-size: 0.88rem; line-height: 1.5; white-space: pre-wrap;
+  }
+  .ai-msg--you { align-self: flex-end; background: var(--sc-accent); color: var(--sc-accent-ink); }
+  .ai-msg--bot { align-self: flex-start; background: color-mix(in srgb, var(--sc-canvas) 80%, transparent); color: var(--sc-ink); border: 1px solid color-mix(in srgb, var(--sc-ink) 8%, transparent); }
+  .ai-msg--err { color: #E5A9A0; }
+  .ai-msg--wait { opacity: 0.6; }
+  .ai-sugs { display: flex; flex-direction: column; gap: 0.4rem; }
+  .ai-sugs button {
+    text-align: left; background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 14%, transparent);
+    border-radius: 10px; padding: 0.5rem 0.8rem; font: inherit; font-size: 0.84rem; cursor: pointer;
+    transition: color 140ms var(--sc-ease-out), border-color 140ms var(--sc-ease-out);
+  }
+  .ai-sugs button:hover { color: var(--sc-accent); border-color: var(--sc-accent); }
+  #ai-form { display: flex; gap: 0.5rem; padding: 0.8rem; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent); }
+  #ai-q {
+    flex: 1; min-width: 0; background: var(--sc-canvas); color: var(--sc-ink);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 16%, transparent);
+    border-radius: 10px; padding: 0.6rem 0.8rem; font: inherit; font-size: 0.88rem;
+  }
+  #ai-q:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  #ai-form button {
+    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 10px;
+    padding: 0.6rem 0.9rem; font: inherit; font-weight: 500; cursor: pointer;
+  }
+  #ai-form button:active { transform: scale(0.97); }
 
   /* Close: real map + CTA */
   .atlas { max-width: 78rem; margin: 0 auto; padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem) 4rem; }
@@ -402,10 +483,30 @@
   <label id="dusk-label">Daylight</label>
 </div>
 
+<!-- Floating AI journey assistant -->
+<button class="ai-bubble" id="ai-bubble" aria-expanded="false" aria-controls="ai-panel">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+  <span>Ask Stillwater</span>
+  <span class="ai-hint-pill">weather, prices, anything</span>
+</button>
+<div class="ai-panel" id="ai-panel" role="dialog" aria-label="Journey assistant">
+  <div class="ai-head">
+    <div><strong>Journey assistant</strong><span class="ai-sub">Grounded in the facts on this site</span></div>
+    <button id="ai-close" aria-label="Close">×</button>
+  </div>
+  <div id="ai-log"></div>
+  <form id="ai-form">
+    <input id="ai-q" type="text" autocomplete="off" placeholder="Ask about any place, price, timing…" maxlength="300">
+    <button type="submit">Send</button>
+  </form>
+</div>
+
 <main id="top">
 
   <!-- 1 · RECOGNITION: the still lagoon, globe turning behind the headline -->
-  <section data-sc-act="pin" data-sc-span="2.6" data-sc-drift="#0B1020">
+  <section data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#0B1020">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/hero-lagoon.jpg" alt="Milky turquoise geothermal water between black lava fields at dusk" width="1920" height="1280" data-sc-parallax="-0.9">
       <div class="scrim-lead" aria-hidden="true"></div>
@@ -482,7 +583,7 @@
   </section>
 
   <!-- 5 · AUSTRALIA: the tide drawing itself -->
-  <section data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#0B1424">
+  <section data-sc-act="pin" data-sc-span="1.8" data-sc-drift="#0B1424">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/whitehaven.jpg" alt="White sand swirling through turquoise shallows at Hill Inlet" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.6">
       <div class="scrim-trail" aria-hidden="true"></div>
@@ -515,7 +616,7 @@
   </section>
 
   <!-- 7 · JORDAN: the desert at dusk -->
-  <section id="sand" data-sc-act="pin" data-sc-span="2.0" data-sc-drift="#141018">
+  <section id="sand" data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#141018">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/wadirum.jpg" alt="Red sand and sandstone massifs at sunset in Wadi Rum" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.5">
       <div class="scrim-lead" aria-hidden="true"></div>
@@ -560,7 +661,7 @@
   </section>
 
   <!-- 10 · WAYS TO BE QUIET: the pan rail -->
-  <section class="sc-section" data-sc-act="pan" data-sc-span="4" data-sc-drift="#0C1222">
+  <section class="sc-section" data-sc-act="pan" data-sc-span="3" data-sc-drift="#0C1222">
     <div data-sc-stage>
       <div class="rail" data-sc-pan="0.08">
         <div class="rail-lead sc-stack">
@@ -605,7 +706,7 @@
   </section>
 
   <!-- 12 · CURIOSITY: the peak. The globe answers in light. -->
-  <section id="calm" data-sc-act="pin" data-sc-span="3.2" data-sc-drift="#090D1A">
+  <section id="calm" data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#090D1A">
     <div data-sc-stage class="calm">
       <div class="calm-globe-wrap" data-sc-cue="0 1 0 0" aria-hidden="true">
         <canvas id="calm-globe" width="1280" height="1280"></canvas>
@@ -653,6 +754,7 @@
   import { buildPlanner } from "./js/planner.js";
   buildPlanner();
 </script>
+<script src="js/assistant.js"></script>
 <script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>

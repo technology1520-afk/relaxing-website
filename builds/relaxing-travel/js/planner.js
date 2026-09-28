@@ -75,45 +75,51 @@ function priceRows(p, quotes) {
 function placePanelHTML(p, idx) {
   return `
   <article class="spot" id="spot-${p.key}" data-key="${p.key}">
-    <div class="spot-head">
+    <div class="spot-head" role="button" tabindex="0" aria-expanded="false" aria-controls="spotbody-${p.key}">
       <span class="spot-flag">${p.flag}</span>
       <div><h3 class="sc-display">${p.name} <span class="spot-country">${p.country}</span></h3></div>
-      <label class="spot-pick"><input type="checkbox" class="pick" value="${p.key}"> Plan this</label>
+      <div class="spot-mini">
+        <span class="spot-quick">now ${p.quickTemp || ""} · from $${p.prices.meal}/meal</span>
+        <label class="spot-pick" onclick="event.stopPropagation()"><input type="checkbox" class="pick" value="${p.key}"> Plan this</label>
+        <span class="spot-caret" aria-hidden="true">▶</span>
+      </div>
     </div>
-    <div class="spot-grid">
-      <div class="spot-col">
-        <h4>Best view</h4><p>${p.bestView}</p>
-        <h4>Crowds</h4><p>${p.crowd}</p>
-        <h4>With kids</h4><p>${p.kid}</p>
-      </div>
-      <div class="spot-col">
-        <h4>Best months</h4><p>${p.bestMonths}</p>
-        <h4>Adventure</h4><ul class="spot-list">${p.adventure.map(a => `<li>${a}</li>`).join("")}</ul>
-        <h4>Kid picks</h4><ul class="spot-list">${p.kidPicks.map(a => `<li>${a}</li>`).join("")}</ul>
-      </div>
-      <div class="spot-col">
-        <h4>Weather now <span class="live-dot" aria-hidden="true"></span></h4>
-        <div class="wbox" id="wx-${p.key}"><span class="w-loading">Fetching live weather…</span></div>
-        <h4>How far</h4>
-        <div class="dist" id="dist-${p.key}"><span class="w-loading">Measuring…</span></div>
-        <h4>Local prices (typical, USD)</h4>
-        <div class="ptable">
-          <div class="pr-row pr-head"><span>Item</span><span>Local</span></div>
-          <div class="pr-row"><span>Casual meal</span><span>$${p.prices.meal}</span></div>
-          <div class="pr-row"><span>Coffee</span><span>$${p.prices.coffee}</span></div>
-          <div class="pr-row"><span>3km taxi</span><span>$${p.prices.taxi}</span></div>
-          <div class="pr-row"><span>Hotel night</span><span>$${p.prices.hotel}</span></div>
-          <div class="pr-row"><span>Headline attraction</span><span>$${p.prices.attraction}</span></div>
+    <div class="spot-body" id="spotbody-${p.key}">
+      <div class="spot-grid">
+        <div class="spot-col">
+          <h4>Best view</h4><p>${p.bestView}</p>
+          <h4>Crowds</h4><p>${p.crowd}</p>
+          <h4>With kids</h4><p>${p.kid}</p>
         </div>
-        <p class="pnote">${p.priceNote}</p>
-        <div class="pcheck">
-          <label>Got a quote? Check if it is fair:</label>
-          <form class="pcheck-row" data-key="${p.key}">
-            <select aria-label="Item"><option value="meal">Meal</option><option value="coffee">Coffee</option><option value="taxi">Taxi</option><option value="hotel">Hotel night</option><option value="attraction">Attraction</option></select>
-            <input type="number" min="1" placeholder="$ price" aria-label="Quoted price in dollars">
-            <button type="submit">Check</button>
-          </form>
-          <div class="pcheck-out" aria-live="polite"></div>
+        <div class="spot-col">
+          <h4>Best months</h4><p>${p.bestMonths}</p>
+          <h4>Adventure</h4><ul class="spot-list">${p.adventure.map(a => `<li>${a}</li>`).join("")}</ul>
+          <h4>Kid picks</h4><ul class="spot-list">${p.kidPicks.map(a => `<li>${a}</li>`).join("")}</ul>
+        </div>
+        <div class="spot-col">
+          <h4>Weather now</h4>
+          <div class="wbox" id="wx-${p.key}"><span class="w-loading">Fetching live weather…</span></div>
+          <h4>How far</h4>
+          <div class="dist" id="dist-${p.key}"><span class="w-loading">Measuring…</span></div>
+          <h4>Local prices (typical, USD)</h4>
+          <div class="ptable">
+            <div class="pr-row pr-head"><span>Item</span><span>Local</span></div>
+            <div class="pr-row"><span>Casual meal</span><span>$${p.prices.meal}</span></div>
+            <div class="pr-row"><span>Coffee</span><span>$${p.prices.coffee}</span></div>
+            <div class="pr-row"><span>3km taxi</span><span>$${p.prices.taxi}</span></div>
+            <div class="pr-row"><span>Hotel night</span><span>$${p.prices.hotel}</span></div>
+            <div class="pr-row"><span>Headline attraction</span><span>$${p.prices.attraction}</span></div>
+          </div>
+          <p class="pnote">${p.priceNote}</p>
+          <div class="pcheck">
+            <label>Got a quote? Check if it is fair:</label>
+            <form class="pcheck-row" data-key="${p.key}">
+              <select aria-label="Item"><option value="meal">Meal</option><option value="coffee">Coffee</option><option value="taxi">Taxi</option><option value="hotel">Hotel night</option><option value="attraction">Attraction</option></select>
+              <input type="number" min="1" placeholder="$ price" aria-label="Quoted price in dollars">
+              <button type="submit">Check</button>
+            </form>
+            <div class="pcheck-out" aria-live="polite"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -130,21 +136,33 @@ export function buildPlanner() {
 
   initUserPos();
 
-  // Hydrate weather lazily per panel
-  if ("IntersectionObserver" in window) {
-    const wx = new IntersectionObserver((entries) => {
-      entries.forEach(async (en) => {
-        if (!en.isIntersecting) return;
-        const key = en.target.id.replace("wx-", "");
-        wx.unobserve(en.target);
-        try { renderWeather(en.target, await getWeather(PLACE_DATA[key].lat, PLACE_DATA[key].lng)); }
-        catch { en.target.innerHTML = '<span class="w-loading">Weather unavailable right now.</span>'; }
-      });
-    }, { rootMargin: "300px" });
-    ORDER.forEach(k => { const el = document.getElementById("wx-" + k); if (el) wx.observe(el); });
-  }
-
   renderDistances();
+
+  // Accordion: one open at a time; lazy-load weather when a card opens
+  wrap.addEventListener("click", (e) => {
+    const head = e.target.closest(".spot-head");
+    if (!head || e.target.closest(".spot-pick")) return;
+    const spot = head.parentElement;
+    const wasOpen = spot.classList.contains("open");
+    wrap.querySelectorAll(".spot.open").forEach(s => {
+      s.classList.remove("open");
+      s.querySelector(".spot-head").setAttribute("aria-expanded", "false");
+    });
+    if (!wasOpen) {
+      spot.classList.add("open");
+      head.setAttribute("aria-expanded", "true");
+      hydrateWeather(spot.dataset.key);
+    }
+  });
+  wrap.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList?.contains("spot-head")) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
+  // Open the first card by default so the pattern is discoverable
+  const first = wrap.querySelector(".spot-head");
+  if (first) { first.parentElement.classList.add("open"); first.setAttribute("aria-expanded", "true"); hydrateWeather("iceland"); }
 
   // Fair-price check forms
   wrap.addEventListener("submit", (e) => {
@@ -159,6 +177,16 @@ export function buildPlanner() {
     const f = fairVerdict(val / p.prices[item]);
     out.innerHTML = `<strong class="${f.tone}">${f.verdict}.</strong> ${f.note} <span class="pr-med">Local median $${p.prices[item]}</span>`;
   });
+}
+
+const wxLoaded = new Set();
+async function hydrateWeather(key) {
+  if (wxLoaded.has(key)) return;
+  wxLoaded.add(key);
+  const el = document.getElementById("wx-" + key);
+  if (!el) return;
+  try { renderWeather(el, await getWeather(PLACE_DATA[key].lat, PLACE_DATA[key].lng)); }
+  catch { el.innerHTML = '<span class="w-loading">Weather unavailable right now.</span>'; wxLoaded.delete(key); }
 }
 
 function renderDistances() {
