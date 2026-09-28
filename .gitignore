@@ -5,3 +5,6 @@ out/
 
 netlify/functions/node_modules/
 netlify/functions/package-lock.json
+
+# Local Netlify folder
+.netlify
