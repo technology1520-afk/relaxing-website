@@ -10,11 +10,11 @@
 <meta property="og:title" content="Stillwater · The quietest places on earth">
 <meta property="og:description" content="Eight of the quietest places on earth, chosen for people who travel to relax.">
 <meta property="og:image" content="assets/hero-lagoon.jpg">
-<meta name="theme-color" content="#0B1020">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230B1020'/><circle cx='16' cy='16' r='6' fill='%23E8A852'/></svg>">
+<meta name="theme-color" content="#FAF7F1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23FAF7F1'/><circle cx='16' cy='16' r='6' fill='%23E8A852'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Outfit:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="scrollcraft.css">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
 <script type="application/ld+json">
@@ -37,14 +37,15 @@
 <style>
   /* Stillwater: deep night-blue canvas, warm amber accent, photographic world. */
   :root {
-    --sc-canvas:     #0B1020;
-    --sc-surface:    #131A2E;
-    --sc-ink:        #F2EEE6;
-    --sc-ink-soft:   #9BA3B5;
-    --sc-accent:     #E8A852;
-    --sc-accent-ink: #1A1207;
+    --sc-canvas:     #FAF7F1;
+    --sc-surface:    #FFFFFF;
+    --sc-ink:        #16130E;
+    --sc-ink-soft:   #6E675C;
+    --sc-accent:     #E4572E;
+    --sc-accent-ink: #FFF6EE;
     --sc-font-display: "Archivo", system-ui, sans-serif;
     --sc-font-text:    "Outfit", system-ui, sans-serif;
+    --sc-font-mono: "IBM Plex Mono", ui-monospace, monospace;
   }
   html { scroll-behavior: auto; }
   body { background: var(--sc-canvas); }
@@ -52,10 +53,14 @@
   .site-bar {
     position: fixed; inset: 0 0 auto 0; z-index: 40;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem clamp(1.25rem, 4vw, 3rem);
-    background: color-mix(in srgb, var(--sc-canvas) 55%, transparent);
+    padding: 0; background: color-mix(in srgb, var(--sc-canvas) 92%, transparent);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent);
   }
+  .site-bar > * { padding: 0.9rem clamp(1.1rem, 3vw, 2.2rem); border-left: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent); }
+  .site-bar > *:first-child { border-left: 0; }
+  .site-bar .bar-cta { background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 0; }
+  .site-bar .bar-cta:hover { filter: brightness(1.08); }
   .site-bar .mark {
     font-family: var(--sc-font-display); font-weight: 600; letter-spacing: -0.01em;
     color: var(--sc-ink); text-decoration: none; font-size: 1.05rem;
@@ -69,46 +74,58 @@
   .site-bar nav a:hover, .site-bar nav a:focus-visible { color: var(--sc-accent); }
   .site-bar .bar-cta {
     font-family: var(--sc-font-text); font-size: 0.88rem; color: var(--sc-ink);
-    text-decoration: none; border: 1px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
-    border-radius: 999px; padding: 0.45rem 1.05rem; transition: background 140ms var(--sc-ease-out), color 140ms var(--sc-ease-out);
+    text-decoration: none; display: inline-block; transition: background 140ms var(--sc-ease-out), color 140ms var(--sc-ease-out);
   }
   .site-bar .bar-cta:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
-  .site-bar .acct-link { border-style: dashed; }
+  .site-bar .acct-link { background: var(--sc-ink); color: var(--sc-canvas); }
 
-  /* ---------- Signature move: the Dusk Dial ----------
-     One control, whole-page regrade: canvas, surface, accent, globe light.
-     JS writes --dusk (0..1) and data-dusk; CSS interpolates everywhere. */
-  .dusk-dial {
-    position: fixed; right: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
-    z-index: 50; display: flex; align-items: center; gap: 0.7rem;
-    background: color-mix(in srgb, var(--sc-surface) 88%, transparent);
-    border: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent);
-    border-radius: 999px; padding: 0.55rem 1rem;
-    backdrop-filter: blur(8px); box-shadow: var(--sc-e2);
-    transition: opacity 200ms var(--sc-ease-out), transform 200ms var(--sc-ease-out);
+  /* ---------- Signature move: the Boarding Pass ----------
+     A fixed stub that fills in as you scroll: one stamp per chapter,
+     a route line drawing itself, ending as your trip summary. */
+  .boarding {
+    position: fixed; right: clamp(0.8rem, 2vw, 1.8rem); top: 50%; transform: translateY(-50%);
+    z-index: 50; width: min(13.5rem, 26vw);
+    background: var(--sc-surface); border: 1.5px solid var(--sc-ink); border-radius: 12px;
+    box-shadow: 4px 4px 0 var(--sc-ink);
+    font-family: var(--sc-font-mono); overflow: hidden;
+    transition: opacity 250ms var(--sc-ease-out), transform 250ms var(--sc-ease-out);
   }
-  /* The dial hides while the planner (dense content) is on screen */
-  .dusk-dial.dial-hidden { opacity: 0; transform: translateY(12px); pointer-events: none; }
-  .dusk-dial .sun-track {
-    position: relative; width: clamp(6.5rem, 11vw, 9.5rem); height: 4px; border-radius: 2px;
-    background: linear-gradient(to right, #F5D9A8, var(--sc-accent) 45%, #2C3E66 78%, #101B33);
-    touch-action: none; cursor: ew-resize;
+  .boarding.compact { opacity: 0.96; }
+  .boarding .bp-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.55rem 0.8rem; border-bottom: 1.5px dashed color-mix(in srgb, var(--sc-ink) 30%, transparent);
   }
-  .dusk-dial .sun {
-    position: absolute; top: 50%; left: calc(var(--dusk, 0) * 100%);
-    width: 16px; height: 16px; border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle at 35% 35%, #FFE9C4, var(--sc-accent));
-    box-shadow: 0 0 12px color-mix(in srgb, var(--sc-accent) 75%, transparent);
-    transition: background 150ms linear, box-shadow 150ms linear;
+  .boarding .bp-head strong { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .boarding .bp-head .bp-no { font-size: 0.65rem; color: var(--sc-ink-soft); }
+  .boarding .bp-route { position: relative; padding: 0.9rem 0.8rem 0.5rem; }
+  .boarding .bp-line {
+    position: absolute; left: 0.8rem; right: 0.8rem; top: 50%; height: 1.5px;
+    background: repeating-linear-gradient(to right, var(--sc-ink) 0 4px, transparent 4px 8px);
+    opacity: 0.25;
   }
-  .dusk-dial label {
-    font-family: var(--sc-font-text); font-size: 0.8rem; color: var(--sc-ink-soft);
-    white-space: nowrap; min-width: 4.6em; text-align: right;
+  .boarding .bp-line-fill {
+    position: absolute; left: 0.8rem; top: 50%; height: 1.5px; width: calc(var(--bp, 0) * (100% - 1.6rem));
+    background: var(--sc-accent); transition: width 300ms var(--sc-ease-out);
   }
-  body[data-dusk="1"] { --sc-canvas: #070B16; --sc-surface: #0E1526; --sc-accent: #97A8DE; }
+  .boarding .bp-stops { display: flex; justify-content: space-between; position: relative; }
+  .bp-stop { position: relative; width: 12px; text-align: center; }
+  .bp-stop i {
+    display: block; width: 9px; height: 9px; margin: 0 auto; border-radius: 50%;
+    border: 1.5px solid var(--sc-ink); background: var(--sc-surface); font-style: normal;
+    transition: background 200ms var(--sc-ease-out), transform 200ms var(--sc-ease-out);
+  }
+  .bp-stop.done i { background: var(--sc-accent); border-color: var(--sc-accent); transform: scale(1.25); }
+  .bp-stop span { display: block; margin-top: 0.3rem; font-size: 0.52rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sc-ink-soft); }
+  .bp-stop.done span { color: var(--sc-ink); }
+  .boarding .bp-stub {
+    padding: 0.6rem 0.8rem; border-top: 1.5px dashed color-mix(in srgb, var(--sc-ink) 30%, transparent);
+    display: flex; justify-content: space-between; align-items: center; font-size: 0.62rem;
+    color: var(--sc-ink-soft); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .boarding .bp-stub strong { color: var(--sc-accent); font-size: 0.8rem; }
+  @media (max-width: 900px) { .boarding { display: none; } }
 
-  /* ---------- Scenes ---------- */
+    /* ---------- Scenes ---------- */
   .scene-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .scrim-soft {
     position: absolute; inset: 0; pointer-events: none;
@@ -141,11 +158,13 @@
   .place-copy h2 { margin-bottom: 0.9rem; }
   .place-copy p { color: var(--sc-ink-soft); max-width: 44ch; }
   .place-copy .at {
-    font-family: var(--sc-font-text); font-weight: 400; font-size: 0.92rem;
-    color: var(--sc-accent); letter-spacing: 0.06em; text-transform: uppercase;
-    margin-bottom: 1.1rem; display: block;
+    font-family: var(--sc-font-mono); font-weight: 500; font-size: 0.78rem;
+    color: var(--sc-ink); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.1rem; display: inline-block;
+    border: 1.5px solid var(--sc-ink); border-radius: 4px; padding: 0.25rem 0.55rem;
+    background: var(--sc-surface); box-shadow: 2px 2px 0 var(--sc-ink);
   }
-  .place-media { position: relative; border-radius: 14px; overflow: hidden; box-shadow: var(--sc-e2); }
+  .place-media { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 6px 6px 0 color-mix(in srgb, var(--sc-ink) 88%, transparent); border: 1.5px solid var(--sc-ink); }
   .place-media img { display: block; width: 100%; height: auto; }
   .place-media figcaption {
     position: absolute; left: 0; right: 0; bottom: 0; padding: 0.7rem 1rem;
@@ -165,6 +184,19 @@
      makes the stage sticky; an author position override silently kills the pin. */
   .fullbleed { height: 100vh; overflow: hidden; }
   .fullbleed .sc-copy { position: absolute; z-index: 2; }
+  .hero-band {
+    position: absolute; inset: auto 0 0 0; height: 52vh; pointer-events: none;
+    background: linear-gradient(to top, var(--sc-canvas) 42%, transparent);
+  }
+  /* Universe-style ticker */
+  .ticker {
+    border-block: 1.5px solid var(--sc-ink); background: var(--sc-accent); color: var(--sc-accent-ink);
+    overflow: hidden; white-space: nowrap; font-family: var(--sc-font-mono);
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.55rem 0;
+  }
+  .ticker span { display: inline-block; animation: tick 26s linear infinite; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker span { animation: none; } }
 
   /* Hero: the globe turning behind the headline */
   .hero-globe { position: absolute; inset: 0; display: grid; place-items: center; }
@@ -475,15 +507,16 @@
   <a class="bar-cta acct-link" id="acct-link" href="account.html" hidden>My trips</a>
 </header>
 
-<!-- The Dusk Dial: drag the sun from noon to midnight, the whole page follows -->
-<div class="dusk-dial" role="group" aria-label="Time of day">
-  <div class="sun-track" id="dusk-track" tabindex="0" role="slider"
-       aria-label="Time of day, from daylight to night"
-       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-    <div class="sun"></div>
+<!-- The Boarding Pass: fills in as you travel through the page -->
+<aside class="boarding" id="boarding" aria-label="Your journey progress">
+  <div class="bp-head"><strong>Stillwater Air</strong><span class="bp-no">SW-2026</span></div>
+  <div class="bp-route">
+    <div class="bp-line" aria-hidden="true"></div>
+    <div class="bp-line-fill" aria-hidden="true"></div>
+    <div class="bp-stops" id="bp-stops"></div>
   </div>
-  <label id="dusk-label">Daylight</label>
-</div>
+  <div class="bp-stub"><span id="bp-count">0/8 stamped</span><strong id="bp-next">KEF →</strong></div>
+</aside>
 
 <!-- Floating AI journey assistant -->
 <button class="ai-bubble" id="ai-bubble" aria-expanded="false" aria-controls="ai-panel">
@@ -508,26 +541,27 @@
 <main id="top">
 
   <!-- 1 · RECOGNITION: the still lagoon, globe turning behind the headline -->
-  <section data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#0B1020">
+  <section data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#FAF7F1">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/hero-lagoon.jpg" alt="Milky turquoise geothermal water between black lava fields at dusk" width="1920" height="1280" data-sc-parallax="-0.9">
-      <div class="scrim-lead" aria-hidden="true"></div>
-      <div class="scrim-top" aria-hidden="true"></div>
+      <div class="hero-band" aria-hidden="true"></div>
       <div class="hero-globe" data-sc-cue="0 1 0 0" aria-hidden="true">
         <canvas id="hero-globe" width="1280" height="1280"></canvas>
       </div>
-      <div class="sc-copy" style="inset:auto 0 clamp(3rem,10vh,6rem) 0; padding: 0 clamp(1.25rem,5vw,5rem);" data-sc-cue="0 0.78 0">
-        <h1 class="sc-display sc-display--xl" data-sc-kinetic="lines" style="max-width: 14ch;">Some places are quieter than you.</h1>
-        <p class="sc-body" style="max-width: 40ch; margin-top: 1rem; color: var(--sc-ink); text-shadow: 0 1px 14px color-mix(in srgb, #05070F 65%, transparent);">Eight of them, chosen for one reason: they slow you down the moment you arrive.</p>
+      <div class="sc-copy" style="inset:auto 0 clamp(4.5rem,12vh,7rem) 0; padding: 0;" data-sc-cue="0 0.8 0">
+        <p class="hero-kicker" style="font-family:var(--sc-font-mono); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sc-ink); background:var(--sc-canvas); display:inline-block; padding:0.35rem 0.7rem; border:1.5px solid var(--sc-ink); margin: 0 0 0.8rem clamp(1.25rem,5vw,5rem);">eight places / one instruction: slow down</p>
+        <h1 class="sc-display sc-display--xl" data-sc-kinetic="lines" style="max-width: 10ch; color: var(--sc-ink); font-weight: 900; letter-spacing: -0.03em; padding: 0 clamp(1.25rem,5vw,5rem); margin: 0;">Some places are quieter than you.</h1>
       </div>
     </div>
   </section>
 
+  <div class="ticker" aria-hidden="true"><span>Reine 67.9°N · Sørvágsvatn 62.0°N · Hill Inlet 20.3°S · Nāpali 22.2°N · Wadi Rum 29.6°N · Naviti 17.4°S · Ryōan-ji 35.0°N · Blue Lagoon 63.9°N · Reine 67.9°N · Sørvágsvatn 62.0°N · Hill Inlet 20.3°S · Nāpali 22.2°N · Wadi Rum 29.6°N · Naviti 17.4°S · Ryōan-ji 35.0°N · Blue Lagoon 63.9°N · </span></div>
+
   <!-- 2 · ICELAND -->
-  <section id="water" class="sc-section" data-sc-act="flow" data-sc-drift="#0D1226">
+  <section  data-place="iceland"id="water" class="sc-section" data-sc-act="flow" data-sc-drift="#F3EFE7">
     <div class="place">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
-        <span class="at">Iceland</span>
+        <span class="at">01 — Iceland</span>
         <h2 class="sc-display sc-display--lg">Water that has been still for a thousand years.</h2>
         <p>The Blue Lagoon sits in a lava field where the ground itself is warm. You sink in, the steam closes around you, and the noise you carried here stops at the shoreline.</p>
         <p>Go in the last hours of daylight. The water holds the heat of the day and the sky turns the colour of the page you are reading.</p>
@@ -545,10 +579,10 @@
   </section>
 
   <!-- 3 · NORWAY: the midnight sun -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0B1224">
+  <section  data-place="lofoten"class="sc-section" data-sc-act="flow" data-sc-drift="#F5F1E8">
     <div class="place flip">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
-        <span class="at">Norway</span>
+        <span class="at">02 — Norway</span>
         <h2 class="sc-display sc-display--lg">The sun does not set here for ten weeks.</h2>
         <p>Reine sits above the Arctic Circle, where summer light lasts through the night and the fjord holds the mountains upside down. You lose track of the hour. That is the point.</p>
         <div class="facts">
@@ -565,10 +599,10 @@
   </section>
 
   <!-- 4 · FAROE ISLANDS: the lake above the ocean -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0C1428">
+  <section  data-place="faroe"class="sc-section" data-sc-act="flow" data-sc-drift="#F1EDE3">
     <div class="place">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
-        <span class="at">Faroe Islands</span>
+        <span class="at">03 — Faroe Islands</span>
         <h2 class="sc-display sc-display--lg">A lake that seems to hang over the sea.</h2>
         <p>Sørvágsvatn lies 30 metres above the Atlantic. From the cliff at Trælanípa it looks ready to pour straight into the ocean. Walk out, stand still, and the wind is the only sound you will hear all day.</p>
         <div class="facts">
@@ -585,13 +619,13 @@
   </section>
 
   <!-- 5 · AUSTRALIA: the tide drawing itself -->
-  <section data-sc-act="pin" data-sc-span="1.8" data-sc-drift="#0B1424">
+  <section  data-place="whitehaven"data-sc-act="pin" data-sc-span="1.8" data-sc-drift="#F3EFE7">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/whitehaven.jpg" alt="White sand swirling through turquoise shallows at Hill Inlet" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.6">
       <div class="scrim-trail" aria-hidden="true"></div>
       <div class="scrim-top" aria-hidden="true"></div>
       <div class="sc-copy" style="inset:auto clamp(1.25rem,5vw,5rem) clamp(3rem,9vh,5rem) auto; text-align:right; max-width: 34rem;" data-sc-cue="0.12 0.82">
-        <span class="at" style="color:var(--sc-accent); letter-spacing:0.06em; text-transform:uppercase; font-size:0.92rem;">Whitsunday Islands</span>
+        <span class="at" style="color:var(--sc-accent); letter-spacing:0.06em; text-transform:uppercase; font-size:0.92rem;">04 — Whitsundays</span>
         <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">The tide draws, then redraws.</h2>
         <p class="sc-body" style="margin-left:auto; max-width: 38ch;">Twice a day, Hill Inlet's white silica sand swirls into new patterns. No two visits are the same photograph.</p>
       </div>
@@ -599,14 +633,14 @@
   </section>
 
   <!-- 6 · HAWAII: the ridges -->
-  <section id="coast" class="sc-section" data-sc-act="flow" data-sc-drift="#0C1626">
+  <section  data-place="napali"id="coast" class="sc-section" data-sc-act="flow" data-sc-drift="#F4F0E8">
     <div class="place place--wide" style="max-width: 92rem;">
       <figure class="place-media" data-sc-reveal="iris" data-sc-reveal-at="0.1 0.55" style="grid-column: 1 / -1;">
         <img src="assets/napali.jpg" alt="Fluted green ridges of the Napali Coast meeting the Pacific" width="1761" height="1173" loading="lazy">
         <figcaption>Nāpali Coast, Kauai · 22.17° N</figcaption>
       </figure>
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70" style="margin-top: 2.2rem;">
-        <span class="at">Hawaii</span>
+        <span class="at">05 — Hawaii</span>
         <h2 class="sc-display sc-display--lg">Reachable only by boat, on foot, or by giving up.</h2>
         <p>The Nāpali Coast has no road along it. The ridges you are looking at have stayed this quiet because they are genuinely hard to get to, and the people who make the effort go quiet too.</p>
         <div class="facts" style="justify-content:center;">
@@ -618,12 +652,12 @@
   </section>
 
   <!-- 7 · JORDAN: the desert at dusk -->
-  <section id="sand" data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#141018">
+  <section  data-place="wadirum"id="sand" data-sc-act="pin" data-sc-span="1.7" data-sc-drift="#F6EFE4">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/wadirum.jpg" alt="Red sand and sandstone massifs at sunset in Wadi Rum" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.5">
       <div class="scrim-lead" aria-hidden="true"></div>
       <div class="sc-copy" style="inset:auto 0 clamp(3rem,9vh,5rem) 0; padding: 0 clamp(1.25rem,5vw,5rem);" data-sc-cue="0.1 0.86">
-        <span class="at" style="color:var(--sc-accent); letter-spacing:0.06em; text-transform:uppercase; font-size:0.92rem;">Jordan</span>
+        <span class="at" style="color:var(--sc-accent); letter-spacing:0.06em; text-transform:uppercase; font-size:0.92rem;">06 — Jordan</span>
         <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">Silence with a temperature.</h2>
         <p class="sc-body" style="max-width: 40ch;">When the sun drops behind the jebels, Wadi Rum goes red, then purple, then black. The desert quiet is a language. You learn it in one night.</p>
       </div>
@@ -631,7 +665,7 @@
   </section>
 
   <!-- 8 · FIJI: authored silence -->
-  <section data-sc-act="pin" data-sc-span="1.6" data-sc-drift="#0E1524">
+  <section  data-place="yasawa"data-sc-act="pin" data-sc-span="1.6" data-sc-drift="#F2EEE5">
     <div data-sc-stage class="silence">
       <div>
         <figure class="place-media" data-sc-cue="0 0.9">
@@ -643,10 +677,10 @@
   </section>
 
   <!-- 9 · KYOTO: stone -->
-  <section id="stone" class="sc-section" data-sc-act="flow" data-sc-drift="#0B1020">
+  <section  data-place="kyoto"id="stone" class="sc-section" data-sc-act="flow" data-sc-drift="#FAF7F1">
     <div class="place flip">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
-        <span class="at">Kyoto</span>
+        <span class="at">08 — Kyoto</span>
         <h2 class="sc-display sc-display--lg">Fifteen monks have failed to count these rocks.</h2>
         <p>Ryōan-ji's garden has kept its five rock groups and raked gravel for five hundred years. Legend says only enlightenment lets you see all fifteen stones from the veranda.</p>
         <p>Whatever you see, the point is that you sat still long enough to look.</p>
@@ -663,7 +697,7 @@
   </section>
 
   <!-- 10 · WAYS TO BE QUIET: the pan rail -->
-  <section class="sc-section" data-sc-act="pan" data-sc-span="3" data-sc-drift="#0C1222">
+  <section class="sc-section" data-sc-act="pan" data-sc-span="3" data-sc-drift="#F1EDE2">
     <div data-sc-stage>
       <div class="rail" data-sc-pan="0.08">
         <div class="rail-lead sc-stack">
@@ -684,9 +718,9 @@
   </section>
 
   <!-- 11 · THE PLANNER: plan the trip, place by place -->
-  <section id="plan" class="sc-section" data-sc-act="flow" data-sc-drift="#0D1126">
+  <section id="plan" class="sc-section" data-sc-act="flow" data-sc-drift="#F3EFE7">
     <div class="planner sc-stack" data-sc-in data-sc-stagger="70">
-      <span class="at">The planner</span>
+      <span class="at">09 — The planner</span>
       <h2 class="sc-display sc-display--lg">Now plan it. For real.</h2>
       <p class="atlas-note">Every place above, with the honest details: the best view, when to go, what it costs, whether the weather plays along, and how far it is from you. Tick your places, then let the AI draft the days.</p>
 
@@ -708,7 +742,7 @@
   </section>
 
   <!-- 12 · CURIOSITY: the peak. The globe answers in light. -->
-  <section id="calm" data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#090D1A">
+  <section id="calm" data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#FAF7F1">
     <div data-sc-stage class="calm">
       <div class="calm-globe-wrap" data-sc-cue="0 1 0 0" aria-hidden="true">
         <canvas id="calm-globe" width="1280" height="1280"></canvas>
@@ -731,7 +765,7 @@
   </section>
 
   <!-- 12 · RESOLVE: every quiet place on one real map -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0B1020">
+  <section class="sc-section" data-sc-act="flow" data-sc-drift="#FAF7F1">
     <div class="atlas sc-stack" data-sc-in data-sc-stagger="70">
       <h2 class="sc-display sc-display--lg">Every quiet place, on one map.</h2>
       <p class="atlas-note">Drag it. Zoom it. These are real coordinates, not a mood board.</p>

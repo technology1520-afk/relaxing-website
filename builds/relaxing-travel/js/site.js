@@ -29,45 +29,54 @@ const webglOK = (() => {
 })();
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// ---------- The Dusk Dial: one control that regrades the whole page ----------
-const track = document.getElementById("dusk-track");
-const duskLabel = document.getElementById("dusk-label");
-const DUSK_WORDS = ["Daylight", "Golden hour", "Dusk", "Blue hour", "Night"];
-let dusk = 0;
+// ---------- The Boarding Pass: stamps as you pass each destination ----------
+const BP_STOPS = [
+  { id: "iceland", code: "KEF" }, { id: "lofoten", code: "LKN" },
+  { id: "faroe", code: "FAE" }, { id: "whitehaven", code: "HTI" },
+  { id: "napali", code: "LIH" }, { id: "wadirum", code: "AQJ" },
+  { id: "yasawa", code: "VUN" }, { id: "kyoto", code: "UKY" },
+];
+const bpStops = document.getElementById("bp-stops");
+const bpCount = document.getElementById("bp-count");
+const bpNext = document.getElementById("bp-next");
+const boarding = document.getElementById("boarding");
+const doneStops = new Set();
 
-function setDusk(v) {
-  dusk = Math.min(1, Math.max(0, v));
-  document.body.style.setProperty("--dusk", dusk.toFixed(3));
-  document.body.dataset.dusk = dusk > 0.55 ? "1" : "0";
-  track.style.setProperty("--dusk", dusk.toFixed(3));
-  track.setAttribute("aria-valuenow", Math.round(dusk * 100));
-  duskLabel.textContent = DUSK_WORDS[Math.min(DUSK_WORDS.length - 1, Math.floor(dusk * DUSK_WORDS.length))];
+if (bpStops) {
+  bpStops.innerHTML = BP_STOPS.map(s =>
+    `<div class="bp-stop" data-stop="${s.id}"><i></i><span>${s.code}</span></div>`).join("");
 }
-
-if (track) {
-  let dragging = false;
-  const fromEvent = (e) => {
-    const r = track.getBoundingClientRect();
-    setDusk((e.clientX - r.left) / r.width);
-  };
-  track.addEventListener("pointerdown", (e) => { dragging = true; track.setPointerCapture(e.pointerId); fromEvent(e); });
-  track.addEventListener("pointermove", (e) => { if (dragging) fromEvent(e); });
-  track.addEventListener("pointerup", () => { dragging = false; });
-  track.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight" || e.key === "ArrowUp") { setDusk(dusk + 0.1); e.preventDefault(); }
-    if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setDusk(dusk - 0.1); e.preventDefault(); }
-    if (e.key === "Home") { setDusk(0); e.preventDefault(); }
-    if (e.key === "End") { setDusk(1); e.preventDefault(); }
-  });
-  // Hide the dial while the planner section (dense panels) is in view
-  const dial = track.closest(".dusk-dial");
-  const planEl = document.getElementById("plan");
-  if (dial && planEl && "IntersectionObserver" in window) {
-    new IntersectionObserver((es) => {
-      dial.classList.toggle("dial-hidden", es.some(e => e.isIntersecting));
-    }, { rootMargin: "-80px" }).observe(planEl);
+function stampStop(id) {
+  if (doneStops.has(id)) return;
+  doneStops.add(id);
+  const el = bpStops?.querySelector(`[data-stop="${id}"]`);
+  if (el) { el.classList.add("done"); el.animate?.(
+    [{ transform: "scale(1.6)" }, { transform: "scale(1.25)" }],
+    { duration: 350, easing: "cubic-bezier(0.23, 1, 0.32, 1)" }); }
+  if (bpCount) bpCount.textContent = `${doneStops.size}/8 stamped`;
+  const next = BP_STOPS.find(s => !doneStops.has(s.id));
+  if (bpNext) bpNext.textContent = next ? `${next.code} →` : "TRIP ✓";
+}
+function updateBoarding() {
+  if (!boarding) return;
+  const mid = innerHeight * 0.5;
+  for (const s of BP_STOPS) {
+    const el = document.getElementById("spot-" + s.id) || document.querySelector(`section[data-sc-act] [class*="at"]`);
   }
+  // find the nearest place section at viewport center by data-spot-id attributes
+  for (const s of BP_STOPS) {
+    const sec = document.querySelector(`[data-place="${s.id}"]`);
+    if (!sec) continue;
+    const r = sec.getBoundingClientRect();
+    if (r.top <= mid && r.bottom >= mid) stampStop(s.id);
+  }
+  const pct = Math.min(1, scrollY / Math.max(document.body.scrollHeight - innerHeight, 1));
+  boarding.style.setProperty("--bp", pct.toFixed(3));
+  const fill = boarding.querySelector(".bp-line-fill");
+  if (fill) fill.style.width = `calc(${pct.toFixed(3)} * (100% - 1.6rem))`;
 }
+addEventListener("scroll", () => requestAnimationFrame(updateBoarding), { passive: true });
+updateBoarding();
 
 // ---------- Twin Cobe globes (hero: ambient; calm: the signature answer) ----------
 let cobeModule = null;
@@ -104,7 +113,7 @@ async function makeGlobe(canvas, opts) {
     glowColor: [0.09, 0.12, 0.22],
     markers: markersFor("all"),
     onRender: (state) => {
-      const night = parseFloat(document.body.style.getPropertyValue("--dusk") || "0");
+      const night = 0;
       if (!reduceMotion) phi += opts.spin || 0.0022;
       state.phi = phi; state.theta = 0.18;
       state.width = canvas.clientWidth * (devicePixelRatio || 1);
