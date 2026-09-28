@@ -53,7 +53,7 @@ function stampStop(id) {
   if (el) { el.classList.add("done"); el.animate?.(
     [{ transform: "scale(1.6)" }, { transform: "scale(1.25)" }],
     { duration: 350, easing: "cubic-bezier(0.23, 1, 0.32, 1)" }); }
-  if (bpCount) bpCount.textContent = `${doneStops.size}/8 stamped`;
+  if (bpCount) bpCount.textContent = `${Math.min(doneStops.size, 8)}/8 stamped`;
   const next = BP_STOPS.find(s => !doneStops.has(s.id));
   if (bpNext) bpNext.textContent = next ? `${next.code} →` : "TRIP ✓";
 }

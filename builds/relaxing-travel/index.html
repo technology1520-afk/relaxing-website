@@ -439,6 +439,41 @@
   }
   .wx-table tr td:first-child { text-transform: capitalize; }
 
+  /* ---------- Documents & Visas ---------- */
+  .docs-sec { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
+  .docs-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.6rem; margin-top: 1.8rem; align-items: start; }
+  .docs-panel {
+    background: var(--sc-surface); border: 1.5px solid var(--sc-ink); border-radius: 14px;
+    box-shadow: 5px 5px 0 color-mix(in srgb, var(--sc-ink) 88%, transparent);
+    padding: 1.4rem 1.6rem; margin-bottom: 1.4rem;
+  }
+  .docs-panel h3 { font-family: var(--sc-font-display); font-weight: 700; font-size: 1.1rem; color: var(--sc-ink); margin: 0 0 1rem; }
+  .docs-picks { display: flex; flex-direction: column; gap: 0.9rem; }
+  .docs-picks label { font-size: 0.88rem; color: var(--sc-ink-soft); display: flex; flex-direction: column; gap: 0.3rem; }
+  .docs-picks small { opacity: 0.7; }
+  .docs-picks select {
+    background: var(--sc-canvas); color: var(--sc-ink); border: 1.5px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
+    border-radius: 8px; padding: 0.55rem 0.7rem; font: inherit; font-size: 0.9rem; width: 100%;
+  }
+  .docs-picks .btn { align-self: flex-start; border-radius: 10px; border: 0; }
+  .doc-out { margin-top: 1.2rem; }
+  .doc-count { font-family: var(--sc-font-mono); font-size: 0.8rem; color: var(--sc-accent); margin: 0 0 0.8rem; }
+  .doc-list { margin: 0; padding-left: 1.2rem; }
+  .doc-list li { margin-bottom: 0.8rem; }
+  .doc-list strong { display: block; color: var(--sc-ink); font-size: 0.92rem; font-weight: 600; }
+  .doc-list span { color: var(--sc-ink-soft); font-size: 0.84rem; }
+  .doc-visa { padding: 0.7rem 0; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent); }
+  .doc-visa:first-of-type { border-top: 0; }
+  .doc-visa strong { color: var(--sc-ink); font-size: 0.9rem; }
+  .doc-visa strong a { color: var(--sc-accent); text-decoration: none; }
+  .doc-visa p { color: var(--sc-ink-soft); font-size: 0.85rem; margin: 0.25rem 0; line-height: 1.5; }
+  .doc-visa a { color: var(--sc-accent); font-size: 0.8rem; }
+  .doc-flag { padding: 0.65rem 0.8rem; border: 1px solid color-mix(in srgb, #B0533A 40%, transparent); border-radius: 8px; margin-bottom: 0.6rem; background: color-mix(in srgb, #B0533A 6%, transparent); }
+  .doc-flag strong { color: #B0533A; font-size: 0.87rem; }
+  .doc-flag p { color: var(--sc-ink-soft); font-size: 0.83rem; margin: 0.2rem 0 0; line-height: 1.5; }
+  .docs-note { color: var(--sc-ink-soft); font-size: 0.85rem; line-height: 1.55; margin: 0.6rem 0 1rem; }
+  @media (max-width: 900px) { .docs-grid { grid-template-columns: 1fr; } }
+
   /* ---------- Floating AI assistant ---------- */
   .ai-bubble {
     position: fixed; left: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
@@ -581,6 +616,7 @@
   <a class="mark" href="#top">Relax Day<em>Off</em></a>
   <nav aria-label="Sections">
     <a href="#explore">Explore</a>
+    <a href="#documents">Documents</a>
     <a href="#plan">Plan</a>
     <a href="#calm">Find your calm</a>
   </nav>
@@ -832,6 +868,16 @@
     </div>
   </section>
 
+  <!-- 11.6 · DOCUMENTS & VISAS -->
+  <section id="documents" class="sc-section" data-sc-act="flow" data-sc-drift="#F3EFE7">
+    <div class="docs-sec sc-stack" data-sc-in data-sc-stagger="70">
+      <span class="at">11 — Documents & visas</span>
+      <h2 class="sc-display sc-display--lg">Papers, sorted. Scams, spotted.</h2>
+      <p class="atlas-note">The boring part of the dream trip: passports, visas, insurance. Build your checklist, learn the visa rules, and never get taken by a fake agency.</p>
+      <div id="docs"></div>
+    </div>
+  </section>
+
   <!-- 12 · CURIOSITY: the peak. The globe answers in light. -->
   <section id="calm" data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#FAF7F1">
     <div data-sc-stage class="calm">
@@ -885,6 +931,7 @@
 <script type="module">
   import { buildExplorer } from "./js/explorer.js";
   buildExplorer();
+  import("./js/docs.js").then(m => m.buildDocs());
 </script>
 <script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
 <script>
