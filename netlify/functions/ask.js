@@ -48,7 +48,7 @@ exports.handler = async (req) => {
   let placeKey = PLACE_DATA[ctx.place] ? ctx.place : null;
   const section = String(ctx.section || "").slice(0, 60);
 
-  const key = process.env.OPENROUTER_API_KEY;
+  const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
   if (!key) {
     // No key configured: answer from the site's own data. Relaxagent never goes silent.
     const local = localAnswer(question, placeKey);
@@ -70,7 +70,7 @@ After answering their question, if they mention a specific place or seem unsure 
 Answer in 2-4 short sentences, warm and concrete. Use the curated facts where they fit; if the question goes beyond them (visas, flights from a specific city), answer from general knowledge and say what to double-check with official sources. Never invent exact prices beyond the curated ones. No exclamation marks. Plain text only.`;
 
   try {
-    const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const r = await fetch(`${process.env.AI_BASE_URL || "https://api.xkiro.com/v1"}/chat/completions`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${key}`,
@@ -79,7 +79,7 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
         "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
-        model: "openrouter/free",
+        model: process.env.AI_MODEL || "openai/gpt-6-luna",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 300,
         temperature: 0.5,

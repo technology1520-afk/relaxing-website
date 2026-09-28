@@ -25,8 +25,8 @@ exports.handler = async (req) => {
   catch { /* fall through */ }
   if (!mood) return json(400, { error: "Tell Relaxagent one true sentence about your week." }, cors);
 
-  const key = process.env.OPENROUTER_API_KEY;
-  if (!key) return json(503, { error: "The suggester is warming up. Add OPENROUTER_API_KEY in your deploy settings." }, cors);
+  const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
+  if (!key) return json(503, { error: "The suggester is warming up. Add AI_API_KEY in your deploy settings." }, cors);
 
   const list = DESTINATIONS.map(d => `- ${d.id}: ${d.name}`).join("\n");
   const prompt =
@@ -38,7 +38,7 @@ ${list}
 Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm sentence (max 18 words) telling them why, second person, no exclamation marks"}`;
 
   try {
-    const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const r = await fetch(`${process.env.AI_BASE_URL || "https://api.xkiro.com/v1"}/chat/completions`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${key}`,
@@ -47,7 +47,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
         "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
-        model: "openrouter/free",
+        model: process.env.AI_MODEL || "openai/gpt-6-luna",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 120,
         temperature: 0.6,

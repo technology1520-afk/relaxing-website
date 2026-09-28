@@ -35,8 +35,8 @@ exports.handler = async (req) => {
   const places = (Array.isArray(body.places) ? body.places : []).filter(k => NAMES[k]).slice(0, 8);
   if (!places.length) return json(400, { error: "Pick at least one place." }, cors);
 
-  const key = process.env.OPENROUTER_API_KEY;
-  if (!key) return json(503, { error: "The planner is warming up. Add OPENROUTER_API_KEY in your deploy settings." }, cors);
+  const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
+  if (!key) return json(503, { error: "The planner is warming up. Add AI_API_KEY in your deploy settings." }, cors);
 
   const list = places.map(k => NAMES[k]).join("; ");
   const budgetFeel = places.map(k => BUDGETS[k]).join(", ");
@@ -50,7 +50,7 @@ Reply ONLY with minified JSON:
 {"days":[{"day":1,"title":"short title","plan":"2-3 sentences: what to do, one kid-friendly note, one practical note (transport, booking, weather)"}],"budget":"one sentence: which legs cost the most and the total feel for a mid-range ${who}, given these destinations are ${budgetFeel}"}`;
 
   try {
-    const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const r = await fetch(`${process.env.AI_BASE_URL || "https://api.xkiro.com/v1"}/chat/completions`, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${key}`,
@@ -59,7 +59,7 @@ Reply ONLY with minified JSON:
         "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
-        model: "openrouter/free",
+        model: process.env.AI_MODEL || "openai/gpt-6-luna",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 1600,
         temperature: 0.5,
