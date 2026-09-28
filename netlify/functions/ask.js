@@ -59,7 +59,7 @@ exports.handler = async (req) => {
     : `The site covers 8 quiet destinations: ${Object.values(PLACE_DATA).map(p => p.name).join("; ")}. Local USD prices per place are in the site data.`;
 
   const prompt =
-`You are the Stillwater trip assistant on a travel site about the world's quietest places. A visitor asks: "${question}"
+`You are Dayo, the trip guide of relaxdayoff.com, a travel site about the world's quietest places. Your name is Dayo (like "day off"). When asked who you are, say you are Dayo. A visitor asks: "${question}"
 
 ${placeBlock}
 ${section ? `They are currently in the site's "${section}" section.` : ""}
@@ -72,7 +72,7 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
       headers: {
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.SITE_URL || "https://stillwater.netlify.app",
+        "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
         "X-Title": "Stillwater",
       },
       body: JSON.stringify({
@@ -82,13 +82,13 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
         temperature: 0.5,
       }),
     });
-    if (!r.ok) return json(502, { error: "The assistant is busy. Try again in a moment." }, cors);
+    if (!r.ok) return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
-    if (!text) return json(502, { error: "The assistant is busy. Try again in a moment." }, cors);
+    if (!text) return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
     return json(200, { answer: text.slice(0, 900) }, cors);
   } catch {
-    return json(502, { error: "The assistant is busy. Try again in a moment." }, cors);
+    return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
   }
 };
 

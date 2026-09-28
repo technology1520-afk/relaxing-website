@@ -215,7 +215,7 @@ planForm?.addEventListener("submit", async (e) => {
   if (!picks.length) { planOut.textContent = "Tick at least one place above."; return; }
   const btn = document.getElementById("plan-go");
   btn.disabled = true;
-  planOut.innerHTML = '<span class="w-loading">Planning your trip…</span>';
+  planOut.innerHTML = '<span class="w-loading">Dayo is planning your days…</span>';
   try {
     const res = await fetch("/api/plan", {
       method: "POST",
@@ -224,10 +224,10 @@ planForm?.addEventListener("submit", async (e) => {
     });
     let data = null;
     try { data = await res.json(); } catch {}
-    if (!res.ok || !data) throw new Error("The planner is busy. Try again in a moment.");
+    if (!res.ok || !data) throw new Error("Dayo is busy. Try again in a moment.");
     renderPlan(data, picks);
   } catch (err) {
-    planOut.textContent = err.message || "The planner is busy. Try again in a moment.";
+    planOut.textContent = err.message || "Dayo is busy. Try again in a moment.";
   } finally {
     btn.disabled = false;
   }

@@ -43,7 +43,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
       headers: {
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": process.env.SITE_URL || "https://stillwater.netlify.app",
+        "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
         "X-Title": "Stillwater",
       },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
         temperature: 0.6,
       }),
     });
-    if (!r.ok) return json(502, { error: "The globe stayed quiet. Try again in a moment." }, cors);
+    if (!r.ok) return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
     const m = text.match(/\{[\s\S]*\}/);
@@ -63,7 +63,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
     await logAdmin("suggest", { q: mood.slice(0, 80), ids });
     return json(200, { ids, line: String(parsed?.line || "").slice(0, 160) }, cors);
   } catch {
-    return json(502, { error: "The globe stayed quiet. Try again in a moment." }, cors);
+    return json(502, { error: "Dayo is busy. Try again in a moment." }, cors);
   }
 };
 

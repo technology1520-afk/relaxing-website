@@ -99,13 +99,13 @@ async function ask(q) {
     if (data?.fallback?.answer) {
       addMsg(data.fallback.answer, "ai-msg--bot");
     } else if (!res.ok || !data?.answer) {
-      addMsg(data?.error || "The assistant is busy. Try again in a moment.", "ai-msg--bot ai-msg--err");
+      addMsg(data?.error || "Dayo is busy. Try again in a moment.", "ai-msg--bot ai-msg--err");
     } else {
       addMsg(data.answer, "ai-msg--bot");
     }
   } catch {
     wait.remove();
-    addMsg("No connection. Try again when you are back online.", "ai-msg--bot ai-msg--err");
+    addMsg("Dayo lost connection. Try again when you are back online.", "ai-msg--bot ai-msg--err");
   }
   busy = false;
 }
