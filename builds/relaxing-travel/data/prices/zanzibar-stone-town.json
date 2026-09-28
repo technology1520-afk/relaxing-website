@@ -34,5 +34,39 @@
   "white sand",
   "snorkeling",
   "spice tours"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.3,
+  "bread": 1,
+  "eggs_12": 2.2,
+  "rice_kg": 1.1,
+  "chicken_kg": 3.6,
+  "fruit_kg": 1.3,
+  "spice_lunch": 4
+ },
+ "leisure": {
+  "cinema": 5,
+  "cocktail": 7,
+  "gym_month": 35,
+  "laundry": 1.4,
+  "dhow_sunset": 20
+ },
+ "transport_extra": {
+  "scooter_day": 12,
+  "fuel_l": 1.2,
+  "ridehail_km": 0.5
+ },
+ "activities": {
+  "stone_town": 15,
+  "spice_farm": 12,
+  "snorkel": 30,
+  "jozani_monkeys": 10
+ },
+ "monthly": {
+  "budget": 800,
+  "comfortable": 1500
+ },
+ "seasons": "Best Jun-Oct, Dec-Feb. Long rains Mar-May (many hotels close).",
+ "airports": "ZNZ (or ferry)",
+ "notes": "Pay extra for Azam ferries. Semi-autonomous: keep passport handy."
 }

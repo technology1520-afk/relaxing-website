@@ -34,5 +34,39 @@
   "street tacos",
   "museums",
   "urban energy"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.2,
+  "bread": 1.4,
+  "eggs_12": 2,
+  "rice_kg": 1.2,
+  "chicken_kg": 3.4,
+  "fruit_kg": 1.4,
+  "market_meal": 3.5
+ },
+ "leisure": {
+  "cinema": 5,
+  "cocktail": 8,
+  "gym_month": 35,
+  "laundry": 1.8,
+  "lucha_libre": 8
+ },
+ "transport_extra": {
+  "metro_ride": 0.4,
+  "fuel_l": 1.3,
+  "ridehail_km": 0.6
+ },
+ "activities": {
+  "museums": 3,
+  "teotihuacan_day": 30,
+  "xochimilco": 25,
+  "lucha_libre": 8
+ },
+ "monthly": {
+  "budget": 850,
+  "comfortable": 1500
+ },
+ "seasons": "Best Mar-May, Oct-Nov (dry, warm). Jun-Sep rainy afternoons. Altitude 2240m.",
+ "airports": "MEX / NLU",
+ "notes": "Metro costs $0.25. Tacos al pastor $1-2 at night stands."
 }

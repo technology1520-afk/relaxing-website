@@ -34,5 +34,39 @@
   "caldera views",
   "white villages",
   "honeymoon"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.3,
+  "bread": 1.6,
+  "eggs_12": 3.8,
+  "rice_kg": 1.6,
+  "chicken_kg": 7,
+  "fruit_kg": 2.4,
+  "gyros": 4.5
+ },
+ "leisure": {
+  "cinema": 10,
+  "cocktail": 13,
+  "gym_month": 50,
+  "laundry": 4,
+  "caldera_cruise": 70
+ },
+ "transport_extra": {
+  "scooter_day": 18,
+  "fuel_l": 1.9,
+  "ridehail_km": 1
+ },
+ "activities": {
+  "oia_sunset": 0,
+  "wine_tasting": 25,
+  "akrotiri": 15,
+  "catamaran": 110
+ },
+ "monthly": {
+  "budget": 1500,
+  "comfortable": 2800
+ },
+ "seasons": "Best May-Jun, Sep-Oct. Jul-Aug peak prices and crowds. Nov-Apr quiet, many close.",
+ "airports": "JTR (or ferry from Athens)",
+ "notes": "Stay in Fira/Kamari not Oia to halve costs. Imerovigli sunset is free."
 }

@@ -34,5 +34,39 @@
   "medina",
   "desert trips",
   "hammams"
- ]
+ ],
+ "groceries": {
+  "milk_l": 0.9,
+  "bread": 0.6,
+  "eggs_12": 1.8,
+  "rice_kg": 1,
+  "chicken_kg": 3,
+  "fruit_kg": 1.2,
+  "market_meal": 3
+ },
+ "leisure": {
+  "cinema": 6,
+  "cocktail": 9,
+  "gym_month": 30,
+  "laundry": 1.2,
+  "hammam": 12
+ },
+ "transport_extra": {
+  "scooter_day": 12,
+  "fuel_l": 1.3,
+  "ridehail_km": 0.4
+ },
+ "activities": {
+  "majorelle": 10,
+  "medina_tour": 20,
+  "desert_2day": 60,
+  "hammam": 12
+ },
+ "monthly": {
+  "budget": 700,
+  "comfortable": 1300
+ },
+ "seasons": "Best Mar-May, Oct-Nov. Jun-Aug over 40°C. Winter nights cold.",
+ "airports": "RAK",
+ "notes": "Agree taxi price before entering. Riads beat hotels on value."
 }

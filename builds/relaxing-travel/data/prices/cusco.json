@@ -34,5 +34,37 @@
   "machu picchu",
   "hiking",
   "culture"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.2,
+  "bread": 1,
+  "eggs_12": 2,
+  "rice_kg": 1,
+  "chicken_kg": 3.2,
+  "fruit_kg": 1.2,
+  "market_meal": 2.5
+ },
+ "leisure": {
+  "cinema": 5,
+  "cocktail": 5,
+  "gym_month": 25,
+  "laundry": 1.5
+ },
+ "transport_extra": {
+  "fuel_l": 1.2,
+  "ridehail_km": 0.5
+ },
+ "activities": {
+  "machu_picchu": 60,
+  "sacred_valley": 40,
+  "rainbow_mountain": 30,
+  "cathedral": 8
+ },
+ "monthly": {
+  "budget": 700,
+  "comfortable": 1200
+ },
+ "seasons": "Dry May-Sep (best for Machu Picchu). Dec-Mar rainy. Acclimatise 2 days.",
+ "airports": "CUZ (via Lima)",
+ "notes": "Machu Picchu tickets sell out; book circuits weeks ahead. Altitude 3400m."
 }

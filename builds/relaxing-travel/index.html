@@ -428,6 +428,16 @@
   .wx-table td:last-child { text-align: right; color: var(--sc-ink); font-family: var(--sc-font-display); font-weight: 600; }
   .wx-table tr.wx-total td { border-top: 2px solid var(--sc-ink); color: var(--sc-accent); font-weight: 600; }
   .wx-note { font-size: 0.78rem; color: var(--sc-ink-soft); margin-top: 0.9rem; }
+  .wx-daily { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 1rem; }
+  .wx-daily div { background: color-mix(in srgb, var(--sc-accent) 8%, transparent); border-radius: 8px; padding: 0.55rem 0.8rem; display: flex; flex-direction: column; }
+  .wx-daily i { font-style: normal; font-size: 0.7rem; color: var(--sc-ink-soft); }
+  .wx-daily b { font-family: var(--sc-font-display); font-size: 1.15rem; color: var(--sc-accent); }
+  .wx-sec { margin-top: 1.2rem; }
+  .wx-sec h4 {
+    font-family: var(--sc-font-mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--sc-accent); margin: 0 0 0.3rem;
+  }
+  .wx-table tr td:first-child { text-transform: capitalize; }
 
   /* ---------- Floating AI assistant ---------- */
   .ai-bubble {

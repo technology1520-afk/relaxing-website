@@ -36,5 +36,39 @@
   "yoga retreats",
   "nature",
   "remote work"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.7,
+  "bread": 1.5,
+  "eggs_12": 2.4,
+  "rice_kg": 1.2,
+  "chicken_kg": 3,
+  "fruit_kg": 1.6,
+  "market_meal": 1.5
+ },
+ "leisure": {
+  "cinema": 5,
+  "cocktail": 6,
+  "gym_month": 30,
+  "laundry": 1,
+  "massage_hr": 9
+ },
+ "transport_extra": {
+  "scooter_day": 6,
+  "fuel_l": 0.9,
+  "ridehail_km": 0.4
+ },
+ "activities": {
+  "monkey_forest": 5,
+  "rice_terrace": 2,
+  "waterfall_tour": 30,
+  "yoga_class": 12
+ },
+ "monthly": {
+  "budget": 560,
+  "comfortable": 1050
+ },
+ "seasons": "Dry May-Sep (best). Wet Oct-Apr, still warm. Ubud cooler than the coast.",
+ "airports": "DPS +1.5h drive",
+ "notes": "Scooter essential. Tourist tax on arrival."
 }

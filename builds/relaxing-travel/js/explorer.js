@@ -91,13 +91,20 @@ async function openDetail(key) {
   try { d = await (await fetch(`data/prices/${key}.json`)).json(); }
   catch { return; }
   const p = d.prices;
-  const rows = [
-    ["Budget meal", p.meal_cheap], ["Mid-range restaurant", p.meal_mid_rest], ["Coffee", p.coffee],
-    ["Beer", p.beer], ["Bottled water", p.water_bottle], ["Taxi 3 km", p.taxi_3km],
-    ["Transit ride", p.transit_ride], ["Hostel / budget night", p.hotel_budget],
-    ["Mid-range hotel", p.hotel_mid], ["Luxury hotel", p.hotel_lux],
-    ["Home internet, month", p.internet_month], ["SIM with data", p.sim_data],
-  ];
+  const money = (v) => v === 0 ? "Free" : "$" + (Number.isInteger(v) ? v : v.toFixed(2));
+  const sec = (title, entries) => entries.length ? `
+    <div class="wx-sec"><h4>${title}</h4>
+    <table class="wx-table">${entries.map(([k, v]) => `<tr><td>${k}</td><td>${money(v)}</td></tr>`).join("")}</table></div>` : "";
+  const fmt = (o) => Object.entries(o || {}).map(([k, v]) => [k.replace(/_/g, " "), v]);
+
+  const daily = `
+    <div class="wx-daily">
+      <div><i>Per day, budget</i><b>$${p.daily_budget}</b></div>
+      <div><i>Per day, mid-range</i><b>$${p.daily_mid}</b></div>
+      ${d.monthly ? `<div><i>Per month, budget</i><b>$${d.monthly.budget}</b></div>
+      <div><i>Per month, comfy</i><b>$${d.monthly.comfortable}</b></div>` : ""}
+    </div>`;
+
   const modal = document.createElement("div");
   modal.className = "wx-modal";
   modal.innerHTML = `
@@ -105,12 +112,18 @@ async function openDetail(key) {
       <button class="wx-close" aria-label="Close">×</button>
       <div class="wx-top"><span class="wx-flag">${esc(d.flag)}</span>
         <div class="wx-names"><strong>${esc(d.city)}</strong><span>${esc(d.country)} · ${esc(d.currency)}</span></div></div>
-      <table class="wx-table">
-        ${rows.map(([k, v]) => `<tr><td>${k}</td><td>$${v}</td></tr>`).join("")}
-        <tr class="wx-total"><td>Per day, budget style</td><td>$${p.daily_budget}</td></tr>
-        <tr class="wx-total"><td>Per day, mid-range</td><td>$${p.daily_mid}</td></tr>
-      </table>
-      <p class="wx-note">Medians for a mid-range traveller. Check the fair-price checker on destination cards to test any real quote.</p>
+      ${daily}
+      ${sec("Food & drink", fmt({ "Budget meal": p.meal_cheap, "Mid-range restaurant": p.meal_mid_rest, "Coffee": p.coffee, "Beer": p.beer, "Bottled water": p.water_bottle }))}
+      ${sec("Getting around", fmt({ "Taxi 3 km": p.taxi_3km, "Transit ride": p.transit_ride, ...d.transport_extra }))}
+      ${sec("Stays", fmt({ "Hostel / budget night": p.hotel_budget, "Mid-range hotel": p.hotel_mid, "Luxury hotel": p.hotel_lux }))}
+      ${sec("Groceries", fmt(d.groceries))}
+      ${sec("Fun & leisure", fmt(d.leisure))}
+      ${sec("Things to do", fmt(d.activities))}
+      ${sec("Connected", fmt({ "Home internet, month": p.internet_month, "SIM with data": p.sim_data }))}
+      ${d.seasons ? `<div class="wx-sec"><h4>When to go</h4><p class="wx-note" style="margin:0">${esc(d.seasons)}</p></div>` : ""}
+      ${d.airports ? `<div class="wx-sec"><h4>Getting there</h4><p class="wx-note" style="margin:0">${esc(d.airports)}</p></div>` : ""}
+      ${d.notes ? `<div class="wx-sec"><h4>Local knowledge</h4><p class="wx-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}
+      <p class="wx-note">Medians for a mid-range traveller. Test any real quote with the fair-price checker on destination cards.</p>
     </div>`;
   document.body.appendChild(modal);
   modal.addEventListener("click", (e) => { if (e.target === modal || e.target.classList.contains("wx-close")) modal.remove(); });

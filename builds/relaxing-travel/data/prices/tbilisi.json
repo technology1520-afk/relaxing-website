@@ -33,5 +33,39 @@
   "sulphur baths",
   "khinkali",
   "caucasus"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.1,
+  "bread": 0.7,
+  "eggs_12": 2,
+  "rice_kg": 1.2,
+  "chicken_kg": 3.8,
+  "fruit_kg": 1.5,
+  "khinkali_5": 2.8
+ },
+ "leisure": {
+  "cinema": 6,
+  "cocktail": 6,
+  "gym_month": 32,
+  "laundry": 2,
+  "sulphur_bath": 9
+ },
+ "transport_extra": {
+  "metro_ride": 0.35,
+  "fuel_l": 1.2,
+  "ridehail_km": 0.3
+ },
+ "activities": {
+  "old_town": 0,
+  "kazbegi_day": 25,
+  "vineyard_tour": 40,
+  "sulphur_baths": 9
+ },
+ "monthly": {
+  "budget": 680,
+  "comfortable": 1250
+ },
+ "seasons": "Best May-Jun, Sep-Oct. Jul-Aug hot. Winter skiing 2h away in Gudauri.",
+ "airports": "TBS",
+ "notes": "90-day visa-free for 90+ nationalities. Homemade wine $3-5."
 }

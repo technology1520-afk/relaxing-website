@@ -34,5 +34,38 @@
   "annapurna",
   "paragliding",
   "sunrise views"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1,
+  "bread": 0.9,
+  "eggs_12": 1.7,
+  "rice_kg": 0.9,
+  "chicken_kg": 3,
+  "fruit_kg": 1,
+  "dal_bhat": 2.5
+ },
+ "leisure": {
+  "cinema": 4,
+  "cocktail": 4,
+  "gym_month": 25,
+  "laundry": 0.8,
+  "boat_lake": 6
+ },
+ "transport_extra": {
+  "scooter_day": 8,
+  "fuel_l": 1.1,
+  "ridehail_km": 0.3
+ },
+ "activities": {
+  "paragliding": 85,
+  "annapurna_permit": 30,
+  "sarangkot_sunrise": 12
+ },
+ "monthly": {
+  "budget": 450,
+  "comfortable": 800
+ },
+ "seasons": "Trekking Oct-Nov, Mar-Apr (clear skies). Monsoon Jun-Sep. Cold winter nights.",
+ "airports": "PKR (or 6h bus)",
+ "notes": "Gateway to Annapurna. Permits via agencies in town."
 }

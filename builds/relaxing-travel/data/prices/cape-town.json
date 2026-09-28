@@ -33,5 +33,39 @@
   "table mountain",
   "penguins",
   "wine country"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1,
+  "bread": 1.1,
+  "eggs_12": 2.2,
+  "rice_kg": 1.4,
+  "chicken_kg": 4.5,
+  "fruit_kg": 1.4,
+  "market_meal": 5
+ },
+ "leisure": {
+  "cinema": 7,
+  "cocktail": 6,
+  "gym_month": 35,
+  "laundry": 2,
+  "wine_tasting": 12
+ },
+ "transport_extra": {
+  "scooter_day": 15,
+  "fuel_l": 1.3,
+  "ridehail_km": 0.7
+ },
+ "activities": {
+  "table_mountain": 22,
+  "roben_island": 18,
+  "cape_point": 12,
+  "penguins": 9
+ },
+ "monthly": {
+  "budget": 950,
+  "comfortable": 1650
+ },
+ "seasons": "Best Nov-Mar (dry summer). Jun-Aug rainy, whales. Windy Sep-Oct.",
+ "airports": "CPT",
+ "notes": "Use Uber, not street taxis. Safety varies by neighbourhood."
 }

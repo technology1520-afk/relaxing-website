@@ -34,5 +34,38 @@
   "gaudi",
   "mediterranean",
   "tapas"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.1,
+  "bread": 1.5,
+  "eggs_12": 3.5,
+  "rice_kg": 1.4,
+  "chicken_kg": 6.5,
+  "fruit_kg": 2.3,
+  "market_meal": 9
+ },
+ "leisure": {
+  "cinema": 10,
+  "cocktail": 12,
+  "gym_month": 45,
+  "laundry": 4.5
+ },
+ "transport_extra": {
+  "metro_ride": 2.5,
+  "fuel_l": 1.75,
+  "ridehail_km": 1
+ },
+ "activities": {
+  "sagrada": 26,
+  "park_guell": 10,
+  "casa_batllo": 35,
+  "picasso": 12
+ },
+ "monthly": {
+  "budget": 1450,
+  "comfortable": 2400
+ },
+ "seasons": "Best May-Jun, Sep. Jul-Aug hottest and most crowded.",
+ "airports": "BCN",
+ "notes": "Book Gaudí sites online ahead. Pickpockets on La Rambla."
 }

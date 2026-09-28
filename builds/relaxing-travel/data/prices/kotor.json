@@ -33,5 +33,39 @@
   "bay of kotor",
   "old walls",
   "boat trips"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.1,
+  "bread": 1.2,
+  "eggs_12": 2.8,
+  "rice_kg": 1.3,
+  "chicken_kg": 5.5,
+  "fruit_kg": 1.8,
+  "local_grill": 8
+ },
+ "leisure": {
+  "cinema": 7,
+  "cocktail": 7,
+  "gym_month": 40,
+  "laundry": 3,
+  "kayak_hr": 10
+ },
+ "transport_extra": {
+  "scooter_day": 15,
+  "fuel_l": 1.7,
+  "ridehail_km": 0.8
+ },
+ "activities": {
+  "walls": 15,
+  "blue_cave": 30,
+  "lovćen": 5,
+  "perast_boat": 10
+ },
+ "monthly": {
+  "budget": 950,
+  "comfortable": 1700
+ },
+ "seasons": "Best May-Jun, Sep. Jul-Aug cruise crowds. Winter quiet, some close.",
+ "airports": "TIV 10min / DBV 2h",
+ "notes": "Climb the walls at 7am: cool, empty, best light."
 }

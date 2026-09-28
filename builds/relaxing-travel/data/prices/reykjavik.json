@@ -34,5 +34,39 @@
   "northern lights",
   "blue lagoon",
   "road trips"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.4,
+  "bread": 2.5,
+  "eggs_12": 5,
+  "rice_kg": 2.5,
+  "chicken_kg": 9,
+  "fruit_kg": 3,
+  "hot_dog": 4
+ },
+ "leisure": {
+  "cinema": 15,
+  "cocktail": 14,
+  "gym_month": 60,
+  "laundry": 6,
+  "pool_entry": 7
+ },
+ "transport_extra": {
+  "fuel_l": 2.3,
+  "ridehail_km": 1.8,
+  "bus_day": 9
+ },
+ "activities": {
+  "blue_lagoon": 65,
+  "golden_circle": 80,
+  "aurora_tour": 70,
+  "whales": 90
+ },
+ "monthly": {
+  "budget": 2100,
+  "comfortable": 3400
+ },
+ "seasons": "Jun-Aug midnight sun and hiking. Sep-Mar aurora. Expensive: buy alcohol duty-free.",
+ "airports": "KEF +45min bus",
+ "notes": "Tap water glacier-fresh. Bónus supermarkets halve food costs."
 }

@@ -34,5 +34,38 @@
   "adrenaline capital",
   "lord of the rings",
   "alpine"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.5,
+  "bread": 1.8,
+  "eggs_12": 4.5,
+  "rice_kg": 2,
+  "chicken_kg": 8,
+  "fruit_kg": 2.5,
+  "meat_pie": 3.5
+ },
+ "leisure": {
+  "cinema": 11,
+  "cocktail": 12,
+  "gym_month": 50,
+  "laundry": 4,
+  "gondola": 35
+ },
+ "transport_extra": {
+  "fuel_l": 1.7,
+  "ridehail_km": 1.2
+ },
+ "activities": {
+  "bungee": 135,
+  "skydive": 250,
+  "milford_day": 150,
+  "jet_boat": 80
+ },
+ "monthly": {
+  "budget": 1800,
+  "comfortable": 3000
+ },
+ "seasons": "Dec-Feb summer, busiest. Jun-Aug ski. Mar-Apr golden autumn, cheaper.",
+ "airports": "ZQN",
+ "notes": "Book adventure sports ahead; weather cancels often."
 }

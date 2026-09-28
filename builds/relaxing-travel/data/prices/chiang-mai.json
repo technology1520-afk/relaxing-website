@@ -34,5 +34,38 @@
   "long stays",
   "cooking schools",
   "nature"
- ]
+ ],
+ "groceries": {
+  "milk_l": 1.5,
+  "bread": 1.2,
+  "eggs_12": 2,
+  "rice_kg": 1,
+  "chicken_kg": 2.6,
+  "fruit_kg": 1.3,
+  "market_meal": 1.5
+ },
+ "leisure": {
+  "cinema": 5,
+  "cocktail": 5,
+  "gym_month": 30,
+  "laundry": 1,
+  "massage_hr": 7
+ },
+ "transport_extra": {
+  "scooter_day": 6,
+  "fuel_l": 1,
+  "ridehail_km": 0.4
+ },
+ "activities": {
+  "doisuthep": 4,
+  "elephant_sanctuary": 45,
+  "cooking_class": 25
+ },
+ "monthly": {
+  "budget": 500,
+  "comfortable": 900
+ },
+ "seasons": "Best Nov-Feb. Mar-Apr burning season (smog). Jun-Oct green and cheap.",
+ "airports": "CNX",
+ "notes": "Classic long-stay base: monthly apartments $200-350."
 }
