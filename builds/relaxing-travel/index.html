@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Stillwater · The quietest places on earth</title>
-<meta name="description" content="Five of the quietest places on earth, chosen for people who travel to relax. Real maps, real stillness, and a calm finder that points you at the right silence.">
+<meta name="description" content="Eight of the quietest places on earth, chosen for people who travel to relax. Real maps, real silence, a dusk dial, and a calm finder that points you at the right quiet.">
 <link rel="canonical" href="https://stillwater.netlify.app/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Stillwater · The quietest places on earth">
-<meta property="og:description" content="Five of the quietest places on earth, chosen for people who travel to relax.">
+<meta property="og:description" content="Eight of the quietest places on earth, chosen for people who travel to relax.">
 <meta property="og:image" content="assets/hero-lagoon.jpg">
 <meta name="theme-color" content="#0B1020">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230B1020'/><circle cx='16' cy='16' r='6' fill='%23E8A852'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="scrollcraft.css">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
 <script type="application/ld+json">
@@ -24,16 +24,18 @@
   "name": "The quietest places on earth",
   "itemListElement": [
     {"@type": "TouristDestination", "name": "Blue Lagoon, Iceland", "geo": {"@type": "GeoCoordinates", "latitude": 63.88, "longitude": -22.45}},
+    {"@type": "TouristDestination", "name": "Reine, Lofoten, Norway", "geo": {"@type": "GeoCoordinates", "latitude": 67.93, "longitude": 13.09}},
+    {"@type": "TouristDestination", "name": "Sørvágsvatn, Faroe Islands", "geo": {"@type": "GeoCoordinates", "latitude": 62.06, "longitude": -7.35}},
     {"@type": "TouristDestination", "name": "Hill Inlet, Whitehaven Beach, Australia", "geo": {"@type": "GeoCoordinates", "latitude": -20.28, "longitude": 149.05}},
     {"@type": "TouristDestination", "name": "Nāpali Coast, Kauai, Hawaii", "geo": {"@type": "GeoCoordinates", "latitude": 22.17, "longitude": -159.60}},
-    {"@type": "TouristDestination", "name": "Yasawa Islands, Fiji", "geo": {"@type": "GeoCoordinates", "latitude": -17.42, "longitude": 177.19}},
+    {"@type": "TouristDestination", "name": "Wadi Rum, Jordan", "geo": {"@type": "GeoCoordinates", "latitude": 29.58, "longitude": 35.42}},
+    {"@type": "TouristDestination", "name": "Naviti Island, Fiji", "geo": {"@type": "GeoCoordinates", "latitude": -17.42, "longitude": 177.19}},
     {"@type": "TouristDestination", "name": "Ryōan-ji, Kyoto, Japan", "geo": {"@type": "GeoCoordinates", "latitude": 35.0347, "longitude": 135.7183}}
   ]
 }
 </script>
 <style>
-  /* Stillwater: deep night-blue canvas, warm amber accent, photographic world.
-     Six colours and two faces; everything else derives from scrollcraft.css. */
+  /* Stillwater: deep night-blue canvas, warm amber accent, photographic world. */
   :root {
     --sc-canvas:     #0B1020;
     --sc-surface:    #131A2E;
@@ -59,17 +61,51 @@
     color: var(--sc-ink); text-decoration: none; font-size: 1.05rem;
   }
   .site-bar .mark em { color: var(--sc-accent); font-style: normal; }
+  .site-bar nav { display: flex; gap: 1.3rem; }
+  .site-bar nav a {
+    font-family: var(--sc-font-text); font-size: 0.86rem; color: var(--sc-ink-soft);
+    text-decoration: none; transition: color 140ms var(--sc-ease-out);
+  }
+  .site-bar nav a:hover, .site-bar nav a:focus-visible { color: var(--sc-accent); }
   .site-bar .bar-cta {
-    font-family: var(--sc-font-text); font-size: 0.9rem; color: var(--sc-ink);
+    font-family: var(--sc-font-text); font-size: 0.88rem; color: var(--sc-ink);
     text-decoration: none; border: 1px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
     border-radius: 999px; padding: 0.45rem 1.05rem; transition: background 140ms var(--sc-ease-out), color 140ms var(--sc-ease-out);
   }
   .site-bar .bar-cta:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
 
-  /* Scenes */
-  .scene-img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  /* ---------- Signature move: the Dusk Dial ----------
+     One control, whole-page regrade: canvas, surface, accent, globe light.
+     JS writes --dusk (0..1) and data-dusk; CSS interpolates everywhere. */
+  .dusk-dial {
+    position: fixed; right: clamp(0.9rem, 2.5vw, 2rem); bottom: clamp(0.9rem, 3.5vh, 2rem);
+    z-index: 50; display: flex; align-items: center; gap: 0.7rem;
+    background: color-mix(in srgb, var(--sc-surface) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent);
+    border-radius: 999px; padding: 0.55rem 1rem;
+    backdrop-filter: blur(8px); box-shadow: var(--sc-e2);
   }
+  .dusk-dial .sun-track {
+    position: relative; width: clamp(6.5rem, 11vw, 9.5rem); height: 4px; border-radius: 2px;
+    background: linear-gradient(to right, #F5D9A8, var(--sc-accent) 45%, #2C3E66 78%, #101B33);
+    touch-action: none; cursor: ew-resize;
+  }
+  .dusk-dial .sun {
+    position: absolute; top: 50%; left: calc(var(--dusk, 0) * 100%);
+    width: 16px; height: 16px; border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 35% 35%, #FFE9C4, var(--sc-accent));
+    box-shadow: 0 0 12px color-mix(in srgb, var(--sc-accent) 75%, transparent);
+    transition: background 150ms linear, box-shadow 150ms linear;
+  }
+  .dusk-dial label {
+    font-family: var(--sc-font-text); font-size: 0.8rem; color: var(--sc-ink-soft);
+    white-space: nowrap; min-width: 4.6em; text-align: right;
+  }
+  body[data-dusk="1"] { --sc-canvas: #070B16; --sc-surface: #0E1526; --sc-accent: #97A8DE; }
+
+  /* ---------- Scenes ---------- */
+  .scene-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .scrim-soft {
     position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(to top, color-mix(in srgb, var(--sc-canvas) 78%, transparent), transparent 42%);
@@ -112,19 +148,47 @@
     font-size: 0.8rem; color: var(--sc-ink-soft);
     background: linear-gradient(to top, color-mix(in srgb, #05070F 72%, transparent), transparent);
   }
+  /* Fact strips: only documented figures */
+  .facts { display: flex; flex-wrap: wrap; gap: 1.2rem 2.2rem; margin-top: 1.5rem; }
+  .facts .fact { min-width: 5ch; }
+  .facts .n {
+    display: block; font-family: var(--sc-font-display); font-weight: 600; font-size: 1.6rem;
+    color: var(--sc-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  }
+  .facts .l { display: block; font-size: 0.78rem; color: var(--sc-ink-soft); margin-top: 0.15rem; max-width: 16ch; }
 
-  /* NOTE: no `position` rule here — the engine makes [data-sc-stage] sticky;
-     any author position override silently breaks the pin. */
+  /* NOTE: no `position` rule on [data-sc-stage] wrappers — the engine's CSS
+     makes the stage sticky; an author position override silently kills the pin. */
   .fullbleed { height: 100vh; overflow: hidden; }
   .fullbleed .sc-copy { position: absolute; z-index: 2; }
 
-  /* Fiji: authored silence. Big air, one line. */
+  /* Hero: the globe turning behind the headline */
+  .hero-globe { position: absolute; inset: 0; display: grid; place-items: center; }
+  #hero-globe { width: min(86vmin, 720px); height: min(86vmin, 720px); opacity: 0.55; }
+
+  /* Fiji: authored silence */
   .silence {
     min-height: 92vh; display: grid; place-items: center; text-align: center;
     padding: clamp(4rem, 12vh, 10rem) 1.5rem;
   }
   .silence .place-media { max-width: 30rem; margin: 0 auto 2.2rem; }
   .silence p { color: var(--sc-ink-soft); max-width: 30ch; margin: 0 auto; }
+
+  /* Ways to be quiet: the pan rail */
+  .rail {
+    display: flex; gap: clamp(1.2rem, 2.5vw, 2.4rem); align-items: stretch;
+    height: 100%; align-content: center;
+    padding: 0 clamp(1.25rem, 5vw, 5rem);
+  }
+  .rail > * { margin-top: auto; margin-bottom: auto; }
+  .rail-lead { flex: 0 0 auto; width: clamp(15rem, 24vw, 22rem); }
+  .rail-note { flex: 0 0 auto; width: clamp(13rem, 20vw, 17rem); }
+  .rail-note p { color: var(--sc-ink-soft); font-size: 0.9rem; max-width: 26ch; }
+  .rail-item { flex: 0 0 auto; width: clamp(14rem, 22vw, 19rem); }
+  .rail-item .ri-media { border-radius: 12px; overflow: hidden; box-shadow: var(--sc-e1); margin-bottom: 0.9rem; }
+  .rail-item img { display: block; width: 100%; height: auto; }
+  .rail-item h3 { font-family: var(--sc-font-display); font-size: 1.02rem; font-weight: 600; color: var(--sc-ink); }
+  .rail-item p { font-size: 0.86rem; color: var(--sc-ink-soft); margin-top: 0.25rem; }
 
   /* Find your calm */
   .calm { min-height: 100vh; display: grid; place-items: center; overflow: hidden; }
@@ -156,6 +220,14 @@
   .calm-row button:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 2px; }
   .calm-answer { margin-top: 1rem; font-size: 0.95rem; color: var(--sc-ink-soft); min-height: 3.2em; }
   .calm-answer strong { color: var(--sc-ink); font-weight: 500; }
+  .mood-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.8rem; }
+  .mood-chips button {
+    background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent);
+    border-radius: 999px; padding: 0.35rem 0.85rem; font: inherit; font-size: 0.85rem; cursor: pointer;
+    transition: color 140ms var(--sc-ease-out), border-color 140ms var(--sc-ease-out), background 140ms var(--sc-ease-out);
+  }
+  .mood-chips button:hover { color: var(--sc-accent-ink); background: var(--sc-accent); border-color: var(--sc-accent); }
+  .mood-chips button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
 
   /* Close: real map + CTA */
   .atlas { max-width: 78rem; margin: 0 auto; padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem) 4rem; }
@@ -181,14 +253,8 @@
   }
   .atlas-pin span { width: 4px; height: 4px; border-radius: 50%; background: var(--sc-accent-ink); }
   .atlas-pin:hover { transform: scale(1.15); }
-  .map-fallback {
-    display: grid; place-items: center; height: min(64vh, 560px);
-    color: var(--sc-ink-soft); font-size: 0.95rem; text-align: center; padding: 1.5rem;
-    background:
-      radial-gradient(1200px 500px at 70% 20%, color-mix(in srgb, var(--sc-surface) 70%, transparent), transparent),
-      var(--sc-surface);
-    border-radius: 16px;
-  }
+  .place--wide .place-copy { grid-column: 1 / -1; max-width: 60ch; margin-inline: auto; text-align: center; }
+  .place--wide .place-copy p { margin-inline: auto; }
   .foot {
     margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 8%, transparent);
     display: flex; flex-wrap: wrap; gap: 0.8rem 1.5rem; justify-content: space-between;
@@ -196,24 +262,9 @@
   }
   .foot a { color: var(--sc-ink-soft); }
 
-  .place--wide .place-copy { grid-column: 1 / -1; max-width: 60ch; margin-inline: auto; text-align: center; }
-  .place--wide .place-copy p { margin-inline: auto; }
-  .mood-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.8rem; }
-  .mood-chips button {
-    background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent);
-    border-radius: 999px; padding: 0.35rem 0.85rem; font: inherit; font-size: 0.85rem; cursor: pointer;
-    transition: color 140ms var(--sc-ease-out), border-color 140ms var(--sc-ease-out), background 140ms var(--sc-ease-out);
-  }
-  .mood-chips button:hover { color: var(--sc-accent-ink); background: var(--sc-accent); border-color: var(--sc-accent); }
-  .mood-chips button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
-
-  @media (max-width: 860px) {
-    .place, .place.flip { grid-template-columns: 1fr; }
-    .place.flip .place-copy { order: 0; }
-  }
   /* No-WebGL fallback: calm gradient glow instead of the globe canvas */
-  .calm-globe-wrap.no-webgl #calm-globe { display: none; }
-  .calm-globe-wrap.no-webgl::before {
+  .calm-globe-wrap.no-webgl #calm-globe, .hero-globe.no-webgl #hero-globe { display: none; }
+  .calm-globe-wrap.no-webgl::before, .hero-globe.no-webgl::before {
     content: ""; position: absolute; width: min(70vmin, 560px); height: min(70vmin, 560px);
     border-radius: 50%;
     background: radial-gradient(circle at 38% 34%,
@@ -225,58 +276,129 @@
   /* Map failure fallback */
   #atlas-map.map-dead { display: none; }
   .map-frame.map-dead::after {
-    content: "The live map needs WebGL, which this device or browser has turned off. The five places, with exact coordinates: Blue Lagoon, Iceland (63.88 N, 22.45 W) · Hill Inlet, Australia (20.28 S, 149.05 E) · Napali Coast, Hawaii (22.17 N, 159.60 W) · Naviti Island, Fiji (17.42 S, 177.19 E) · Ryoan-ji, Kyoto (35.03 N, 135.72 E).";
+    content: "The live map needs WebGL, which this device or browser has turned off. The eight places, with exact coordinates: Blue Lagoon, Iceland (63.88 N, 22.45 W) · Reine, Norway (67.93 N, 13.09 E) · Sorvagsvatn, Faroe Islands (62.06 N, 7.35 W) · Hill Inlet, Australia (20.28 S, 149.05 E) · Napali Coast, Hawaii (22.17 N, 159.60 W) · Wadi Rum, Jordan (29.58 N, 35.42 E) · Naviti Island, Fiji (17.42 S, 177.19 E) · Ryoan-ji, Kyoto (35.03 N, 135.72 E).";
     display: grid; place-items: center; height: min(64vh, 560px); padding: 2rem;
-    color: var(--sc-ink-soft); font-size: 0.92rem; text-align: center; line-height: 1.7;
+    color: var(--sc-ink-soft); font-size: 0.88rem; text-align: center; line-height: 1.7;
     background: var(--sc-surface); border-radius: 16px;
   }
+
+  @media (max-width: 860px) {
+    .place, .place.flip { grid-template-columns: 1fr; }
+    .place.flip .place-copy { order: 0; }
+    .site-bar nav { display: none; }
+    .dusk-dial label { display: none; }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .calm-globe-wrap { opacity: 0.55; }
+    .calm-globe-wrap, .hero-globe { opacity: 0.55; }
   }
 </style>
 </head>
-<body>
+<body data-dusk="0">
 
 <span data-sc-progress></span>
 <div class="sc-grain" aria-hidden="true"></div>
 
 <header class="site-bar">
   <a class="mark" href="#top">Still<em>water</em></a>
+  <nav aria-label="Places">
+    <a href="#water">Water</a>
+    <a href="#coast">Coast</a>
+    <a href="#sand">Sand</a>
+    <a href="#stone">Stone</a>
+  </nav>
   <a class="bar-cta" href="#calm">Find your calm</a>
 </header>
 
+<!-- The Dusk Dial: drag the sun from noon to midnight, the whole page follows -->
+<div class="dusk-dial" role="group" aria-label="Time of day">
+  <div class="sun-track" id="dusk-track" tabindex="0" role="slider"
+       aria-label="Time of day, from daylight to night"
+       aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="sun"></div>
+  </div>
+  <label id="dusk-label">Daylight</label>
+</div>
+
 <main id="top">
 
-  <!-- 1 · RECOGNITION: the still lagoon. Pin with parallax; the ground is already there. -->
-  <section data-sc-act="pin" data-sc-span="2.4" data-sc-drift="#0B1020">
-    <div data-sc-stage class="fullbleed" data-sc-spotlight>
+  <!-- 1 · RECOGNITION: the still lagoon, globe turning behind the headline -->
+  <section data-sc-act="pin" data-sc-span="2.6" data-sc-drift="#0B1020">
+    <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/hero-lagoon.jpg" alt="Milky turquoise geothermal water between black lava fields at dusk" width="1920" height="1280" data-sc-parallax="-0.9">
       <div class="scrim-lead" aria-hidden="true"></div>
       <div class="scrim-top" aria-hidden="true"></div>
+      <div class="hero-globe" data-sc-cue="0 1 0 0" aria-hidden="true">
+        <canvas id="hero-globe" width="1280" height="1280"></canvas>
+      </div>
       <div class="sc-copy" style="inset:auto 0 clamp(3rem,10vh,6rem) 0; padding: 0 clamp(1.25rem,5vw,5rem);" data-sc-cue="0 0.78 0">
         <h1 class="sc-display sc-display--xl" data-sc-kinetic="lines" style="max-width: 14ch;">Some places are quieter than you.</h1>
-        <p class="sc-body" style="max-width: 40ch; margin-top: 1rem; color: var(--sc-ink); text-shadow: 0 1px 14px color-mix(in srgb, #05070F 65%, transparent);">Five of them, chosen for one reason: they slow you down the moment you arrive.</p>
+        <p class="sc-body" style="max-width: 40ch; margin-top: 1rem; color: var(--sc-ink); text-shadow: 0 1px 14px color-mix(in srgb, #05070F 65%, transparent);">Eight of them, chosen for one reason: they slow you down the moment you arrive.</p>
       </div>
     </div>
   </section>
 
-  <!-- 2 · LONGING: Iceland, document-quiet flow with a reveal -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0D1226">
+  <!-- 2 · ICELAND -->
+  <section id="water" class="sc-section" data-sc-act="flow" data-sc-drift="#0D1226">
     <div class="place">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
         <span class="at">Iceland</span>
         <h2 class="sc-display sc-display--lg">Water that has been still for a thousand years.</h2>
         <p>The Blue Lagoon sits in a lava field where the ground itself is warm. You sink in, the steam closes around you, and the noise you carried here stops at the shoreline.</p>
         <p>Go in the last hours of daylight. The water holds the heat of the day and the sky turns the colour of the page you are reading.</p>
+        <div class="facts">
+          <div class="fact"><span class="n" data-sc-count="0 38" data-sc-count-at="0 0.45">38</span><span class="l">degrees, winter and summer, in the water</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 63.88" data-sc-count-at="0.05 0.5">63.88</span><span class="l">degrees north</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 2.5" data-sc-count-at="0.1 0.55">2.5</span><span class="l">million litres of geothermal seawater a day</span></div>
+        </div>
       </div>
       <figure class="place-media" data-sc-reveal="right" data-sc-reveal-at="0.15 0.6">
-        <img src="assets/iceland.jpg" alt="Pale blue geothermal lagoon bordered by mossy lava rock" width="1920" height="1280" loading="lazy">
+        <img src="assets/iceland.jpg" alt="Pale blue geothermal lagoon bordered by mossy lava rock at golden hour" width="1920" height="1280" loading="lazy">
         <figcaption>Grindavík, Iceland · 63.88° N</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- 3 · WONDER: the tide drawing itself, a full-bleed wipe -->
+  <!-- 3 · NORWAY: the midnight sun -->
+  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0B1224">
+    <div class="place flip">
+      <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
+        <span class="at">Norway</span>
+        <h2 class="sc-display sc-display--lg">The sun does not set here for ten weeks.</h2>
+        <p>Reine sits above the Arctic Circle, where summer light lasts through the night and the fjord holds the mountains upside down. You lose track of the hour. That is the point.</p>
+        <div class="facts">
+          <div class="fact"><span class="n" data-sc-count="0 67.9" data-sc-count-at="0 0.45">67.9</span><span class="l">degrees north</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 10" data-sc-count-at="0.05 0.5">10</span><span class="l">weeks of midnight sun, May to July</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 170" data-sc-count-at="0.1 0.55">170</span><span class="l">people live in Reine, give or take</span></div>
+        </div>
+      </div>
+      <figure class="place-media" data-sc-reveal="left" data-sc-reveal-at="0.15 0.6">
+        <img src="assets/lofoten.jpg" alt="Red cabins and granite peaks reflected in the still water of Reine, Lofoten" width="1920" height="1280" loading="lazy">
+        <figcaption>Reine, Lofoten · 67.93° N</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4 · FAROE ISLANDS: the lake above the ocean -->
+  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0C1428">
+    <div class="place">
+      <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
+        <span class="at">Faroe Islands</span>
+        <h2 class="sc-display sc-display--lg">A lake that seems to hang over the sea.</h2>
+        <p>Sørvágsvatn lies 30 metres above the Atlantic. From the cliff at Trælanípa it looks ready to pour straight into the ocean. Walk out, stand still, and the wind is the only sound you will hear all day.</p>
+        <div class="facts">
+          <div class="fact"><span class="n" data-sc-count="0 142" data-sc-count-at="0 0.45">142</span><span class="l">metre cliff at Trælanípa</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 30" data-sc-count-at="0.05 0.5">30</span><span class="l">metres of lake above the sea</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 54000" data-sc-count-at="0.1 0.55">54,000</span><span class="l">sheep. Also the human population</span></div>
+        </div>
+      </div>
+      <figure class="place-media" data-sc-reveal="right" data-sc-reveal-at="0.15 0.6">
+        <img src="assets/faroe.jpg" alt="Lake Sorvagsvatn perched above the Atlantic at the Trælanípa cliff, Faroe Islands" width="1920" height="1280" loading="lazy">
+        <figcaption>Vágar, Faroe Islands · 62.06° N</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5 · AUSTRALIA: the tide drawing itself -->
   <section data-sc-act="pin" data-sc-span="2.2" data-sc-drift="#0B1424">
     <div data-sc-stage class="fullbleed">
       <img class="scene-img" src="assets/whitehaven.jpg" alt="White sand swirling through turquoise shallows at Hill Inlet" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.6">
@@ -290,8 +412,8 @@
     </div>
   </section>
 
-  <!-- 4 · AWE: the ridges, document flow, iris reveal -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0C1626">
+  <!-- 6 · HAWAII: the ridges -->
+  <section id="coast" class="sc-section" data-sc-act="flow" data-sc-drift="#0C1626">
     <div class="place place--wide" style="max-width: 92rem;">
       <figure class="place-media" data-sc-reveal="iris" data-sc-reveal-at="0.1 0.55" style="grid-column: 1 / -1;">
         <img src="assets/napali.jpg" alt="Fluted green ridges of the Napali Coast meeting the Pacific" width="1761" height="1173" loading="lazy">
@@ -301,11 +423,28 @@
         <span class="at">Hawaii</span>
         <h2 class="sc-display sc-display--lg">Reachable only by boat, on foot, or by giving up.</h2>
         <p>The Nāpali Coast has no road along it. The ridges you are looking at have stayed this quiet because they are genuinely hard to get to, and the people who make the effort go quiet too.</p>
+        <div class="facts" style="justify-content:center;">
+          <div class="fact"><span class="n" data-sc-count="0 17" data-sc-count-at="0 0.45">17</span><span class="l">kilometres of coast, no road</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 1200" data-sc-count-at="0.05 0.5">1,200</span><span class="l">metres the ridges climb from the sea</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 5 · INTIMACY: authored silence. One tree, one line, almost no copy. -->
+  <!-- 7 · JORDAN: the desert at dusk -->
+  <section id="sand" data-sc-act="pin" data-sc-span="2.0" data-sc-drift="#141018">
+    <div data-sc-stage class="fullbleed">
+      <img class="scene-img" src="assets/wadirum.jpg" alt="Red sand and sandstone massifs at sunset in Wadi Rum" width="1920" height="1280" loading="lazy" data-sc-parallax="-0.5">
+      <div class="scrim-lead" aria-hidden="true"></div>
+      <div class="sc-copy" style="inset:auto 0 clamp(3rem,9vh,5rem) 0; padding: 0 clamp(1.25rem,5vw,5rem);" data-sc-cue="0.1 0.86">
+        <span class="at" style="color:var(--sc-accent); letter-spacing:0.06em; text-transform:uppercase; font-size:0.92rem;">Jordan</span>
+        <h2 class="sc-display sc-display--lg" data-sc-kinetic="lines">Silence with a temperature.</h2>
+        <p class="sc-body" style="max-width: 40ch;">When the sun drops behind the jebels, Wadi Rum goes red, then purple, then black. The desert quiet is a language. You learn it in one night.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · FIJI: authored silence -->
   <section data-sc-act="pin" data-sc-span="1.6" data-sc-drift="#0E1524">
     <div data-sc-stage class="silence">
       <div>
@@ -317,14 +456,18 @@
     </div>
   </section>
 
-  <!-- 6 · CALM: raked gravel, the slowest rhythm on the page -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#0B1020">
+  <!-- 9 · KYOTO: stone -->
+  <section id="stone" class="sc-section" data-sc-act="flow" data-sc-drift="#0B1020">
     <div class="place flip">
       <div class="place-copy sc-stack" data-sc-in data-sc-stagger="70">
         <span class="at">Kyoto</span>
         <h2 class="sc-display sc-display--lg">Fifteen monks have failed to count these rocks.</h2>
         <p>Ryōan-ji's garden has kept its five rock groups and raked gravel for five hundred years. Legend says only enlightenment lets you see all fifteen stones from the veranda.</p>
         <p>Whatever you see, the point is that you sat still long enough to look.</p>
+        <div class="facts">
+          <div class="fact"><span class="n" data-sc-count="0 15" data-sc-count-at="0 0.45">15</span><span class="l">stones. Nobody has counted them all</span></div>
+          <div class="fact"><span class="n" data-sc-count="0 500" data-sc-count-at="0.05 0.5">500</span><span class="l">years of raked gravel</span></div>
+        </div>
       </div>
       <figure class="place-media" data-sc-reveal="left" data-sc-reveal-at="0.15 0.6">
         <img src="assets/kyoto.jpg" alt="Raked white gravel and moss-covered rocks of the Ryoan-ji zen garden" width="1920" height="1280" loading="lazy">
@@ -333,9 +476,30 @@
     </div>
   </section>
 
-  <!-- 7 · CURIOSITY: the peak. The globe answers in light. -->
+  <!-- 10 · WAYS TO BE QUIET: the pan rail -->
+  <section class="sc-section" data-sc-act="pan" data-sc-span="4" data-sc-drift="#0C1222">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.08">
+        <div class="rail-lead sc-stack">
+          <h2 class="sc-display sc-display--md">Ways to be quiet.</h2>
+          <p class="sc-body" style="max-width: 26ch;">Eight places, eight kinds of silence. Pick the one you are missing.</p>
+        </div>
+        <article class="rail-item"><div class="ri-media"><img src="assets/iceland.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Soak</h3><p>Warm water, cold air, no talking.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/lofoten.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Drift</h3><p>Light that never leaves, water that never ends.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/faroe.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Wind</h3><p>One sound, everywhere, all day.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/whitehaven.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Tide</h3><p>The beach redraws itself twice a day.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/napali.jpg" width="881" height="587" alt="" loading="lazy"></div><h3>Scale</h3><p>Ridges that make your problems the right size.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/wadirum.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Ember</h3><p>A desert night with more stars than sky.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/yasawa.jpg" width="960" height="540" alt="" loading="lazy"></div><h3>Empty</h3><p>A beach with one set of footprints: yours.</p></article>
+        <article class="rail-item"><div class="ri-media"><img src="assets/kyoto.jpg" width="960" height="640" alt="" loading="lazy"></div><h3>Rake</h3><p>Five hundred years of the same five rocks.</p></article>
+        <div class="rail-note"><p>Every one of these is reachable with a commercial flight and one boat, bus or road. None needs a guide, a pass, or a plan past the first morning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · CURIOSITY: the peak. The globe answers in light. -->
   <section id="calm" data-sc-act="pin" data-sc-span="3.2" data-sc-drift="#090D1A">
-    <div data-sc-stage class="calm" data-sc-spotlight>
+    <div data-sc-stage class="calm">
       <div class="calm-globe-wrap" data-sc-cue="0 1 0 0" aria-hidden="true">
         <canvas id="calm-globe" width="1280" height="1280"></canvas>
       </div>
@@ -356,7 +520,7 @@
     </div>
   </section>
 
-  <!-- 8 · RESOLVE: the whole world of calm on one real map. Last act: holds. -->
+  <!-- 12 · RESOLVE: every quiet place on one real map -->
   <section class="sc-section" data-sc-act="flow" data-sc-drift="#0B1020">
     <div class="atlas sc-stack" data-sc-in data-sc-stagger="70">
       <h2 class="sc-display sc-display--lg">Every quiet place, on one map.</h2>
