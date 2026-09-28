@@ -10,6 +10,11 @@
   to = "/.netlify/functions/suggest"
   status = 200
 
+[[redirects]]
+  from = "/api/plan"
+  to = "/.netlify/functions/plan"
+  status = 200
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

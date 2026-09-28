@@ -84,7 +84,10 @@
     border: 1px solid color-mix(in srgb, var(--sc-ink) 12%, transparent);
     border-radius: 999px; padding: 0.55rem 1rem;
     backdrop-filter: blur(8px); box-shadow: var(--sc-e2);
+    transition: opacity 200ms var(--sc-ease-out), transform 200ms var(--sc-ease-out);
   }
+  /* The dial hides while the planner (dense content) is on screen */
+  .dusk-dial.dial-hidden { opacity: 0; transform: translateY(12px); pointer-events: none; }
   .dusk-dial .sun-track {
     position: relative; width: clamp(6.5rem, 11vw, 9.5rem); height: 4px; border-radius: 2px;
     background: linear-gradient(to right, #F5D9A8, var(--sc-accent) 45%, #2C3E66 78%, #101B33);
@@ -229,6 +232,88 @@
   .mood-chips button:hover { color: var(--sc-accent-ink); background: var(--sc-accent); border-color: var(--sc-accent); }
   .mood-chips button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
 
+  /* ---------- The Planner ---------- */
+  .planner { max-width: 78rem; margin: 0 auto; padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem) 4rem; }
+  .spots { display: grid; gap: 1.4rem; margin-top: 2rem; }
+  .spot {
+    background: color-mix(in srgb, var(--sc-surface) 82%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent);
+    border-radius: 16px; padding: clamp(1.2rem, 2.5vw, 2rem);
+  }
+  .spot-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+  .spot-flag { font-size: 1.6rem; }
+  .spot-head h3 { font-size: 1.3rem; font-weight: 600; color: var(--sc-ink); margin: 0; }
+  .spot-country { color: var(--sc-ink-soft); font-weight: 400; font-size: 1rem; }
+  .spot-pick { margin-left: auto; display: flex; align-items: center; gap: 0.45rem; font-size: 0.9rem; color: var(--sc-ink-soft); cursor: pointer; }
+  .spot-pick input { width: 1.05rem; height: 1.05rem; accent-color: var(--sc-accent); cursor: pointer; }
+  .spot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.4rem 2rem; }
+  .spot-col h4 {
+    font-family: var(--sc-font-text); font-size: 0.78rem; font-weight: 500; color: var(--sc-accent);
+    text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.35rem;
+  }
+  .spot-col h4:not(:first-child) { margin-top: 1.1rem; }
+  .spot-col p, .spot-col li { font-size: 0.9rem; color: var(--sc-ink-soft); line-height: 1.55; margin: 0 0 0.3rem; }
+  .spot-list { list-style: none; padding: 0; margin: 0; }
+  .spot-list li::before { content: "· "; color: var(--sc-accent); }
+  .wbox { min-height: 3.4rem; }
+  .wnow { display: flex; align-items: baseline; gap: 0.5rem; }
+  .w-ico { font-size: 1.3rem; }
+  .w-temp { font-family: var(--sc-font-display); font-weight: 600; font-size: 1.5rem; color: var(--sc-ink); }
+  .w-desc { font-size: 0.82rem; color: var(--sc-ink-soft); }
+  .wdays { display: flex; gap: 0.9rem; margin-top: 0.5rem; }
+  .wday { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; font-size: 0.78rem; color: var(--sc-ink-soft); }
+  .wd-t { color: var(--sc-ink); font-weight: 500; }
+  .w-loading { font-size: 0.85rem; color: var(--sc-ink-soft); opacity: 0.7; }
+  .dist { font-size: 0.9rem; color: var(--sc-ink-soft); line-height: 1.55; }
+  .dist strong { color: var(--sc-ink); font-weight: 500; }
+  .ptable { border: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent); border-radius: 10px; overflow: hidden; }
+  .pr-row { display: flex; justify-content: space-between; gap: 0.8rem; padding: 0.42rem 0.8rem; font-size: 0.85rem; color: var(--sc-ink-soft); }
+  .pr-row:nth-child(even) { background: color-mix(in srgb, var(--sc-canvas) 55%, transparent); }
+  .pr-row .pr-you { color: var(--sc-ink); font-weight: 500; }
+  .pr-head { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--sc-ink-soft); }
+  .pr-verdict { font-weight: 500; }
+  .pr-verdict.good { color: #7FC98F; } .pr-verdict.ok { color: var(--sc-accent); }
+  .pr-verdict.warn { color: #E5B45B; } .pr-verdict.bad { color: #E57B6B; }
+  .pnote { font-size: 0.82rem !important; margin-top: 0.5rem !important; }
+  .pcheck { margin-top: 1rem; }
+  .pcheck label { display: block; font-size: 0.85rem; color: var(--sc-ink-soft); margin-bottom: 0.4rem; }
+  .pcheck-row { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+  .pcheck-row select, .pcheck-row input {
+    background: var(--sc-canvas); color: var(--sc-ink); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent);
+    border-radius: 8px; padding: 0.45rem 0.6rem; font: inherit; font-size: 0.85rem;
+  }
+  .pcheck-row input { width: 6.5rem; }
+  .pcheck-row button {
+    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 8px;
+    padding: 0.45rem 0.9rem; font: inherit; font-size: 0.85rem; font-weight: 500; cursor: pointer;
+  }
+  .pcheck-row button:active { transform: scale(0.97); }
+  .pcheck-out { margin-top: 0.5rem; font-size: 0.87rem; color: var(--sc-ink-soft); min-height: 1.2em; }
+  .pcheck-out strong.good { color: #7FC98F; } .pcheck-out strong.ok { color: var(--sc-accent); }
+  .pcheck-out strong.warn { color: #E5B45B; } .pcheck-out strong.bad { color: #E57B6B; }
+  .planbox {
+    margin-top: 2.4rem; background: color-mix(in srgb, var(--sc-surface) 82%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 9%, transparent);
+    border-radius: 16px; padding: clamp(1.4rem, 3vw, 2.2rem);
+  }
+  .planbox h3 { margin: 0 0 1rem; font-size: 1.25rem; }
+  .plan-opts { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+  .plan-opts label { font-size: 0.88rem; color: var(--sc-ink-soft); display: flex; flex-direction: column; gap: 0.3rem; }
+  .plan-opts input {
+    background: var(--sc-canvas); color: var(--sc-ink); border: 1px solid color-mix(in srgb, var(--sc-ink) 18%, transparent);
+    border-radius: 8px; padding: 0.5rem 0.7rem; font: inherit; font-size: 0.9rem;
+  }
+  .plan-opts input[type="number"] { width: 5rem; }
+  .plan-row { margin-top: 1rem; }
+  .plan-out { margin-top: 1.4rem; font-size: 0.92rem; color: var(--sc-ink-soft); }
+  .plan-route { font-size: 1rem; color: var(--sc-ink); margin-bottom: 1rem; }
+  .plan-day { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0.9rem; padding: 0.7rem 0; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 7%, transparent); }
+  .plan-dnum { font-family: var(--sc-font-display); font-weight: 600; color: var(--sc-accent); font-size: 0.95rem; }
+  .plan-day strong { color: var(--sc-ink); font-weight: 500; }
+  .plan-day p { margin: 0.25rem 0 0; line-height: 1.55; }
+  .plan-budget { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--sc-accent) 9%, transparent); color: var(--sc-ink-soft); font-size: 0.9rem; }
+  .plan-note { margin-top: 1rem; font-size: 0.8rem; opacity: 0.75; }
+
   /* Close: real map + CTA */
   .atlas { max-width: 78rem; margin: 0 auto; padding: clamp(5rem, 10vh, 9rem) clamp(1.25rem, 5vw, 5rem) 4rem; }
   .atlas .map-frame {
@@ -300,11 +385,9 @@
 
 <header class="site-bar">
   <a class="mark" href="#top">Still<em>water</em></a>
-  <nav aria-label="Places">
-    <a href="#water">Water</a>
-    <a href="#coast">Coast</a>
-    <a href="#sand">Sand</a>
-    <a href="#stone">Stone</a>
+  <nav aria-label="Sections">
+    <a href="#plan">Plan</a>
+    <a href="#calm">Find your calm</a>
   </nav>
   <a class="bar-cta" href="#calm">Find your calm</a>
 </header>
@@ -497,7 +580,31 @@
     </div>
   </section>
 
-  <!-- 11 · CURIOSITY: the peak. The globe answers in light. -->
+  <!-- 11 · THE PLANNER: plan the trip, place by place -->
+  <section id="plan" class="sc-section" data-sc-act="flow" data-sc-drift="#0D1126">
+    <div class="planner sc-stack" data-sc-in data-sc-stagger="70">
+      <span class="at">The planner</span>
+      <h2 class="sc-display sc-display--lg">Now plan it. For real.</h2>
+      <p class="atlas-note">Every place above, with the honest details: the best view, when to go, what it costs, whether the weather plays along, and how far it is from you. Tick your places, then let the AI draft the days.</p>
+
+      <div id="spots" class="spots"></div>
+
+      <div class="planbox">
+        <h3 class="sc-display">Draft my trip</h3>
+        <div class="plan-opts">
+          <label>Days: <input id="plan-days" type="number" min="1" max="21" value="7"></label>
+          <label>Who is going: <input id="plan-who" type="text" placeholder="a family with two kids (5 and 9)"></label>
+        </div>
+        <p class="atlas-note" id="pick-hint">Tick places in the panels above (the checkbox in each heading), then:</p>
+        <form id="plan-form" class="plan-row">
+          <button type="submit" id="plan-go" class="cta">Plan my trip</button>
+        </form>
+        <div id="plan-out" class="plan-out" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · CURIOSITY: the peak. The globe answers in light. -->
   <section id="calm" data-sc-act="pin" data-sc-span="3.2" data-sc-drift="#090D1A">
     <div data-sc-stage class="calm">
       <div class="calm-globe-wrap" data-sc-cue="0 1 0 0" aria-hidden="true">
@@ -542,6 +649,10 @@
 <script src="scrollcraft.js"></script>
 <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
 <script type="module" src="js/site.js"></script>
+<script type="module">
+  import { buildPlanner } from "./js/planner.js";
+  buildPlanner();
+</script>
 <script>ScrollCraft.mount(document.body);</script>
 </body>
 </html>

@@ -59,6 +59,14 @@ if (track) {
     if (e.key === "Home") { setDusk(0); e.preventDefault(); }
     if (e.key === "End") { setDusk(1); e.preventDefault(); }
   });
+  // Hide the dial while the planner section (dense panels) is in view
+  const dial = track.closest(".dusk-dial");
+  const planEl = document.getElementById("plan");
+  if (dial && planEl && "IntersectionObserver" in window) {
+    new IntersectionObserver((es) => {
+      dial.classList.toggle("dial-hidden", es.some(e => e.isIntersecting));
+    }, { rootMargin: "-80px" }).observe(planEl);
+  }
 }
 
 // ---------- Twin Cobe globes (hero: ambient; calm: the signature answer) ----------
