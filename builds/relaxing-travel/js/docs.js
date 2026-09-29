@@ -14,18 +14,12 @@ const NATIONALITIES = [
   "Nigeria", "Kenya", "Egypt", "Morocco", "Other",
 ];
 
-// Visa-friendliness data for our 8 featured destinations (widely-published rules,
-// still always verified via the official links shown).
-const DEST_VISA_NOTES = {
-  iceland: { zone: "Schengen area", note: "Schengen visa if required; 90 days in any 180 across the whole zone.", source: "https://utl.is/en/" },
-  lofoten: { zone: "Schengen area", note: "Schengen rules — same 90/180 day clock as the rest of the zone.", source: "https://www.udi.no/en/" },
-  faroe: { zone: "Danish realm", note: "NOT Schengen-customary: Faroe Islands have their own rules; a Schengen visa must be marked 'valid for Faroe Islands'.", source: "https://www.vestur far.fo/" },
-  whitehaven: { zone: "Australia", note: "Almost everyone needs an ETA or eVisitor in advance — apply online before booking flights.", source: "https://immi.homeaffairs.gov.au/" },
-  napali: { zone: "United States", note: "ESTA for visa-waiver countries (apply 72h+ before), otherwise a B-2 visa via interview.", source: "https://travel.state.gov/" },
-  wadirum: { zone: "Jordan", note: "Visa on arrival for most nationalities (~40 JOD); free with Jordan Pass bought before arrival.", source: "https://www.jordanpass.jo/" },
-  yasawa: { zone: "Fiji", note: "Visa-free entry for most Western nationals, 4 months on arrival.", source: "https://www.immigration.gov.fj/" },
-  kyoto: { zone: "Japan", note: "Visa-free 90 days for ~70 nationalities. Others need a visa via embassy or the eVisa system.", source: "https://www.mofa.go.jp/" },
-};
+// Visa notes come from the knowledge base (data/kb/*.json via js/kb-data.js).
+// Widely-published rules, still always verified via the official links shown.
+import { KB } from "./kb-data.js";
+const DEST_VISA_NOTES = Object.fromEntries(
+  Object.entries(KB).filter(([, e]) => e.visa).map(([k, e]) => [k, e.visa])
+);
 
 const esc = (s) => { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; };
 

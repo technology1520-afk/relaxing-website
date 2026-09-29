@@ -2,7 +2,7 @@
 // Data: static JSON (data/prices/index.json + per-city detail) — served from
 // Netlify's CDN, no function cost, lazy-loaded per city.
 
-const INDEX_URL = "data/prices/index.json";
+const INDEX_URL = "data/kb/index.json";
 let WORLD = null; // index cache
 
 const VIBE_MAP = {
@@ -87,9 +87,11 @@ function cardHTML(item) {
 
 // ---- Detail modal ----
 async function openDetail(key) {
-  let d;
-  try { d = await (await fetch(`data/prices/${key}.json`)).json(); }
+  let raw;
+  try { raw = await (await fetch(`data/kb/${key}.json`)).json(); }
   catch { return; }
+  // deep holds the original per-city detail when the entry was migrated from data/prices
+  const d = raw.deep && raw.deep.groceries ? raw.deep : raw;
   const p = d.prices;
   const money = (v) => v === 0 ? "Free" : "$" + (Number.isInteger(v) ? v : v.toFixed(2));
   const sec = (title, entries) => entries.length ? `

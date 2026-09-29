@@ -2,7 +2,8 @@
 // Data sources: js/data.js (curated), Open-Meteo (live weather, no key),
 // OpenRouter free models via /api/suggest (itinerary), Photon (place search).
 
-import { PLACE_DATA, fairVerdict } from "./data.js";
+import { PLACE_DATA } from "./kb-data.js";
+import { fairVerdict } from "./fair-price.js";
 
 // ---------- Weather: Open-Meteo, no key ----------
 async function getWeather(lat, lng) {
