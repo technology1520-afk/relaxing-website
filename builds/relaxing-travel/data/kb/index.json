@@ -158,7 +158,13 @@
       "grass-roof villages"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "nature",
+      "hiking",
+      "quiet",
+      "wild",
+      "scenic"
+    ]
   },
   {
     "key": "hoi-an",
@@ -206,7 +212,14 @@
       "lava fields"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "nature",
+      "winter",
+      "wellness",
+      "quiet",
+      "scenic",
+      "wild"
+    ]
   },
   {
     "key": "kotor",
@@ -310,7 +323,14 @@
       "sea eagles"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "mountain",
+      "nature",
+      "adventure",
+      "hiking",
+      "winter",
+      "beach"
+    ]
   },
   {
     "key": "marrakech",
@@ -413,7 +433,14 @@
       "snorkel"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "coast",
+      "boat",
+      "hiking",
+      "nature",
+      "romantic",
+      "scenic"
+    ]
   },
   {
     "key": "pokhara",
@@ -572,7 +599,14 @@
       "jeep tours"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "desert",
+      "camping",
+      "stargazing",
+      "adventure",
+      "quiet",
+      "culture"
+    ]
   },
   {
     "key": "whitehaven",
@@ -592,7 +626,14 @@
       "reef swims"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "beach",
+      "ocean",
+      "island",
+      "romantic",
+      "swim",
+      "nature"
+    ]
   },
   {
     "key": "yasawa",
@@ -612,7 +653,14 @@
       "cave swims"
     ],
     "quietPick": false,
-    "tags": []
+    "tags": [
+      "beach",
+      "island",
+      "tropical",
+      "quiet",
+      "swim",
+      "romantic"
+    ]
   },
   {
     "key": "zanzibar-stone-town",

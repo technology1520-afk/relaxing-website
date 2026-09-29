@@ -629,6 +629,13 @@ export const KB = {
    "cliff hikes",
    "puffins",
    "grass-roof villages"
+  ],
+  "tags": [
+   "nature",
+   "hiking",
+   "quiet",
+   "wild",
+   "scenic"
   ]
  },
  "hoi-an": {
@@ -797,6 +804,14 @@ export const KB = {
    "northern lights",
    "lagoon soak",
    "lava fields"
+  ],
+  "tags": [
+   "nature",
+   "winter",
+   "wellness",
+   "quiet",
+   "scenic",
+   "wild"
   ]
  },
  "kotor": {
@@ -1212,6 +1227,14 @@ export const KB = {
    "midnight sun",
    "fjord hikes",
    "sea eagles"
+  ],
+  "tags": [
+   "mountain",
+   "nature",
+   "adventure",
+   "hiking",
+   "winter",
+   "beach"
   ]
  },
  "marrakech": {
@@ -1608,6 +1631,14 @@ export const KB = {
    "coast boat tours",
    "kalalau lookout",
    "snorkel"
+  ],
+  "tags": [
+   "coast",
+   "boat",
+   "hiking",
+   "nature",
+   "romantic",
+   "scenic"
   ]
  },
  "pokhara": {
@@ -2238,6 +2269,14 @@ export const KB = {
    "desert camps",
    "stargazing",
    "jeep tours"
+  ],
+  "tags": [
+   "desert",
+   "camping",
+   "stargazing",
+   "adventure",
+   "quiet",
+   "culture"
   ]
  },
  "whitehaven": {
@@ -2285,6 +2324,14 @@ export const KB = {
    "white sand",
    "sailing",
    "reef swims"
+  ],
+  "tags": [
+   "beach",
+   "ocean",
+   "island",
+   "romantic",
+   "swim",
+   "nature"
   ]
  },
  "yasawa": {
@@ -2332,6 +2379,14 @@ export const KB = {
    "reef flats",
    "island hops",
    "cave swims"
+  ],
+  "tags": [
+   "beach",
+   "island",
+   "tropical",
+   "quiet",
+   "swim",
+   "romantic"
   ]
  },
  "zanzibar-stone-town": {
@@ -2613,7 +2668,13 @@ export const KB_INDEX = [
    "grass-roof villages"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "nature",
+   "hiking",
+   "quiet",
+   "wild",
+   "scenic"
+  ]
  },
  {
   "key": "hoi-an",
@@ -2661,7 +2722,14 @@ export const KB_INDEX = [
    "lava fields"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "nature",
+   "winter",
+   "wellness",
+   "quiet",
+   "scenic",
+   "wild"
+  ]
  },
  {
   "key": "kotor",
@@ -2765,7 +2833,14 @@ export const KB_INDEX = [
    "sea eagles"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "mountain",
+   "nature",
+   "adventure",
+   "hiking",
+   "winter",
+   "beach"
+  ]
  },
  {
   "key": "marrakech",
@@ -2868,7 +2943,14 @@ export const KB_INDEX = [
    "snorkel"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "coast",
+   "boat",
+   "hiking",
+   "nature",
+   "romantic",
+   "scenic"
+  ]
  },
  {
   "key": "pokhara",
@@ -3027,7 +3109,14 @@ export const KB_INDEX = [
    "jeep tours"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "desert",
+   "camping",
+   "stargazing",
+   "adventure",
+   "quiet",
+   "culture"
+  ]
  },
  {
   "key": "whitehaven",
@@ -3047,7 +3136,14 @@ export const KB_INDEX = [
    "reef swims"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "beach",
+   "ocean",
+   "island",
+   "romantic",
+   "swim",
+   "nature"
+  ]
  },
  {
   "key": "yasawa",
@@ -3067,7 +3163,14 @@ export const KB_INDEX = [
    "cave swims"
   ],
   "quietPick": false,
-  "tags": []
+  "tags": [
+   "beach",
+   "island",
+   "tropical",
+   "quiet",
+   "swim",
+   "romantic"
+  ]
  },
  {
   "key": "zanzibar-stone-town",
