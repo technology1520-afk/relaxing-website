@@ -35,5 +35,13 @@
     "zone": "Jordan",
     "note": "Visa on arrival for most nationalities (~40 JOD); free with Jordan Pass bought before arrival.",
     "source": "https://www.jordanpass.jo/"
-  }
+  },
+  "daily_budget": 80,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "best_for": [
+    "desert camps",
+    "stargazing",
+    "jeep tours"
+  ]
 }

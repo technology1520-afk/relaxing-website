@@ -4,7 +4,7 @@
   "name": "Pokhara",
   "city": "Pokhara",
   "country": "Nepal",
-  "flag": "\ud83c\uddf3\ud83c\uddf5",
+  "flag": "🇳🇵",
   "lat": 28.21,
   "lng": 83.99,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "pokhara",
     "city": "Pokhara",
     "country": "Nepal",
-    "flag": "\ud83c\uddf3\ud83c\uddf5",
+    "flag": "🇳🇵",
     "lat": 28.21,
     "lng": 83.99,
     "currency": "NPR ~133/$",
@@ -89,14 +89,14 @@
     "notes": "Gateway to Annapurna. Permits via agencies in town.",
     "docs": {
       "entry": "Visa on arrival for most: 15/30/90 days ($30/50/125).",
-      "insurance": "ESSENTIAL for trekking \u2014 rescue helicopter evacuations cost $5,000+.",
+      "insurance": "ESSENTIAL for trekking — rescue helicopter evacuations cost $5,000+.",
       "special": [
         "Annapurna Conservation Area Permit $25",
         "TIMS card",
         "Passport copies + photos for permits"
       ],
       "health": "Altitude; water treatment.",
-      "agency": "Permits via official NTB/TAAN offices in Pokhara; trekking agencies must be TAAN-registered \u2014 check the registry."
+      "agency": "Permits via official NTB/TAAN offices in Pokhara; trekking agencies must be TAAN-registered — check the registry."
     }
   },
   "bestMonths": "Trekking Oct-Nov, Mar-Apr (clear skies). Monsoon Jun-Sep. Cold winter nights.",
@@ -106,5 +106,13 @@
     "coffee": 1.5,
     "taxi": 2,
     "hotel": 40
-  }
+  },
+  "daily_budget": 31,
+  "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+    "annapurna",
+    "paragliding",
+    "sunrise views"
+  ]
 }

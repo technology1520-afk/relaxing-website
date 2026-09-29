@@ -4,7 +4,7 @@
   "name": "Bali (Ubud)",
   "city": "Bali (Ubud)",
   "country": "Indonesia",
-  "flag": "\ud83c\uddee\ud83c\udde9",
+  "flag": "🇮🇩",
   "lat": -8.51,
   "lng": 115.26,
   "tz": null,
@@ -22,7 +22,7 @@
     "key": "bali-ubud",
     "city": "Bali (Ubud)",
     "country": "Indonesia",
-    "flag": "\ud83c\uddee\ud83c\udde9",
+    "flag": "🇮🇩",
     "lat": -8.51,
     "lng": 115.26,
     "currency": "IDR ~16000/$",
@@ -93,7 +93,7 @@
     "notes": "Scooter essential. Tourist tax on arrival.",
     "docs": {
       "entry": "Visa on arrival (VoA) ~IDR 500,000 / $35, 30 days + one 30-day extension.",
-      "insurance": "Required by many villas; scooter accidents common \u2014 get cover.",
+      "insurance": "Required by many villas; scooter accidents common — get cover.",
       "special": [
         "Scooter licence (international permit)",
         "Tourist tax IDR 150,000 paid on arrival"
@@ -109,5 +109,14 @@
     "coffee": 1.8,
     "taxi": 2.5,
     "hotel": 55
-  }
+  },
+  "daily_budget": 35,
+  "daily_mid": 104,
+  "priceLevel": "moderate",
+  "best_for": [
+    "wellness",
+    "yoga retreats",
+    "nature",
+    "remote work"
+  ]
 }

@@ -4,7 +4,7 @@
   "name": "Hoi An",
   "city": "Hoi An",
   "country": "Vietnam",
-  "flag": "\ud83c\uddfb\ud83c\uddf3",
+  "flag": "🇻🇳",
   "lat": 15.88,
   "lng": 108.34,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "hoi-an",
     "city": "Hoi An",
     "country": "Vietnam",
-    "flag": "\ud83c\uddfb\ud83c\uddf3",
+    "flag": "🇻🇳",
     "lat": 15.88,
     "lng": 108.34,
     "currency": "VND ~25000/$",
@@ -106,5 +106,13 @@
     "coffee": 1.2,
     "taxi": 1.5,
     "hotel": 40
-  }
+  },
+  "daily_budget": 28,
+  "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+    "old town",
+    "cooking classes",
+    "tailored clothes"
+  ]
 }

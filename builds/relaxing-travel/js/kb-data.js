@@ -111,7 +111,16 @@ export const KB = {
    "coffee": 1.8,
    "taxi": 2.5,
    "hotel": 55
-  }
+  },
+  "daily_budget": 35,
+  "daily_mid": 104,
+  "priceLevel": "moderate",
+  "best_for": [
+   "wellness",
+   "yoga retreats",
+   "nature",
+   "remote work"
+  ]
  },
  "barcelona": {
   "key": "barcelona",
@@ -217,7 +226,15 @@ export const KB = {
    "coffee": 2.5,
    "taxi": 6,
    "hotel": 140
-  }
+  },
+  "daily_budget": 127,
+  "daily_mid": 227,
+  "priceLevel": "pricey",
+  "best_for": [
+   "gaudi",
+   "mediterranean",
+   "tapas"
+  ]
  },
  "cape-town": {
   "key": "cape-town",
@@ -325,7 +342,15 @@ export const KB = {
    "coffee": 2,
    "taxi": 4,
    "hotel": 80
-  }
+  },
+  "daily_budget": 68,
+  "daily_mid": 142,
+  "priceLevel": "pricey",
+  "best_for": [
+   "table mountain",
+   "penguins",
+   "wine country"
+  ]
  },
  "chiang-mai": {
   "key": "chiang-mai",
@@ -433,7 +458,15 @@ export const KB = {
    "coffee": 1.4,
    "taxi": 1.8,
    "hotel": 35
-  }
+  },
+  "daily_budget": 29,
+  "daily_mid": 71,
+  "priceLevel": "moderate",
+  "best_for": [
+   "long stays",
+   "cooking schools",
+   "nature"
+  ]
  },
  "cusco": {
   "key": "cusco",
@@ -541,7 +574,15 @@ export const KB = {
    "coffee": 1.8,
    "taxi": 3,
    "hotel": 60
-  }
+  },
+  "daily_budget": 44,
+  "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+   "machu picchu",
+   "hiking",
+   "culture"
+  ]
  },
  "faroe": {
   "key": "faroe",
@@ -580,7 +621,15 @@ export const KB = {
    "zone": "Danish realm",
    "note": "NOT Schengen-customary: Faroe Islands have their own rules; a Schengen visa must be marked 'valid for Faroe Islands'.",
    "source": "https://www.vesturfar.fo/"
-  }
+  },
+  "daily_budget": 150,
+  "daily_mid": 290,
+  "priceLevel": "pricey",
+  "best_for": [
+   "cliff hikes",
+   "puffins",
+   "grass-roof villages"
+  ]
  },
  "hoi-an": {
   "key": "hoi-an",
@@ -690,7 +739,15 @@ export const KB = {
    "coffee": 1.2,
    "taxi": 1.5,
    "hotel": 40
-  }
+  },
+  "daily_budget": 28,
+  "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+   "old town",
+   "cooking classes",
+   "tailored clothes"
+  ]
  },
  "iceland": {
   "key": "iceland",
@@ -732,6 +789,14 @@ export const KB = {
   },
   "related": [
    "reykjavik"
+  ],
+  "daily_budget": 220,
+  "daily_mid": 395,
+  "priceLevel": "pricey",
+  "best_for": [
+   "northern lights",
+   "lagoon soak",
+   "lava fields"
   ]
  },
  "kotor": {
@@ -837,7 +902,15 @@ export const KB = {
    "coffee": 2.5,
    "taxi": 4,
    "hotel": 85
-  }
+  },
+  "daily_budget": 80,
+  "daily_mid": 148,
+  "priceLevel": "pricey",
+  "best_for": [
+   "bay of kotor",
+   "old walls",
+   "boat trips"
+  ]
  },
  "kyoto": {
   "key": "kyoto",
@@ -965,7 +1038,15 @@ export const KB = {
    "zone": "Japan",
    "note": "Visa-free 90 days for ~70 nationalities. Others need a visa via embassy or the eVisa system.",
    "source": "https://www.mofa.go.jp/"
-  }
+  },
+  "daily_budget": 89,
+  "daily_mid": 195,
+  "priceLevel": "pricey",
+  "best_for": [
+   "temples",
+   "cherry blossom",
+   "culture"
+  ]
  },
  "lisbon": {
   "key": "lisbon",
@@ -1076,7 +1157,15 @@ export const KB = {
    "coffee": 2.2,
    "taxi": 5,
    "hotel": 110
-  }
+  },
+  "daily_budget": 101,
+  "daily_mid": 184,
+  "priceLevel": "pricey",
+  "best_for": [
+   "european city break",
+   "coastal walks",
+   "pastries"
+  ]
  },
  "lofoten": {
   "key": "lofoten",
@@ -1115,7 +1204,15 @@ export const KB = {
    "zone": "Schengen area",
    "note": "Schengen rules — same 90/180 day clock as the rest of the zone.",
    "source": "https://www.udi.no/en/"
-  }
+  },
+  "daily_budget": 180,
+  "daily_mid": 330,
+  "priceLevel": "pricey",
+  "best_for": [
+   "midnight sun",
+   "fjord hikes",
+   "sea eagles"
+  ]
  },
  "marrakech": {
   "key": "marrakech",
@@ -1224,7 +1321,15 @@ export const KB = {
    "coffee": 2,
    "taxi": 2.5,
    "hotel": 70
-  }
+  },
+  "daily_budget": 52,
+  "daily_mid": 119,
+  "priceLevel": "moderate",
+  "best_for": [
+   "medina",
+   "desert trips",
+   "hammams"
+  ]
  },
  "medellin": {
   "key": "medellin",
@@ -1331,7 +1436,15 @@ export const KB = {
    "coffee": 1.8,
    "taxi": 3,
    "hotel": 65
-  }
+  },
+  "daily_budget": 50,
+  "daily_mid": 113,
+  "priceLevel": "moderate",
+  "best_for": [
+   "comuna 13",
+   "coffee",
+   "spring weather"
+  ]
  },
  "mexico-city": {
   "key": "mexico-city",
@@ -1440,7 +1553,15 @@ export const KB = {
    "coffee": 2.2,
    "taxi": 3,
    "hotel": 90
-  }
+  },
+  "daily_budget": 64,
+  "daily_mid": 146,
+  "priceLevel": "pricey",
+  "best_for": [
+   "street tacos",
+   "museums",
+   "urban energy"
+  ]
  },
  "napali": {
   "key": "napali",
@@ -1479,7 +1600,15 @@ export const KB = {
    "zone": "United States",
    "note": "ESTA for visa-waiver countries (apply 72h+ before), otherwise a B-2 visa via interview.",
    "source": "https://travel.state.gov/"
-  }
+  },
+  "daily_budget": 210,
+  "daily_mid": 370,
+  "priceLevel": "pricey",
+  "best_for": [
+   "coast boat tours",
+   "kalalau lookout",
+   "snorkel"
+  ]
  },
  "pokhara": {
   "key": "pokhara",
@@ -1589,7 +1718,15 @@ export const KB = {
    "coffee": 1.5,
    "taxi": 2,
    "hotel": 40
-  }
+  },
+  "daily_budget": 31,
+  "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+   "annapurna",
+   "paragliding",
+   "sunrise views"
+  ]
  },
  "queenstown": {
   "key": "queenstown",
@@ -1698,7 +1835,15 @@ export const KB = {
    "coffee": 4.2,
    "taxi": 10,
    "hotel": 150
-  }
+  },
+  "daily_budget": 140,
+  "daily_mid": 258,
+  "priceLevel": "pricey",
+  "best_for": [
+   "adrenaline capital",
+   "lord of the rings",
+   "alpine"
+  ]
  },
  "reykjavik": {
   "key": "reykjavik",
@@ -1810,6 +1955,14 @@ export const KB = {
   },
   "related": [
    "iceland"
+  ],
+  "daily_budget": 220,
+  "daily_mid": 395,
+  "priceLevel": "pricey",
+  "best_for": [
+   "northern lights",
+   "blue lagoon",
+   "road trips"
   ]
  },
  "santorini": {
@@ -1917,7 +2070,15 @@ export const KB = {
    "coffee": 3.5,
    "taxi": 8,
    "hotel": 180
-  }
+  },
+  "daily_budget": 161,
+  "daily_mid": 283,
+  "priceLevel": "pricey",
+  "best_for": [
+   "caldera views",
+   "white villages",
+   "honeymoon"
+  ]
  },
  "tbilisi": {
   "key": "tbilisi",
@@ -2022,7 +2183,15 @@ export const KB = {
    "coffee": 2,
    "taxi": 3,
    "hotel": 60
-  }
+  },
+  "daily_budget": 52,
+  "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+   "sulphur baths",
+   "khinkali",
+   "caucasus"
+  ]
  },
  "wadirum": {
   "key": "wadirum",
@@ -2061,7 +2230,15 @@ export const KB = {
    "zone": "Jordan",
    "note": "Visa on arrival for most nationalities (~40 JOD); free with Jordan Pass bought before arrival.",
    "source": "https://www.jordanpass.jo/"
-  }
+  },
+  "daily_budget": 80,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "best_for": [
+   "desert camps",
+   "stargazing",
+   "jeep tours"
+  ]
  },
  "whitehaven": {
   "key": "whitehaven",
@@ -2100,7 +2277,15 @@ export const KB = {
    "zone": "Australia",
    "note": "Almost everyone needs an ETA or eVisitor in advance — apply online before booking flights.",
    "source": "https://immi.homeaffairs.gov.au/"
-  }
+  },
+  "daily_budget": 170,
+  "daily_mid": 300,
+  "priceLevel": "pricey",
+  "best_for": [
+   "white sand",
+   "sailing",
+   "reef swims"
+  ]
  },
  "yasawa": {
   "key": "yasawa",
@@ -2139,7 +2324,15 @@ export const KB = {
    "zone": "Fiji",
    "note": "Visa-free entry for most Western nationals, 4 months on arrival.",
    "source": "https://www.immigration.gov.fj/"
-  }
+  },
+  "daily_budget": 90,
+  "daily_mid": 160,
+  "priceLevel": "moderate",
+  "best_for": [
+   "reef flats",
+   "island hops",
+   "cave swims"
+  ]
  },
  "zanzibar-stone-town": {
   "key": "zanzibar-stone-town",
@@ -2249,7 +2442,15 @@ export const KB = {
    "coffee": 2,
    "taxi": 3,
    "hotel": 85
-  }
+  },
+  "daily_budget": 60,
+  "daily_mid": 137,
+  "priceLevel": "pricey",
+  "best_for": [
+   "white sand",
+   "snorkeling",
+   "spice tours"
+  ]
  }
 };
 export const KB_INDEX = [
@@ -2263,6 +2464,8 @@ export const KB_INDEX = [
   "lat": -8.51,
   "lng": 115.26,
   "currency": "IDR ~16000/$",
+  "daily_budget": 35,
+  "daily_mid": 104,
   "tags": [
    "yoga",
    "rice terraces",
@@ -2283,6 +2486,8 @@ export const KB_INDEX = [
   "lat": 41.39,
   "lng": 2.17,
   "currency": "EUR ~0.92/$",
+  "daily_budget": 127,
+  "daily_mid": 227,
   "tags": [
    "beach",
    "architecture",
@@ -2302,6 +2507,8 @@ export const KB_INDEX = [
   "lat": -33.92,
   "lng": 18.42,
   "currency": "ZAR ~18/$",
+  "daily_budget": 68,
+  "daily_mid": 142,
   "tags": [
    "ocean",
    "mountains",
@@ -2320,6 +2527,8 @@ export const KB_INDEX = [
   "lat": 18.79,
   "lng": 98.98,
   "currency": "THB ~35/$",
+  "daily_budget": 29,
+  "daily_mid": 71,
   "tags": [
    "mountains",
    "temples",
@@ -2339,6 +2548,8 @@ export const KB_INDEX = [
   "lat": -13.53,
   "lng": -71.97,
   "currency": "PEN ~3.7/$",
+  "daily_budget": 44,
+  "daily_mid": 108,
   "tags": [
    "mountains",
    "inca",
@@ -2357,6 +2568,8 @@ export const KB_INDEX = [
   "lat": 62.06,
   "lng": -7.35,
   "currency": "DKK (~6.9 per $1)",
+  "daily_budget": 150,
+  "daily_mid": 290,
   "tags": []
  },
  {
@@ -2369,6 +2582,8 @@ export const KB_INDEX = [
   "lat": 15.88,
   "lng": 108.34,
   "currency": "VND ~25000/$",
+  "daily_budget": 28,
+  "daily_mid": 75,
   "tags": [
    "lanterns",
    "budget",
@@ -2387,6 +2602,8 @@ export const KB_INDEX = [
   "lat": 63.88,
   "lng": -22.45,
   "currency": "ISK (~140 per $1)",
+  "daily_budget": 220,
+  "daily_mid": 395,
   "tags": []
  },
  {
@@ -2399,6 +2616,8 @@ export const KB_INDEX = [
   "lat": 42.42,
   "lng": 18.77,
   "currency": "EUR ~0.92/$",
+  "daily_budget": 80,
+  "daily_mid": 148,
   "tags": [
    "fjord-like bay",
    "historic",
@@ -2417,6 +2636,8 @@ export const KB_INDEX = [
   "lat": 35.0347,
   "lng": 135.7183,
   "currency": "JPY (~150 per $1)",
+  "daily_budget": 89,
+  "daily_mid": 195,
   "tags": [
    "zen",
    "temples",
@@ -2436,6 +2657,8 @@ export const KB_INDEX = [
   "lat": 38.72,
   "lng": -9.14,
   "currency": "EUR ~0.92/$",
+  "daily_budget": 101,
+  "daily_mid": 184,
   "tags": [
    "ocean",
    "historic",
@@ -2455,6 +2678,8 @@ export const KB_INDEX = [
   "lat": 67.93,
   "lng": 13.09,
   "currency": "NOK (~10.5 per $1)",
+  "daily_budget": 180,
+  "daily_mid": 330,
   "tags": []
  },
  {
@@ -2467,6 +2692,8 @@ export const KB_INDEX = [
   "lat": 31.63,
   "lng": -7.99,
   "currency": "MAD ~10/$",
+  "daily_budget": 52,
+  "daily_mid": 119,
   "tags": [
    "souks",
    "desert",
@@ -2486,6 +2713,8 @@ export const KB_INDEX = [
   "lat": 6.24,
   "lng": -75.58,
   "currency": "COP ~4000/$",
+  "daily_budget": 50,
+  "daily_mid": 113,
   "tags": [
    "city",
    "eternal spring",
@@ -2504,6 +2733,8 @@ export const KB_INDEX = [
   "lat": 19.43,
   "lng": -99.13,
   "currency": "MXN ~18/$",
+  "daily_budget": 64,
+  "daily_mid": 146,
   "tags": [
    "city",
    "foodie",
@@ -2522,6 +2753,8 @@ export const KB_INDEX = [
   "lat": 22.17,
   "lng": -159.6,
   "currency": "USD",
+  "daily_budget": 210,
+  "daily_mid": 370,
   "tags": []
  },
  {
@@ -2534,6 +2767,8 @@ export const KB_INDEX = [
   "lat": 28.21,
   "lng": 83.99,
   "currency": "NPR ~133/$",
+  "daily_budget": 31,
+  "daily_mid": 75,
   "tags": [
    "mountains",
    "himalayas",
@@ -2553,6 +2788,8 @@ export const KB_INDEX = [
   "lat": -45.03,
   "lng": 168.66,
   "currency": "NZD ~0.6/$",
+  "daily_budget": 140,
+  "daily_mid": 258,
   "tags": [
    "adventure",
    "mountains",
@@ -2572,6 +2809,8 @@ export const KB_INDEX = [
   "lat": 64.15,
   "lng": -21.94,
   "currency": "ISK ~140/$",
+  "daily_budget": 220,
+  "daily_mid": 395,
   "tags": [
    "aurora",
    "geothermal",
@@ -2591,6 +2830,8 @@ export const KB_INDEX = [
   "lat": 36.39,
   "lng": 25.46,
   "currency": "EUR ~0.92/$",
+  "daily_budget": 161,
+  "daily_mid": 283,
   "tags": [
    "islands",
    "romantic",
@@ -2610,6 +2851,8 @@ export const KB_INDEX = [
   "lat": 41.72,
   "lng": 44.78,
   "currency": "GEL ~2.7/$",
+  "daily_budget": 52,
+  "daily_mid": 108,
   "tags": [
    "budget europe",
    "wine",
@@ -2627,6 +2870,8 @@ export const KB_INDEX = [
   "lat": 29.58,
   "lng": 35.42,
   "currency": "JOD (~0.71 per $1)",
+  "daily_budget": 80,
+  "daily_mid": 130,
   "tags": []
  },
  {
@@ -2638,6 +2883,8 @@ export const KB_INDEX = [
   "lat": -20.28,
   "lng": 149.05,
   "currency": "AUD (~1.5 per $1)",
+  "daily_budget": 170,
+  "daily_mid": 300,
   "tags": []
  },
  {
@@ -2649,6 +2896,8 @@ export const KB_INDEX = [
   "lat": -17.42,
   "lng": 177.19,
   "currency": "FJD (~2.2 per $1)",
+  "daily_budget": 90,
+  "daily_mid": 160,
   "tags": []
  },
  {
@@ -2661,6 +2910,8 @@ export const KB_INDEX = [
   "lat": -6.16,
   "lng": 39.19,
   "currency": "TZS ~2600/$",
+  "daily_budget": 60,
+  "daily_mid": 137,
   "tags": [
    "islands",
    "beaches",

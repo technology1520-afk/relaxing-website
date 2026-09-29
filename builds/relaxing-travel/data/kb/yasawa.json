@@ -35,5 +35,13 @@
     "zone": "Fiji",
     "note": "Visa-free entry for most Western nationals, 4 months on arrival.",
     "source": "https://www.immigration.gov.fj/"
-  }
+  },
+  "daily_budget": 90,
+  "daily_mid": 160,
+  "priceLevel": "moderate",
+  "best_for": [
+    "reef flats",
+    "island hops",
+    "cave swims"
+  ]
 }

@@ -4,7 +4,7 @@
   "name": "Lisbon",
   "city": "Lisbon",
   "country": "Portugal",
-  "flag": "\ud83c\uddf5\ud83c\uddf9",
+  "flag": "🇵🇹",
   "lat": 38.72,
   "lng": -9.14,
   "tz": null,
@@ -22,7 +22,7 @@
     "key": "lisbon",
     "city": "Lisbon",
     "country": "Portugal",
-    "flag": "\ud83c\uddf5\ud83c\uddf9",
+    "flag": "🇵🇹",
     "lat": 38.72,
     "lng": -9.14,
     "currency": "EUR ~0.92/$",
@@ -89,23 +89,31 @@
     },
     "seasons": "Best Mar-Jun, Sep-Oct. Jul-Aug hot and busiest. Winter mild.",
     "airports": "LIS",
-    "notes": "Past\u00e9is de nata \u20ac1.30. Skip tram 28 queues; walk Alfama.",
+    "notes": "Pastéis de nata €1.30. Skip tram 28 queues; walk Alfama.",
     "docs": {
       "entry": "Schengen: 90/180 days; EU/EEA citizens free movement.",
       "insurance": "EHIC covers EU citizens; others get travel insurance.",
       "special": [
-        "Schengen insurance \u20ac30k if visa required"
+        "Schengen insurance €30k if visa required"
       ],
       "health": "No special vaccines.",
       "agency": "Schengen visas via VFS Global centres; never pay 'guarantee' agents."
     }
   },
   "bestMonths": "Best Mar-Jun, Sep-Oct. Jul-Aug hot and busiest. Winter mild.",
-  "crowd": "Past\u00e9is de nata \u20ac1.30. Skip tram 28 queues; walk Alfama.",
+  "crowd": "Pastéis de nata €1.30. Skip tram 28 queues; walk Alfama.",
   "prices": {
     "meal": 12,
     "coffee": 2.2,
     "taxi": 5,
     "hotel": 110
-  }
+  },
+  "daily_budget": 101,
+  "daily_mid": 184,
+  "priceLevel": "pricey",
+  "best_for": [
+    "european city break",
+    "coastal walks",
+    "pastries"
+  ]
 }

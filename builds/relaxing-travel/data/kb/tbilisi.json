@@ -4,7 +4,7 @@
   "name": "Tbilisi",
   "city": "Tbilisi",
   "country": "Georgia",
-  "flag": "\ud83c\uddec\ud83c\uddea",
+  "flag": "🇬🇪",
   "lat": 41.72,
   "lng": 44.78,
   "tz": null,
@@ -20,7 +20,7 @@
     "key": "tbilisi",
     "city": "Tbilisi",
     "country": "Georgia",
-    "flag": "\ud83c\uddec\ud83c\uddea",
+    "flag": "🇬🇪",
     "lat": 41.72,
     "lng": 44.78,
     "currency": "GEL ~2.7/$",
@@ -87,7 +87,7 @@
     "airports": "TBS",
     "notes": "90-day visa-free for 90+ nationalities. Homemade wine $3-5.",
     "docs": {
-      "entry": "1-year visa-free for ~90 nationalities \u2014 easiest entry in the list.",
+      "entry": "1-year visa-free for ~90 nationalities — easiest entry in the list.",
       "insurance": "Recommended; quality private care affordable.",
       "special": [],
       "health": "None required.",
@@ -101,5 +101,13 @@
     "coffee": 2,
     "taxi": 3,
     "hotel": 60
-  }
+  },
+  "daily_budget": 52,
+  "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+    "sulphur baths",
+    "khinkali",
+    "caucasus"
+  ]
 }

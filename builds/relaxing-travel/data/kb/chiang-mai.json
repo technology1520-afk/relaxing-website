@@ -4,7 +4,7 @@
   "name": "Chiang Mai",
   "city": "Chiang Mai",
   "country": "Thailand",
-  "flag": "\ud83c\uddf9\ud83c\udded",
+  "flag": "🇹🇭",
   "lat": 18.79,
   "lng": 98.98,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "chiang-mai",
     "city": "Chiang Mai",
     "country": "Thailand",
-    "flag": "\ud83c\uddf9\ud83c\udded",
+    "flag": "🇹🇭",
     "lat": 18.79,
     "lng": 98.98,
     "currency": "THB ~35/$",
@@ -94,7 +94,7 @@
         "International driving permit for scooters"
       ],
       "health": "None required; air quality Mar-Apr.",
-      "agency": "Long-stay visas (e.g. DTV) via consulate \u2014 legit agents exist but verify licence."
+      "agency": "Long-stay visas (e.g. DTV) via consulate — legit agents exist but verify licence."
     }
   },
   "bestMonths": "Best Nov-Feb. Mar-Apr burning season (smog). Jun-Oct green and cheap.",
@@ -104,5 +104,13 @@
     "coffee": 1.4,
     "taxi": 1.8,
     "hotel": 35
-  }
+  },
+  "daily_budget": 29,
+  "daily_mid": 71,
+  "priceLevel": "moderate",
+  "best_for": [
+    "long stays",
+    "cooking schools",
+    "nature"
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "key": "medellin",
   "kind": "city",
-  "name": "Medell\u00edn",
-  "city": "Medell\u00edn",
+  "name": "Medellín",
+  "city": "Medellín",
   "country": "Colombia",
-  "flag": "\ud83c\udde8\ud83c\uddf4",
+  "flag": "🇨🇴",
   "lat": 6.24,
   "lng": -75.58,
   "tz": null,
@@ -17,10 +17,10 @@
     "budget-ish"
   ],
   "deep": {
-    "key": "medell\u00edn",
-    "city": "Medell\u00edn",
+    "key": "medellín",
+    "city": "Medellín",
     "country": "Colombia",
-    "flag": "\ud83c\udde8\ud83c\uddf4",
+    "flag": "🇨🇴",
     "lat": 6.24,
     "lng": -75.58,
     "currency": "COP ~4000/$",
@@ -83,7 +83,7 @@
       "budget": 750,
       "comfortable": 1400
     },
-    "seasons": "Eternal spring (22-28\u00b0C) year-round. Drier Dec-Mar, Jul-Aug.",
+    "seasons": "Eternal spring (22-28°C) year-round. Drier Dec-Mar, Jul-Aug.",
     "airports": "MDE / JOH",
     "notes": "Metro + cable car: cleanest system in Latin America. Comuna 13 with licensed guide.",
     "docs": {
@@ -96,12 +96,20 @@
       "agency": "None needed."
     }
   },
-  "bestMonths": "Eternal spring (22-28\u00b0C) year-round. Drier Dec-Mar, Jul-Aug.",
+  "bestMonths": "Eternal spring (22-28°C) year-round. Drier Dec-Mar, Jul-Aug.",
   "crowd": "Metro + cable car: cleanest system in Latin America. Comuna 13 with licensed guide.",
   "prices": {
     "meal": 5,
     "coffee": 1.8,
     "taxi": 3,
     "hotel": 65
-  }
+  },
+  "daily_budget": 50,
+  "daily_mid": 113,
+  "priceLevel": "moderate",
+  "best_for": [
+    "comuna 13",
+    "coffee",
+    "spring weather"
+  ]
 }

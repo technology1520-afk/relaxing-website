@@ -4,7 +4,7 @@
   "name": "Cape Town",
   "city": "Cape Town",
   "country": "South Africa",
-  "flag": "\ud83c\uddff\ud83c\udde6",
+  "flag": "🇿🇦",
   "lat": -33.92,
   "lng": 18.42,
   "tz": null,
@@ -20,7 +20,7 @@
     "key": "cape-town",
     "city": "Cape Town",
     "country": "South Africa",
-    "flag": "\ud83c\uddff\ud83c\udde6",
+    "flag": "🇿🇦",
     "lat": -33.92,
     "lng": 18.42,
     "currency": "ZAR ~18/$",
@@ -94,7 +94,7 @@
         "Birth certificate for minors (strict rules)"
       ],
       "health": "None from most countries.",
-      "agency": "Minor-travel rules are strict \u2014 unaccompanied/one-parent docs required."
+      "agency": "Minor-travel rules are strict — unaccompanied/one-parent docs required."
     }
   },
   "bestMonths": "Best Nov-Mar (dry summer). Jun-Aug rainy, whales. Windy Sep-Oct.",
@@ -104,5 +104,13 @@
     "coffee": 2,
     "taxi": 4,
     "hotel": 80
-  }
+  },
+  "daily_budget": 68,
+  "daily_mid": 142,
+  "priceLevel": "pricey",
+  "best_for": [
+    "table mountain",
+    "penguins",
+    "wine country"
+  ]
 }

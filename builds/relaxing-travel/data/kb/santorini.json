@@ -4,7 +4,7 @@
   "name": "Santorini",
   "city": "Santorini",
   "country": "Greece",
-  "flag": "\ud83c\uddec\ud83c\uddf7",
+  "flag": "🇬🇷",
   "lat": 36.39,
   "lng": 25.46,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "santorini",
     "city": "Santorini",
     "country": "Greece",
-    "flag": "\ud83c\uddec\ud83c\uddf7",
+    "flag": "🇬🇷",
     "lat": 36.39,
     "lng": 25.46,
     "currency": "EUR ~0.92/$",
@@ -103,5 +103,13 @@
     "coffee": 3.5,
     "taxi": 8,
     "hotel": 180
-  }
+  },
+  "daily_budget": 161,
+  "daily_mid": 283,
+  "priceLevel": "pricey",
+  "best_for": [
+    "caldera views",
+    "white villages",
+    "honeymoon"
+  ]
 }

@@ -35,5 +35,13 @@
     "zone": "Schengen area",
     "note": "Schengen rules — same 90/180 day clock as the rest of the zone.",
     "source": "https://www.udi.no/en/"
-  }
+  },
+  "daily_budget": 180,
+  "daily_mid": 330,
+  "priceLevel": "pricey",
+  "best_for": [
+    "midnight sun",
+    "fjord hikes",
+    "sea eagles"
+  ]
 }

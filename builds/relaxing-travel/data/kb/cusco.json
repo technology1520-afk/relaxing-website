@@ -4,7 +4,7 @@
   "name": "Cusco",
   "city": "Cusco",
   "country": "Peru",
-  "flag": "\ud83c\uddf5\ud83c\uddea",
+  "flag": "🇵🇪",
   "lat": -13.53,
   "lng": -71.97,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "cusco",
     "city": "Cusco",
     "country": "Peru",
-    "flag": "\ud83c\uddf5\ud83c\uddea",
+    "flag": "🇵🇪",
     "lat": -13.53,
     "lng": -71.97,
     "currency": "PEN ~3.7/$",
@@ -93,7 +93,7 @@
         "Passport for Machu Picchu entry (same one booked with)",
         "Student ISIC card for discounts"
       ],
-      "health": "Altitude 3400m \u2014 acclimatise; yellow fever for Amazon side.",
+      "health": "Altitude 3400m — acclimatise; yellow fever for Amazon side.",
       "agency": "Book Machu Picchu through licensed operators only; check Cusco agency registry."
     }
   },
@@ -104,5 +104,13 @@
     "coffee": 1.8,
     "taxi": 3,
     "hotel": 60
-  }
+  },
+  "daily_budget": 44,
+  "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+    "machu picchu",
+    "hiking",
+    "culture"
+  ]
 }

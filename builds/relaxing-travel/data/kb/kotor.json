@@ -4,7 +4,7 @@
   "name": "Kotor",
   "city": "Kotor",
   "country": "Montenegro",
-  "flag": "\ud83c\uddf2\ud83c\uddea",
+  "flag": "🇲🇪",
   "lat": 42.42,
   "lng": 18.77,
   "tz": null,
@@ -20,7 +20,7 @@
     "key": "kotor",
     "city": "Kotor",
     "country": "Montenegro",
-    "flag": "\ud83c\uddf2\ud83c\uddea",
+    "flag": "🇲🇪",
     "lat": 42.42,
     "lng": 18.77,
     "currency": "EUR ~0.92/$",
@@ -76,7 +76,7 @@
     "activities": {
       "walls": 15,
       "blue_cave": 30,
-      "lov\u0107en": 5,
+      "lovćen": 5,
       "perast_boat": 10
     },
     "monthly": {
@@ -88,7 +88,7 @@
     "notes": "Climb the walls at 7am: cool, empty, best light.",
     "docs": {
       "entry": "Visa-free 90 days for many; Schengen visa holders can enter.",
-      "insurance": "EHIC doesn't cover Montenegro (not EU) \u2014 travel insurance needed.",
+      "insurance": "EHIC doesn't cover Montenegro (not EU) — travel insurance needed.",
       "special": [],
       "health": "None required.",
       "agency": "None needed for tourism."
@@ -101,5 +101,13 @@
     "coffee": 2.5,
     "taxi": 4,
     "hotel": 85
-  }
+  },
+  "daily_budget": 80,
+  "daily_mid": 148,
+  "priceLevel": "pricey",
+  "best_for": [
+    "bay of kotor",
+    "old walls",
+    "boat trips"
+  ]
 }

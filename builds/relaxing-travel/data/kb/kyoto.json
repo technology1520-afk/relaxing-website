@@ -124,5 +124,13 @@
     "zone": "Japan",
     "note": "Visa-free 90 days for ~70 nationalities. Others need a visa via embassy or the eVisa system.",
     "source": "https://www.mofa.go.jp/"
-  }
+  },
+  "daily_budget": 89,
+  "daily_mid": 195,
+  "priceLevel": "pricey",
+  "best_for": [
+    "temples",
+    "cherry blossom",
+    "culture"
+  ]
 }

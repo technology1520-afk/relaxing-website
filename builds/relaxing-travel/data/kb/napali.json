@@ -35,5 +35,13 @@
     "zone": "United States",
     "note": "ESTA for visa-waiver countries (apply 72h+ before), otherwise a B-2 visa via interview.",
     "source": "https://travel.state.gov/"
-  }
+  },
+  "daily_budget": 210,
+  "daily_mid": 370,
+  "priceLevel": "pricey",
+  "best_for": [
+    "coast boat tours",
+    "kalalau lookout",
+    "snorkel"
+  ]
 }

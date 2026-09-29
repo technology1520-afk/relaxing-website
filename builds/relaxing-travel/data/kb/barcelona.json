@@ -4,7 +4,7 @@
   "name": "Barcelona",
   "city": "Barcelona",
   "country": "Spain",
-  "flag": "\ud83c\uddea\ud83c\uddf8",
+  "flag": "🇪🇸",
   "lat": 41.39,
   "lng": 2.17,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "barcelona",
     "city": "Barcelona",
     "country": "Spain",
-    "flag": "\ud83c\uddea\ud83c\uddf8",
+    "flag": "🇪🇸",
     "lat": 41.39,
     "lng": 2.17,
     "currency": "EUR ~0.92/$",
@@ -86,7 +86,7 @@
     },
     "seasons": "Best May-Jun, Sep. Jul-Aug hottest and most crowded.",
     "airports": "BCN",
-    "notes": "Book Gaud\u00ed sites online ahead. Pickpockets on La Rambla.",
+    "notes": "Book Gaudí sites online ahead. Pickpockets on La Rambla.",
     "docs": {
       "entry": "Schengen: 90/180 days.",
       "insurance": "EHIC for EU; travel insurance otherwise.",
@@ -96,11 +96,19 @@
     }
   },
   "bestMonths": "Best May-Jun, Sep. Jul-Aug hottest and most crowded.",
-  "crowd": "Book Gaud\u00ed sites online ahead. Pickpockets on La Rambla.",
+  "crowd": "Book Gaudí sites online ahead. Pickpockets on La Rambla.",
   "prices": {
     "meal": 15,
     "coffee": 2.5,
     "taxi": 6,
     "hotel": 140
-  }
+  },
+  "daily_budget": 127,
+  "daily_mid": 227,
+  "priceLevel": "pricey",
+  "best_for": [
+    "gaudi",
+    "mediterranean",
+    "tapas"
+  ]
 }

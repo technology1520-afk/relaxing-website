@@ -4,7 +4,7 @@
   "name": "Queenstown",
   "city": "Queenstown",
   "country": "New Zealand",
-  "flag": "\ud83c\uddf3\ud83c\uddff",
+  "flag": "🇳🇿",
   "lat": -45.03,
   "lng": 168.66,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "queenstown",
     "city": "Queenstown",
     "country": "New Zealand",
-    "flag": "\ud83c\uddf3\ud83c\uddff",
+    "flag": "🇳🇿",
     "lat": -45.03,
     "lng": 168.66,
     "currency": "NZD ~0.6/$",
@@ -89,7 +89,7 @@
     "notes": "Book adventure sports ahead; weather cancels often.",
     "docs": {
       "entry": "NZeTA required before flying (~NZ$23 + levy), even for visa-free nationalities.",
-      "insurance": "Recommended; adventure sports exclusions matter \u2014 declare bungee/skydive.",
+      "insurance": "Recommended; adventure sports exclusions matter — declare bungee/skydive.",
       "special": [
         "NZeTA via app/website before boarding",
         "Departure fee at some airports"
@@ -105,5 +105,13 @@
     "coffee": 4.2,
     "taxi": 10,
     "hotel": 150
-  }
+  },
+  "daily_budget": 140,
+  "daily_mid": 258,
+  "priceLevel": "pricey",
+  "best_for": [
+    "adrenaline capital",
+    "lord of the rings",
+    "alpine"
+  ]
 }

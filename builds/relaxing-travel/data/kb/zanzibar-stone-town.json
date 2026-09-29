@@ -4,7 +4,7 @@
   "name": "Zanzibar (Stone Town)",
   "city": "Zanzibar (Stone Town)",
   "country": "Tanzania",
-  "flag": "\ud83c\uddf9\ud83c\uddff",
+  "flag": "🇹🇿",
   "lat": -6.16,
   "lng": 39.19,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "zanzibar-stone-town",
     "city": "Zanzibar (Stone Town)",
     "country": "Tanzania",
-    "flag": "\ud83c\uddf9\ud83c\uddff",
+    "flag": "🇹🇿",
     "lat": -6.16,
     "lng": 39.19,
     "currency": "TZS ~2600/$",
@@ -90,13 +90,13 @@
     "notes": "Pay extra for Azam ferries. Semi-autonomous: keep passport handy.",
     "docs": {
       "entry": "Visa on arrival or e-visa ($50) for most; mandatory travel insurance ($44) purchased from Zanzibar's official site since 2024.",
-      "insurance": "ZANZIBAR-SPECIFIC mandatory insurance from official ZIC site \u2014 foreign policies don't count.",
+      "insurance": "ZANZIBAR-SPECIFIC mandatory insurance from official ZIC site — foreign policies don't count.",
       "special": [
         "Mandatory Zanzibar travel insurance (official portal)",
         "Yellow fever certificate if arriving from endemic country"
       ],
       "health": "Yellow fever certificate required from endemic countries; malaria prophylaxis discussed with doctor.",
-      "agency": "The mandatory insurance is ONLY sold via the official ZIC portal \u2014 many fake 'insurance' sites exist."
+      "agency": "The mandatory insurance is ONLY sold via the official ZIC portal — many fake 'insurance' sites exist."
     }
   },
   "bestMonths": "Best Jun-Oct, Dec-Feb. Long rains Mar-May (many hotels close).",
@@ -106,5 +106,13 @@
     "coffee": 2,
     "taxi": 3,
     "hotel": 85
-  }
+  },
+  "daily_budget": 60,
+  "daily_mid": 137,
+  "priceLevel": "pricey",
+  "best_for": [
+    "white sand",
+    "snorkeling",
+    "spice tours"
+  ]
 }

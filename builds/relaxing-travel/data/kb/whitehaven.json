@@ -35,5 +35,13 @@
     "zone": "Australia",
     "note": "Almost everyone needs an ETA or eVisitor in advance — apply online before booking flights.",
     "source": "https://immi.homeaffairs.gov.au/"
-  }
+  },
+  "daily_budget": 170,
+  "daily_mid": 300,
+  "priceLevel": "pricey",
+  "best_for": [
+    "white sand",
+    "sailing",
+    "reef swims"
+  ]
 }

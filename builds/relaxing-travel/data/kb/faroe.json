@@ -35,5 +35,13 @@
     "zone": "Danish realm",
     "note": "NOT Schengen-customary: Faroe Islands have their own rules; a Schengen visa must be marked 'valid for Faroe Islands'.",
     "source": "https://www.vesturfar.fo/"
-  }
+  },
+  "daily_budget": 150,
+  "daily_mid": 290,
+  "priceLevel": "pricey",
+  "best_for": [
+    "cliff hikes",
+    "puffins",
+    "grass-roof villages"
+  ]
 }

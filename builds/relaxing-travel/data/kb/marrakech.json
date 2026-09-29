@@ -4,7 +4,7 @@
   "name": "Marrakech",
   "city": "Marrakech",
   "country": "Morocco",
-  "flag": "\ud83c\uddf2\ud83c\udde6",
+  "flag": "🇲🇦",
   "lat": 31.63,
   "lng": -7.99,
   "tz": null,
@@ -21,7 +21,7 @@
     "key": "marrakech",
     "city": "Marrakech",
     "country": "Morocco",
-    "flag": "\ud83c\uddf2\ud83c\udde6",
+    "flag": "🇲🇦",
     "lat": 31.63,
     "lng": -7.99,
     "currency": "MAD ~10/$",
@@ -85,7 +85,7 @@
       "budget": 700,
       "comfortable": 1300
     },
-    "seasons": "Best Mar-May, Oct-Nov. Jun-Aug over 40\u00b0C. Winter nights cold.",
+    "seasons": "Best Mar-May, Oct-Nov. Jun-Aug over 40°C. Winter nights cold.",
     "airports": "RAK",
     "notes": "Agree taxi price before entering. Riads beat hotels on value.",
     "docs": {
@@ -98,12 +98,20 @@
       "agency": "Official 'guides' wear badges in the medina; unlicensed 'helpers' expect tips."
     }
   },
-  "bestMonths": "Best Mar-May, Oct-Nov. Jun-Aug over 40\u00b0C. Winter nights cold.",
+  "bestMonths": "Best Mar-May, Oct-Nov. Jun-Aug over 40°C. Winter nights cold.",
   "crowd": "Agree taxi price before entering. Riads beat hotels on value.",
   "prices": {
     "meal": 5,
     "coffee": 2,
     "taxi": 2.5,
     "hotel": 70
-  }
+  },
+  "daily_budget": 52,
+  "daily_mid": 119,
+  "priceLevel": "moderate",
+  "best_for": [
+    "medina",
+    "desert trips",
+    "hammams"
+  ]
 }
