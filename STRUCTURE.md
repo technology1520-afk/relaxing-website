@@ -79,6 +79,9 @@ relaxing-website/
      prices, live 5-day weather (Open-Meteo), tick-box "add to plan"
 10. Plan             — day-by-day AI itinerary for ticked places
      (days count, who's going, budget feel -> /api/plan)
+     Export: "Print / Save PDF" (print-ready page with a destination
+     cheat-sheet) and "Add to calendar (.ics)" — one event per day,
+     also offered per saved trip on account.html
 11. World Explorer   — vibe/budget search box over ALL 30 destinations,
      every-card price rows, per-city detail modal (11 data sections)
 12. Documents & visas — checklist generator (45 nationalities), visa rules
@@ -144,7 +147,9 @@ Tests (node --test tests/kb.test.js) enforce the schema and sync.
 
 ## 4. Backend API (netlify/functions -> /api/* redirects)
 
-POST /api/ask       Relaxagent Q&A. Grounded in KB facts via _kb.js.
+POST /api/ask       Relaxagent Q&A. Grounded in KB facts via _kb.js AND in the
+                    visitor's planned trip (who, days, places, budget) sent
+                    from the browser — answers are personal to their journey.
                     Falls back to a local always-answers engine (no silent
                     busy). Logs to telemetry.
 POST /api/suggest   Itinerary engine for "don't know where yet" + planner.
