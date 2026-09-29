@@ -29,6 +29,15 @@ exports.handler = async (req) => {
   let placeKey = PLACE_DATA[ctx.place] ? ctx.place : null;
   const section = String(ctx.section || "").slice(0, 60);
 
+  // Trip memory: the visitor's planned trip (if any) grounds every answer.
+  const trip = ctx.trip && typeof ctx.trip === "object" ? {
+    who: String(ctx.trip.who || "").slice(0, 100),
+    days: Math.min(21, Math.max(1, parseInt(ctx.trip.days) || 0)),
+    places: Array.isArray(ctx.trip.places) ? ctx.trip.places.slice(0, 8).map(p => String(p).slice(0, 60)) : [],
+    budget: String(ctx.trip.budget || "").slice(0, 120),
+  } : null;
+  const hasTrip = trip && trip.places.length > 0;
+
   const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
   if (!key) {
     // No key configured: answer from the site's own data. Relaxagent never goes silent.
@@ -40,10 +49,15 @@ exports.handler = async (req) => {
     ? `The visitor is looking at ${PLACE_DATA[placeKey].name}. Curated facts you may use: best view: ${PLACE_DATA[placeKey].bestView}; best months: ${PLACE_DATA[placeKey].bestMonths}; crowds: ${PLACE_DATA[placeKey].crowd}; with kids: ${PLACE_DATA[placeKey].kid}; local USD prices: ${PLACE_DATA[placeKey].prices}.`
     : `The site covers 8 quiet destinations: ${Object.values(PLACE_DATA).map(p => p.name).join("; ")}. Local USD prices per place are in the site data.`;
 
+  const tripBlock = hasTrip
+    ? `\nThe visitor has a planned trip on this site: ${trip.days} days for ${trip.who || "their group"}, visiting ${trip.places.join("; ")}. Budget feel: ${trip.budget || "not set"}. Answer with THIS trip in mind — use their places, group and day count when relevant; do not suggest other destinations unless they ask.`
+    : "";
+
   const prompt =
 `You are Relaxagent, the trip guide of relaxdayoff.com ("Relax Day Off"), a travel site about the world's quietest places. Your name is Relaxagent. When asked who you are, say you are Relaxagent, the day-off planner of relaxdayoff.com. A visitor asks: "${question}"
 
 ${placeBlock}
+${tripBlock}
 ${section ? `They are currently in the site's "${section}" section.` : ""}
 
 After answering their question, if they mention a specific place or seem unsure about preparation, add one short sentence pointing them to what to prepare (visa type, insurance, permits) and the site's Documents & visas section.

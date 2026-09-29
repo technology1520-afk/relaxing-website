@@ -44,6 +44,11 @@
   .trip .t-title { color: var(--sc-ink); font-weight: 500; font-size: 0.95rem; }
   .trip .t-meta { color: var(--sc-ink-soft); font-size: 0.82rem; margin-top: 0.2rem; }
   .trip .t-places { color: var(--sc-accent); font-size: 0.85rem; margin-top: 0.3rem; }
+  .trip .t-export { margin-top: 0.5rem; display: flex; gap: 0.45rem; }
+  .trip .t-btn { font: inherit; font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 35%, transparent);
+    background: transparent; color: var(--sc-ink-soft); cursor: pointer; transition: all .15s; }
+  .trip .t-btn:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
   .empty { color: var(--sc-ink-soft); font-size: 0.92rem; }
   .empty a { color: var(--sc-accent); }
   .btn-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
@@ -103,12 +108,27 @@ function renderTrips(user) {
     box.innerHTML = '<div class="empty">No trips yet. <a href="/#plan">Plan your first one</a> — it saves here automatically.</div>';
     return;
   }
-  box.innerHTML = all.slice().reverse().map(t => `
-    <div class="trip">
+  box.innerHTML = all.slice().reverse().map((t, i) => `
+    <div class="trip" data-i="${trips().indexOf(t)}">
       <div class="t-title">${t.days} days · ${t.who}</div>
       <div class="t-places">${(t.places || []).join(" · ")}</div>
       <div class="t-meta">saved ${new Date(t.at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}${t.budget ? " · " + t.budget : ""}</div>
+      <div class="t-export">
+        <button type="button" class="t-btn" data-x="print" data-i="${trips().indexOf(t)}">Print / PDF</button>
+        <button type="button" class="t-btn" data-x="ics" data-i="${trips().indexOf(t)}">Calendar (.ics)</button>
+      </div>
     </div>`).join("");
+  box.querySelectorAll(".t-btn").forEach(b => b.addEventListener("click", () => {
+    const t = trips()[parseInt(b.dataset.i)];
+    const full = JSON.parse(sessionStorage.getItem("rdo_last_trip") || "null");
+    const exp = full && full.days?.length === t.days
+      ? full
+      : { title: `${t.days} quiet days`, subtitle: `${(t.places || []).join(" · ")} · for ${t.who}`,
+          days: [{ day: 1, title: "Your trip", plan: `${(t.places || []).join(" · ")} — full day plan on relaxdayoff.com/#plan. ${t.budget || ""}` }],
+          budget: t.budget || "", placeKeys: [] };
+    import("./js/trip-export.js").then(m =>
+      b.dataset.x === "print" ? m.openPrintable(exp) : m.downloadICS(exp));
+  }));
 }
 
 function boot(user) {

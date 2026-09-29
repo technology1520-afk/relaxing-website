@@ -33,7 +33,32 @@ function currentContext() {
       }
     }
   }
-  return { place, section };
+  return { place, section, trip: tripContext() };
+}
+
+// The visitor's planned trip (planner selection + latest saved trip), so
+// Relaxagent answers with their actual journey in mind.
+function tripContext() {
+  let trip = null;
+  try {
+    const picked = [...document.querySelectorAll(".spot input.pick:checked, .spots input.pick:checked")]
+      .map(i => i.value).filter(Boolean);
+    const who = document.getElementById("plan-who")?.value || "";
+    const days = parseInt(document.getElementById("plan-days")?.value) || 0;
+    const last = JSON.parse(localStorage.getItem("sw_trips") || "[]").slice(-1)[0];
+    if (picked.length || last) {
+      trip = {
+        who: who || last?.who || "",
+        days: days || last?.days || 0,
+        places: (picked.length ? picked.map(k => PLACE_DATA()?.[k]?.name || k) : (last?.places || [])).slice(0, 8),
+        budget: last?.budget || "",
+      };
+    }
+  } catch {}
+  return trip;
+}
+function PLACE_DATA() {
+  try { return window.__rdoPlaceNames || null; } catch { return null; }
 }
 
 function open() {

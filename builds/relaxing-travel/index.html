@@ -358,6 +358,12 @@
   .plan-day p { margin: 0.25rem 0 0; line-height: 1.55; }
   .plan-budget { margin-top: 1rem; padding: 0.8rem 1rem; border-radius: 10px; background: color-mix(in srgb, var(--sc-accent) 9%, transparent); color: var(--sc-ink-soft); font-size: 0.9rem; }
   .plan-note { margin-top: 1rem; font-size: 0.8rem; opacity: 0.75; }
+  .export-bar { margin-top: 1.2rem; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+  .export-btn { font: inherit; font-size: 0.85rem; padding: 0.55rem 1rem; border-radius: 999px;
+    border: 1.5px solid var(--sc-ink); background: transparent; color: var(--sc-ink); cursor: pointer;
+    transition: background .15s, color .15s; }
+  .export-btn:hover { background: var(--sc-ink); color: var(--sc-canvas); }
+  .export-hint { font-size: 0.78rem; opacity: 0.65; }
 
   /* ---------- World Explorer (vibe search + prices) ---------- */
   .explorer { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
@@ -956,12 +962,12 @@
 
 <script src="scrollcraft.js"></script>
 <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
-<script type="module" src="js/site.js?v=6"></script>
+<script type="module" src="js/site.js?v=7"></script>
 <script type="module">
   import { buildPlanner } from "./js/planner.js";
   buildPlanner();
 </script>
-<script src="js/assistant.js?v=5"></script>
+<script src="js/assistant.js?v=7"></script>
 <script type="module">
   import { buildExplorer } from "./js/explorer.js";
   buildExplorer();

@@ -238,20 +238,31 @@ function renderPlan(data, picks) {
   const names = picks.map(k => PLACE_DATA[k] ? `${PLACE_DATA[k].flag} ${PLACE_DATA[k].name}` : k).join(" · ");
   const budget = data.budget;
   // Persist the trip (best-effort; visible on account.html when logged in)
+  const trip = {
+    owner: null,
+    at: Date.now(),
+    days: (data.days || []).length,
+    who: (document.getElementById("plan-who").value || "family").slice(0, 60),
+    places: (picks || []).map(k => PLACE_DATA[k]?.name || k),
+    budget: (budget || "").slice(0, 120),
+  };
   try {
     const identity = window.netlifyIdentity;
     const user = identity?.currentUser();
+    trip.owner = user?.email || null;
     const store = JSON.parse(localStorage.getItem("sw_trips") || "[]");
-    store.push({
-      owner: user?.email || null,
-      at: Date.now(),
-      days: (data.days || []).length,
-      who: (document.getElementById("plan-who").value || "family").slice(0, 60),
-      places: (picks || []).map(k => PLACE_DATA[k]?.name || k),
-      budget: (budget || "").slice(0, 120),
-    });
+    store.push(trip);
     localStorage.setItem("sw_trips", JSON.stringify(store.slice(-50)));
   } catch {}
+  // Keep the full plan for export (print/PDF, calendar)
+  lastTrip = {
+    title: `${trip.days} quiet days`,
+    subtitle: `${names} · for ${trip.who}`,
+    days: (data.days || []).map(d => ({ day: d.day, title: d.title, plan: d.plan })),
+    budget: budget || "",
+    placeKeys: (picks || []).slice(),
+  };
+  try { sessionStorage.setItem("rdo_last_trip", JSON.stringify(lastTrip)); } catch {}
   planOut.innerHTML = `
     <div class="plan-route"><strong>${names}</strong></div>
     ${(data.days || []).map(d => `
@@ -261,5 +272,9 @@ function renderPlan(data, picks) {
         <p>${d.plan}</p></div>
       </div>`).join("")}
     ${budget ? `<div class="plan-budget"><strong>Budget feel:</strong> ${budget}</div>` : ""}
+    <div class="plan-export" id="plan-export"></div>
     <p class="plan-note">AI-drafted plan. Check opening days and book the first night before you fly.</p>`;
+  import("./trip-export.js").then(m => m.exportButtons(lastTrip, document.getElementById("plan-export")));
 }
+
+let lastTrip = null;
