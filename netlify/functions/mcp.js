@@ -5,6 +5,7 @@
 // Humans are NOT authenticated here — this is a machine-to-machine endpoint.
 
 const { getStore } = require("@netlify/blobs");
+const kb = require("./_kb.js");
 
 const json = (status, obj) => ({
   statusCode: status,
@@ -46,6 +47,16 @@ const TOOLS = [
     description: "Recent fair-price checks: place, item, quoted price, verdict. Args: limit (1-100, default 30).",
     inputSchema: { type: "object", properties: { limit: { type: "number", minimum: 1, maximum: 100 } }, additionalProperties: false },
   },
+  {
+    name: "kb.get",
+    description: "Destination knowledge base entry: geo, best months, crowds, kid tips, prices, visa rules with official source. Args: key (e.g. 'kyoto', 'reykjavik').",
+    inputSchema: { type: "object", properties: { key: { type: "string", minLength: 1 } }, required: ["key"], additionalProperties: false },
+  },
+  {
+    name: "kb.search",
+    description: "Search the destination knowledge base (25 destinations) by name, country or vibe tag. Args: q (string).",
+    inputSchema: { type: "object", properties: { q: { type: "string", minLength: 1 } }, required: ["q"], additionalProperties: false },
+  },
 ];
 
 async function toolData() {
@@ -62,6 +73,18 @@ function rank(arr) {
 }
 
 async function callTool(name, args) {
+  if (name === "kb.get") {
+    const key = String((args && args.key) || "").toLowerCase();
+    const e = kb.get(key);
+    if (!e) return JSON.stringify({ error: "Unknown destination key: " + key + ". Use kb.search to find keys." });
+    return JSON.stringify(e, null, 1);
+  }
+  if (name === "kb.search") {
+    const q = String((args && args.q) || "").slice(0, 80);
+    const results = kb.search(q);
+    if (!results.length) return JSON.stringify({ query: q, results: [] });
+    return JSON.stringify({ query: q, count: results.length, results }, null, 1);
+  }
   const d = await toolData();
   const now = Date.now(), day = 86400000;
   switch (name) {
