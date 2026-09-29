@@ -20,7 +20,9 @@ const sorted = [...entries].sort((a,b)=>a.key.localeCompare(b.key));
 const index = sorted.map(e => ({
   key: e.key, kind: e.kind, name: e.name, city: e.city, country: e.country,
   flag: e.flag, lat: e.lat, lng: e.lng, currency: e.currency,
-  daily_budget: e.daily_budget, daily_mid: e.daily_mid, tags: e.tags || [],
+  daily_budget: e.daily_budget, daily_mid: e.daily_mid,
+  priceLevel: e.priceLevel || null, best_for: e.best_for || [],
+  quietPick: e.quietPick || false, tags: e.tags || [],
 }));
 writeFileSync(`${KB}/index.json`, JSON.stringify(index, null, 2) + "\n");
 

@@ -2466,6 +2466,14 @@ export const KB_INDEX = [
   "currency": "IDR ~16000/$",
   "daily_budget": 35,
   "daily_mid": 104,
+  "priceLevel": "moderate",
+  "best_for": [
+   "wellness",
+   "yoga retreats",
+   "nature",
+   "remote work"
+  ],
+  "quietPick": false,
   "tags": [
    "yoga",
    "rice terraces",
@@ -2488,6 +2496,13 @@ export const KB_INDEX = [
   "currency": "EUR ~0.92/$",
   "daily_budget": 127,
   "daily_mid": 227,
+  "priceLevel": "pricey",
+  "best_for": [
+   "gaudi",
+   "mediterranean",
+   "tapas"
+  ],
+  "quietPick": false,
   "tags": [
    "beach",
    "architecture",
@@ -2509,6 +2524,13 @@ export const KB_INDEX = [
   "currency": "ZAR ~18/$",
   "daily_budget": 68,
   "daily_mid": 142,
+  "priceLevel": "pricey",
+  "best_for": [
+   "table mountain",
+   "penguins",
+   "wine country"
+  ],
+  "quietPick": false,
   "tags": [
    "ocean",
    "mountains",
@@ -2529,6 +2551,13 @@ export const KB_INDEX = [
   "currency": "THB ~35/$",
   "daily_budget": 29,
   "daily_mid": 71,
+  "priceLevel": "moderate",
+  "best_for": [
+   "long stays",
+   "cooking schools",
+   "nature"
+  ],
+  "quietPick": false,
   "tags": [
    "mountains",
    "temples",
@@ -2550,6 +2579,13 @@ export const KB_INDEX = [
   "currency": "PEN ~3.7/$",
   "daily_budget": 44,
   "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+   "machu picchu",
+   "hiking",
+   "culture"
+  ],
+  "quietPick": false,
   "tags": [
    "mountains",
    "inca",
@@ -2570,6 +2606,13 @@ export const KB_INDEX = [
   "currency": "DKK (~6.9 per $1)",
   "daily_budget": 150,
   "daily_mid": 290,
+  "priceLevel": "pricey",
+  "best_for": [
+   "cliff hikes",
+   "puffins",
+   "grass-roof villages"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2584,6 +2627,13 @@ export const KB_INDEX = [
   "currency": "VND ~25000/$",
   "daily_budget": 28,
   "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+   "old town",
+   "cooking classes",
+   "tailored clothes"
+  ],
+  "quietPick": false,
   "tags": [
    "lanterns",
    "budget",
@@ -2604,6 +2654,13 @@ export const KB_INDEX = [
   "currency": "ISK (~140 per $1)",
   "daily_budget": 220,
   "daily_mid": 395,
+  "priceLevel": "pricey",
+  "best_for": [
+   "northern lights",
+   "lagoon soak",
+   "lava fields"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2618,6 +2675,13 @@ export const KB_INDEX = [
   "currency": "EUR ~0.92/$",
   "daily_budget": 80,
   "daily_mid": 148,
+  "priceLevel": "pricey",
+  "best_for": [
+   "bay of kotor",
+   "old walls",
+   "boat trips"
+  ],
+  "quietPick": false,
   "tags": [
    "fjord-like bay",
    "historic",
@@ -2638,6 +2702,13 @@ export const KB_INDEX = [
   "currency": "JPY (~150 per $1)",
   "daily_budget": 89,
   "daily_mid": 195,
+  "priceLevel": "pricey",
+  "best_for": [
+   "temples",
+   "cherry blossom",
+   "culture"
+  ],
+  "quietPick": false,
   "tags": [
    "zen",
    "temples",
@@ -2659,6 +2730,13 @@ export const KB_INDEX = [
   "currency": "EUR ~0.92/$",
   "daily_budget": 101,
   "daily_mid": 184,
+  "priceLevel": "pricey",
+  "best_for": [
+   "european city break",
+   "coastal walks",
+   "pastries"
+  ],
+  "quietPick": false,
   "tags": [
    "ocean",
    "historic",
@@ -2680,6 +2758,13 @@ export const KB_INDEX = [
   "currency": "NOK (~10.5 per $1)",
   "daily_budget": 180,
   "daily_mid": 330,
+  "priceLevel": "pricey",
+  "best_for": [
+   "midnight sun",
+   "fjord hikes",
+   "sea eagles"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2694,6 +2779,13 @@ export const KB_INDEX = [
   "currency": "MAD ~10/$",
   "daily_budget": 52,
   "daily_mid": 119,
+  "priceLevel": "moderate",
+  "best_for": [
+   "medina",
+   "desert trips",
+   "hammams"
+  ],
+  "quietPick": false,
   "tags": [
    "souks",
    "desert",
@@ -2715,6 +2807,13 @@ export const KB_INDEX = [
   "currency": "COP ~4000/$",
   "daily_budget": 50,
   "daily_mid": 113,
+  "priceLevel": "moderate",
+  "best_for": [
+   "comuna 13",
+   "coffee",
+   "spring weather"
+  ],
+  "quietPick": false,
   "tags": [
    "city",
    "eternal spring",
@@ -2735,6 +2834,13 @@ export const KB_INDEX = [
   "currency": "MXN ~18/$",
   "daily_budget": 64,
   "daily_mid": 146,
+  "priceLevel": "pricey",
+  "best_for": [
+   "street tacos",
+   "museums",
+   "urban energy"
+  ],
+  "quietPick": false,
   "tags": [
    "city",
    "foodie",
@@ -2755,6 +2861,13 @@ export const KB_INDEX = [
   "currency": "USD",
   "daily_budget": 210,
   "daily_mid": 370,
+  "priceLevel": "pricey",
+  "best_for": [
+   "coast boat tours",
+   "kalalau lookout",
+   "snorkel"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2769,6 +2882,13 @@ export const KB_INDEX = [
   "currency": "NPR ~133/$",
   "daily_budget": 31,
   "daily_mid": 75,
+  "priceLevel": "moderate",
+  "best_for": [
+   "annapurna",
+   "paragliding",
+   "sunrise views"
+  ],
+  "quietPick": false,
   "tags": [
    "mountains",
    "himalayas",
@@ -2790,6 +2910,13 @@ export const KB_INDEX = [
   "currency": "NZD ~0.6/$",
   "daily_budget": 140,
   "daily_mid": 258,
+  "priceLevel": "pricey",
+  "best_for": [
+   "adrenaline capital",
+   "lord of the rings",
+   "alpine"
+  ],
+  "quietPick": false,
   "tags": [
    "adventure",
    "mountains",
@@ -2811,6 +2938,13 @@ export const KB_INDEX = [
   "currency": "ISK ~140/$",
   "daily_budget": 220,
   "daily_mid": 395,
+  "priceLevel": "pricey",
+  "best_for": [
+   "northern lights",
+   "blue lagoon",
+   "road trips"
+  ],
+  "quietPick": false,
   "tags": [
    "aurora",
    "geothermal",
@@ -2832,6 +2966,13 @@ export const KB_INDEX = [
   "currency": "EUR ~0.92/$",
   "daily_budget": 161,
   "daily_mid": 283,
+  "priceLevel": "pricey",
+  "best_for": [
+   "caldera views",
+   "white villages",
+   "honeymoon"
+  ],
+  "quietPick": false,
   "tags": [
    "islands",
    "romantic",
@@ -2853,6 +2994,13 @@ export const KB_INDEX = [
   "currency": "GEL ~2.7/$",
   "daily_budget": 52,
   "daily_mid": 108,
+  "priceLevel": "moderate",
+  "best_for": [
+   "sulphur baths",
+   "khinkali",
+   "caucasus"
+  ],
+  "quietPick": false,
   "tags": [
    "budget europe",
    "wine",
@@ -2872,6 +3020,13 @@ export const KB_INDEX = [
   "currency": "JOD (~0.71 per $1)",
   "daily_budget": 80,
   "daily_mid": 130,
+  "priceLevel": "moderate",
+  "best_for": [
+   "desert camps",
+   "stargazing",
+   "jeep tours"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2885,6 +3040,13 @@ export const KB_INDEX = [
   "currency": "AUD (~1.5 per $1)",
   "daily_budget": 170,
   "daily_mid": 300,
+  "priceLevel": "pricey",
+  "best_for": [
+   "white sand",
+   "sailing",
+   "reef swims"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2898,6 +3060,13 @@ export const KB_INDEX = [
   "currency": "FJD (~2.2 per $1)",
   "daily_budget": 90,
   "daily_mid": 160,
+  "priceLevel": "moderate",
+  "best_for": [
+   "reef flats",
+   "island hops",
+   "cave swims"
+  ],
+  "quietPick": false,
   "tags": []
  },
  {
@@ -2912,6 +3081,13 @@ export const KB_INDEX = [
   "currency": "TZS ~2600/$",
   "daily_budget": 60,
   "daily_mid": 137,
+  "priceLevel": "pricey",
+  "best_for": [
+   "white sand",
+   "snorkeling",
+   "spice tours"
+  ],
+  "quietPick": false,
   "tags": [
    "islands",
    "beaches",
