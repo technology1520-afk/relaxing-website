@@ -1,0 +1,39 @@
+{
+  "key": "napali",
+  "name": "Nāpali Coast",
+  "country": "Hawaii, USA",
+  "flag": "🇺🇸",
+  "lat": 22.17,
+  "lng": -159.6,
+  "tz": "Pacific/Honolulu",
+  "currency": "USD",
+  "bestView": "From the water: the sunset catamaran past the fluted cliffs. On land: Pu'u O Kila lookout when the clouds lift",
+  "bestMonths": "May to September (calm seas). Winter closes the coast to boats",
+  "crowd": "Kalalau Trail permits sell out months ahead. Boat tours are the quiet loophole: fewer people, better angle",
+  "kid": "Boat trips run from age 5. Snorkel stops in the lee of the cliffs are calm and full of turtles",
+  "adventure": [
+    "Kalalau Trail to Hanakāpī'ai (permit-free 8km return)",
+    "Sunset catamaran",
+    "Helicopter doors-off flight"
+  ],
+  "kidPicks": [
+    "Dolphins on the boat ride",
+    "Snorkel with turtles",
+    "Shave ice in Hanalei after"
+  ],
+  "prices": {
+    "meal": 22,
+    "coffee": 5,
+    "taxi": 15,
+    "hotel": 320,
+    "attraction": 140
+  },
+  "priceNote": "Hawaii hotel prices bite. Renting a cottage on the north shore often beats a resort for a family of four.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "United States",
+    "note": "ESTA for visa-waiver countries (apply 72h+ before), otherwise a B-2 visa via interview.",
+    "source": "https://travel.state.gov/"
+  }
+}

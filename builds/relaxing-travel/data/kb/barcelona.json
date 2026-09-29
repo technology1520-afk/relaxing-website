@@ -1,0 +1,106 @@
+{
+  "key": "barcelona",
+  "kind": "city",
+  "name": "Barcelona",
+  "city": "Barcelona",
+  "country": "Spain",
+  "flag": "\ud83c\uddea\ud83c\uddf8",
+  "lat": 41.39,
+  "lng": 2.17,
+  "tz": null,
+  "currency": "EUR ~0.92/$",
+  "tags": [
+    "beach",
+    "architecture",
+    "nightlife",
+    "city",
+    "foodie",
+    "art"
+  ],
+  "deep": {
+    "key": "barcelona",
+    "city": "Barcelona",
+    "country": "Spain",
+    "flag": "\ud83c\uddea\ud83c\uddf8",
+    "lat": 41.39,
+    "lng": 2.17,
+    "currency": "EUR ~0.92/$",
+    "prices": {
+      "meal_cheap": 15,
+      "coffee": 2.5,
+      "beer": 3.5,
+      "taxi_3km": 6,
+      "transit_ride": 2.4,
+      "hotel_budget": 70,
+      "hotel_mid": 140,
+      "hotel_lux": 320,
+      "internet_month": 35,
+      "sim_data": 20,
+      "meal_mid_rest": 30,
+      "water_bottle": 0.7,
+      "daily_budget": 127,
+      "daily_mid": 227
+    },
+    "tags": [
+      "beach",
+      "architecture",
+      "nightlife",
+      "city",
+      "foodie",
+      "art"
+    ],
+    "best_for": [
+      "gaudi",
+      "mediterranean",
+      "tapas"
+    ],
+    "groceries": {
+      "milk_l": 1.1,
+      "bread": 1.5,
+      "eggs_12": 3.5,
+      "rice_kg": 1.4,
+      "chicken_kg": 6.5,
+      "fruit_kg": 2.3,
+      "market_meal": 9
+    },
+    "leisure": {
+      "cinema": 10,
+      "cocktail": 12,
+      "gym_month": 45,
+      "laundry": 4.5
+    },
+    "transport_extra": {
+      "metro_ride": 2.5,
+      "fuel_l": 1.75,
+      "ridehail_km": 1
+    },
+    "activities": {
+      "sagrada": 26,
+      "park_guell": 10,
+      "casa_batllo": 35,
+      "picasso": 12
+    },
+    "monthly": {
+      "budget": 1450,
+      "comfortable": 2400
+    },
+    "seasons": "Best May-Jun, Sep. Jul-Aug hottest and most crowded.",
+    "airports": "BCN",
+    "notes": "Book Gaud\u00ed sites online ahead. Pickpockets on La Rambla.",
+    "docs": {
+      "entry": "Schengen: 90/180 days.",
+      "insurance": "EHIC for EU; travel insurance otherwise.",
+      "special": [],
+      "health": "None required.",
+      "agency": "Same Schengen process as Lisbon."
+    }
+  },
+  "bestMonths": "Best May-Jun, Sep. Jul-Aug hottest and most crowded.",
+  "crowd": "Book Gaud\u00ed sites online ahead. Pickpockets on La Rambla.",
+  "prices": {
+    "meal": 15,
+    "coffee": 2.5,
+    "taxi": 6,
+    "hotel": 140
+  }
+}

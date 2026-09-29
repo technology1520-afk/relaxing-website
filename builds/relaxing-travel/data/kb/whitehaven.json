@@ -1,0 +1,39 @@
+{
+  "key": "whitehaven",
+  "name": "Hill Inlet",
+  "country": "Australia (Whitsundays)",
+  "flag": "🇦🇺",
+  "lat": -20.28,
+  "lng": 149.05,
+  "tz": "Australia/Brisbane",
+  "currency": "AUD (~1.5 per $1)",
+  "bestView": "Hill Inlet lookout at mid-tide: the swirl is sharpest when the tide is halfway in or out, not at low tide",
+  "bestMonths": "May to October: dry season, stinger-free, 24°C",
+  "crowd": "Day-trip boats land 09:30 to 14:00. Sailing trips that stay past 15:00 get the beach to themselves",
+  "kid": "Shallow warm lagoon water, no stingers June to July, and the purest white sand they will ever stomp in",
+  "adventure": [
+    "Sailing the Whitsundays",
+    "Great Barrier Reef snorkel trips",
+    "Sea-kayak to Langford Island"
+  ],
+  "kidPicks": [
+    "Sand that squeaks underfoot",
+    "Lookout walk (400m, pram-able)",
+    "Turtle spotting from the boat"
+  ],
+  "prices": {
+    "meal": 18,
+    "coffee": 4.5,
+    "taxi": 14,
+    "hotel": 190,
+    "attraction": 120
+  },
+  "priceNote": "The boat is the cost, not the beach. Compare sailing-day trips: cheap ones are day-cruises, good ones are sail.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Australia",
+    "note": "Almost everyone needs an ETA or eVisitor in advance — apply online before booking flights.",
+    "source": "https://immi.homeaffairs.gov.au/"
+  }
+}

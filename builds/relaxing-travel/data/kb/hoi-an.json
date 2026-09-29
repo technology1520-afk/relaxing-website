@@ -1,0 +1,110 @@
+{
+  "key": "hoi-an",
+  "kind": "city",
+  "name": "Hoi An",
+  "city": "Hoi An",
+  "country": "Vietnam",
+  "flag": "\ud83c\uddfb\ud83c\uddf3",
+  "lat": 15.88,
+  "lng": 108.34,
+  "tz": null,
+  "currency": "VND ~25000/$",
+  "tags": [
+    "lanterns",
+    "budget",
+    "calm",
+    "beach nearby",
+    "tailors",
+    "foodie"
+  ],
+  "deep": {
+    "key": "hoi-an",
+    "city": "Hoi An",
+    "country": "Vietnam",
+    "flag": "\ud83c\uddfb\ud83c\uddf3",
+    "lat": 15.88,
+    "lng": 108.34,
+    "currency": "VND ~25000/$",
+    "prices": {
+      "meal_cheap": 2.2,
+      "coffee": 1.2,
+      "beer": 1.5,
+      "taxi_3km": 1.5,
+      "transit_ride": 0.4,
+      "hotel_budget": 15,
+      "hotel_mid": 40,
+      "hotel_lux": 120,
+      "internet_month": 12,
+      "sim_data": 6,
+      "meal_mid_rest": 10,
+      "water_bottle": 0.35,
+      "daily_budget": 28,
+      "daily_mid": 75
+    },
+    "tags": [
+      "lanterns",
+      "budget",
+      "calm",
+      "beach nearby",
+      "tailors",
+      "foodie"
+    ],
+    "best_for": [
+      "old town",
+      "cooking classes",
+      "tailored clothes"
+    ],
+    "groceries": {
+      "milk_l": 1.4,
+      "bread": 1,
+      "eggs_12": 1.8,
+      "rice_kg": 0.9,
+      "chicken_kg": 2.5,
+      "fruit_kg": 1,
+      "cao_lau": 1.5
+    },
+    "leisure": {
+      "cinema": 4,
+      "cocktail": 4,
+      "gym_month": 28,
+      "laundry": 0.8,
+      "tailor_shirt": 20
+    },
+    "transport_extra": {
+      "scooter_day": 5,
+      "fuel_l": 0.9,
+      "ridehail_km": 0.3
+    },
+    "activities": {
+      "old_town": 5,
+      "cooking_class": 22,
+      "my_son": 25,
+      "beach_bike": 2
+    },
+    "monthly": {
+      "budget": 480,
+      "comfortable": 850
+    },
+    "seasons": "Best Feb-Apr. Sep-Nov typhoon risk. May-Aug hot but beach season.",
+    "airports": "DAD +45min",
+    "notes": "Full-moon lantern night monthly. Test tailor with one item first.",
+    "docs": {
+      "entry": "E-visa 90 days multi-entry for most ($25), or visa-exempt for some ASEAN.",
+      "insurance": "Recommended.",
+      "special": [
+        "E-visa printed copy (borders can be picky)",
+        "Passport photo digital file"
+      ],
+      "health": "None required.",
+      "agency": "E-visa is DIY on the official government site; third-party sites charge 3x."
+    }
+  },
+  "bestMonths": "Best Feb-Apr. Sep-Nov typhoon risk. May-Aug hot but beach season.",
+  "crowd": "Full-moon lantern night monthly. Test tailor with one item first.",
+  "prices": {
+    "meal": 2.2,
+    "coffee": 1.2,
+    "taxi": 1.5,
+    "hotel": 40
+  }
+}

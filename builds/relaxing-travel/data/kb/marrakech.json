@@ -1,0 +1,109 @@
+{
+  "key": "marrakech",
+  "kind": "city",
+  "name": "Marrakech",
+  "city": "Marrakech",
+  "country": "Morocco",
+  "flag": "\ud83c\uddf2\ud83c\udde6",
+  "lat": 31.63,
+  "lng": -7.99,
+  "tz": null,
+  "currency": "MAD ~10/$",
+  "tags": [
+    "souks",
+    "desert",
+    "riads",
+    "budget",
+    "culture",
+    "warm"
+  ],
+  "deep": {
+    "key": "marrakech",
+    "city": "Marrakech",
+    "country": "Morocco",
+    "flag": "\ud83c\uddf2\ud83c\udde6",
+    "lat": 31.63,
+    "lng": -7.99,
+    "currency": "MAD ~10/$",
+    "prices": {
+      "meal_cheap": 5,
+      "coffee": 2,
+      "beer": 3.5,
+      "taxi_3km": 2.5,
+      "transit_ride": 0.6,
+      "hotel_budget": 30,
+      "hotel_mid": 70,
+      "hotel_lux": 200,
+      "internet_month": 18,
+      "sim_data": 10,
+      "meal_mid_rest": 15,
+      "water_bottle": 0.5,
+      "daily_budget": 52,
+      "daily_mid": 119
+    },
+    "tags": [
+      "souks",
+      "desert",
+      "riads",
+      "budget",
+      "culture",
+      "warm"
+    ],
+    "best_for": [
+      "medina",
+      "desert trips",
+      "hammams"
+    ],
+    "groceries": {
+      "milk_l": 0.9,
+      "bread": 0.6,
+      "eggs_12": 1.8,
+      "rice_kg": 1,
+      "chicken_kg": 3,
+      "fruit_kg": 1.2,
+      "market_meal": 3
+    },
+    "leisure": {
+      "cinema": 6,
+      "cocktail": 9,
+      "gym_month": 30,
+      "laundry": 1.2,
+      "hammam": 12
+    },
+    "transport_extra": {
+      "scooter_day": 12,
+      "fuel_l": 1.3,
+      "ridehail_km": 0.4
+    },
+    "activities": {
+      "majorelle": 10,
+      "medina_tour": 20,
+      "desert_2day": 60,
+      "hammam": 12
+    },
+    "monthly": {
+      "budget": 700,
+      "comfortable": 1300
+    },
+    "seasons": "Best Mar-May, Oct-Nov. Jun-Aug over 40\u00b0C. Winter nights cold.",
+    "airports": "RAK",
+    "notes": "Agree taxi price before entering. Riads beat hotels on value.",
+    "docs": {
+      "entry": "Visa-free 90 days for ~70 nationalities.",
+      "insurance": "Recommended.",
+      "special": [
+        "ID for hotel check-in (passport)"
+      ],
+      "health": "Hepatitis A recommended.",
+      "agency": "Official 'guides' wear badges in the medina; unlicensed 'helpers' expect tips."
+    }
+  },
+  "bestMonths": "Best Mar-May, Oct-Nov. Jun-Aug over 40\u00b0C. Winter nights cold.",
+  "crowd": "Agree taxi price before entering. Riads beat hotels on value.",
+  "prices": {
+    "meal": 5,
+    "coffee": 2,
+    "taxi": 2.5,
+    "hotel": 70
+  }
+}

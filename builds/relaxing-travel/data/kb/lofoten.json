@@ -1,0 +1,39 @@
+{
+  "key": "lofoten",
+  "name": "Reine",
+  "country": "Norway (Lofoten)",
+  "flag": "🇳🇴",
+  "lat": 67.93,
+  "lng": 13.09,
+  "tz": "Europe/Oslo",
+  "currency": "NOK (~10.5 per $1)",
+  "bestView": "Reinebringen summit: 1,971 stone steps up to the whole fjord in one look. Go at 23:00 in June — the light never dies",
+  "bestMonths": "June to July for midnight sun, September for aurora without crowds",
+  "crowd": "The Reinebringen steps queue at midday. Climb early or late; the village empties by 18:00",
+  "kid": "Easy kayak water, troll-fjord boat trips, and midnight beach runs that kids never forget",
+  "adventure": [
+    "Reinebringen climb (1.5h)",
+    "Sea-eagle safari",
+    "Surfing at Unstad (cold, wetsuits provided)"
+  ],
+  "kidPicks": [
+    "Fisherman's cabin stay (rorbu)",
+    "Sea-eagle boat safari",
+    "Midnight sun beach play"
+  ],
+  "prices": {
+    "meal": 24,
+    "coffee": 5,
+    "taxi": 18,
+    "hotel": 185,
+    "attraction": 30
+  },
+  "priceNote": "Cabins with kitchens save a family real money: supermarkets are normal-priced, restaurants are not.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Schengen area",
+    "note": "Schengen rules — same 90/180 day clock as the rest of the zone.",
+    "source": "https://www.udi.no/en/"
+  }
+}

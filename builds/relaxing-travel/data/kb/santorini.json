@@ -1,0 +1,107 @@
+{
+  "key": "santorini",
+  "kind": "city",
+  "name": "Santorini",
+  "city": "Santorini",
+  "country": "Greece",
+  "flag": "\ud83c\uddec\ud83c\uddf7",
+  "lat": 36.39,
+  "lng": 25.46,
+  "tz": null,
+  "currency": "EUR ~0.92/$",
+  "tags": [
+    "islands",
+    "romantic",
+    "views",
+    "calm",
+    "luxury-ish",
+    "sunset"
+  ],
+  "deep": {
+    "key": "santorini",
+    "city": "Santorini",
+    "country": "Greece",
+    "flag": "\ud83c\uddec\ud83c\uddf7",
+    "lat": 36.39,
+    "lng": 25.46,
+    "currency": "EUR ~0.92/$",
+    "prices": {
+      "meal_cheap": 20,
+      "coffee": 3.5,
+      "beer": 5,
+      "taxi_3km": 8,
+      "transit_ride": 2,
+      "hotel_budget": 90,
+      "hotel_mid": 180,
+      "hotel_lux": 450,
+      "internet_month": 30,
+      "sim_data": 20,
+      "meal_mid_rest": 35,
+      "water_bottle": 0.7,
+      "daily_budget": 161,
+      "daily_mid": 283
+    },
+    "tags": [
+      "islands",
+      "romantic",
+      "views",
+      "calm",
+      "luxury-ish",
+      "sunset"
+    ],
+    "best_for": [
+      "caldera views",
+      "white villages",
+      "honeymoon"
+    ],
+    "groceries": {
+      "milk_l": 1.3,
+      "bread": 1.6,
+      "eggs_12": 3.8,
+      "rice_kg": 1.6,
+      "chicken_kg": 7,
+      "fruit_kg": 2.4,
+      "gyros": 4.5
+    },
+    "leisure": {
+      "cinema": 10,
+      "cocktail": 13,
+      "gym_month": 50,
+      "laundry": 4,
+      "caldera_cruise": 70
+    },
+    "transport_extra": {
+      "scooter_day": 18,
+      "fuel_l": 1.9,
+      "ridehail_km": 1
+    },
+    "activities": {
+      "oia_sunset": 0,
+      "wine_tasting": 25,
+      "akrotiri": 15,
+      "catamaran": 110
+    },
+    "monthly": {
+      "budget": 1500,
+      "comfortable": 2800
+    },
+    "seasons": "Best May-Jun, Sep-Oct. Jul-Aug peak prices and crowds. Nov-Apr quiet, many close.",
+    "airports": "JTR (or ferry from Athens)",
+    "notes": "Stay in Fira/Kamari not Oia to halve costs. Imerovigli sunset is free.",
+    "docs": {
+      "entry": "Schengen: 90/180 days.",
+      "insurance": "EHIC for EU; travel insurance otherwise.",
+      "special": [],
+      "health": "None required.",
+      "agency": "Schengen via VFS."
+    }
+  },
+  "bestMonths": "Best May-Jun, Sep-Oct. Jul-Aug peak prices and crowds. Nov-Apr quiet, many close.",
+  "crowd": "Stay in Fira/Kamari not Oia to halve costs. Imerovigli sunset is free.",
+  "prices": {
+    "meal": 20,
+    "coffee": 3.5,
+    "taxi": 8,
+    "hotel": 180
+  }
+}

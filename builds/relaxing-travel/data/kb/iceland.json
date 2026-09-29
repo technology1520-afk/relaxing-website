@@ -1,0 +1,42 @@
+{
+  "key": "iceland",
+  "name": "Blue Lagoon",
+  "country": "Iceland",
+  "flag": "🇮🇸",
+  "lat": 63.88,
+  "lng": -22.45,
+  "tz": "Atlantic/Reykjavik",
+  "currency": "ISK (~140 per $1)",
+  "bestView": "The north edge of the lagoon at sunset, steam drifting over the water with Mt. Þorbjörn behind",
+  "bestMonths": "June to August for light, February to April for northern lights",
+  "crowd": "Busy 11:00 to 16:00. Book the first or last slot of the day for near-empty water",
+  "kid": "Kids 8+ love the floating mask bar and the algae mask ritual. Water is 38°C, safe for long soaks",
+  "adventure": [
+    "Lava-field hiking at Reykjanes",
+    "Snorkelling the Silfra fissure (45 min away)",
+    "Golden Circle drive"
+  ],
+  "kidPicks": [
+    "Floating pizza delivery in the water",
+    "Steam caves walk",
+    "Viking horses ride"
+  ],
+  "prices": {
+    "meal": 28,
+    "coffee": 5.5,
+    "taxi": 22,
+    "hotel": 240,
+    "attraction": 65
+  },
+  "priceNote": "Iceland is expensive. The lagoon itself is the big ticket; eat lunch at a bakery, not the hotel.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Schengen area",
+    "note": "Schengen visa if required; 90 days in any 180 across the whole zone.",
+    "source": "https://utl.is/en/"
+  },
+  "related": [
+    "reykjavik"
+  ]
+}

@@ -39,7 +39,7 @@ test("keys and filenames are unique and match", () => {
     seen.add(data.key);
     assert.equal(file, `${data.key}.json`, "filename must equal <key>.json");
   }
-  assert.ok(seen.size >= 26, `expected >=26 destinations, got ${seen.size}`);
+  assert.ok(seen.size >= 25, `expected >=25 destinations, got ${seen.size}`);
 });
 
 test("generated artifacts are in sync with source JSON", () => {

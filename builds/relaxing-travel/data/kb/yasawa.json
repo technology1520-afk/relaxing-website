@@ -1,0 +1,39 @@
+{
+  "key": "yasawa",
+  "name": "Naviti Island",
+  "country": "Fiji",
+  "flag": "🇫🇯",
+  "lat": -17.42,
+  "lng": 177.19,
+  "tz": "Pacific/Fiji",
+  "currency": "FJD (~2.2 per $1)",
+  "bestView": "The northern end of the island at low tide, when the reef flat opens a walkable path between coral gardens",
+  "bestMonths": "May to October: dry, 26°C, calm water",
+  "crowd": "Resort day-trips cluster at Sawa-i-Lau caves mid-morning. Island villages stay empty all day",
+  "kid": "Fijians adore kids. Village visits, hermit-crab races, and water warm enough to stay in until dark",
+  "adventure": [
+    "Sawa-i-Lau limestone caves",
+    "Reef snorkel off the resort sand",
+    "Manta ray snorkel (seasonal, May-Oct)"
+  ],
+  "kidPicks": [
+    "Hermit crab races",
+    "Coral-snorkel from the beach",
+    "Fijian lovo feast night"
+  ],
+  "prices": {
+    "meal": 10,
+    "coffee": 2.5,
+    "taxi": 5,
+    "hotel": 130,
+    "attraction": 15
+  },
+  "priceNote": "Island resorts include meals in the rate. A kava ceremony tip is a F$5 note, not more.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Fiji",
+    "note": "Visa-free entry for most Western nationals, 4 months on arrival.",
+    "source": "https://www.immigration.gov.fj/"
+  }
+}

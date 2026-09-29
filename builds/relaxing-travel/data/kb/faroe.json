@@ -1,0 +1,39 @@
+{
+  "key": "faroe",
+  "name": "Sørvágsvatn",
+  "country": "Faroe Islands",
+  "flag": "🇫🇴",
+  "lat": 62.06,
+  "lng": -7.35,
+  "tz": "Atlantic/Faroe",
+  "currency": "DKK (~6.9 per $1)",
+  "bestView": "Trælanípa cliff itself: the lake appears to float above the ocean. The full optical illusion needs you 200m back along the rim",
+  "bestMonths": "May to August. Expect four seasons in one day, any day",
+  "crowd": "The private-land trail takes 800 hikers a day in summer. Go before 10:00 and you share it with sheep",
+  "kid": "Puffin colonies at Mykines (ferry from Sørvágur), grass-roofed villages, and weather that changes fast enough to feel like magic",
+  "adventure": [
+    "Trælanípa rim walk (4km)",
+    "Boat into the Vestmanna cliffs",
+    "Múlafossur waterfall at Gásadalur"
+  ],
+  "kidPicks": [
+    "Puffin island ferry",
+    "Waterfall you can walk behind",
+    "Grass-roof houses to spot"
+  ],
+  "prices": {
+    "meal": 26,
+    "coffee": 5,
+    "taxi": 16,
+    "hotel": 150,
+    "attraction": 20
+  },
+  "priceNote": "Trails on private land charge a hiker's fee in cash or card at the gate — that is normal, not a scam.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Danish realm",
+    "note": "NOT Schengen-customary: Faroe Islands have their own rules; a Schengen visa must be marked 'valid for Faroe Islands'.",
+    "source": "https://www.vesturfar.fo/"
+  }
+}

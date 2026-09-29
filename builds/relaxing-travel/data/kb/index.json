@@ -1,0 +1,419 @@
+[
+  {
+    "key": "bali-ubud",
+    "kind": "city",
+    "name": "Bali (Ubud)",
+    "city": "Bali (Ubud)",
+    "country": "Indonesia",
+    "flag": "🇮🇩",
+    "lat": -8.51,
+    "lng": 115.26,
+    "currency": "IDR ~16000/$",
+    "tags": [
+      "yoga",
+      "rice terraces",
+      "tropical",
+      "budget",
+      "wellness",
+      "digital nomad",
+      "waterfalls"
+    ]
+  },
+  {
+    "key": "barcelona",
+    "kind": "city",
+    "name": "Barcelona",
+    "city": "Barcelona",
+    "country": "Spain",
+    "flag": "🇪🇸",
+    "lat": 41.39,
+    "lng": 2.17,
+    "currency": "EUR ~0.92/$",
+    "tags": [
+      "beach",
+      "architecture",
+      "nightlife",
+      "city",
+      "foodie",
+      "art"
+    ]
+  },
+  {
+    "key": "cape-town",
+    "kind": "city",
+    "name": "Cape Town",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "flag": "🇿🇦",
+    "lat": -33.92,
+    "lng": 18.42,
+    "currency": "ZAR ~18/$",
+    "tags": [
+      "ocean",
+      "mountains",
+      "wine",
+      "adventure",
+      "scenic"
+    ]
+  },
+  {
+    "key": "chiang-mai",
+    "kind": "city",
+    "name": "Chiang Mai",
+    "city": "Chiang Mai",
+    "country": "Thailand",
+    "flag": "🇹🇭",
+    "lat": 18.79,
+    "lng": 98.98,
+    "currency": "THB ~35/$",
+    "tags": [
+      "mountains",
+      "temples",
+      "budget",
+      "digital nomad",
+      "calm",
+      "tropical"
+    ]
+  },
+  {
+    "key": "cusco",
+    "kind": "city",
+    "name": "Cusco",
+    "city": "Cusco",
+    "country": "Peru",
+    "flag": "🇵🇪",
+    "lat": -13.53,
+    "lng": -71.97,
+    "currency": "PEN ~3.7/$",
+    "tags": [
+      "mountains",
+      "inca",
+      "high altitude",
+      "budget",
+      "adventure",
+      "historic"
+    ]
+  },
+  {
+    "key": "faroe",
+    "kind": "featured",
+    "name": "Sørvágsvatn",
+    "country": "Faroe Islands",
+    "flag": "🇫🇴",
+    "lat": 62.06,
+    "lng": -7.35,
+    "currency": "DKK (~6.9 per $1)",
+    "tags": []
+  },
+  {
+    "key": "hoi-an",
+    "kind": "city",
+    "name": "Hoi An",
+    "city": "Hoi An",
+    "country": "Vietnam",
+    "flag": "🇻🇳",
+    "lat": 15.88,
+    "lng": 108.34,
+    "currency": "VND ~25000/$",
+    "tags": [
+      "lanterns",
+      "budget",
+      "calm",
+      "beach nearby",
+      "tailors",
+      "foodie"
+    ]
+  },
+  {
+    "key": "iceland",
+    "kind": "featured",
+    "name": "Blue Lagoon",
+    "country": "Iceland",
+    "flag": "🇮🇸",
+    "lat": 63.88,
+    "lng": -22.45,
+    "currency": "ISK (~140 per $1)",
+    "tags": []
+  },
+  {
+    "key": "kotor",
+    "kind": "city",
+    "name": "Kotor",
+    "city": "Kotor",
+    "country": "Montenegro",
+    "flag": "🇲🇪",
+    "lat": 42.42,
+    "lng": 18.77,
+    "currency": "EUR ~0.92/$",
+    "tags": [
+      "fjord-like bay",
+      "historic",
+      "budget europe",
+      "calm",
+      "mountains"
+    ]
+  },
+  {
+    "key": "kyoto",
+    "kind": "featured",
+    "name": "Ryōan-ji",
+    "city": "Kyoto",
+    "country": "Japan",
+    "flag": "🇯🇵",
+    "lat": 35.0347,
+    "lng": 135.7183,
+    "currency": "JPY (~150 per $1)",
+    "tags": [
+      "zen",
+      "temples",
+      "tradition",
+      "calm",
+      "gardens",
+      "city"
+    ]
+  },
+  {
+    "key": "lisbon",
+    "kind": "city",
+    "name": "Lisbon",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "flag": "🇵🇹",
+    "lat": 38.72,
+    "lng": -9.14,
+    "currency": "EUR ~0.92/$",
+    "tags": [
+      "ocean",
+      "historic",
+      "pastel streets",
+      "foodie",
+      "affordable europe",
+      "city",
+      "surf"
+    ]
+  },
+  {
+    "key": "lofoten",
+    "kind": "featured",
+    "name": "Reine",
+    "country": "Norway (Lofoten)",
+    "flag": "🇳🇴",
+    "lat": 67.93,
+    "lng": 13.09,
+    "currency": "NOK (~10.5 per $1)",
+    "tags": []
+  },
+  {
+    "key": "marrakech",
+    "kind": "city",
+    "name": "Marrakech",
+    "city": "Marrakech",
+    "country": "Morocco",
+    "flag": "🇲🇦",
+    "lat": 31.63,
+    "lng": -7.99,
+    "currency": "MAD ~10/$",
+    "tags": [
+      "souks",
+      "desert",
+      "riads",
+      "budget",
+      "culture",
+      "warm"
+    ]
+  },
+  {
+    "key": "medellin",
+    "kind": "city",
+    "name": "Medellín",
+    "city": "Medellín",
+    "country": "Colombia",
+    "flag": "🇨🇴",
+    "lat": 6.24,
+    "lng": -75.58,
+    "currency": "COP ~4000/$",
+    "tags": [
+      "city",
+      "eternal spring",
+      "digital nomad",
+      "nightlife",
+      "budget-ish"
+    ]
+  },
+  {
+    "key": "mexico-city",
+    "kind": "city",
+    "name": "Mexico City",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "flag": "🇲🇽",
+    "lat": 19.43,
+    "lng": -99.13,
+    "currency": "MXN ~18/$",
+    "tags": [
+      "city",
+      "foodie",
+      "art",
+      "museums",
+      "nightlife",
+      "budget-ish"
+    ]
+  },
+  {
+    "key": "napali",
+    "kind": "featured",
+    "name": "Nāpali Coast",
+    "country": "Hawaii, USA",
+    "flag": "🇺🇸",
+    "lat": 22.17,
+    "lng": -159.6,
+    "currency": "USD",
+    "tags": []
+  },
+  {
+    "key": "pokhara",
+    "kind": "city",
+    "name": "Pokhara",
+    "city": "Pokhara",
+    "country": "Nepal",
+    "flag": "🇳🇵",
+    "lat": 28.21,
+    "lng": 83.99,
+    "currency": "NPR ~133/$",
+    "tags": [
+      "mountains",
+      "himalayas",
+      "lakes",
+      "budget",
+      "adventure",
+      "calm"
+    ]
+  },
+  {
+    "key": "queenstown",
+    "kind": "city",
+    "name": "Queenstown",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "flag": "🇳🇿",
+    "lat": -45.03,
+    "lng": 168.66,
+    "currency": "NZD ~0.6/$",
+    "tags": [
+      "adventure",
+      "mountains",
+      "lakes",
+      "expensive",
+      "bungee",
+      "hiking"
+    ]
+  },
+  {
+    "key": "reykjavik",
+    "kind": "city",
+    "name": "Reykjavik",
+    "city": "Reykjavik",
+    "country": "Iceland",
+    "flag": "🇮🇸",
+    "lat": 64.15,
+    "lng": -21.94,
+    "currency": "ISK ~140/$",
+    "tags": [
+      "aurora",
+      "geothermal",
+      "nature",
+      "expensive",
+      "adventure",
+      "dark nights"
+    ]
+  },
+  {
+    "key": "santorini",
+    "kind": "city",
+    "name": "Santorini",
+    "city": "Santorini",
+    "country": "Greece",
+    "flag": "🇬🇷",
+    "lat": 36.39,
+    "lng": 25.46,
+    "currency": "EUR ~0.92/$",
+    "tags": [
+      "islands",
+      "romantic",
+      "views",
+      "calm",
+      "luxury-ish",
+      "sunset"
+    ]
+  },
+  {
+    "key": "tbilisi",
+    "kind": "city",
+    "name": "Tbilisi",
+    "city": "Tbilisi",
+    "country": "Georgia",
+    "flag": "🇬🇪",
+    "lat": 41.72,
+    "lng": 44.78,
+    "currency": "GEL ~2.7/$",
+    "tags": [
+      "budget europe",
+      "wine",
+      "mountains",
+      "city",
+      "digital nomad"
+    ]
+  },
+  {
+    "key": "wadirum",
+    "kind": "featured",
+    "name": "Wadi Rum",
+    "country": "Jordan",
+    "flag": "🇯🇴",
+    "lat": 29.58,
+    "lng": 35.42,
+    "currency": "JOD (~0.71 per $1)",
+    "tags": []
+  },
+  {
+    "key": "whitehaven",
+    "kind": "featured",
+    "name": "Hill Inlet",
+    "country": "Australia (Whitsundays)",
+    "flag": "🇦🇺",
+    "lat": -20.28,
+    "lng": 149.05,
+    "currency": "AUD (~1.5 per $1)",
+    "tags": []
+  },
+  {
+    "key": "yasawa",
+    "kind": "featured",
+    "name": "Naviti Island",
+    "country": "Fiji",
+    "flag": "🇫🇯",
+    "lat": -17.42,
+    "lng": 177.19,
+    "currency": "FJD (~2.2 per $1)",
+    "tags": []
+  },
+  {
+    "key": "zanzibar-stone-town",
+    "kind": "city",
+    "name": "Zanzibar (Stone Town)",
+    "city": "Zanzibar (Stone Town)",
+    "country": "Tanzania",
+    "flag": "🇹🇿",
+    "lat": -6.16,
+    "lng": 39.19,
+    "currency": "TZS ~2600/$",
+    "tags": [
+      "islands",
+      "beaches",
+      "spices",
+      "budget-ish",
+      "tropical",
+      "romantic"
+    ]
+  }
+]

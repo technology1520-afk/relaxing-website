@@ -1,0 +1,110 @@
+{
+  "key": "pokhara",
+  "kind": "city",
+  "name": "Pokhara",
+  "city": "Pokhara",
+  "country": "Nepal",
+  "flag": "\ud83c\uddf3\ud83c\uddf5",
+  "lat": 28.21,
+  "lng": 83.99,
+  "tz": null,
+  "currency": "NPR ~133/$",
+  "tags": [
+    "mountains",
+    "himalayas",
+    "lakes",
+    "budget",
+    "adventure",
+    "calm"
+  ],
+  "deep": {
+    "key": "pokhara",
+    "city": "Pokhara",
+    "country": "Nepal",
+    "flag": "\ud83c\uddf3\ud83c\uddf5",
+    "lat": 28.21,
+    "lng": 83.99,
+    "currency": "NPR ~133/$",
+    "prices": {
+      "meal_cheap": 3.5,
+      "coffee": 1.5,
+      "beer": 2.5,
+      "taxi_3km": 2,
+      "transit_ride": 0.3,
+      "hotel_budget": 15,
+      "hotel_mid": 40,
+      "hotel_lux": 120,
+      "internet_month": 15,
+      "sim_data": 8,
+      "meal_mid_rest": 9,
+      "water_bottle": 0.4,
+      "daily_budget": 31,
+      "daily_mid": 75
+    },
+    "tags": [
+      "mountains",
+      "himalayas",
+      "lakes",
+      "budget",
+      "adventure",
+      "calm"
+    ],
+    "best_for": [
+      "annapurna",
+      "paragliding",
+      "sunrise views"
+    ],
+    "groceries": {
+      "milk_l": 1,
+      "bread": 0.9,
+      "eggs_12": 1.7,
+      "rice_kg": 0.9,
+      "chicken_kg": 3,
+      "fruit_kg": 1,
+      "dal_bhat": 2.5
+    },
+    "leisure": {
+      "cinema": 4,
+      "cocktail": 4,
+      "gym_month": 25,
+      "laundry": 0.8,
+      "boat_lake": 6
+    },
+    "transport_extra": {
+      "scooter_day": 8,
+      "fuel_l": 1.1,
+      "ridehail_km": 0.3
+    },
+    "activities": {
+      "paragliding": 85,
+      "annapurna_permit": 30,
+      "sarangkot_sunrise": 12
+    },
+    "monthly": {
+      "budget": 450,
+      "comfortable": 800
+    },
+    "seasons": "Trekking Oct-Nov, Mar-Apr (clear skies). Monsoon Jun-Sep. Cold winter nights.",
+    "airports": "PKR (or 6h bus)",
+    "notes": "Gateway to Annapurna. Permits via agencies in town.",
+    "docs": {
+      "entry": "Visa on arrival for most: 15/30/90 days ($30/50/125).",
+      "insurance": "ESSENTIAL for trekking \u2014 rescue helicopter evacuations cost $5,000+.",
+      "special": [
+        "Annapurna Conservation Area Permit $25",
+        "TIMS card",
+        "Passport copies + photos for permits"
+      ],
+      "health": "Altitude; water treatment.",
+      "agency": "Permits via official NTB/TAAN offices in Pokhara; trekking agencies must be TAAN-registered \u2014 check the registry."
+    }
+  },
+  "bestMonths": "Trekking Oct-Nov, Mar-Apr (clear skies). Monsoon Jun-Sep. Cold winter nights.",
+  "crowd": "Gateway to Annapurna. Permits via agencies in town.",
+  "prices": {
+    "meal": 3.5,
+    "coffee": 1.5,
+    "taxi": 2,
+    "hotel": 40
+  }
+}

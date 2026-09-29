@@ -1,0 +1,111 @@
+{
+  "key": "lisbon",
+  "kind": "city",
+  "name": "Lisbon",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "flag": "\ud83c\uddf5\ud83c\uddf9",
+  "lat": 38.72,
+  "lng": -9.14,
+  "tz": null,
+  "currency": "EUR ~0.92/$",
+  "tags": [
+    "ocean",
+    "historic",
+    "pastel streets",
+    "foodie",
+    "affordable europe",
+    "city",
+    "surf"
+  ],
+  "deep": {
+    "key": "lisbon",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "flag": "\ud83c\uddf5\ud83c\uddf9",
+    "lat": 38.72,
+    "lng": -9.14,
+    "currency": "EUR ~0.92/$",
+    "prices": {
+      "meal_cheap": 12,
+      "coffee": 2.2,
+      "beer": 3,
+      "taxi_3km": 5,
+      "transit_ride": 1.8,
+      "hotel_budget": 55,
+      "hotel_mid": 110,
+      "hotel_lux": 260,
+      "internet_month": 30,
+      "sim_data": 20,
+      "meal_mid_rest": 25,
+      "water_bottle": 0.6,
+      "daily_budget": 101,
+      "daily_mid": 184
+    },
+    "tags": [
+      "ocean",
+      "historic",
+      "pastel streets",
+      "foodie",
+      "affordable europe",
+      "city",
+      "surf"
+    ],
+    "best_for": [
+      "european city break",
+      "coastal walks",
+      "pastries"
+    ],
+    "groceries": {
+      "milk_l": 1,
+      "bread": 1.4,
+      "eggs_12": 3.2,
+      "rice_kg": 1.3,
+      "chicken_kg": 6,
+      "fruit_kg": 2.2,
+      "market_meal": 8
+    },
+    "leisure": {
+      "cinema": 9,
+      "cocktail": 10,
+      "gym_month": 35,
+      "laundry": 4,
+      "fado_night": 25
+    },
+    "transport_extra": {
+      "tram_day": 2.2,
+      "fuel_l": 1.8,
+      "ridehail_km": 0.9
+    },
+    "activities": {
+      "jeronymos": 12,
+      "castle": 15,
+      "sintra_day": 25,
+      "fado_show": 30
+    },
+    "monthly": {
+      "budget": 1150,
+      "comfortable": 1900
+    },
+    "seasons": "Best Mar-Jun, Sep-Oct. Jul-Aug hot and busiest. Winter mild.",
+    "airports": "LIS",
+    "notes": "Past\u00e9is de nata \u20ac1.30. Skip tram 28 queues; walk Alfama.",
+    "docs": {
+      "entry": "Schengen: 90/180 days; EU/EEA citizens free movement.",
+      "insurance": "EHIC covers EU citizens; others get travel insurance.",
+      "special": [
+        "Schengen insurance \u20ac30k if visa required"
+      ],
+      "health": "No special vaccines.",
+      "agency": "Schengen visas via VFS Global centres; never pay 'guarantee' agents."
+    }
+  },
+  "bestMonths": "Best Mar-Jun, Sep-Oct. Jul-Aug hot and busiest. Winter mild.",
+  "crowd": "Past\u00e9is de nata \u20ac1.30. Skip tram 28 queues; walk Alfama.",
+  "prices": {
+    "meal": 12,
+    "coffee": 2.2,
+    "taxi": 5,
+    "hotel": 110
+  }
+}

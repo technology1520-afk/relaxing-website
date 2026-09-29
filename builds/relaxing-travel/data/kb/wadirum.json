@@ -1,0 +1,39 @@
+{
+  "key": "wadirum",
+  "name": "Wadi Rum",
+  "country": "Jordan",
+  "flag": "🇯🇴",
+  "lat": 29.58,
+  "lng": 35.42,
+  "tz": "Asia/Amman",
+  "currency": "JOD (~0.71 per $1)",
+  "bestView": "From a camel or 4x4 at Um Frouth rock bridge 30 minutes before sunset, when the sand goes red",
+  "bestMonths": "March to May, September to November. Summer passes 40°C",
+  "crowd": "Tours bunch at the big rock bridges 16:00 to 18:00. Camp overnight: after 19:00 the desert is yours",
+  "kid": "Bedouin camps, camel rides, scramble-proof sand dunes, and a night sky with zero light pollution. Kids sleep in the desert.",
+  "adventure": [
+    "4x4 desert circuit",
+    "Camel trek at dusk",
+    "Bubble-dome night under the stars"
+  ],
+  "kidPicks": [
+    "Sandboarding the red dunes",
+    "Camel ride",
+    "Stargazing from a Bedouin camp"
+  ],
+  "prices": {
+    "meal": 8,
+    "coffee": 1.5,
+    "taxi": 6,
+    "hotel": 90,
+    "attraction": 20
+  },
+  "priceNote": "Jordan is fair value. Agree the jeep tour price BEFORE getting in; anything quoted per person over $40 is tourist-priced.",
+  "kind": "featured",
+  "deep": null,
+  "visa": {
+    "zone": "Jordan",
+    "note": "Visa on arrival for most nationalities (~40 JOD); free with Jordan Pass bought before arrival.",
+    "source": "https://www.jordanpass.jo/"
+  }
+}
