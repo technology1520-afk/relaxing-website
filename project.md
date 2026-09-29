@@ -11,7 +11,8 @@ price data, and a named AI assistant (Relaxagent).
 
 ## What the site does
 
-1. **World Explorer** — vibe/budget search across 19 cities, full world price
+1. **World Explorer** — vibe search across 25 destinations (incl. 6 camping:
+   Banff, Torres del Paine, Isle of Skye, Lake Tekapo, Sardinia, Wadi Rum), full world price
    tables (static JSON), detail modal, suggestion chips. "Don't know where yet"
    flow suggests places with their document requirements.
 2. **Trip planner** — live weather, distances, local prices, fair-price checker,
