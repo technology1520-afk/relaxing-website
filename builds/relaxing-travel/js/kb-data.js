@@ -122,6 +122,120 @@ export const KB = {
    "remote work"
   ]
  },
+ "banff": {
+  "key": "banff",
+  "kind": "city",
+  "name": "Banff",
+  "city": "Banff",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "lat": 51.18,
+  "lng": -115.57,
+  "tz": "America/Edmonton",
+  "currency": "CAD (~1.37 per $1)",
+  "bestMonths": "June to September for warm-weather camping. Late September: larches turn gold, crowds gone",
+  "crowd": "Lake Louise and Moraine pack by 08:00. Camp at Two Jack Lake: 15 minutes from town and you hear loons, not tour buses",
+  "bestView": "Moraine Lake's Ten Peaks at 07:00 before the shuttles arrive: the classic postcard, all yours",
+  "kid": "Two Jack and Tunnel Mountain campsites have fire pits and easy trails. Hot springs, gondola, and paddleboard rentals keep every age happy",
+  "daily_budget": 80,
+  "daily_mid": 175,
+  "priceLevel": "pricey",
+  "prices": {
+   "meal": 18,
+   "coffee": 5,
+   "taxi": 14,
+   "hotel": 190,
+   "campsite": 30
+  },
+  "best_for": [
+   "rockies",
+   "lake camping",
+   "wildlife",
+   "canoeing",
+   "aurora"
+  ],
+  "tags": [
+   "camping",
+   "mountain",
+   "lake",
+   "nature",
+   "wildlife",
+   "hiking",
+   "canoe"
+  ],
+  "deep": {
+   "key": "banff",
+   "city": "Banff",
+   "country": "Canada",
+   "flag": "🇨🇦",
+   "lat": 51.18,
+   "lng": -115.57,
+   "currency": "CAD (~1.37 per $1)",
+   "prices": {
+    "meal_cheap": 18,
+    "coffee": 5,
+    "beer": 8,
+    "taxi_3km": 14,
+    "transit_ride": 2,
+    "hotel_budget": 90,
+    "hotel_mid": 190,
+    "hotel_lux": 420,
+    "campsite": 30,
+    "hot_springs": 17,
+    "daily_budget": 80,
+    "daily_mid": 175,
+    "internet_month": 55,
+    "sim_data": 40,
+    "meal_mid_rest": 38,
+    "water_bottle": 3
+   },
+   "groceries": {
+    "milk_l": 2.2,
+    "bread": 2.8,
+    "eggs_12": 4.5,
+    "rice_kg": 2.6,
+    "chicken_kg": 11,
+    "fruit_kg": 3.8
+   },
+   "leisure": {
+    "cinema": 14,
+    "cocktail": 13,
+    "gym_month": 55,
+    "laundry": 4,
+    "pool_entry": 10
+   },
+   "transport_extra": {
+    "fuel_l": 1.5,
+    "park_pass_day": 11,
+    "shuttle_moraine": 8
+   },
+   "activities": {
+    "moraine_lake_shuttle": 8,
+    "canoe_lake_louise": 135,
+    "banff_gondola": 65,
+    "johnston_canyon": 0
+   },
+   "monthly": {
+    "budget": 1500,
+    "comfortable": 2800
+   },
+   "seasons": "Jun-Sep camping season, 20C days. Late Sep: golden larches and empty trails. Winter is for ice and ski, not tents.",
+   "notes": "Parks Canada pass required (day or Discovery pass). Reservations open in spring on reservation.pc.gc.ca and the best lakeshore sites go in hours. Bear spray and food storage are law, not advice.",
+   "airports": "Calgary (YYC) 1.5h drive",
+   "docs": {
+    "entry": "eTA for visa-exempt nationals flying in (CAD 7), others need a visitor visa.",
+    "insurance": "Recommended: park rescues are charged at cost. US visitors: check your health plan.",
+    "special": [
+     "Parks Canada pass",
+     "Campsite reservation (spring opening, sells out)",
+     "Bear-proof food storage mandatory at campsites"
+    ],
+    "health": "None required.",
+    "agency": "Book campsites and shuttles only on official Parks Canada / Banff sites."
+   }
+  },
+  "visa": null
+ },
  "barcelona": {
   "key": "barcelona",
   "kind": "city",
@@ -636,7 +750,8 @@ export const KB = {
    "quiet",
    "wild",
    "scenic"
-  ]
+  ],
+  "city": "Sørvágsvatn"
  },
  "hoi-an": {
   "key": "hoi-an",
@@ -812,7 +927,121 @@ export const KB = {
    "quiet",
    "scenic",
    "wild"
-  ]
+  ],
+  "city": "Blue Lagoon"
+ },
+ "isle-of-skye": {
+  "key": "isle-of-skye",
+  "kind": "city",
+  "name": "Isle of Skye",
+  "city": "Isle of Skye",
+  "country": "Scotland, UK",
+  "flag": "🌿",
+  "lat": 57.27,
+  "lng": -6.2,
+  "tz": "Europe/London",
+  "currency": "GBP (~0.79 per $1)",
+  "bestMonths": "May and September: long light, midges not yet hatched or already gone. June-Aug brings both crowds and midges",
+  "crowd": "Fairy Pools and Old Man of Storr queue by 10:00 in summer. Wild camp high and late: the Quiraing at 21:00 is empty",
+  "bestView": "The Quiraing ridge at golden hour: landslipped pinnacles over the Sound of Raasay, sheep the only company",
+  "kid": "Fairy pools are a scrambly treasure hunt kids love. Weather turns fast — pack shells. Midges are the honest enemy in July",
+  "daily_budget": 75,
+  "daily_mid": 150,
+  "priceLevel": "moderate",
+  "prices": {
+   "meal": 16,
+   "coffee": 4,
+   "taxi": 12,
+   "hotel": 130,
+   "campsite": 20
+  },
+  "best_for": [
+   "wild camping",
+   "highlands",
+   "fairy pools",
+   "hiking",
+   "stargazing"
+  ],
+  "tags": [
+   "camping",
+   "wild",
+   "mountain",
+   "hiking",
+   "nature",
+   "quiet",
+   "coast"
+  ],
+  "deep": {
+   "key": "isle-of-skye",
+   "city": "Isle of Skye",
+   "country": "Scotland, UK",
+   "flag": "🌿",
+   "lat": 57.27,
+   "lng": -6.2,
+   "currency": "GBP (~0.79 per $1)",
+   "prices": {
+    "meal_cheap": 16,
+    "coffee": 4,
+    "beer": 6,
+    "taxi_3km": 12,
+    "transit_ride": 3,
+    "hotel_budget": 70,
+    "hotel_mid": 130,
+    "hotel_lux": 280,
+    "campsite": 20,
+    "bothy_night": 0,
+    "daily_budget": 75,
+    "daily_mid": 150,
+    "internet_month": 32,
+    "sim_data": 22,
+    "meal_mid_rest": 30,
+    "water_bottle": 2.5
+   },
+   "groceries": {
+    "milk_l": 1.2,
+    "bread": 1.5,
+    "eggs_12": 3.8,
+    "rice_kg": 1.8,
+    "chicken_kg": 7,
+    "fruit_kg": 2.8
+   },
+   "leisure": {
+    "cinema": 12,
+    "cocktail": 11,
+    "gym_month": 40,
+    "laundry": 5,
+    "pool_entry": 6
+   },
+   "transport_extra": {
+    "fuel_l": 1.65,
+    "ferry_mallaig": 20,
+    "bus_portree": 4
+   },
+   "activities": {
+    "old_man_storr": 0,
+    "fairy_pools": 0,
+    "dunvegan_castle": 18,
+    "boat_loch_coruisk": 45
+   },
+   "monthly": {
+    "budget": 1300,
+    "comfortable": 2400
+   },
+   "seasons": "May-Sep workable. May and September are the quiet sweet spots. Winter: 6h light, wild weather, empty trails.",
+   "notes": "Scotland's right-to-roam allows respectful wild camping: small tent, no fire on peat, leave no trace, arrive late leave early. Portree is the food-shop town.",
+   "airports": "Inverness (INV) 2.5h drive",
+   "docs": {
+    "entry": "UK: 6-month visa-free entry for many; others need a Standard Visitor visa.",
+    "insurance": "EHIC/GHIC for UK residents; visitors take normal travel insurance.",
+    "special": [
+     "Midge headnet May-Sep (Smidge spray works)",
+     "Waterproof everything: four seasons a day is real"
+    ],
+    "health": "None required.",
+    "agency": "No visas or permits to book here — go direct, the island doesn't need middlemen."
+   }
+  },
+  "visa": null
  },
  "kotor": {
   "key": "kotor",
@@ -1063,6 +1292,119 @@ export const KB = {
    "culture"
   ]
  },
+ "lake-tekapo": {
+  "key": "lake-tekapo",
+  "kind": "city",
+  "name": "Lake Tekapo",
+  "city": "Lake Tekapo",
+  "country": "New Zealand",
+  "flag": "🇳🇿",
+  "lat": -44,
+  "lng": 170.48,
+  "tz": "Pacific/Auckland",
+  "currency": "NZD (~1.64 per $1)",
+  "bestMonths": "December to March for warm camping. June-Aug for snow and the brightest stars",
+  "crowd": "The church and the hot pools draw buses at sunset. The lakeshore DOC campsites go quiet an hour after: dark-sky reserve, zero light pollution",
+  "bestView": "Church of the Good Shepherd at astro-dark: the Milky Way in your face, lupins along the shore in December",
+  "kid": "Hot pools at dusk, stargazing tours that keep kids rapt, and flat sheltered lakeshore camping. One of the easiest family camps in the world",
+  "daily_budget": 65,
+  "daily_mid": 140,
+  "priceLevel": "moderate",
+  "prices": {
+   "meal": 15,
+   "coffee": 4.5,
+   "taxi": 12,
+   "hotel": 120,
+   "campsite": 18
+  },
+  "best_for": [
+   "stargazing",
+   "dark sky",
+   "lake camping",
+   "lupins",
+   "hot pools"
+  ],
+  "tags": [
+   "camping",
+   "stargazing",
+   "lake",
+   "nature",
+   "quiet",
+   "adventure",
+   "romantic"
+  ],
+  "deep": {
+   "key": "lake-tekapo",
+   "city": "Lake Tekapo",
+   "country": "New Zealand",
+   "flag": "🇳🇿",
+   "lat": -44,
+   "lng": 170.48,
+   "currency": "NZD (~1.64 per $1)",
+   "prices": {
+    "meal_cheap": 15,
+    "coffee": 4.5,
+    "beer": 8,
+    "taxi_3km": 12,
+    "transit_ride": 2.5,
+    "hotel_budget": 60,
+    "hotel_mid": 120,
+    "hotel_lux": 260,
+    "campsite": 18,
+    "hot_pools": 35,
+    "daily_budget": 65,
+    "daily_mid": 140,
+    "internet_month": 45,
+    "sim_data": 30,
+    "meal_mid_rest": 32,
+    "water_bottle": 3
+   },
+   "groceries": {
+    "milk_l": 2,
+    "bread": 2.2,
+    "eggs_12": 5.5,
+    "rice_kg": 2.8,
+    "chicken_kg": 10,
+    "fruit_kg": 3.5
+   },
+   "leisure": {
+    "cinema": 16,
+    "cocktail": 14,
+    "gym_month": 45,
+    "laundry": 5,
+    "pool_entry": 8
+   },
+   "transport_extra": {
+    "fuel_l": 1.9,
+    "doc_campsite": 18,
+    "bus_christchurch": 45
+   },
+   "activities": {
+    "mount_john_observatory": 95,
+    "hot_pools_dusk": 35,
+    "kayak_hire": 30,
+    "church_good_shepherd": 0
+   },
+   "monthly": {
+    "budget": 1200,
+    "comfortable": 2300
+   },
+   "seasons": "Dec-Mar warm (22C) and long light. Jun-Aug: cold nights, best stars on earth. The MacKenzie autumn (Apr) is golden and empty.",
+   "notes": "It's an International Dark-Sky Reserve: red-light torches only at night. DOC campsites are first-come or booked on doc.govt.nz; freedom camping needs a certified self-contained vehicle.",
+   "airports": "Christchurch (CHC) 3h drive",
+   "docs": {
+    "entry": "NZeTA for visa-waiver nationals (apply before flying), others need a visitor visa.",
+    "insurance": "Standard travel insurance; hiking and water sports should be covered.",
+    "special": [
+     "NZeTA via app or web, NZD 23-44",
+     "Self-contained vehicle certificate for freedom camping"
+    ],
+    "health": "None required.",
+    "agency": "NZeTA direct on immigr/NZeTA app only — third-party sites charge double."
+   }
+  },
+  "visa": null
+ },
  "lisbon": {
   "key": "lisbon",
   "kind": "city",
@@ -1235,7 +1577,8 @@ export const KB = {
    "hiking",
    "winter",
    "beach"
-  ]
+  ],
+  "city": "Reine"
  },
  "marrakech": {
   "key": "marrakech",
@@ -1639,7 +1982,8 @@ export const KB = {
    "nature",
    "romantic",
    "scenic"
-  ]
+  ],
+  "city": "Nāpali Coast"
  },
  "pokhara": {
   "key": "pokhara",
@@ -2111,6 +2455,118 @@ export const KB = {
    "honeymoon"
   ]
  },
+ "sardinia": {
+  "key": "sardinia",
+  "kind": "city",
+  "name": "Sardinia (Cala Gonone)",
+  "city": "Sardinia (Cala Gonone)",
+  "country": "Italy",
+  "flag": "🇮🇹",
+  "lat": 40.28,
+  "lng": 9.63,
+  "tz": "Europe/Rome",
+  "currency": "EUR ~0.92/$",
+  "bestMonths": "June and September: sea warm enough to sleep to the sound of it, beaches not yet colonised",
+  "crowd": "July-Aug is Italian holiday season: busy and hot. Cala Luna's cave beaches empty after the last boat, 17:30",
+  "bestView": "Cala Luna beach at dawn: limestone cliffs 800m tall over turquoise water, tent flaps the only hotel",
+  "kid": "Shallow coves, kayak rentals, and the Bue Marino cave are a perfect first adventure camp for kids. Campsites have shade and pools",
+  "daily_budget": 60,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "prices": {
+   "meal": 14,
+   "coffee": 1.8,
+   "taxi": 10,
+   "hotel": 95,
+   "campsite": 15
+  },
+  "best_for": [
+   "beach camping",
+   "gulf of orosei",
+   "kayak",
+   "caves",
+   "turquoise coves"
+  ],
+  "tags": [
+   "camping",
+   "beach",
+   "swim",
+   "kayak",
+   "nature",
+   "romantic",
+   "foodie"
+  ],
+  "deep": {
+   "key": "sardinia",
+   "city": "Sardinia (Cala Gonone)",
+   "country": "Italy",
+   "flag": "🇮🇹",
+   "lat": 40.28,
+   "lng": 9.63,
+   "currency": "EUR ~0.92/$",
+   "prices": {
+    "meal_cheap": 14,
+    "coffee": 1.8,
+    "beer": 4,
+    "taxi_3km": 10,
+    "transit_ride": 1.5,
+    "hotel_budget": 55,
+    "hotel_mid": 95,
+    "hotel_lux": 210,
+    "campsite": 15,
+    "kayak_day": 35,
+    "daily_budget": 60,
+    "daily_mid": 130,
+    "internet_month": 30,
+    "sim_data": 12,
+    "meal_mid_rest": 28,
+    "water_bottle": 1.5
+   },
+   "groceries": {
+    "milk_l": 1.2,
+    "bread": 1.8,
+    "eggs_12": 3.2,
+    "rice_kg": 2,
+    "chicken_kg": 8,
+    "fruit_kg": 2.2
+   },
+   "leisure": {
+    "cinema": 9,
+    "cocktail": 9,
+    "gym_month": 40,
+    "laundry": 4,
+    "pool_entry": 6
+   },
+   "transport_extra": {
+    "fuel_l": 1.85,
+    "ferry_cala_luna": 25,
+    "bus_olbia": 12
+   },
+   "activities": {
+    "cala_luna_boat": 25,
+    "bue_marino_cave": 14,
+    "kayak_gulf": 35,
+    "gorropu_gorge": 5
+   },
+   "monthly": {
+    "budget": 1150,
+    "comfortable": 2100
+   },
+   "seasons": "Jun-Sep beach-perfect. Jun and Sep are the quiet ones. Jul-Aug: 35C and packed. May and Oct hike beautifully.",
+   "notes": "Wild camping is not legal in Italy: use the campsites above Cala Gonone (shade, pools, 15-20/night) and boat or kayak into the coves for the day. Book ferries to Cala Luna a day ahead in August.",
+   "airports": "Olbia (OLB) 1.5h drive",
+   "docs": {
+    "entry": "Schengen: 90 days in any 180 for visa-free passports.",
+    "insurance": "EHIC for EU; others take travel insurance including water sports.",
+    "special": [
+     "Schengen insurance €30k if visa required"
+    ],
+    "health": "None required.",
+    "agency": "Nothing to pre-book beyond campsites and the Cala Luna boat — go direct."
+   }
+  },
+  "visa": null
+ },
  "tbilisi": {
   "key": "tbilisi",
   "kind": "city",
@@ -2224,6 +2680,120 @@ export const KB = {
    "caucasus"
   ]
  },
+ "torres-del-paine": {
+  "key": "torres-del-paine",
+  "kind": "city",
+  "name": "Torres del Paine",
+  "city": "Torres del Paine",
+  "country": "Chile",
+  "flag": "🇨🇱",
+  "lat": -50.94,
+  "lng": -73.4,
+  "tz": "America/Punta_Arenas",
+  "currency": "CLP ~950/$",
+  "bestMonths": "December to February (summer, 16h light). Shoulder Nov & Mar: fewer people, still kind weather",
+  "crowd": "Refugios and the W-campsites book out months ahead in summer. Camp the quiet back side: the O-circuit's north is walk-in only",
+  "bestView": "Base of the Torres at sunrise: three granite towers over a glacial lake, wind still, nobody who slept in",
+  "kid": "Older kids only: weather flips in an hour and trails are real mountain terrain. The catamaran across Lago Grey is the family-friendly loop",
+  "daily_budget": 55,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "prices": {
+   "meal": 12,
+   "coffee": 3.5,
+   "taxi": 20,
+   "hotel": 90,
+   "campsite": 12
+  },
+  "best_for": [
+   "patagonia",
+   "trekking",
+   "camping",
+   "glaciers",
+   "condors",
+   "wild"
+  ],
+  "tags": [
+   "camping",
+   "mountain",
+   "hiking",
+   "nature",
+   "adventure",
+   "wild",
+   "glaciers"
+  ],
+  "visa": null,
+  "deep": {
+   "key": "torres-del-paine",
+   "city": "Torres del Paine",
+   "country": "Chile",
+   "flag": "🇨🇱",
+   "lat": -50.94,
+   "lng": -73.4,
+   "currency": "CLP ~950/$",
+   "prices": {
+    "meal_cheap": 12,
+    "coffee": 3.5,
+    "beer": 5,
+    "taxi_3km": 20,
+    "transit_ride": 1.2,
+    "hotel_budget": 45,
+    "hotel_mid": 90,
+    "hotel_lux": 220,
+    "campsite": 12,
+    "refugio_bed": 45,
+    "daily_budget": 55,
+    "daily_mid": 130,
+    "internet_month": 28,
+    "sim_data": 15,
+    "meal_mid_rest": 26,
+    "water_bottle": 2.5
+   },
+   "groceries": {
+    "milk_l": 1.2,
+    "bread": 1.8,
+    "eggs_12": 3.5,
+    "rice_kg": 1.6,
+    "chicken_kg": 6,
+    "fruit_kg": 2.5
+   },
+   "leisure": {
+    "cinema": 8,
+    "cocktail": 8,
+    "gym_month": 35,
+    "laundry": 4,
+    "pool_entry": 5
+   },
+   "transport_extra": {
+    "fuel_l": 1.3,
+    "park_entry": 45,
+    "bus_puerto_natales": 15
+   },
+   "activities": {
+    "torres_lookout": 0,
+    "grey_glacier_catamaran": 115,
+    "penguin_colony": 40
+   },
+   "monthly": {
+    "budget": 900,
+    "comfortable": 1900
+   },
+   "seasons": "Dec-Feb summer with 16h light and 15C. Wind is the real forecast. Nov & Mar are quieter and cheaper.",
+   "notes": "Campsite bookings (Conaf + Vertice) open months ahead and sell out. Puerto Natales is the base town: buy food there, the park marks up 3x.",
+   "airports": "Punta Arenas (PUQ) 5h bus",
+   "docs": {
+    "entry": "Most Western passports: 90 days free on arrival. Others check Chilean consulate.",
+    "insurance": "Strongly advised: rescue and medical evac in Patagonia is expensive.",
+    "special": [
+     "Park entry ticket bought online in advance (pasesparques.cl)",
+     "Campsite/reservation printout checked at ranger stations",
+     "Wind-proof tent: standard pop-ups fail here"
+    ],
+    "health": "None required.",
+    "agency": "Book refugios and campsites directly with Vertice/Las Torres — agencies add 20-40%."
+   }
+  }
+ },
  "wadirum": {
   "key": "wadirum",
   "name": "Wadi Rum",
@@ -2277,7 +2847,8 @@ export const KB = {
    "adventure",
    "quiet",
    "culture"
-  ]
+  ],
+  "city": "Wadi Rum"
  },
  "whitehaven": {
   "key": "whitehaven",
@@ -2332,7 +2903,8 @@ export const KB = {
    "romantic",
    "swim",
    "nature"
-  ]
+  ],
+  "city": "Hill Inlet"
  },
  "yasawa": {
   "key": "yasawa",
@@ -2387,7 +2959,8 @@ export const KB = {
    "quiet",
    "swim",
    "romantic"
-  ]
+  ],
+  "city": "Naviti Island"
  },
  "zanzibar-stone-town": {
   "key": "zanzibar-stone-town",
@@ -2540,6 +3113,37 @@ export const KB_INDEX = [
   ]
  },
  {
+  "key": "banff",
+  "kind": "city",
+  "name": "Banff",
+  "city": "Banff",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "lat": 51.18,
+  "lng": -115.57,
+  "currency": "CAD (~1.37 per $1)",
+  "daily_budget": 80,
+  "daily_mid": 175,
+  "priceLevel": "pricey",
+  "best_for": [
+   "rockies",
+   "lake camping",
+   "wildlife",
+   "canoeing",
+   "aurora"
+  ],
+  "quietPick": false,
+  "tags": [
+   "camping",
+   "mountain",
+   "lake",
+   "nature",
+   "wildlife",
+   "hiking",
+   "canoe"
+  ]
+ },
+ {
   "key": "barcelona",
   "kind": "city",
   "name": "Barcelona",
@@ -2654,6 +3258,7 @@ export const KB_INDEX = [
   "key": "faroe",
   "kind": "featured",
   "name": "Sørvágsvatn",
+  "city": "Sørvágsvatn",
   "country": "Faroe Islands",
   "flag": "🇫🇴",
   "lat": 62.06,
@@ -2708,6 +3313,7 @@ export const KB_INDEX = [
   "key": "iceland",
   "kind": "featured",
   "name": "Blue Lagoon",
+  "city": "Blue Lagoon",
   "country": "Iceland",
   "flag": "🇮🇸",
   "lat": 63.88,
@@ -2729,6 +3335,37 @@ export const KB_INDEX = [
    "quiet",
    "scenic",
    "wild"
+  ]
+ },
+ {
+  "key": "isle-of-skye",
+  "kind": "city",
+  "name": "Isle of Skye",
+  "city": "Isle of Skye",
+  "country": "Scotland, UK",
+  "flag": "🌿",
+  "lat": 57.27,
+  "lng": -6.2,
+  "currency": "GBP (~0.79 per $1)",
+  "daily_budget": 75,
+  "daily_mid": 150,
+  "priceLevel": "moderate",
+  "best_for": [
+   "wild camping",
+   "highlands",
+   "fairy pools",
+   "hiking",
+   "stargazing"
+  ],
+  "quietPick": false,
+  "tags": [
+   "camping",
+   "wild",
+   "mountain",
+   "hiking",
+   "nature",
+   "quiet",
+   "coast"
   ]
  },
  {
@@ -2787,6 +3424,37 @@ export const KB_INDEX = [
   ]
  },
  {
+  "key": "lake-tekapo",
+  "kind": "city",
+  "name": "Lake Tekapo",
+  "city": "Lake Tekapo",
+  "country": "New Zealand",
+  "flag": "🇳🇿",
+  "lat": -44,
+  "lng": 170.48,
+  "currency": "NZD (~1.64 per $1)",
+  "daily_budget": 65,
+  "daily_mid": 140,
+  "priceLevel": "moderate",
+  "best_for": [
+   "stargazing",
+   "dark sky",
+   "lake camping",
+   "lupins",
+   "hot pools"
+  ],
+  "quietPick": false,
+  "tags": [
+   "camping",
+   "stargazing",
+   "lake",
+   "nature",
+   "quiet",
+   "adventure",
+   "romantic"
+  ]
+ },
+ {
   "key": "lisbon",
   "kind": "city",
   "name": "Lisbon",
@@ -2819,6 +3487,7 @@ export const KB_INDEX = [
   "key": "lofoten",
   "kind": "featured",
   "name": "Reine",
+  "city": "Reine",
   "country": "Norway (Lofoten)",
   "flag": "🇳🇴",
   "lat": 67.93,
@@ -2929,6 +3598,7 @@ export const KB_INDEX = [
   "key": "napali",
   "kind": "featured",
   "name": "Nāpali Coast",
+  "city": "Nāpali Coast",
   "country": "Hawaii, USA",
   "flag": "🇺🇸",
   "lat": 22.17,
@@ -3065,6 +3735,37 @@ export const KB_INDEX = [
   ]
  },
  {
+  "key": "sardinia",
+  "kind": "city",
+  "name": "Sardinia (Cala Gonone)",
+  "city": "Sardinia (Cala Gonone)",
+  "country": "Italy",
+  "flag": "🇮🇹",
+  "lat": 40.28,
+  "lng": 9.63,
+  "currency": "EUR ~0.92/$",
+  "daily_budget": 60,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "best_for": [
+   "beach camping",
+   "gulf of orosei",
+   "kayak",
+   "caves",
+   "turquoise coves"
+  ],
+  "quietPick": false,
+  "tags": [
+   "camping",
+   "beach",
+   "swim",
+   "kayak",
+   "nature",
+   "romantic",
+   "foodie"
+  ]
+ },
+ {
   "key": "tbilisi",
   "kind": "city",
   "name": "Tbilisi",
@@ -3092,9 +3793,42 @@ export const KB_INDEX = [
   ]
  },
  {
+  "key": "torres-del-paine",
+  "kind": "city",
+  "name": "Torres del Paine",
+  "city": "Torres del Paine",
+  "country": "Chile",
+  "flag": "🇨🇱",
+  "lat": -50.94,
+  "lng": -73.4,
+  "currency": "CLP ~950/$",
+  "daily_budget": 55,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "best_for": [
+   "patagonia",
+   "trekking",
+   "camping",
+   "glaciers",
+   "condors",
+   "wild"
+  ],
+  "quietPick": false,
+  "tags": [
+   "camping",
+   "mountain",
+   "hiking",
+   "nature",
+   "adventure",
+   "wild",
+   "glaciers"
+  ]
+ },
+ {
   "key": "wadirum",
   "kind": "featured",
   "name": "Wadi Rum",
+  "city": "Wadi Rum",
   "country": "Jordan",
   "flag": "🇯🇴",
   "lat": 29.58,
@@ -3122,6 +3856,7 @@ export const KB_INDEX = [
   "key": "whitehaven",
   "kind": "featured",
   "name": "Hill Inlet",
+  "city": "Hill Inlet",
   "country": "Australia (Whitsundays)",
   "flag": "🇦🇺",
   "lat": -20.28,
@@ -3149,6 +3884,7 @@ export const KB_INDEX = [
   "key": "yasawa",
   "kind": "featured",
   "name": "Naviti Island",
+  "city": "Naviti Island",
   "country": "Fiji",
   "flag": "🇫🇯",
   "lat": -17.42,

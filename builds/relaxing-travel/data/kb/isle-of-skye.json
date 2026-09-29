@@ -1,0 +1,113 @@
+{
+  "key": "isle-of-skye",
+  "kind": "city",
+  "name": "Isle of Skye",
+  "city": "Isle of Skye",
+  "country": "Scotland, UK",
+  "flag": "🌿",
+  "lat": 57.27,
+  "lng": -6.2,
+  "tz": "Europe/London",
+  "currency": "GBP (~0.79 per $1)",
+  "bestMonths": "May and September: long light, midges not yet hatched or already gone. June-Aug brings both crowds and midges",
+  "crowd": "Fairy Pools and Old Man of Storr queue by 10:00 in summer. Wild camp high and late: the Quiraing at 21:00 is empty",
+  "bestView": "The Quiraing ridge at golden hour: landslipped pinnacles over the Sound of Raasay, sheep the only company",
+  "kid": "Fairy pools are a scrambly treasure hunt kids love. Weather turns fast — pack shells. Midges are the honest enemy in July",
+  "daily_budget": 75,
+  "daily_mid": 150,
+  "priceLevel": "moderate",
+  "prices": {
+    "meal": 16,
+    "coffee": 4,
+    "taxi": 12,
+    "hotel": 130,
+    "campsite": 20
+  },
+  "best_for": [
+    "wild camping",
+    "highlands",
+    "fairy pools",
+    "hiking",
+    "stargazing"
+  ],
+  "tags": [
+    "camping",
+    "wild",
+    "mountain",
+    "hiking",
+    "nature",
+    "quiet",
+    "coast"
+  ],
+  "deep": {
+    "key": "isle-of-skye",
+    "city": "Isle of Skye",
+    "country": "Scotland, UK",
+    "flag": "🌿",
+    "lat": 57.27,
+    "lng": -6.2,
+    "currency": "GBP (~0.79 per $1)",
+    "prices": {
+      "meal_cheap": 16,
+      "coffee": 4,
+      "beer": 6,
+      "taxi_3km": 12,
+      "transit_ride": 3,
+      "hotel_budget": 70,
+      "hotel_mid": 130,
+      "hotel_lux": 280,
+      "campsite": 20,
+      "bothy_night": 0,
+      "daily_budget": 75,
+      "daily_mid": 150,
+      "internet_month": 32,
+      "sim_data": 22,
+      "meal_mid_rest": 30,
+      "water_bottle": 2.5
+    },
+    "groceries": {
+      "milk_l": 1.2,
+      "bread": 1.5,
+      "eggs_12": 3.8,
+      "rice_kg": 1.8,
+      "chicken_kg": 7,
+      "fruit_kg": 2.8
+    },
+    "leisure": {
+      "cinema": 12,
+      "cocktail": 11,
+      "gym_month": 40,
+      "laundry": 5,
+      "pool_entry": 6
+    },
+    "transport_extra": {
+      "fuel_l": 1.65,
+      "ferry_mallaig": 20,
+      "bus_portree": 4
+    },
+    "activities": {
+      "old_man_storr": 0,
+      "fairy_pools": 0,
+      "dunvegan_castle": 18,
+      "boat_loch_coruisk": 45
+    },
+    "monthly": {
+      "budget": 1300,
+      "comfortable": 2400
+    },
+    "seasons": "May-Sep workable. May and September are the quiet sweet spots. Winter: 6h light, wild weather, empty trails.",
+    "notes": "Scotland's right-to-roam allows respectful wild camping: small tent, no fire on peat, leave no trace, arrive late leave early. Portree is the food-shop town.",
+    "airports": "Inverness (INV) 2.5h drive",
+    "docs": {
+      "entry": "UK: 6-month visa-free entry for many; others need a Standard Visitor visa.",
+      "insurance": "EHIC/GHIC for UK residents; visitors take normal travel insurance.",
+      "special": [
+        "Midge headnet May-Sep (Smidge spray works)",
+        "Waterproof everything: four seasons a day is real"
+      ],
+      "health": "None required.",
+      "agency": "No visas or permits to book here — go direct, the island doesn't need middlemen."
+    }
+  },
+  "visa": null
+}

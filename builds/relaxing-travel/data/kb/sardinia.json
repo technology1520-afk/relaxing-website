@@ -1,0 +1,112 @@
+{
+  "key": "sardinia",
+  "kind": "city",
+  "name": "Sardinia (Cala Gonone)",
+  "city": "Sardinia (Cala Gonone)",
+  "country": "Italy",
+  "flag": "🇮🇹",
+  "lat": 40.28,
+  "lng": 9.63,
+  "tz": "Europe/Rome",
+  "currency": "EUR ~0.92/$",
+  "bestMonths": "June and September: sea warm enough to sleep to the sound of it, beaches not yet colonised",
+  "crowd": "July-Aug is Italian holiday season: busy and hot. Cala Luna's cave beaches empty after the last boat, 17:30",
+  "bestView": "Cala Luna beach at dawn: limestone cliffs 800m tall over turquoise water, tent flaps the only hotel",
+  "kid": "Shallow coves, kayak rentals, and the Bue Marino cave are a perfect first adventure camp for kids. Campsites have shade and pools",
+  "daily_budget": 60,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "prices": {
+    "meal": 14,
+    "coffee": 1.8,
+    "taxi": 10,
+    "hotel": 95,
+    "campsite": 15
+  },
+  "best_for": [
+    "beach camping",
+    "gulf of orosei",
+    "kayak",
+    "caves",
+    "turquoise coves"
+  ],
+  "tags": [
+    "camping",
+    "beach",
+    "swim",
+    "kayak",
+    "nature",
+    "romantic",
+    "foodie"
+  ],
+  "deep": {
+    "key": "sardinia",
+    "city": "Sardinia (Cala Gonone)",
+    "country": "Italy",
+    "flag": "🇮🇹",
+    "lat": 40.28,
+    "lng": 9.63,
+    "currency": "EUR ~0.92/$",
+    "prices": {
+      "meal_cheap": 14,
+      "coffee": 1.8,
+      "beer": 4,
+      "taxi_3km": 10,
+      "transit_ride": 1.5,
+      "hotel_budget": 55,
+      "hotel_mid": 95,
+      "hotel_lux": 210,
+      "campsite": 15,
+      "kayak_day": 35,
+      "daily_budget": 60,
+      "daily_mid": 130,
+      "internet_month": 30,
+      "sim_data": 12,
+      "meal_mid_rest": 28,
+      "water_bottle": 1.5
+    },
+    "groceries": {
+      "milk_l": 1.2,
+      "bread": 1.8,
+      "eggs_12": 3.2,
+      "rice_kg": 2,
+      "chicken_kg": 8,
+      "fruit_kg": 2.2
+    },
+    "leisure": {
+      "cinema": 9,
+      "cocktail": 9,
+      "gym_month": 40,
+      "laundry": 4,
+      "pool_entry": 6
+    },
+    "transport_extra": {
+      "fuel_l": 1.85,
+      "ferry_cala_luna": 25,
+      "bus_olbia": 12
+    },
+    "activities": {
+      "cala_luna_boat": 25,
+      "bue_marino_cave": 14,
+      "kayak_gulf": 35,
+      "gorropu_gorge": 5
+    },
+    "monthly": {
+      "budget": 1150,
+      "comfortable": 2100
+    },
+    "seasons": "Jun-Sep beach-perfect. Jun and Sep are the quiet ones. Jul-Aug: 35C and packed. May and Oct hike beautifully.",
+    "notes": "Wild camping is not legal in Italy: use the campsites above Cala Gonone (shade, pools, 15-20/night) and boat or kayak into the coves for the day. Book ferries to Cala Luna a day ahead in August.",
+    "airports": "Olbia (OLB) 1.5h drive",
+    "docs": {
+      "entry": "Schengen: 90 days in any 180 for visa-free passports.",
+      "insurance": "EHIC for EU; others take travel insurance including water sports.",
+      "special": [
+        "Schengen insurance €30k if visa required"
+      ],
+      "health": "None required.",
+      "agency": "Nothing to pre-book beyond campsites and the Cala Luna boat — go direct."
+    }
+  },
+  "visa": null
+}

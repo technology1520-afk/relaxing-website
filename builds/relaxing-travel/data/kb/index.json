@@ -30,6 +30,37 @@
     ]
   },
   {
+    "key": "banff",
+    "kind": "city",
+    "name": "Banff",
+    "city": "Banff",
+    "country": "Canada",
+    "flag": "🇨🇦",
+    "lat": 51.18,
+    "lng": -115.57,
+    "currency": "CAD (~1.37 per $1)",
+    "daily_budget": 80,
+    "daily_mid": 175,
+    "priceLevel": "pricey",
+    "best_for": [
+      "rockies",
+      "lake camping",
+      "wildlife",
+      "canoeing",
+      "aurora"
+    ],
+    "quietPick": false,
+    "tags": [
+      "camping",
+      "mountain",
+      "lake",
+      "nature",
+      "wildlife",
+      "hiking",
+      "canoe"
+    ]
+  },
+  {
     "key": "barcelona",
     "kind": "city",
     "name": "Barcelona",
@@ -144,6 +175,7 @@
     "key": "faroe",
     "kind": "featured",
     "name": "Sørvágsvatn",
+    "city": "Sørvágsvatn",
     "country": "Faroe Islands",
     "flag": "🇫🇴",
     "lat": 62.06,
@@ -198,6 +230,7 @@
     "key": "iceland",
     "kind": "featured",
     "name": "Blue Lagoon",
+    "city": "Blue Lagoon",
     "country": "Iceland",
     "flag": "🇮🇸",
     "lat": 63.88,
@@ -219,6 +252,37 @@
       "quiet",
       "scenic",
       "wild"
+    ]
+  },
+  {
+    "key": "isle-of-skye",
+    "kind": "city",
+    "name": "Isle of Skye",
+    "city": "Isle of Skye",
+    "country": "Scotland, UK",
+    "flag": "🌿",
+    "lat": 57.27,
+    "lng": -6.2,
+    "currency": "GBP (~0.79 per $1)",
+    "daily_budget": 75,
+    "daily_mid": 150,
+    "priceLevel": "moderate",
+    "best_for": [
+      "wild camping",
+      "highlands",
+      "fairy pools",
+      "hiking",
+      "stargazing"
+    ],
+    "quietPick": false,
+    "tags": [
+      "camping",
+      "wild",
+      "mountain",
+      "hiking",
+      "nature",
+      "quiet",
+      "coast"
     ]
   },
   {
@@ -277,6 +341,37 @@
     ]
   },
   {
+    "key": "lake-tekapo",
+    "kind": "city",
+    "name": "Lake Tekapo",
+    "city": "Lake Tekapo",
+    "country": "New Zealand",
+    "flag": "🇳🇿",
+    "lat": -44,
+    "lng": 170.48,
+    "currency": "NZD (~1.64 per $1)",
+    "daily_budget": 65,
+    "daily_mid": 140,
+    "priceLevel": "moderate",
+    "best_for": [
+      "stargazing",
+      "dark sky",
+      "lake camping",
+      "lupins",
+      "hot pools"
+    ],
+    "quietPick": false,
+    "tags": [
+      "camping",
+      "stargazing",
+      "lake",
+      "nature",
+      "quiet",
+      "adventure",
+      "romantic"
+    ]
+  },
+  {
     "key": "lisbon",
     "kind": "city",
     "name": "Lisbon",
@@ -309,6 +404,7 @@
     "key": "lofoten",
     "kind": "featured",
     "name": "Reine",
+    "city": "Reine",
     "country": "Norway (Lofoten)",
     "flag": "🇳🇴",
     "lat": 67.93,
@@ -419,6 +515,7 @@
     "key": "napali",
     "kind": "featured",
     "name": "Nāpali Coast",
+    "city": "Nāpali Coast",
     "country": "Hawaii, USA",
     "flag": "🇺🇸",
     "lat": 22.17,
@@ -555,6 +652,37 @@
     ]
   },
   {
+    "key": "sardinia",
+    "kind": "city",
+    "name": "Sardinia (Cala Gonone)",
+    "city": "Sardinia (Cala Gonone)",
+    "country": "Italy",
+    "flag": "🇮🇹",
+    "lat": 40.28,
+    "lng": 9.63,
+    "currency": "EUR ~0.92/$",
+    "daily_budget": 60,
+    "daily_mid": 130,
+    "priceLevel": "moderate",
+    "best_for": [
+      "beach camping",
+      "gulf of orosei",
+      "kayak",
+      "caves",
+      "turquoise coves"
+    ],
+    "quietPick": false,
+    "tags": [
+      "camping",
+      "beach",
+      "swim",
+      "kayak",
+      "nature",
+      "romantic",
+      "foodie"
+    ]
+  },
+  {
     "key": "tbilisi",
     "kind": "city",
     "name": "Tbilisi",
@@ -582,9 +710,42 @@
     ]
   },
   {
+    "key": "torres-del-paine",
+    "kind": "city",
+    "name": "Torres del Paine",
+    "city": "Torres del Paine",
+    "country": "Chile",
+    "flag": "🇨🇱",
+    "lat": -50.94,
+    "lng": -73.4,
+    "currency": "CLP ~950/$",
+    "daily_budget": 55,
+    "daily_mid": 130,
+    "priceLevel": "moderate",
+    "best_for": [
+      "patagonia",
+      "trekking",
+      "camping",
+      "glaciers",
+      "condors",
+      "wild"
+    ],
+    "quietPick": false,
+    "tags": [
+      "camping",
+      "mountain",
+      "hiking",
+      "nature",
+      "adventure",
+      "wild",
+      "glaciers"
+    ]
+  },
+  {
     "key": "wadirum",
     "kind": "featured",
     "name": "Wadi Rum",
+    "city": "Wadi Rum",
     "country": "Jordan",
     "flag": "🇯🇴",
     "lat": 29.58,
@@ -612,6 +773,7 @@
     "key": "whitehaven",
     "kind": "featured",
     "name": "Hill Inlet",
+    "city": "Hill Inlet",
     "country": "Australia (Whitsundays)",
     "flag": "🇦🇺",
     "lat": -20.28,
@@ -639,6 +801,7 @@
     "key": "yasawa",
     "kind": "featured",
     "name": "Naviti Island",
+    "city": "Naviti Island",
     "country": "Fiji",
     "flag": "🇫🇯",
     "lat": -17.42,

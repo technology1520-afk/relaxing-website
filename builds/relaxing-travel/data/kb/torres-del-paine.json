@@ -1,0 +1,114 @@
+{
+  "key": "torres-del-paine",
+  "kind": "city",
+  "name": "Torres del Paine",
+  "city": "Torres del Paine",
+  "country": "Chile",
+  "flag": "🇨🇱",
+  "lat": -50.94,
+  "lng": -73.4,
+  "tz": "America/Punta_Arenas",
+  "currency": "CLP ~950/$",
+  "bestMonths": "December to February (summer, 16h light). Shoulder Nov & Mar: fewer people, still kind weather",
+  "crowd": "Refugios and the W-campsites book out months ahead in summer. Camp the quiet back side: the O-circuit's north is walk-in only",
+  "bestView": "Base of the Torres at sunrise: three granite towers over a glacial lake, wind still, nobody who slept in",
+  "kid": "Older kids only: weather flips in an hour and trails are real mountain terrain. The catamaran across Lago Grey is the family-friendly loop",
+  "daily_budget": 55,
+  "daily_mid": 130,
+  "priceLevel": "moderate",
+  "prices": {
+    "meal": 12,
+    "coffee": 3.5,
+    "taxi": 20,
+    "hotel": 90,
+    "campsite": 12
+  },
+  "best_for": [
+    "patagonia",
+    "trekking",
+    "camping",
+    "glaciers",
+    "condors",
+    "wild"
+  ],
+  "tags": [
+    "camping",
+    "mountain",
+    "hiking",
+    "nature",
+    "adventure",
+    "wild",
+    "glaciers"
+  ],
+  "visa": null,
+  "deep": {
+    "key": "torres-del-paine",
+    "city": "Torres del Paine",
+    "country": "Chile",
+    "flag": "🇨🇱",
+    "lat": -50.94,
+    "lng": -73.4,
+    "currency": "CLP ~950/$",
+    "prices": {
+      "meal_cheap": 12,
+      "coffee": 3.5,
+      "beer": 5,
+      "taxi_3km": 20,
+      "transit_ride": 1.2,
+      "hotel_budget": 45,
+      "hotel_mid": 90,
+      "hotel_lux": 220,
+      "campsite": 12,
+      "refugio_bed": 45,
+      "daily_budget": 55,
+      "daily_mid": 130,
+      "internet_month": 28,
+      "sim_data": 15,
+      "meal_mid_rest": 26,
+      "water_bottle": 2.5
+    },
+    "groceries": {
+      "milk_l": 1.2,
+      "bread": 1.8,
+      "eggs_12": 3.5,
+      "rice_kg": 1.6,
+      "chicken_kg": 6,
+      "fruit_kg": 2.5
+    },
+    "leisure": {
+      "cinema": 8,
+      "cocktail": 8,
+      "gym_month": 35,
+      "laundry": 4,
+      "pool_entry": 5
+    },
+    "transport_extra": {
+      "fuel_l": 1.3,
+      "park_entry": 45,
+      "bus_puerto_natales": 15
+    },
+    "activities": {
+      "torres_lookout": 0,
+      "grey_glacier_catamaran": 115,
+      "penguin_colony": 40
+    },
+    "monthly": {
+      "budget": 900,
+      "comfortable": 1900
+    },
+    "seasons": "Dec-Feb summer with 16h light and 15C. Wind is the real forecast. Nov & Mar are quieter and cheaper.",
+    "notes": "Campsite bookings (Conaf + Vertice) open months ahead and sell out. Puerto Natales is the base town: buy food there, the park marks up 3x.",
+    "airports": "Punta Arenas (PUQ) 5h bus",
+    "docs": {
+      "entry": "Most Western passports: 90 days free on arrival. Others check Chilean consulate.",
+      "insurance": "Strongly advised: rescue and medical evac in Patagonia is expensive.",
+      "special": [
+        "Park entry ticket bought online in advance (pasesparques.cl)",
+        "Campsite/reservation printout checked at ranger stations",
+        "Wind-proof tent: standard pop-ups fail here"
+      ],
+      "health": "None required.",
+      "agency": "Book refugios and campsites directly with Vertice/Las Torres — agencies add 20-40%."
+    }
+  }
+}

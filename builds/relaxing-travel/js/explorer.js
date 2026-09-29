@@ -14,6 +14,7 @@ const VIBE_MAP = {
   luxury: ["luxury", "expensive", "lux", "splurge", "honeymoon"],
   food: ["foodie", "food", "street food", "cooking", "restaurants", "tapas", "tacos"],
   nature: ["nature", "waterfalls", "lakes", "gardens", "scenic", "wild"],
+  camping: ["camping", "campsite", "tent", "tents", "stargazing", "dark sky", "wild camping", "campsites", "fire pits"],
   culture: ["culture", "historic", "temples", "tradition", "museums", "old town"],
   adventure: ["adventure", "adrenaline", "bungee", "surf", "dive", "hiking"],
   romance: ["romantic", "honeymoon", "sunset", "couple"],

@@ -1,0 +1,114 @@
+{
+  "key": "banff",
+  "kind": "city",
+  "name": "Banff",
+  "city": "Banff",
+  "country": "Canada",
+  "flag": "🇨🇦",
+  "lat": 51.18,
+  "lng": -115.57,
+  "tz": "America/Edmonton",
+  "currency": "CAD (~1.37 per $1)",
+  "bestMonths": "June to September for warm-weather camping. Late September: larches turn gold, crowds gone",
+  "crowd": "Lake Louise and Moraine pack by 08:00. Camp at Two Jack Lake: 15 minutes from town and you hear loons, not tour buses",
+  "bestView": "Moraine Lake's Ten Peaks at 07:00 before the shuttles arrive: the classic postcard, all yours",
+  "kid": "Two Jack and Tunnel Mountain campsites have fire pits and easy trails. Hot springs, gondola, and paddleboard rentals keep every age happy",
+  "daily_budget": 80,
+  "daily_mid": 175,
+  "priceLevel": "pricey",
+  "prices": {
+    "meal": 18,
+    "coffee": 5,
+    "taxi": 14,
+    "hotel": 190,
+    "campsite": 30
+  },
+  "best_for": [
+    "rockies",
+    "lake camping",
+    "wildlife",
+    "canoeing",
+    "aurora"
+  ],
+  "tags": [
+    "camping",
+    "mountain",
+    "lake",
+    "nature",
+    "wildlife",
+    "hiking",
+    "canoe"
+  ],
+  "deep": {
+    "key": "banff",
+    "city": "Banff",
+    "country": "Canada",
+    "flag": "🇨🇦",
+    "lat": 51.18,
+    "lng": -115.57,
+    "currency": "CAD (~1.37 per $1)",
+    "prices": {
+      "meal_cheap": 18,
+      "coffee": 5,
+      "beer": 8,
+      "taxi_3km": 14,
+      "transit_ride": 2,
+      "hotel_budget": 90,
+      "hotel_mid": 190,
+      "hotel_lux": 420,
+      "campsite": 30,
+      "hot_springs": 17,
+      "daily_budget": 80,
+      "daily_mid": 175,
+      "internet_month": 55,
+      "sim_data": 40,
+      "meal_mid_rest": 38,
+      "water_bottle": 3
+    },
+    "groceries": {
+      "milk_l": 2.2,
+      "bread": 2.8,
+      "eggs_12": 4.5,
+      "rice_kg": 2.6,
+      "chicken_kg": 11,
+      "fruit_kg": 3.8
+    },
+    "leisure": {
+      "cinema": 14,
+      "cocktail": 13,
+      "gym_month": 55,
+      "laundry": 4,
+      "pool_entry": 10
+    },
+    "transport_extra": {
+      "fuel_l": 1.5,
+      "park_pass_day": 11,
+      "shuttle_moraine": 8
+    },
+    "activities": {
+      "moraine_lake_shuttle": 8,
+      "canoe_lake_louise": 135,
+      "banff_gondola": 65,
+      "johnston_canyon": 0
+    },
+    "monthly": {
+      "budget": 1500,
+      "comfortable": 2800
+    },
+    "seasons": "Jun-Sep camping season, 20C days. Late Sep: golden larches and empty trails. Winter is for ice and ski, not tents.",
+    "notes": "Parks Canada pass required (day or Discovery pass). Reservations open in spring on reservation.pc.gc.ca and the best lakeshore sites go in hours. Bear spray and food storage are law, not advice.",
+    "airports": "Calgary (YYC) 1.5h drive",
+    "docs": {
+      "entry": "eTA for visa-exempt nationals flying in (CAD 7), others need a visitor visa.",
+      "insurance": "Recommended: park rescues are charged at cost. US visitors: check your health plan.",
+      "special": [
+        "Parks Canada pass",
+        "Campsite reservation (spring opening, sells out)",
+        "Bear-proof food storage mandatory at campsites"
+      ],
+      "health": "None required.",
+      "agency": "Book campsites and shuttles only on official Parks Canada / Banff sites."
+    }
+  },
+  "visa": null
+}

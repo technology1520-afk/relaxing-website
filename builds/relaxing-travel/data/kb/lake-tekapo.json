@@ -1,0 +1,113 @@
+{
+  "key": "lake-tekapo",
+  "kind": "city",
+  "name": "Lake Tekapo",
+  "city": "Lake Tekapo",
+  "country": "New Zealand",
+  "flag": "🇳🇿",
+  "lat": -44.0,
+  "lng": 170.48,
+  "tz": "Pacific/Auckland",
+  "currency": "NZD (~1.64 per $1)",
+  "bestMonths": "December to March for warm camping. June-Aug for snow and the brightest stars",
+  "crowd": "The church and the hot pools draw buses at sunset. The lakeshore DOC campsites go quiet an hour after: dark-sky reserve, zero light pollution",
+  "bestView": "Church of the Good Shepherd at astro-dark: the Milky Way in your face, lupins along the shore in December",
+  "kid": "Hot pools at dusk, stargazing tours that keep kids rapt, and flat sheltered lakeshore camping. One of the easiest family camps in the world",
+  "daily_budget": 65,
+  "daily_mid": 140,
+  "priceLevel": "moderate",
+  "prices": {
+    "meal": 15,
+    "coffee": 4.5,
+    "taxi": 12,
+    "hotel": 120,
+    "campsite": 18
+  },
+  "best_for": [
+    "stargazing",
+    "dark sky",
+    "lake camping",
+    "lupins",
+    "hot pools"
+  ],
+  "tags": [
+    "camping",
+    "stargazing",
+    "lake",
+    "nature",
+    "quiet",
+    "adventure",
+    "romantic"
+  ],
+  "deep": {
+    "key": "lake-tekapo",
+    "city": "Lake Tekapo",
+    "country": "New Zealand",
+    "flag": "🇳🇿",
+    "lat": -44.0,
+    "lng": 170.48,
+    "currency": "NZD (~1.64 per $1)",
+    "prices": {
+      "meal_cheap": 15,
+      "coffee": 4.5,
+      "beer": 8,
+      "taxi_3km": 12,
+      "transit_ride": 2.5,
+      "hotel_budget": 60,
+      "hotel_mid": 120,
+      "hotel_lux": 260,
+      "campsite": 18,
+      "hot_pools": 35,
+      "daily_budget": 65,
+      "daily_mid": 140,
+      "internet_month": 45,
+      "sim_data": 30,
+      "meal_mid_rest": 32,
+      "water_bottle": 3
+    },
+    "groceries": {
+      "milk_l": 2,
+      "bread": 2.2,
+      "eggs_12": 5.5,
+      "rice_kg": 2.8,
+      "chicken_kg": 10,
+      "fruit_kg": 3.5
+    },
+    "leisure": {
+      "cinema": 16,
+      "cocktail": 14,
+      "gym_month": 45,
+      "laundry": 5,
+      "pool_entry": 8
+    },
+    "transport_extra": {
+      "fuel_l": 1.9,
+      "doc_campsite": 18,
+      "bus_christchurch": 45
+    },
+    "activities": {
+      "mount_john_observatory": 95,
+      "hot_pools_dusk": 35,
+      "kayak_hire": 30,
+      "church_good_shepherd": 0
+    },
+    "monthly": {
+      "budget": 1200,
+      "comfortable": 2300
+    },
+    "seasons": "Dec-Mar warm (22C) and long light. Jun-Aug: cold nights, best stars on earth. The MacKenzie autumn (Apr) is golden and empty.",
+    "notes": "It's an International Dark-Sky Reserve: red-light torches only at night. DOC campsites are first-come or booked on doc.govt.nz; freedom camping needs a certified self-contained vehicle.",
+    "airports": "Christchurch (CHC) 3h drive",
+    "docs": {
+      "entry": "NZeTA for visa-waiver nationals (apply before flying), others need a visitor visa.",
+      "insurance": "Standard travel insurance; hiking and water sports should be covered.",
+      "special": [
+        "NZeTA via app or web, NZD 23-44",
+        "Self-contained vehicle certificate for freedom camping"
+      ],
+      "health": "None required.",
+      "agency": "NZeTA direct on immigr/NZeTA app only — third-party sites charge double."
+    }
+  },
+  "visa": null
+}
