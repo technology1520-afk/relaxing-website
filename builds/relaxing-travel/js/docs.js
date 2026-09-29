@@ -142,17 +142,16 @@ export function buildDocs() {
     if (!q) { sugInput.focus(); return; }
     sugOut.innerHTML = '<div class="empty">Finding places that match…</div>';
     if (!worldIdx) {
-      try { worldIdx = await (await fetch("data/prices/index.json")).json(); }
+      try { worldIdx = await (await fetch("data/kb/index.json")).json(); }
       catch { sugOut.innerHTML = '<div class="empty">Could not load destinations.</div>'; return; }
     }
-    // light client scoring: words match tags/city/best_for
+    // light client scoring: words match tags/city/country (best_for folded into tags at build time)
     const words = q.toLowerCase().split(/[^a-z]+/).filter(w => w.length > 2);
     const scored = worldIdx.map(w => {
       let s = 0;
       for (const wd of words) {
         if (w.city.toLowerCase().includes(wd) || w.country.toLowerCase().includes(wd)) s += 5;
-        if (w.tags.some(t => t.includes(wd))) s += 4;
-        if (w.best_for.some(b => b.toLowerCase().includes(wd))) s += 3;
+        if ((w.tags || []).some(t => t.includes(wd))) s += 4;
       }
       return { w, s };
     }).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 3);
@@ -162,7 +161,8 @@ export function buildDocs() {
     }
     // pull docs for the top matches
     const details = await Promise.all(scored.map(async x => {
-      try { return await (await fetch(`data/prices/${x.w.key}.json`)).json(); }
+      try { const raw = await (await fetch(`data/kb/${x.w.key}.json`)).json();
+        return raw.deep && raw.deep.docs ? raw.deep : raw; }
       catch { return null; }
     }));
     sugOut.innerHTML = details.map((d, i) => d && d.docs ? `
