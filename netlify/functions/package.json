@@ -10,7 +10,8 @@
  "author": "",
  "license": "ISC",
  "dependencies": {
-  "@netlify/blobs": "^11.1.1"
+  "@netlify/blobs": "^11.1.1",
+  "@netlify/identity": "^2.0.0"
  },
  "private": true
 }
