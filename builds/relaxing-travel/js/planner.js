@@ -254,6 +254,11 @@ function renderPlan(data, picks) {
     store.push(trip);
     localStorage.setItem("sw_trips", JSON.stringify(store.slice(-50)));
   } catch {}
+  // Server sync: logged-in visitors get the trip on every device.
+  import("./trip-sync.js").then(async (sync) => {
+    sync.pushTrip({ ...trip, daysPlan: (data.days || []).map(d => ({ day: d.day, title: d.title, plan: d.plan })), placeKeys: (picks || []).slice() })
+      .then(id => { if (id) trip.id = id; });
+  }).catch(() => {});
   // Keep the full plan for export (print/PDF, calendar)
   lastTrip = {
     title: `${trip.days} quiet days`,

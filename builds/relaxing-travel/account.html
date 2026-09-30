@@ -49,6 +49,9 @@
     border: 1px solid color-mix(in srgb, var(--sc-ink) 35%, transparent);
     background: transparent; color: var(--sc-ink-soft); cursor: pointer; transition: all .15s; }
   .trip .t-btn:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+  .trip .t-del { color: #E5A9A0; }
+  .trip .t-del:hover { border-color: #E5A9A0; color: #E5A9A0; }
+  .t-synced { color: var(--sc-accent); font-weight: 400; }
   .empty { color: var(--sc-ink-soft); font-size: 0.92rem; }
   .empty a { color: var(--sc-accent); }
   .btn-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
@@ -95,40 +98,54 @@
 </div>
 
 <script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
-<script>
+<script type="module">
 const gate = document.getElementById("gate");
 const content = document.getElementById("content");
+let sync = null;
+try { sync = await import("./js/trip-sync.js"); } catch {}
 
-function trips() { try { return JSON.parse(localStorage.getItem("sw_trips") || "[]"); } catch { return []; } }
+function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 
-function renderTrips(user) {
+async function renderTrips(user) {
   const box = document.getElementById("trips");
-  const all = trips().filter(t => !user.email || t.owner === user.email || !t.owner);
-  if (!all.length) {
+  const all = sync
+    ? await sync.fetchTrips()
+    : (() => { try { return JSON.parse(localStorage.getItem("sw_trips") || "[]"); } catch { return []; } })();
+  const mine = all.filter(t => !user.email || t.owner === user.email || !t.owner || t.id); // server trips have ids and belong to the caller
+  if (!mine.length) {
     box.innerHTML = '<div class="empty">No trips yet. <a href="/#plan">Plan your first one</a> — it saves here automatically.</div>';
     return;
   }
-  box.innerHTML = all.slice().reverse().map((t, i) => `
-    <div class="trip" data-i="${trips().indexOf(t)}">
-      <div class="t-title">${t.days} days · ${t.who}</div>
-      <div class="t-places">${(t.places || []).join(" · ")}</div>
-      <div class="t-meta">saved ${new Date(t.at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}${t.budget ? " · " + t.budget : ""}</div>
+  box.innerHTML = mine.slice().reverse().map(t => `
+    <div class="trip" data-id="${esc(t.id || "")}">
+      <div class="t-title">${esc(t.days)} days · ${esc(t.who)}${t.id ? ' <span class="t-synced" title="Synced to your account">✓</span>' : ' <span class="t-synced" title="Saved on this device only">·</span>'}</div>
+      <div class="t-places">${esc((t.places || []).join(" · "))}</div>
+      <div class="t-meta">saved ${new Date(t.at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}${t.budget ? " · " + esc(t.budget) : ""}</div>
       <div class="t-export">
-        <button type="button" class="t-btn" data-x="print" data-i="${trips().indexOf(t)}">Print / PDF</button>
-        <button type="button" class="t-btn" data-x="ics" data-i="${trips().indexOf(t)}">Calendar (.ics)</button>
+        <button type="button" class="t-btn" data-x="print">Print / PDF</button>
+        <button type="button" class="t-btn" data-x="ics">Calendar (.ics)</button>
+        ${t.id ? '<button type="button" class="t-btn t-del" data-x="del">Delete</button>' : ""}
       </div>
     </div>`).join("");
-  box.querySelectorAll(".t-btn").forEach(b => b.addEventListener("click", () => {
-    const t = trips()[parseInt(b.dataset.i)];
-    const full = JSON.parse(sessionStorage.getItem("rdo_last_trip") || "null");
-    const exp = full && full.days?.length === t.days
-      ? full
-      : { title: `${t.days} quiet days`, subtitle: `${(t.places || []).join(" · ")} · for ${t.who}`,
-          days: [{ day: 1, title: "Your trip", plan: `${(t.places || []).join(" · ")} — full day plan on relaxdayoff.com/#plan. ${t.budget || ""}` }],
-          budget: t.budget || "", placeKeys: [] };
-    import("./js/trip-export.js").then(m =>
-      b.dataset.x === "print" ? m.openPrintable(exp) : m.downloadICS(exp));
-  }));
+  box.querySelectorAll(".trip").forEach(card => {
+    const t = mine.slice().reverse()[[...box.querySelectorAll(".trip")].indexOf(card)];
+    card.querySelectorAll(".t-btn").forEach(b => b.addEventListener("click", async () => {
+      if (b.dataset.x === "del") {
+        if (!confirm("Delete this trip?")) return;
+        await sync.deleteTrip(t.id);
+        renderTrips(user);
+        return;
+      }
+      const full = JSON.parse(sessionStorage.getItem("rdo_last_trip") || "null");
+      const exp = full && full.days?.length === t.days
+        ? full
+        : { title: `${t.days} quiet days`, subtitle: `${(t.places || []).join(" · ")} · for ${t.who}`,
+            days: (t.daysPlan && t.daysPlan.length ? t.daysPlan : [{ day: 1, title: "Your trip", plan: `${(t.places || []).join(" · ")} — full day plan on relaxdayoff.com/#plan. ${t.budget || ""}` }]),
+            budget: t.budget || "", placeKeys: t.placeKeys || [] };
+      const m = await import("./js/trip-export.js");
+      b.dataset.x === "print" ? m.openPrintable(exp) : m.downloadICS(exp);
+    }));
+  });
 }
 
 function boot(user) {
