@@ -8,3 +8,4 @@ netlify/functions/package-lock.json
 
 # Local Netlify folder
 .netlify
+HANDOFF-*.md
