@@ -120,7 +120,11 @@ const gateHelp = document.getElementById("gate-help");
 const adm = document.getElementById("adm");
 
 function isAdmin(user) {
-  const roles = user?.app_metadata?.user_roles || user?.user_metadata?.user_roles || [];
+  // Server-authoritative UI hint only: app_metadata is server-managed.
+  // user_metadata is client-writable and must never unlock the UI.
+  // The real gate is in the admin-data function (JWT + role verification);
+  // the dashboard shows nothing unless that returns 200.
+  const roles = user?.app_metadata?.user_roles || [];
   return roles.includes("admin");
 }
 
@@ -132,7 +136,7 @@ async function load() {
     return;
   }
   if (!isAdmin(user)) {
-    gateMsg.innerHTML = "Logged in as <b>" + user.email + "</b>, but this account has no admin role.";
+    gateMsg.innerHTML = "Logged in as <b>" + esc(user.email) + "</b>, but this account has no admin role.";
     gateHelp.hidden = false;
     gateLogin.hidden = false;
     gateLogin.textContent = "Switch account";
@@ -187,7 +191,7 @@ setTimeout(() => {
   if (!window.netlifyIdentity) { gateMsg.textContent = "Auth unavailable here. Deploy to Netlify with Identity enabled."; return; }
   if (!window.netlifyIdentity.currentUser()) {
     if (!onNetlify) {
-      gateMsg.innerHTML = "You are on <b>" + location.hostname + "</b> — the auth backend only exists on the deployed site.<br>Open this page on your Netlify URL or relaxdayoff.com after deploy.";
+      gateMsg.innerHTML = "You are on <b>" + esc(location.hostname) + "</b> — the auth backend only exists on the deployed site.<br>Open this page on your Netlify URL or relaxdayoff.com after deploy.";
       gateLogin.hidden = true;
     } else {
       gateMsg.textContent = "You need to log in with an admin account.";

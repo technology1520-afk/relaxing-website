@@ -1,50 +1,128 @@
 // Netlify function: GET /api/admin-data
-// Server-side admin gate: verifies the caller's Netlify Identity JWT and the
-// 'admin' user_roles app_metadata claim. Without both, no data leaves the server.
+// Server-side admin gate — defense in depth:
+//   1. Bearer JWT required (Netlify Identity access token)
+//   2. Signature, expiry and issuer verified cryptographically (GoTrue JWKs)
+//   3. app_metadata.user_roles must contain 'admin' (app_metadata is only
+//      writable server-side — user_metadata is NOT trusted for roles)
+//   4. Same-origin only (CORS never allows admin calls cross-origin)
+//   5. GET only; responses no-store so no admin data lingers in caches
+// Without all of these, no data leaves the server.
 
+const crypto = require("node:crypto");
 const { getStore } = require("@netlify/blobs");
 
-const json = (status, obj) => ({
+const json = (status, obj, extraHeaders) => ({
   statusCode: status,
-  headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "null", // admin API is same-origin only
+    "Cache-Control": "no-store",
+    ...(extraHeaders || {}),
+  },
   body: JSON.stringify(obj),
 });
 
-async function verifyAdmin(context) {
-  const token = (context.headers.authorization || "").replace("Bearer ", "");
-  if (!token) return { ok: false, reason: "no token" };
+const b64url = (s) => Buffer.from(s, "base64url").toString("utf8");
+
+// ---- JWT verification against Netlify Identity (GoTrue) ----
+const JWKS_CACHE = { keys: null, at: 0 };
+const JWKS_TTL = 10 * 60 * 1000; // 10 min
+
+function identityUrl() {
+  // GoTrue endpoint: the deploy's own identity, or override for local dev
+  return process.env.IDENTITY_URL || "https://relaxdayoff.com/.netlify/identity";
+}
+
+async function getJWKs() {
+  const now = Date.now();
+  if (JWKS_CACHE.keys && now - JWKS_CACHE.at < JWKS_TTL) return JWKS_CACHE.keys;
+  const r = await fetch(identityUrl() + "/jwks.json");
+  if (!r.ok) throw new Error("jwks fetch failed");
+  const jwks = await r.json();
+  if (!Array.isArray(jwks.keys) || !jwks.keys.length) throw new Error("jwks empty");
+  JWKS_CACHE.keys = jwks.keys;
+  JWKS_CACHE.at = now;
+  return jwks.keys;
+}
+
+function verifyJwtSignature(token, jwk) {
+  const [h, p, s] = token.split(".");
+  if (!h || !p || !s) return false;
+  const data = Buffer.from(h + "." + p);
+  const sig = Buffer.from(s, "base64");
+  const keyObj = crypto.createPublicKey({ key: jwk, format: "jwk" });
+  const header = JSON.parse(b64url(h));
+  const alg = header.alg || "RS256";
+  const verifyAlg = alg === "RS256" ? "RSA-SHA256" : alg === "RS384" ? "RSA-SHA384" : "RSA-SHA512";
+  return crypto.verify(verifyAlg, data, keyObj, sig);
+}
+
+async function verifyAdmin(authHeader) {
+  const token = String(authHeader || "").replace(/^Bearer\s+/i, "").trim();
+  if (!token || token.split(".").length !== 3) return { ok: false, reason: "no/bad token" };
+
+  let header, payload;
   try {
-    const r = await fetch("https://api.netlify.com/api/v1/user", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!r.ok) return { ok: false, reason: "invalid token" };
-    return { ok: true };
+    header = JSON.parse(b64url(token.split(".")[0]));
+    payload = JSON.parse(b64url(token.split(".")[1]));
   } catch {
-    return { ok: false, reason: "token check failed" };
+    return { ok: false, reason: "malformed token" };
   }
+  if (header.alg !== "RS256" && header.alg !== "RS384" && header.alg !== "RS512") {
+    return { ok: false, reason: "unsupported algorithm" }; // blocks alg=none / HS256 confusion
+  }
+
+  // Expiry (+60s clock skew) and issuance sanity
+  const now = Math.floor(Date.now() / 1000);
+  if (!payload.exp || payload.exp < now - 60) return { ok: false, reason: "expired token" };
+  if (payload.nbf && payload.nbf > now + 60) return { ok: false, reason: "token not yet valid" };
+  if (payload.iat && payload.iat > now + 60) return { ok: false, reason: "token issued in the future" };
+
+  // Expected issuer for this site's Identity instance
+  const expectedIss = identityUrl();
+  if (payload.iss && payload.iss !== expectedIss && !payload.iss.startsWith(expectedIss)) {
+    return { ok: false, reason: "wrong issuer" };
+  }
+
+  // Cryptographic signature verification against GoTrue's published keys
+  try {
+    const jwks = await getJWKs();
+    const jwk = jwks.find(k => k.kid === header.kid) || (jwks.length === 1 ? jwks[0] : null);
+    if (!jwk) return { ok: false, reason: "unknown key id" };
+    if (!verifyJwtSignature(token, jwk)) return { ok: false, reason: "bad signature" };
+  } catch {
+    return { ok: false, reason: "signature check failed" };
+  }
+
+  // Role gate: app_metadata ONLY. user_metadata is client-writable on
+  // Netlify Identity (via the widget update call) and must never grant roles.
+  const roles = payload.app_metadata?.user_roles || [];
+  if (!Array.isArray(roles) || !roles.includes("admin")) {
+    return { ok: false, reason: "admin role required" };
+  }
+
+  return { ok: true, email: payload.email || "unknown" };
 }
 
 exports.handler = async (req, context) => {
-  if (req.httpMethod === "OPTIONS") return { statusCode: 204, headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Authorization, Content-Type" } };
+  if (req.httpMethod === "OPTIONS") {
+    // Same-origin only: no cross-origin admin calls, ever.
+    return { statusCode: 204, headers: { "Access-Control-Allow-Origin": "null", "Access-Control-Allow-Headers": "Authorization" } };
+  }
+  if (req.httpMethod !== "GET") {
+    return json(405, { error: "Method not allowed." }, { Allow: "GET" });
+  }
 
-  const v = await verifyAdmin(context);
-  if (!v.ok) return json(401, { error: "Not authorized.", reason: v.reason });
-
-  // Role gate: Identity JWT contains app_metadata.user_roles
-  let roles = [];
-  try {
-    const token = (context.headers.authorization || "").replace("Bearer ", "");
-    const payload = JSON.parse(Buffer.from(token.split(".")[1], "base64").toString("utf8"));
-    roles = payload.app_metadata?.user_roles || payload.user_metadata?.user_roles || [];
-  } catch {}
-  if (!roles.includes("admin")) return json(403, { error: "Admin role required." });
+  const authHeader = (req.headers && (req.headers.authorization || req.headers.Authorization)) || "";
+  const v = await verifyAdmin(authHeader);
+  if (!v.ok) return json(401, { error: "Not authorized." });
 
   // ---- Data from Blobs ----
   let data = { trips: [], aiCalls: [], priceChecks: [], signups: [] };
   try {
     const store = getStore({ name: "stillwater-admin", consistency: "strong" });
     const read = async (k, fallback) => {
-      try { const v = await store.get(k, { type: "json" }); return v || fallback; } catch { return fallback; }
+      try { const v2 = await store.get(k, { type: "json" }); return v2 || fallback; } catch { return fallback; }
     };
     data.trips = await read("trips", []);
     data.aiCalls = await read("ai_calls", []);
