@@ -1,7 +1,7 @@
 // Netlify function: GET /api/admin-data
 // Server-side admin gate — defense in depth:
 //   1. Bearer JWT required (Netlify Identity access token)
-//   2. Signature, expiry and issuer verified cryptographically (GoTrue JWKs)
+//   2. Verified via _auth.js (Identity /user validation for HS256, JWKs for RS256)
 //   3. app_metadata.user_roles must contain 'admin' (app_metadata is only
 //      writable server-side — user_metadata is NOT trusted for roles)
 //   4. Same-origin only (CORS never allows admin calls cross-origin)
@@ -10,6 +10,7 @@
 
 const crypto = require("node:crypto");
 const { getStore } = require("@netlify/blobs");
+const { verifyJwt } = require("./_auth.js");
 
 const json = (status, obj, extraHeaders) => ({
   statusCode: status,

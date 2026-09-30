@@ -52,8 +52,23 @@ exports.handler = async (req) => {
   if (!v.ok) return json(401, { error: "Log in to sync trips." });
 
   let store;
-  try { store = getStore({ name: "stillwater-admin", consistency: "strong" }); }
-  catch { return json(500, { error: "Storage unavailable." }); }
+  try {
+    const { getStore } = require("@netlify/blobs");
+    store = getStore({ name: "stillwater-admin", consistency: "strong" });
+  } catch {
+    // Some bundling contexts lack the auto-wiring env; wire explicitly.
+    try {
+      const { getStore } = require("@netlify/blobs");
+      store = getStore({
+        name: "stillwater-admin",
+        consistency: "strong",
+        siteID: process.env.SITE_ID,
+        token: process.env.NETLIFY_FUNCTIONS_TOKEN,
+      });
+    } catch {
+      return json(500, { error: "Storage unavailable." });
+    }
+  }
 
   const email = v.email;
 
