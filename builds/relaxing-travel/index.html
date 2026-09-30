@@ -417,6 +417,22 @@
   .wx-open:hover { background: var(--sc-ink); color: var(--sc-canvas); }
   .wx-world { margin-top: 2.6rem; }
   .wx-world-title { font-family: var(--sc-font-display); font-weight: 700; font-size: 1.2rem; color: var(--sc-ink); margin: 0 0 1.1rem; }
+  .wx-filters { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 0.9rem; }
+  .wx-frow { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+  .wx-fmonth, .wx-fchip {
+    background: transparent; color: var(--sc-ink-soft); border: 1px solid color-mix(in srgb, var(--sc-ink) 20%, transparent);
+    border-radius: 999px; padding: 0.3rem 0.75rem; font: inherit; font-size: 0.8rem; cursor: pointer;
+    transition: all 140ms var(--sc-ease-out);
+  }
+  .wx-fmonth { min-width: 3.4rem; text-align: center; font-variant-numeric: tabular-nums; }
+  .wx-fmonth:hover, .wx-fchip:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  .wx-fmonth[aria-pressed="true"], .wx-fchip[aria-pressed="true"] {
+    background: var(--sc-ink); color: var(--sc-canvas); border-color: var(--sc-ink); font-weight: 600;
+  }
+  .wx-fmonth:focus-visible, .wx-fchip:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  .wx-count { font-size: 0.84rem; color: var(--sc-ink-soft); margin: 0.4rem 0 0.9rem; }
+  .wx-months { font-size: 0.78rem; color: var(--sc-ink-soft); }
+  .wx-months::first-letter { font-size: 0.78rem; }
   .wx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.9rem; }
   .wx-modal {
     position: fixed; inset: 0; z-index: 90; background: color-mix(in srgb, #16130E 60%, transparent);

@@ -120,7 +120,15 @@ export const KB = {
    "yoga retreats",
    "nature",
    "remote work"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  "banff": {
   "key": "banff",
@@ -234,7 +242,14 @@ export const KB = {
     "agency": "Book campsites and shuttles only on official Parks Canada / Banff sites."
    }
   },
-  "visa": null
+  "visa": null,
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Jun–Sep"
  },
  "barcelona": {
   "key": "barcelona",
@@ -348,7 +363,13 @@ export const KB = {
    "gaudi",
    "mediterranean",
    "tapas"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9
+  ],
+  "monthsLabel": "May–Jun, Sep"
  },
  "cape-town": {
   "key": "cape-town",
@@ -464,7 +485,12 @@ export const KB = {
    "table mountain",
    "penguins",
    "wine country"
-  ]
+  ],
+  "months": [
+   3,
+   11
+  ],
+  "monthsLabel": "Mar, Nov"
  },
  "chiang-mai": {
   "key": "chiang-mai",
@@ -580,7 +606,17 @@ export const KB = {
    "long stays",
    "cooking schools",
    "nature"
-  ]
+  ],
+  "months": [
+   2,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "monthsLabel": "Feb, Jun–Nov"
  },
  "cusco": {
   "key": "cusco",
@@ -696,7 +732,15 @@ export const KB = {
    "machu picchu",
    "hiking",
    "culture"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  "faroe": {
   "key": "faroe",
@@ -751,7 +795,14 @@ export const KB = {
    "wild",
    "scenic"
   ],
-  "city": "Sørvágsvatn"
+  "city": "Sørvágsvatn",
+  "months": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "monthsLabel": "May–Aug"
  },
  "hoi-an": {
   "key": "hoi-an",
@@ -869,7 +920,13 @@ export const KB = {
    "old town",
    "cooking classes",
    "tailored clothes"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   4
+  ],
+  "monthsLabel": "Feb–Apr"
  },
  "iceland": {
   "key": "iceland",
@@ -928,7 +985,16 @@ export const KB = {
    "scenic",
    "wild"
   ],
-  "city": "Blue Lagoon"
+  "city": "Blue Lagoon",
+  "months": [
+   2,
+   3,
+   4,
+   6,
+   7,
+   8
+  ],
+  "monthsLabel": "Feb–Apr, Jun–Aug"
  },
  "isle-of-skye": {
   "key": "isle-of-skye",
@@ -1041,7 +1107,15 @@ export const KB = {
     "agency": "No visas or permits to book here — go direct, the island doesn't need middlemen."
    }
   },
-  "visa": null
+  "visa": null,
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  "kotor": {
   "key": "kotor",
@@ -1154,7 +1228,13 @@ export const KB = {
    "bay of kotor",
    "old walls",
    "boat trips"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9
+  ],
+  "monthsLabel": "May–Jun, Sep"
  },
  "kyoto": {
   "key": "kyoto",
@@ -1290,7 +1370,13 @@ export const KB = {
    "temples",
    "cherry blossom",
    "culture"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   11
+  ],
+  "monthsLabel": "Mar–Apr, Nov"
  },
  "lake-tekapo": {
   "key": "lake-tekapo",
@@ -1403,7 +1489,15 @@ export const KB = {
     "agency": "NZeTA direct on immigr/NZeTA app only — third-party sites charge double."
    }
   },
-  "visa": null
+  "visa": null,
+  "months": [
+   3,
+   6,
+   7,
+   8,
+   12
+  ],
+  "monthsLabel": "Mar, Jun–Aug"
  },
  "lisbon": {
   "key": "lisbon",
@@ -1522,7 +1616,16 @@ export const KB = {
    "european city break",
    "coastal walks",
    "pastries"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "Mar–Jun, Sep–Oct"
  },
  "lofoten": {
   "key": "lofoten",
@@ -1578,7 +1681,13 @@ export const KB = {
    "winter",
    "beach"
   ],
-  "city": "Reine"
+  "city": "Reine",
+  "months": [
+   6,
+   7,
+   9
+  ],
+  "monthsLabel": "Jun–Jul, Sep"
  },
  "marrakech": {
   "key": "marrakech",
@@ -1695,7 +1804,15 @@ export const KB = {
    "medina",
    "desert trips",
    "hammams"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Oct–Nov"
  },
  "medellin": {
   "key": "medellin",
@@ -1810,7 +1927,22 @@ export const KB = {
    "comuna 13",
    "coffee",
    "spring weather"
-  ]
+  ],
+  "months": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthsLabel": "Year-round"
  },
  "mexico-city": {
   "key": "mexico-city",
@@ -1927,7 +2059,15 @@ export const KB = {
    "street tacos",
    "museums",
    "urban energy"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Oct–Nov"
  },
  "napali": {
   "key": "napali",
@@ -1983,7 +2123,15 @@ export const KB = {
    "romantic",
    "scenic"
   ],
-  "city": "Nāpali Coast"
+  "city": "Nāpali Coast",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  "pokhara": {
   "key": "pokhara",
@@ -2101,7 +2249,14 @@ export const KB = {
    "annapurna",
    "paragliding",
    "sunrise views"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–Apr, Oct–Nov"
  },
  "queenstown": {
   "key": "queenstown",
@@ -2218,7 +2373,17 @@ export const KB = {
    "adrenaline capital",
    "lord of the rings",
    "alpine"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   4,
+   6,
+   7,
+   8,
+   12
+  ],
+  "monthsLabel": "Feb–Apr, Jun–Aug"
  },
  "reykjavik": {
   "key": "reykjavik",
@@ -2338,7 +2503,15 @@ export const KB = {
    "northern lights",
    "blue lagoon",
    "road trips"
-  ]
+  ],
+  "months": [
+   3,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Mar, Jun–Sep"
  },
  "santorini": {
   "key": "santorini",
@@ -2453,7 +2626,14 @@ export const KB = {
    "caldera views",
    "white villages",
    "honeymoon"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Jun, Sep–Oct"
  },
  "sardinia": {
   "key": "sardinia",
@@ -2565,7 +2745,14 @@ export const KB = {
     "agency": "Nothing to pre-book beyond campsites and the Cala Luna boat — go direct."
    }
   },
-  "visa": null
+  "visa": null,
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Jun–Sep"
  },
  "tbilisi": {
   "key": "tbilisi",
@@ -2678,7 +2865,14 @@ export const KB = {
    "sulphur baths",
    "khinkali",
    "caucasus"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Jun, Sep–Oct"
  },
  "torres-del-paine": {
   "key": "torres-del-paine",
@@ -2792,7 +2986,14 @@ export const KB = {
     "health": "None required.",
     "agency": "Book refugios and campsites directly with Vertice/Las Torres — agencies add 20-40%."
    }
-  }
+  },
+  "months": [
+   2,
+   3,
+   11,
+   12
+  ],
+  "monthsLabel": "Feb–Mar"
  },
  "wadirum": {
   "key": "wadirum",
@@ -2848,7 +3049,16 @@ export const KB = {
    "quiet",
    "culture"
   ],
-  "city": "Wadi Rum"
+  "city": "Wadi Rum",
+  "months": [
+   3,
+   4,
+   5,
+   9,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Sep–Nov"
  },
  "whitehaven": {
   "key": "whitehaven",
@@ -2904,7 +3114,16 @@ export const KB = {
    "swim",
    "nature"
   ],
-  "city": "Hill Inlet"
+  "city": "Hill Inlet",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Oct"
  },
  "yasawa": {
   "key": "yasawa",
@@ -2960,7 +3179,16 @@ export const KB = {
    "swim",
    "romantic"
   ],
-  "city": "Naviti Island"
+  "city": "Naviti Island",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Oct"
  },
  "zanzibar-stone-town": {
   "key": "zanzibar-stone-town",
@@ -3078,7 +3306,17 @@ export const KB = {
    "white sand",
    "snorkeling",
    "spice tours"
-  ]
+  ],
+  "months": [
+   2,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "monthsLabel": "Feb, Jun–Oct"
  }
 };
 export const KB_INDEX = [
@@ -3110,7 +3348,15 @@ export const KB_INDEX = [
    "wellness",
    "digital nomad",
    "waterfalls"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  {
   "key": "banff",
@@ -3141,7 +3387,14 @@ export const KB_INDEX = [
    "wildlife",
    "hiking",
    "canoe"
-  ]
+  ],
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Jun–Sep"
  },
  {
   "key": "barcelona",
@@ -3169,7 +3422,13 @@ export const KB_INDEX = [
    "city",
    "foodie",
    "art"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9
+  ],
+  "monthsLabel": "May–Jun, Sep"
  },
  {
   "key": "cape-town",
@@ -3196,7 +3455,12 @@ export const KB_INDEX = [
    "wine",
    "adventure",
    "scenic"
-  ]
+  ],
+  "months": [
+   3,
+   11
+  ],
+  "monthsLabel": "Mar, Nov"
  },
  {
   "key": "chiang-mai",
@@ -3224,7 +3488,17 @@ export const KB_INDEX = [
    "digital nomad",
    "calm",
    "tropical"
-  ]
+  ],
+  "months": [
+   2,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "monthsLabel": "Feb, Jun–Nov"
  },
  {
   "key": "cusco",
@@ -3252,7 +3526,15 @@ export const KB_INDEX = [
    "budget",
    "adventure",
    "historic"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  {
   "key": "faroe",
@@ -3279,7 +3561,14 @@ export const KB_INDEX = [
    "quiet",
    "wild",
    "scenic"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "monthsLabel": "May–Aug"
  },
  {
   "key": "hoi-an",
@@ -3307,7 +3596,13 @@ export const KB_INDEX = [
    "beach nearby",
    "tailors",
    "foodie"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   4
+  ],
+  "monthsLabel": "Feb–Apr"
  },
  {
   "key": "iceland",
@@ -3335,7 +3630,16 @@ export const KB_INDEX = [
    "quiet",
    "scenic",
    "wild"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   4,
+   6,
+   7,
+   8
+  ],
+  "monthsLabel": "Feb–Apr, Jun–Aug"
  },
  {
   "key": "isle-of-skye",
@@ -3366,7 +3670,15 @@ export const KB_INDEX = [
    "nature",
    "quiet",
    "coast"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  {
   "key": "kotor",
@@ -3393,7 +3705,13 @@ export const KB_INDEX = [
    "budget europe",
    "calm",
    "mountains"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9
+  ],
+  "monthsLabel": "May–Jun, Sep"
  },
  {
   "key": "kyoto",
@@ -3421,7 +3739,13 @@ export const KB_INDEX = [
    "calm",
    "gardens",
    "city"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   11
+  ],
+  "monthsLabel": "Mar–Apr, Nov"
  },
  {
   "key": "lake-tekapo",
@@ -3452,7 +3776,15 @@ export const KB_INDEX = [
    "quiet",
    "adventure",
    "romantic"
-  ]
+  ],
+  "months": [
+   3,
+   6,
+   7,
+   8,
+   12
+  ],
+  "monthsLabel": "Mar, Jun–Aug"
  },
  {
   "key": "lisbon",
@@ -3481,7 +3813,16 @@ export const KB_INDEX = [
    "affordable europe",
    "city",
    "surf"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "Mar–Jun, Sep–Oct"
  },
  {
   "key": "lofoten",
@@ -3509,7 +3850,13 @@ export const KB_INDEX = [
    "hiking",
    "winter",
    "beach"
-  ]
+  ],
+  "months": [
+   6,
+   7,
+   9
+  ],
+  "monthsLabel": "Jun–Jul, Sep"
  },
  {
   "key": "marrakech",
@@ -3537,7 +3884,15 @@ export const KB_INDEX = [
    "budget",
    "culture",
    "warm"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Oct–Nov"
  },
  {
   "key": "medellin",
@@ -3564,7 +3919,22 @@ export const KB_INDEX = [
    "digital nomad",
    "nightlife",
    "budget-ish"
-  ]
+  ],
+  "months": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "monthsLabel": "Year-round"
  },
  {
   "key": "mexico-city",
@@ -3592,7 +3962,15 @@ export const KB_INDEX = [
    "museums",
    "nightlife",
    "budget-ish"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Oct–Nov"
  },
  {
   "key": "napali",
@@ -3620,7 +3998,15 @@ export const KB_INDEX = [
    "nature",
    "romantic",
    "scenic"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "May–Sep"
  },
  {
   "key": "pokhara",
@@ -3648,7 +4034,14 @@ export const KB_INDEX = [
    "budget",
    "adventure",
    "calm"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–Apr, Oct–Nov"
  },
  {
   "key": "queenstown",
@@ -3676,7 +4069,17 @@ export const KB_INDEX = [
    "expensive",
    "bungee",
    "hiking"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   4,
+   6,
+   7,
+   8,
+   12
+  ],
+  "monthsLabel": "Feb–Apr, Jun–Aug"
  },
  {
   "key": "reykjavik",
@@ -3704,7 +4107,15 @@ export const KB_INDEX = [
    "expensive",
    "adventure",
    "dark nights"
-  ]
+  ],
+  "months": [
+   3,
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Mar, Jun–Sep"
  },
  {
   "key": "santorini",
@@ -3732,7 +4143,14 @@ export const KB_INDEX = [
    "calm",
    "luxury-ish",
    "sunset"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Jun, Sep–Oct"
  },
  {
   "key": "sardinia",
@@ -3763,7 +4181,14 @@ export const KB_INDEX = [
    "nature",
    "romantic",
    "foodie"
-  ]
+  ],
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "monthsLabel": "Jun–Sep"
  },
  {
   "key": "tbilisi",
@@ -3790,7 +4215,14 @@ export const KB_INDEX = [
    "mountains",
    "city",
    "digital nomad"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Jun, Sep–Oct"
  },
  {
   "key": "torres-del-paine",
@@ -3822,7 +4254,14 @@ export const KB_INDEX = [
    "adventure",
    "wild",
    "glaciers"
-  ]
+  ],
+  "months": [
+   2,
+   3,
+   11,
+   12
+  ],
+  "monthsLabel": "Feb–Mar"
  },
  {
   "key": "wadirum",
@@ -3850,7 +4289,16 @@ export const KB_INDEX = [
    "adventure",
    "quiet",
    "culture"
-  ]
+  ],
+  "months": [
+   3,
+   4,
+   5,
+   9,
+   10,
+   11
+  ],
+  "monthsLabel": "Mar–May, Sep–Nov"
  },
  {
   "key": "whitehaven",
@@ -3878,7 +4326,16 @@ export const KB_INDEX = [
    "romantic",
    "swim",
    "nature"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Oct"
  },
  {
   "key": "yasawa",
@@ -3906,7 +4363,16 @@ export const KB_INDEX = [
    "quiet",
    "swim",
    "romantic"
-  ]
+  ],
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "monthsLabel": "May–Oct"
  },
  {
   "key": "zanzibar-stone-town",
@@ -3934,7 +4400,17 @@ export const KB_INDEX = [
    "budget-ish",
    "tropical",
    "romantic"
-  ]
+  ],
+  "months": [
+   2,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "monthsLabel": "Feb, Jun–Oct"
  }
 ];
 // Back-compat alias: the 8 featured places, same shape as the old PLACE_DATA.

@@ -27,7 +27,15 @@
       "wellness",
       "digital nomad",
       "waterfalls"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "May–Sep"
   },
   {
     "key": "banff",
@@ -58,7 +66,14 @@
       "wildlife",
       "hiking",
       "canoe"
-    ]
+    ],
+    "months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "Jun–Sep"
   },
   {
     "key": "barcelona",
@@ -86,7 +101,13 @@
       "city",
       "foodie",
       "art"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      9
+    ],
+    "monthsLabel": "May–Jun, Sep"
   },
   {
     "key": "cape-town",
@@ -113,7 +134,12 @@
       "wine",
       "adventure",
       "scenic"
-    ]
+    ],
+    "months": [
+      3,
+      11
+    ],
+    "monthsLabel": "Mar, Nov"
   },
   {
     "key": "chiang-mai",
@@ -141,7 +167,17 @@
       "digital nomad",
       "calm",
       "tropical"
-    ]
+    ],
+    "months": [
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "monthsLabel": "Feb, Jun–Nov"
   },
   {
     "key": "cusco",
@@ -169,7 +205,15 @@
       "budget",
       "adventure",
       "historic"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "May–Sep"
   },
   {
     "key": "faroe",
@@ -196,7 +240,14 @@
       "quiet",
       "wild",
       "scenic"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "monthsLabel": "May–Aug"
   },
   {
     "key": "hoi-an",
@@ -224,7 +275,13 @@
       "beach nearby",
       "tailors",
       "foodie"
-    ]
+    ],
+    "months": [
+      2,
+      3,
+      4
+    ],
+    "monthsLabel": "Feb–Apr"
   },
   {
     "key": "iceland",
@@ -252,7 +309,16 @@
       "quiet",
       "scenic",
       "wild"
-    ]
+    ],
+    "months": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8
+    ],
+    "monthsLabel": "Feb–Apr, Jun–Aug"
   },
   {
     "key": "isle-of-skye",
@@ -283,7 +349,15 @@
       "nature",
       "quiet",
       "coast"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "May–Sep"
   },
   {
     "key": "kotor",
@@ -310,7 +384,13 @@
       "budget europe",
       "calm",
       "mountains"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      9
+    ],
+    "monthsLabel": "May–Jun, Sep"
   },
   {
     "key": "kyoto",
@@ -338,7 +418,13 @@
       "calm",
       "gardens",
       "city"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      11
+    ],
+    "monthsLabel": "Mar–Apr, Nov"
   },
   {
     "key": "lake-tekapo",
@@ -369,7 +455,15 @@
       "quiet",
       "adventure",
       "romantic"
-    ]
+    ],
+    "months": [
+      3,
+      6,
+      7,
+      8,
+      12
+    ],
+    "monthsLabel": "Mar, Jun–Aug"
   },
   {
     "key": "lisbon",
@@ -398,7 +492,16 @@
       "affordable europe",
       "city",
       "surf"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+    ],
+    "monthsLabel": "Mar–Jun, Sep–Oct"
   },
   {
     "key": "lofoten",
@@ -426,7 +529,13 @@
       "hiking",
       "winter",
       "beach"
-    ]
+    ],
+    "months": [
+      6,
+      7,
+      9
+    ],
+    "monthsLabel": "Jun–Jul, Sep"
   },
   {
     "key": "marrakech",
@@ -454,7 +563,15 @@
       "budget",
       "culture",
       "warm"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "monthsLabel": "Mar–May, Oct–Nov"
   },
   {
     "key": "medellin",
@@ -481,7 +598,22 @@
       "digital nomad",
       "nightlife",
       "budget-ish"
-    ]
+    ],
+    "months": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "monthsLabel": "Year-round"
   },
   {
     "key": "mexico-city",
@@ -509,7 +641,15 @@
       "museums",
       "nightlife",
       "budget-ish"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      5,
+      10,
+      11
+    ],
+    "monthsLabel": "Mar–May, Oct–Nov"
   },
   {
     "key": "napali",
@@ -537,7 +677,15 @@
       "nature",
       "romantic",
       "scenic"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "May–Sep"
   },
   {
     "key": "pokhara",
@@ -565,7 +713,14 @@
       "budget",
       "adventure",
       "calm"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      10,
+      11
+    ],
+    "monthsLabel": "Mar–Apr, Oct–Nov"
   },
   {
     "key": "queenstown",
@@ -593,7 +748,17 @@
       "expensive",
       "bungee",
       "hiking"
-    ]
+    ],
+    "months": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8,
+      12
+    ],
+    "monthsLabel": "Feb–Apr, Jun–Aug"
   },
   {
     "key": "reykjavik",
@@ -621,7 +786,15 @@
       "expensive",
       "adventure",
       "dark nights"
-    ]
+    ],
+    "months": [
+      3,
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "Mar, Jun–Sep"
   },
   {
     "key": "santorini",
@@ -649,7 +822,14 @@
       "calm",
       "luxury-ish",
       "sunset"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "monthsLabel": "May–Jun, Sep–Oct"
   },
   {
     "key": "sardinia",
@@ -680,7 +860,14 @@
       "nature",
       "romantic",
       "foodie"
-    ]
+    ],
+    "months": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "monthsLabel": "Jun–Sep"
   },
   {
     "key": "tbilisi",
@@ -707,7 +894,14 @@
       "mountains",
       "city",
       "digital nomad"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      9,
+      10
+    ],
+    "monthsLabel": "May–Jun, Sep–Oct"
   },
   {
     "key": "torres-del-paine",
@@ -739,7 +933,14 @@
       "adventure",
       "wild",
       "glaciers"
-    ]
+    ],
+    "months": [
+      2,
+      3,
+      11,
+      12
+    ],
+    "monthsLabel": "Feb–Mar"
   },
   {
     "key": "wadirum",
@@ -767,7 +968,16 @@
       "adventure",
       "quiet",
       "culture"
-    ]
+    ],
+    "months": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11
+    ],
+    "monthsLabel": "Mar–May, Sep–Nov"
   },
   {
     "key": "whitehaven",
@@ -795,7 +1005,16 @@
       "romantic",
       "swim",
       "nature"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "monthsLabel": "May–Oct"
   },
   {
     "key": "yasawa",
@@ -823,7 +1042,16 @@
       "quiet",
       "swim",
       "romantic"
-    ]
+    ],
+    "months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "monthsLabel": "May–Oct"
   },
   {
     "key": "zanzibar-stone-town",
@@ -851,6 +1079,16 @@
       "budget-ish",
       "tropical",
       "romantic"
-    ]
+    ],
+    "months": [
+      2,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "monthsLabel": "Feb, Jun–Oct"
   }
 ]

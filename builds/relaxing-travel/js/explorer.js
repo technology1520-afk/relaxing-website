@@ -81,6 +81,7 @@ function cardHTML(item) {
       <div><i>per day, budget</i><b>$${item.daily_budget}</b></div>
       <div><i>per day, mid-range</i><b>$${item.daily_mid}</b></div>
     </div>
+    ${item.monthsLabel ? `<div class="wx-months" title="Best time to go">🗓 ${esc(item.monthsLabel)}</div>` : ""}
     <div class="wx-tags">${item.tags.slice(0, 4).map(t => `<span>${esc(t)}</span>`).join("")}</div>
     <button class="wx-open" data-key="${item.key}">Full prices</button>
   </article>`;
@@ -184,10 +185,88 @@ export async function buildExplorer() {
   wrap.querySelectorAll(".wx-chips button").forEach(b =>
     b.addEventListener("click", () => { input.value = b.dataset.q; run(); }));
 
-  // World grid: all places, sorted by daily cost
+  // World grid: filterable (when + budget + vibe), sorted by daily cost
   const worldEl = document.getElementById("wx-world");
-  worldEl.innerHTML = `<h3 class="wx-world-title">Every place, by daily cost</h3>
-    <div class="wx-grid">${world.slice().sort((a, b) => a.daily_mid - b.daily_mid).map(cardHTML).join("")}</div>`;
-  worldEl.querySelectorAll(".wx-open").forEach(b =>
-    b.addEventListener("click", () => openDetail(b.dataset.key)));
+  const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const nowMonth = new Date().getMonth(); // 0-based
+  const BUDGETS = [
+    { id: "all", label: "Any budget", test: () => true },
+    { id: "50", label: "Under $50/day", test: (w) => w.daily_mid <= 50 },
+    { id: "100", label: "$50–100/day", test: (w) => w.daily_mid > 50 && w.daily_mid <= 100 },
+    { id: "150", label: "$100–150/day", test: (w) => w.daily_mid > 100 && w.daily_mid <= 150 },
+    { id: "151", label: "$150+/day", test: (w) => w.daily_mid > 150 },
+  ];
+  let month = nowMonth + 1; // default: where's good NOW
+  let budget = "all";
+  let vibe = "all";
+  const VIBES = [
+    { id: "all", label: "Any vibe" },
+    { id: "beach", label: "Beach" }, { id: "mountain", label: "Mountains" },
+    { id: "city", label: "City" }, { id: "quiet", label: "Quiet & calm" },
+    { id: "food", label: "Food" }, { id: "nature", label: "Nature" },
+    { id: "adventure", label: "Adventure" }, { id: "romance", label: "Romantic" },
+    { id: "wellness", label: "Wellness" }, { id: "winter", label: "Snow & aurora" },
+    { id: "camping", label: "Camping" },
+  ];
+
+  worldEl.innerHTML = `
+    <h3 class="wx-world-title">Find your place</h3>
+    <div class="wx-filters">
+      <div class="wx-frow" id="wx-f-months" role="group" aria-label="When do you want to go?">
+        ${MONTH_NAMES.map((m, i) => `<button type="button" class="wx-fmonth" data-month="${i + 1}" aria-pressed="${i + 1 === month}">${m}</button>`).join("")}
+      </div>
+      <div class="wx-frow" id="wx-f-budget" role="group" aria-label="Daily budget">
+        ${BUDGETS.map(b => `<button type="button" class="wx-fchip" data-budget="${b.id}" aria-pressed="${b.id === budget}">${b.label}</button>`).join("")}
+      </div>
+      <div class="wx-frow" id="wx-f-vibe" role="group" aria-label="Vibe">
+        ${VIBES.map(v => `<button type="button" class="wx-fchip" data-vibe="${v.id}" aria-pressed="${v.id === vibe}">${v.label}</button>`).join("")}
+      </div>
+    </div>
+    <div class="wx-count" id="wx-count" aria-live="polite"></div>
+    <div class="wx-grid" id="wx-grid"></div>`;
+
+  const grid = document.getElementById("wx-grid");
+  const count = document.getElementById("wx-count");
+
+  function renderGrid() {
+    const bDef = BUDGETS.find(b => b.id === budget);
+    const filtered = world
+      .filter(w => month === 0 || (w.months || []).includes(month))
+      .filter(bDef.test)
+      .filter(w => vibe === "all" || (w.tags || []).includes(vibe))
+      .sort((a, b) => a.daily_mid - b.daily_mid);
+    count.textContent = filtered.length === world.length
+      ? `All ${filtered.length} places`
+      : `${filtered.length} of ${world.length} places match`;
+    grid.innerHTML = filtered.length
+      ? filtered.map(cardHTML).join("")
+      : `<div class="wx-none">No places match those filters — try another month or widen the budget.</div>`;
+    grid.querySelectorAll(".wx-open").forEach(b =>
+      b.addEventListener("click", () => openDetail(b.dataset.key)));
+  }
+
+  worldEl.querySelectorAll(".wx-fmonth").forEach(b =>
+    b.addEventListener("click", () => {
+      const m = Number(b.dataset.month);
+      month = (month === m) ? 0 : m; // click again to clear
+      worldEl.querySelectorAll(".wx-fmonth").forEach(x =>
+        x.setAttribute("aria-pressed", String(Number(x.dataset.month) === month)));
+      renderGrid();
+    }));
+  worldEl.querySelectorAll("[data-budget]").forEach(b =>
+    b.addEventListener("click", () => {
+      budget = b.dataset.budget;
+      worldEl.querySelectorAll("[data-budget]").forEach(x =>
+        x.setAttribute("aria-pressed", String(x.dataset.budget === budget)));
+      renderGrid();
+    }));
+  worldEl.querySelectorAll("[data-vibe]").forEach(b =>
+    b.addEventListener("click", () => {
+      vibe = (vibe === b.dataset.vibe) ? "all" : b.dataset.vibe;
+      worldEl.querySelectorAll("[data-vibe]").forEach(x =>
+        x.setAttribute("aria-pressed", String(x.dataset.vibe === vibe)));
+      renderGrid();
+    }));
+
+  renderGrid();
 }

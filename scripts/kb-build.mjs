@@ -17,12 +17,82 @@ for (const e of entries) {
 if (entries.length < 25) throw new Error(`expected >=25 entries, got ${entries.length}`);
 
 const sorted = [...entries].sort((a,b)=>a.key.localeCompare(b.key));
+
+// ---- bestMonths free text -> structured good-months list ----
+// Rule of thumb: months in clauses without negative markers (rain, monsoon,
+// burning, hot, crowds, closes...) count as good. "year-round" marks all 12.
+const MONTH_IDX = { jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12 };
+// NOTE: build a fresh regex per use — a module-level /g regex keeps lastIndex
+// across matchAll calls and silently skips tokens (bit us: May-Sep became May,Sep).
+const MONTH_SRC = "Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?";
+const monthRe = () => new RegExp(MONTH_SRC, "g");
+const NEG_RE = /\b(?:wet|rains?|rainy|monsoon|typhoon|hurricane|burning|smog|busiest|hot|windy|quiet|empty|clos(?:e|es|ed|ing)|over 40|passes 40|40°C|avoid)\b|(?<!without )\bcrowd\w*\b/i;
+// exceptions: these "negative-looking" words are fine when the clause is
+// qualified as fewer/shoulder (e.g. "fewer people, still kind weather")
+const OK_RE = /fewer|shoulder/i;
+const RANGE_RE = /^\s*(?:-|to|–|and|&)\s*$/i;
+
+function parseMonths(s) {
+  if (!s) return [];
+  if (/year-round/i.test(s)) return [1,2,3,4,5,6,7,8,9,10,11,12];
+  const good = new Set();
+  // strip "<x>-free" so "stinger-free" isn't read as negative
+  const clauses = s.replace(/\b\w+-free\b/g, "").split(/[.,;:!?()]/);
+  for (const clause of clauses) {
+    if (NEG_RE.test(clause) && !OK_RE.test(clause)) continue;
+    const toks = [...clause.matchAll(monthRe())];
+    for (let i = 0; i < toks.length; i++) {
+      const a = MONTH_IDX[toks[i][0].slice(0, 3).toLowerCase()];
+      if (a === undefined) continue;
+      // lookahead: is the text between this month and the next a range separator?
+      const next = toks[i + 1];
+      const gap = next ? clause.slice(toks[i].index + toks[i][0].length, next.index) : "";
+      if (next && RANGE_RE.test(gap)) {
+        const b = MONTH_IDX[next[0].slice(0, 3).toLowerCase()];
+        if (b !== undefined) {
+          if (b >= a) {
+            // forward range: the whole span is the good season (May-Sep etc.)
+            for (let m = a; m <= b; m++) good.add(m);
+          } else {
+            // wrap over New Year (Nov-Feb): only endpoints are certain
+            good.add(a); good.add(b);
+          }
+          i++;
+          continue;
+        }
+      }
+      good.add(a);
+    }
+  }
+  return [...good].sort((x, y) => x - y);
+}
+
+function monthsLabel(months) {
+  if (months.length === 12) return "Year-round";
+  if (!months.length) return "";
+  const N = ["", "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const runs = [];
+  let start = months[0], prev = months[0];
+  for (const m of months.slice(1).concat([13])) {
+    if (m !== prev + 1) { runs.push([start, prev]); start = m; }
+    prev = m;
+  }
+  return runs.map(([a, b]) => a === b ? N[a] : `${N[a]}–${N[b]}`).join(", ");
+}
+
+for (const e of entries) {
+  e.months = parseMonths(e.bestMonths);
+  e.monthsLabel = monthsLabel(e.months);
+  if (!e.months.length) throw new Error(`${e.key}: could not parse any good months from bestMonths`);
+}
+
 const index = sorted.map(e => ({
   key: e.key, kind: e.kind, name: e.name, city: e.city, country: e.country,
   flag: e.flag, lat: e.lat, lng: e.lng, currency: e.currency,
   daily_budget: e.daily_budget, daily_mid: e.daily_mid,
   priceLevel: e.priceLevel || null, best_for: e.best_for || [],
   quietPick: e.quietPick || false, tags: e.tags || [],
+  months: e.months, monthsLabel: e.monthsLabel,
 }));
 writeFileSync(`${KB}/index.json`, JSON.stringify(index, null, 2) + "\n");
 
