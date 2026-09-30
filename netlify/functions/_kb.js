@@ -1,35 +1,14 @@
 // Shared server-side reader for the destination knowledge base.
-// Source of truth: builds/relaxing-travel/data/kb/*.json (same files the site serves).
-const { readdirSync, readFileSync } = require("node:fs");
-const { join } = require("node:path");
+// Data ships inside the functions bundle as _kb-data.generated.js — Lambda
+// cannot read repo files at runtime, so no filesystem access is needed.
+// Regenerate with: node scripts/sync-kb-bundle.js
+const DATA = require("./_kb-data.generated.js");
 
-function kbDir() {
-  // Netlify (included_files): bundle root keeps the repo-relative path from
-  // the functions dir — /var/task/builds/relaxing-travel/data/kb.
-  const bundled = join(__dirname, "..", "..", "builds", "relaxing-travel", "data", "kb");
-  try { readdirSync(bundled); return bundled; } catch {}
-  // Local dev fallback: repo root resolved upward from the function file.
-  let dir = __dirname;
-  for (let i = 0; i < 5; i++) {
-    dir = join(dir, "..");
-    const candidate = join(dir, "builds", "relaxing-travel", "data", "kb");
-    try { readdirSync(candidate); return candidate; } catch {}
-  }
-  throw new Error("knowledge base directory not found");
-}
-
-const KB_DIR = kbDir();
 let cache = null;
 
 function all() {
   if (cache) return cache;
-  cache = {};
-  for (const f of readdirSync(KB_DIR)) {
-    if (f.endsWith(".json") && f !== "index.json") {
-      const e = JSON.parse(readFileSync(join(KB_DIR, f), "utf8"));
-      cache[e.key] = e;
-    }
-  }
+  cache = { ...DATA };
   return cache;
 }
 
