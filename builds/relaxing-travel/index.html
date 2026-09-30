@@ -562,6 +562,26 @@
     animation: blink 0.8s steps(1) infinite;
   }
   @keyframes blink { 50% { opacity: 0; } }
+  /* Relaxagent recommendation cards: photo + name + season */
+  .ai-msg-picks {
+    align-self: stretch; display: flex; gap: 0.5rem; overflow-x: auto;
+    padding: 0.1rem 0.2rem 0.4rem; scrollbar-width: thin;
+  }
+  .ai-pick {
+    flex: 0 0 8.6rem; border-radius: 12px; overflow: hidden; text-decoration: none;
+    background: color-mix(in srgb, var(--sc-canvas) 85%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sc-ink) 10%, transparent);
+    transition: transform 140ms var(--sc-ease-out), border-color 140ms var(--sc-ease-out);
+  }
+  .ai-pick:hover { transform: translateY(-2px); border-color: var(--sc-accent); }
+  .ai-pick img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+  .ai-pick .ai-pick-nophoto {
+    width: 100%; aspect-ratio: 3/2; display: grid; place-items: center;
+    font-size: 1.7rem; background: color-mix(in srgb, var(--sc-accent) 12%, var(--sc-canvas));
+  }
+  .ai-pick-body { padding: 0.45rem 0.6rem 0.6rem; }
+  .ai-pick-body strong { display: block; font-size: 0.8rem; color: var(--sc-ink); line-height: 1.25; }
+  .ai-pick-body span { display: block; font-size: 0.7rem; color: var(--sc-ink-soft); margin-top: 0.15rem; line-height: 1.3; }
   .ai-sugs { display: flex; flex-direction: column; gap: 0.4rem; }
   .ai-sugs button {
     text-align: left; background: transparent; color: var(--sc-ink-soft);

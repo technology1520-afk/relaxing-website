@@ -19,11 +19,14 @@ function promptEntry(e) {
     ? Object.entries(e.prices).map(([k, v]) => `${k} $${v}`).join(", ") : null;
   return {
     key: e.key, kind: e.kind,
-    name: e.name, country: e.country, lat: e.lat, lng: e.lng,
+    name: e.name, country: e.country, flag: e.flag || null, lat: e.lat, lng: e.lng,
     bestMonths: e.bestMonths, crowd: e.crowd, kid: e.kid || null,
     bestView: e.bestView || null, prices: p, priceNote: e.priceNote || null,
     visa: e.visa ? `${e.visa.note} (source: ${e.visa.source})` : null,
-    daily_mid: e.daily_mid || null, tags: e.tags || [],
+    daily_mid: e.daily_mid || null, daily_budget: e.daily_budget || null,
+    priceLevel: e.priceLevel || null, tags: e.tags || [],
+    // Photo exists on the site for the eight featured places (assets/<key>.jpg).
+    image: e.kind === "featured" ? `assets/${e.key}.jpg` : null,
   };
 }
 

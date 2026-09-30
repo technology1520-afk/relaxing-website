@@ -155,19 +155,82 @@ async function ask(q) {
     wait.remove();
     if (data?.answer) {
       await typeOut(addMsg("", "ai-msg--bot"), data.answer);
+      renderPicks(data.picks);
     } else if (data?.fallback?.answer) {
       await typeOut(addMsg("", "ai-msg--bot"), data.fallback.answer);
     } else {
       // No server backend (local preview / offline): answer from the page's own data.
       const local = localFallback(q, ctx);
       await typeOut(addMsg("", "ai-msg--bot"), local);
+      renderPicks(localPicks(q, ctx));
     }
   } catch {
     wait.remove();
     const local = localFallback(q, ctx);
     await typeOut(addMsg("", "ai-msg--bot"), local);
+    renderPicks(localPicks(q, ctx));
   }
   busy = false;
+}
+
+// Recommendation cards under a bot reply: photo, name, season, price.
+// Clicking scrolls to the place's section (featured) or the explorer.
+function renderPicks(picks) {
+  if (!Array.isArray(picks) || !picks.length) return;
+  const wrap = document.createElement("div");
+  wrap.className = "ai-msg-picks";
+  picks.slice(0, 3).forEach(p => {
+    const a = document.createElement("a");
+    a.className = "ai-pick";
+    a.href = "#plan";
+    const dest = document.querySelector(`section[data-place="${p.key}"]`);
+    if (dest) a.href = "#water";
+    const body = document.createElement("div");
+    body.className = "ai-pick-body";
+    const nm = document.createElement("strong");
+    nm.textContent = `${p.flag || ""} ${p.name}`.trim();
+    const sub = document.createElement("span");
+    sub.textContent = [p.tagline, p.daily_mid ? `~$${p.daily_mid}/day mid-range` : ""].filter(Boolean).join(" · ");
+    if (p.image) {
+      const img = document.createElement("img");
+      img.src = p.image; img.alt = p.name; img.loading = "lazy"; img.width = 480; img.height = 320;
+      a.appendChild(img);
+    } else {
+      const ph = document.createElement("div");
+      ph.className = "ai-pick-nophoto";
+      ph.textContent = p.flag || "🌍";
+      a.appendChild(ph);
+    }
+    body.appendChild(nm); body.appendChild(sub);
+    a.appendChild(body);
+    a.addEventListener("click", () => { close(); });
+    wrap.appendChild(a);
+  });
+  log.appendChild(wrap);
+  requestAnimationFrame(() => wrap.classList.add("shown"));
+  log.scrollTop = log.scrollHeight;
+}
+
+// Client-side picks when no backend: match from the page's destinations.
+function localPicks(q, ctx) {
+  const s = q.toLowerCase();
+  const DESTS = window.RelaxDestinations || [];
+  const out = [];
+  const seen = new Set();
+  const push = (k) => {
+    const d = DESTS.find(x => x.id === k || x.key === k);
+    if (d && !seen.has(d.key || d.id)) {
+      seen.add(d.key || d.id);
+      out.push({ key: d.key || d.id, name: d.name, flag: d.flag || "", image: null,
+        tagline: d.bestMonths || "", daily_mid: d.daily_mid || null });
+    }
+  };
+  if (ctx?.place) push(ctx.place);
+  for (const d of DESTS) {
+    const n = String(d.name || "").toLowerCase().split(",")[0];
+    if (n.length > 3 && s.includes(n)) push(d.key || d.id);
+  }
+  return out.slice(0, 3);
 }
 
 form?.addEventListener("submit", (e) => {

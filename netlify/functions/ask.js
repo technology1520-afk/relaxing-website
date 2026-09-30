@@ -28,6 +28,37 @@ function tagMatches(s) {
   return Object.keys(TAG_HINTS).filter(t => s.includes(t));
 }
 
+// Places the assistant is recommending in this reply, for photo cards in the
+// widget: ones actually named in the AI text, else the tag matches, else the
+// place whose card the visitor is reading. Max 3, each with an image if one
+// exists on the site.
+function buildPicks(text, detectedKey, tags) {
+  const s = (text || "").toLowerCase();
+  const named = ALL_PLACES.filter(p =>
+    p.key !== detectedKey && (s.includes(String(p.name || "").toLowerCase()) ||
+      s.includes(String(p.key || "").replace(/-/g, " ")))
+  );
+  const ordered = [];
+  const push = (p) => { if (p && !ordered.find(o => o.key === p.key) && ordered.length < 3) ordered.push(p); };
+  if (detectedKey) push(PLACE_DATA[detectedKey]);
+  named.forEach(push);
+  if (ordered.length < 3) {
+    for (const t of tags || []) {
+      for (const p of ALL_PLACES) {
+        if ((p.tags || []).includes(t)) push(p);
+        if (ordered.length >= 3) break;
+      }
+      if (ordered.length >= 3) break;
+    }
+  }
+  return ordered.map(p => ({
+    key: p.key, name: p.name, country: p.country || "", flag: p.flag || "",
+    image: p.image || null,
+    tagline: p.bestMonths ? String(p.bestMonths).split(/[,.;]/)[0].trim() : "",
+    daily_mid: p.daily_mid || null,
+  }));
+}
+
 exports.handler = async (req) => {
   const cors = {
     "Access-Control-Allow-Origin": "*",
@@ -58,7 +89,7 @@ exports.handler = async (req) => {
   if (!key) {
     // No key configured: answer from the site's own data. Relaxagent never goes silent.
     const local = localAnswer(question, placeKey);
-    return json(200, { answer: local, engine: "site-data" }, cors);
+    return json(200, { answer: local, picks: buildPicks(local, placeKey, tagMatches(question.toLowerCase())), engine: "site-data" }, cors);
   }
 
   const placeBlock = placeKey
@@ -104,13 +135,14 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
         temperature: 0.5,
       }),
     });
-        if (!r.ok) return json(200, { answer: localAnswer(question, placeKey), engine: "site-data-fallback" }, cors);
+        if (!r.ok) return json(200, { answer: localAnswer(question, placeKey), picks: buildPicks(localAnswer(question, placeKey), placeKey, tags), engine: "site-data-fallback" }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
-    if (!text) return json(200, { answer: localAnswer(question, placeKey), engine: "site-data-fallback" }, cors);
-    return json(200, { answer: text.slice(0, 900), engine: "ai" }, cors);
+    if (!text) return json(200, { answer: localAnswer(question, placeKey), picks: buildPicks(localAnswer(question, placeKey), placeKey, tags), engine: "site-data-fallback" }, cors);
+    return json(200, { answer: text.slice(0, 900), picks: buildPicks(text, placeKey, tags), engine: "ai" }, cors);
   } catch {
-    return json(200, { answer: localAnswer(question, placeKey), engine: "site-data-fallback" }, cors);
+    const local = localAnswer(question, placeKey);
+    return json(200, { answer: local, picks: buildPicks(local, placeKey, tags), engine: "site-data-fallback" }, cors);
   }
 }
 
