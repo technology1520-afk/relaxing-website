@@ -9,8 +9,8 @@
 // Without all of these, no data leaves the server.
 
 const crypto = require("node:crypto");
-const { getStore } = require("@netlify/blobs");
 const { verifyJwt } = require("./_auth.js");
+const { openStore } = require("./_log.js");
 
 const json = (status, obj, extraHeaders) => ({
   statusCode: status,
@@ -121,7 +121,7 @@ exports.handler = async (req, context) => {
   // ---- Data from Blobs ----
   let data = { trips: [], aiCalls: [], priceChecks: [], signups: [] };
   try {
-    const store = getStore({ name: "stillwater-admin", consistency: "strong" });
+    const store = openStore();
     const read = async (k, fallback) => {
       try { const v2 = await store.get(k, { type: "json" }); return v2 || fallback; } catch { return fallback; }
     };

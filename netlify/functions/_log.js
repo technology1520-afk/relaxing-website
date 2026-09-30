@@ -4,16 +4,26 @@ const { getStore } = require("@netlify/blobs");
 // getStore auto-wires from env in normal deploys; fall back to explicit wiring
 // when the bundle context lacks the Blobs env vars.
 function openStore() {
+  // 1) Normal auto-wiring (works when the runtime injects NETLIFY_BLOBS_CONTEXT)
   try {
     return getStore({ name: "stillwater-admin", consistency: "strong" });
-  } catch {
+  } catch {}
+  // 2) Explicit wiring with a personal access token (full read/write)
+  if (process.env.NETLIFY_BLOBS_TOKEN && process.env.SITE_ID) {
     return getStore({
       name: "stillwater-admin",
       consistency: "strong",
       siteID: process.env.SITE_ID,
-      token: process.env.NETLIFY_FUNCTIONS_TOKEN,
+      token: process.env.NETLIFY_BLOBS_TOKEN,
     });
   }
+  // 3) Last resort: the functions token (read-only on some plans)
+  return getStore({
+    name: "stillwater-admin",
+    consistency: "strong",
+    siteID: process.env.SITE_ID,
+    token: process.env.NETLIFY_FUNCTIONS_TOKEN,
+  });
 }
 
 async function logAdmin(kind, record) {
