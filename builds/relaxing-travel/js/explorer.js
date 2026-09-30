@@ -201,12 +201,17 @@ export async function buildExplorer() {
   let vibe = "all";
   const VIBES = [
     { id: "all", label: "Any vibe" },
-    { id: "beach", label: "Beach" }, { id: "mountain", label: "Mountains" },
-    { id: "city", label: "City" }, { id: "quiet", label: "Quiet & calm" },
-    { id: "food", label: "Food" }, { id: "nature", label: "Nature" },
-    { id: "adventure", label: "Adventure" }, { id: "romance", label: "Romantic" },
-    { id: "wellness", label: "Wellness" }, { id: "winter", label: "Snow & aurora" },
-    { id: "camping", label: "Camping" },
+    { id: "beach", label: "Beach", tags: ["beach", "tropical", "ocean", "swim"] },
+    { id: "mountain", label: "Mountains", tags: ["mountain", "mountains", "hiking", "fjord", "alpine"] },
+    { id: "city", label: "City", tags: ["city", "nightlife", "museums", "art", "urban"] },
+    { id: "quiet", label: "Quiet & calm", tags: ["quiet", "calm", "peaceful", "slow"] },
+    { id: "food", label: "Food", tags: ["foodie", "food", "street food", "cooking", "tapas"] },
+    { id: "nature", label: "Nature", tags: ["nature", "waterfalls", "lakes", "scenic", "wild", "lake"] },
+    { id: "adventure", label: "Adventure", tags: ["adventure", "adrenaline", "surf", "dive"] },
+    { id: "romance", label: "Romantic", tags: ["romantic", "honeymoon", "sunset"] },
+    { id: "wellness", label: "Wellness", tags: ["wellness", "yoga", "spa", "retreat"] },
+    { id: "winter", label: "Snow & aurora", tags: ["aurora", "northern lights", "snow", "skiing", "winter"] },
+    { id: "camping", label: "Camping", tags: ["camping", "campsite", "stargazing", "dark sky"] },
   ];
 
   worldEl.innerHTML = `
@@ -230,10 +235,11 @@ export async function buildExplorer() {
 
   function renderGrid() {
     const bDef = BUDGETS.find(b => b.id === budget);
+    const vDef = VIBES.find(v => v.id === vibe);
     const filtered = world
       .filter(w => month === 0 || (w.months || []).includes(month))
       .filter(bDef.test)
-      .filter(w => vibe === "all" || (w.tags || []).includes(vibe))
+      .filter(w => vibe === "all" || (w.tags || []).some(t => vDef.tags.includes(t)))
       .sort((a, b) => a.daily_mid - b.daily_mid);
     count.textContent = filtered.length === world.length
       ? `All ${filtered.length} places`
