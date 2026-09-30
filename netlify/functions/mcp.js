@@ -4,8 +4,8 @@
 // The agent can list tools and call them to manage/read the site's data.
 // Humans are NOT authenticated here — this is a machine-to-machine endpoint.
 
-const { getStore } = require("@netlify/blobs");
 const kb = require("./_kb.js");
+const { openStore } = require("./_log.js");
 
 const json = (status, obj) => ({
   statusCode: status,
@@ -15,7 +15,7 @@ const json = (status, obj) => ({
 
 async function readStore(key, fallback) {
   try {
-    const store = getStore({ name: "stillwater-admin", consistency: "strong" });
+    const store = openStore();
     return (await store.get(key, { type: "json" })) || fallback;
   } catch { return fallback; }
 }
