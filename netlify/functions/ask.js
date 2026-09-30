@@ -5,12 +5,28 @@
 const { logAdmin } = require("./_log.js");
 const kb = require("./_kb.js");
 
-// Featured places projected from the destination knowledge base (data/kb/*.json)
-// — same facts the site serves, no hand-maintained copy.
-const PLACE_DATA = Object.fromEntries(
-  kb.featured().map(e => [e.key, e])
+// Full destination knowledge base projected for AI prompts (featured + city
+// entries) — same facts the site serves, no hand-maintained copy.
+const ALL_PLACES = kb.featured().concat(
+  kb.all() && Object.values(kb.all())
+    .filter(e => e.kind === "city")
+    .map(e => kb.get(e.key))
+    .filter(Boolean)
 );
+const PLACE_DATA = Object.fromEntries(ALL_PLACES.map(e => [e.key, e]));
+const PLACE_NAMES = ALL_PLACES.map(p => p.name);
 
+// Tag/topic → human phrase, for the fallback engine and prompt hints.
+const TAG_HINTS = {
+  camping: "camping", beach: "beach", foodie: "food", mountain: "mountains",
+  hiking: "hiking", stargazing: "stargazing", wildlife: "wildlife",
+  romantic: "romantic getaways", quiet: "quiet spots", adventure: "adventure",
+  surf: "surfing", dive: "diving", culture: "culture",
+};
+
+function tagMatches(s) {
+  return Object.keys(TAG_HINTS).filter(t => s.includes(t));
+}
 
 exports.handler = async (req) => {
   const cors = {
@@ -47,17 +63,25 @@ exports.handler = async (req) => {
 
   const placeBlock = placeKey
     ? `The visitor is looking at ${PLACE_DATA[placeKey].name}. Curated facts you may use: best view: ${PLACE_DATA[placeKey].bestView}; best months: ${PLACE_DATA[placeKey].bestMonths}; crowds: ${PLACE_DATA[placeKey].crowd}; with kids: ${PLACE_DATA[placeKey].kid}; local USD prices: ${PLACE_DATA[placeKey].prices}.`
-    : `The site covers 8 quiet destinations: ${Object.values(PLACE_DATA).map(p => p.name).join("; ")}. Local USD prices per place are in the site data.`;
+    : `The site covers ${ALL_PLACES.length} destinations. Featured (deepest data): ${ALL_PLACES.filter(p => p.kind === "featured").map(p => p.name).join("; ")}. Others include ${PLACE_NAMES.filter(n => !["Faroe Islands","Iceland","Kyoto","Lofoten","Na Pali Coast","Wadi Rum","Whitehaven Beach","Yasawa Islands"].includes(n)).slice(0, 12).join(", ")}, and more. Tag topics you can match: ${Object.keys(TAG_HINTS).join(", ")}. When the visitor wants a vibe or activity (camping, beach, food...), recommend the best-matching destinations by tag.`;
 
   const tripBlock = hasTrip
     ? `\nThe visitor has a planned trip on this site: ${trip.days} days for ${trip.who || "their group"}, visiting ${trip.places.join("; ")}. Budget feel: ${trip.budget || "not set"}. Answer with THIS trip in mind — use their places, group and day count when relevant; do not suggest other destinations unless they ask.`
+    : "";
+
+  // Ground the AI with the actual matching entries for any detected vibe/tag.
+  const tags = tagMatches(question.toLowerCase());
+  const tagBlock = tags.length
+    ? `\nDestinations tagged "${tags.join('" or "')}": ${tags.map(t =>
+        ALL_PLACES.filter(p => (p.tags || []).includes(t)).map(p => `${p.name} (${p.country}) — ${p.bestMonths}. Prices per day: mid $${p.daily_mid || "?"}${p.prices && p.prices.campsite ? `, campsite $${p.prices.campsite}` : ""}.`).join("; ")
+      ).join(" | ")}. Recommend from these unless they fit poorly.`
     : "";
 
   const prompt =
 `You are Relaxagent, the trip guide of relaxdayoff.com ("Relax Day Off"), a travel site about the world's quietest places. Your name is Relaxagent. When asked who you are, say you are Relaxagent, the day-off planner of relaxdayoff.com. A visitor asks: "${question}"
 
 ${placeBlock}
-${tripBlock}
+${tripBlock}${tagBlock}
 ${section ? `They are currently in the site's "${section}" section.` : ""}
 
 After answering their question, if they mention a specific place or seem unsure about preparation, add one short sentence pointing them to what to prepare (visa type, insurance, permits) and the site's Documents & visas section.
@@ -125,27 +149,58 @@ function localAnswer(q, placeKey) {
     wadirum: "mid-range ~$130/day, budget ~$80", yasawa: "mid-range ~$160/day, budget ~$90",
     kyoto: "mid-range ~$180/day, budget ~$90",
   };
-  const ALL_NAMES = Object.values(PLACE_DATA).map(p => p.name).join("; ");
+  const ALL_NAMES = ALL_PLACES.map(p => p.name).join("; ");
 
   const has = (...words) => words.some(w => s.includes(w));
 
   // topic: who/what are you
   if (has("who are you", "your name", "what are you"))
-    return "I'm Relaxagent, the day-off guide of relaxdayoff.com. I know the eight quiet places on this site: their views, seasons, prices and paperwork. Ask me anything about them.";
+    return "I'm Relaxagent, the day-off guide of relaxdayoff.com. I know every place on this site - featured spots like Iceland, Kyoto and Wadi Rum, plus 20+ more cities and islands. Ask me about any of them.";
+
+  // topic: vibe / activity match — "camping place", "beach vibe", "foodie city"
+  const tags = tagMatches(s);
+  if (tags.length) {
+    const matches = [];
+    for (const t of tags) for (const p of ALL_PLACES) {
+      if ((p.tags || []).includes(t) && !matches.includes(p)) matches.push(p);
+    }
+    if (matches.length) {
+      const top = matches.slice(0, 4).map(p => {
+        const campsite = p.prices && p.prices.campsite ? `, campsites about $${p.prices.campsite} a night` : "";
+        return `${p.name} (${p.country}) - ${p.bestMonths}${campsite}`;
+      });
+      return `For ${tags.map(t => TAG_HINTS[t]).join(" and ")}: ${top.join("; ")}. ${place ? `${place.name} fits too - ask me about it for details.` : "Ask me about any of them for views, crowds or visas."}`;
+    }
+  }
+
+  // topic: country mentioned but no place matched (e.g. "japan", "canada")
+  if (!place) {
+    const byCountry = ALL_PLACES.find(p => s.includes(String(p.country || "").toLowerCase()));
+    if (byCountry) { place = byCountry; placeKey = byCountry.key; }
+  }
+  if (!place) {
+    for (const [id, p] of Object.entries(PLACE_DATA)) {
+      const nameWords = p.name.toLowerCase().replace(/[(),]/g, "").split(" ");
+      if (nameWords.some(w => w.length > 4 && s.includes(w)) || s.includes(p.name.toLowerCase().split(",")[0])) {
+        place = p; placeKey = id; break;
+      }
+    }
+  }
+  if (!place && placeKey && PLACE_DATA[placeKey]) place = PLACE_DATA[placeKey];
 
   // topic: visa / documents / passport
   if (has("visa", "passport", "document", "paperwork", "entry")) {
     if (place) {
-      const v = VISA[placeKey] || "Check the official source linked on the destination's Documents section.";
+      const v = VISA[placeKey] || (place.visa ? place.visa : "Check the official source linked on the destination's Documents section.");
       return `${v} Pack: passport valid 6+ months, proof of onward ticket, and travel insurance. The Documents & visas section below the planner builds you a full checklist.`;
     }
-    return `Visa rules depend on your passport and destination. Our Documents & visas section lists the rules for all eight places with official-source links - and the checklist generator builds your list automatically.`;
+    return `Visa rules depend on your passport and destination. Our Documents & visas section lists the rules for all featured places with official-source links - and the checklist generator builds your list automatically.`;
   }
 
   // topic: price / cost / budget
   if (has("price", "cost", "expensive", "budget", "cheap", "afford", "much")) {
     if (place) {
-      const pr = PRICES[placeKey] || "see the price table on its card";
+      const pr = PRICES[placeKey] || (place.daily_mid ? `mid-range ~$${place.daily_mid}/day` : "see the price table on its card");
       return `${place.name}: ${pr} for a mid-range traveller. The World Explorer section breaks every item down - meals, hotels, taxis - and the fair-price checker tests any quote you get.`;
     }
     return `Daily mid-range budgets run from about $90 (Fiji, Hoi An, Pokhara) to $395 (Reykjavik). The World Explorer has full price tables for every city - and a search box that filters by budget.`;
@@ -164,20 +219,20 @@ function localAnswer(q, placeKey) {
         yasawa: "May-Oct: dry, 26C, calm reef water.",
         kyoto: "Late Mar-Apr cherry blossom; Nov maple fire. Jun is rainy and quiet.",
       };
-      return `${place.name}: ${SEASONS[placeKey] || "check the When to go panel on its card"} Live weather for every place is on its card in the planner.`;
+      return `${place.name}: ${SEASONS[placeKey] || place.bestMonths || "check the When to go panel on its card"} Live weather for every place is on its card in the planner.`;
     }
     return `Every destination card has a live 5-day forecast plus the best months to go. Tell me a place and I'll give you its season.`;
   }
 
   // topic: kids / family
   if (has("kid", "child", "family", "baby", "toddler", "son", "daughter", "-year-old", "years old", "young")) {
-    if (place) return `${place.name} with kids: ${place.kid}. The planner's Kid picks list specific activities per place.`;
-    return `All eight places work with kids - Fiji and Kyoto are the easiest (warm water, temples to count), Reykjavik needs older kids for the lagoon depth. Each destination card lists age notes and kid picks.`;
+    if (place) return `${place.name} with kids: ${place.kid || "family-friendly with easy trails and calm activities"}. The planner's Kid picks list specific activities per place.`;
+    return `Most places on the site work with kids - Fiji and Kyoto are the easiest (warm water, temples to count). Each destination card lists age notes and kid picks.`;
   }
 
   // topic: view
   if (has("view", "photo", "lookout", "sunset", "see")) {
-    if (place) return `Best view at ${place.name}: ${place.bestView}`;
+    if (place) return `Best view at ${place.name}: ${place.bestView || "named on its card"}`;
     return `Each destination card names its single best view and the exact time to be there - from Reinebringen at 23:00 in June to Oia's free sunset.`;
   }
 
@@ -194,11 +249,11 @@ function localAnswer(q, placeKey) {
 
   // place mentioned but no topic: give an overview
   if (place) {
-    return `${place.name}: best view - ${place.bestView}. Best months - ${place.bestMonths}. Prices: ${PRICES[placeKey] || "on its card"}. Ask me about visa, kids, crowds or weather for details.`;
+    return `${place.name}: best view - ${place.bestView || "on its card"}. Best months - ${place.bestMonths}. Prices: ${PRICES[placeKey] || (place.daily_mid ? `mid-range ~$${place.daily_mid}/day` : "on its card")}. Ask me about visa, kids, crowds or weather for details.`;
   }
 
   // default: overview of what Relaxagent can do
-  return `I can help with all eight quiet places on this site - views, seasons, crowds, prices, documents, and what works with kids. Name a place (Iceland, Kyoto, Wadi Rum...) or tell me how you want to feel, and I'll point you somewhere.`;
+  return `I can help with every place on this site - the eight featured spots (Iceland, Kyoto, Wadi Rum and more) plus 20+ cities and islands. Ask about views, seasons, crowds, prices, camping, beaches, documents, or what works with kids. Name a place or tell me how you want to feel, and I'll point you somewhere.`;
 }
 
 function json(status, obj, cors) {

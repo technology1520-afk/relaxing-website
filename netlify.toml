@@ -1,6 +1,9 @@
 [build]
   publish = "builds/relaxing-travel"
   functions = "netlify/functions"
+  # _kb.js reads the destination knowledge base at runtime — ship the JSON
+  # with every function bundle or Lambda crashes with ENOENT on load.
+  included_files = ["builds/relaxing-travel/data/kb/*.json"]
 
 [build.environment]
   NODE_VERSION = "22"

@@ -3,7 +3,22 @@
 const { readdirSync, readFileSync } = require("node:fs");
 const { join } = require("node:path");
 
-const KB_DIR = join(__dirname, "..", "..", "builds", "relaxing-travel", "data", "kb");
+function kbDir() {
+  // Netlify (included_files): bundle root keeps the repo-relative path from
+  // the functions dir — /var/task/builds/relaxing-travel/data/kb.
+  const bundled = join(__dirname, "..", "..", "builds", "relaxing-travel", "data", "kb");
+  try { readdirSync(bundled); return bundled; } catch {}
+  // Local dev fallback: repo root resolved upward from the function file.
+  let dir = __dirname;
+  for (let i = 0; i < 5; i++) {
+    dir = join(dir, "..");
+    const candidate = join(dir, "builds", "relaxing-travel", "data", "kb");
+    try { readdirSync(candidate); return candidate; } catch {}
+  }
+  throw new Error("knowledge base directory not found");
+}
+
+const KB_DIR = kbDir();
 let cache = null;
 
 function all() {
