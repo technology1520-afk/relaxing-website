@@ -1,8 +1,8 @@
 // Shared server-side reader for the destination knowledge base.
-// Data ships inside the functions bundle as _kb-data.generated.js — Lambda
+// Data ships inside the functions bundle as _kb_data.js — Lambda
 // cannot read repo files at runtime, so no filesystem access is needed.
 // Regenerate with: node scripts/sync-kb-bundle.js
-const DATA = require("./_kb-data.generated.js");
+const DATA = require("./_kb_data.js");
 
 let cache = null;
 

@@ -1,4 +1,4 @@
-// Regenerates netlify/functions/_kb-data.generated.js from the source of
+// Regenerates netlify/functions/_kb_data.js from the source of
 // truth: builds/relaxing-travel/data/kb/*.json
 // Run this after any KB change: node scripts/sync-kb-bundle.js
 // (The functions bundle cannot read repo files at runtime on Netlify.)
@@ -7,7 +7,7 @@ const { join } = require("node:path");
 
 const ROOT = join(__dirname, "..");
 const KB_DIR = join(ROOT, "builds", "relaxing-travel", "data", "kb");
-const OUT = join(ROOT, "netlify", "functions", "_kb-data.generated.js");
+const OUT = join(ROOT, "netlify", "functions", "_kb_data.js");
 
 const entries = {};
 for (const f of readdirSync(KB_DIR)) {
