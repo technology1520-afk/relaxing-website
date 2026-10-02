@@ -208,6 +208,41 @@ function renderDistances() {
 const planForm = document.getElementById("plan-form");
 const planOut = document.getElementById("plan-out");
 
+// ---------- Budget tiers: budget / mid / premium ----------
+const TIER_FACTORS = { budget: 0.55, mid: 1, premium: 2.1 };
+const TIER_LABELS = { budget: "budget", mid: "mid-range", premium: "premium" };
+let currentTier = "mid";
+
+function tierCosts(placeKeys) {
+  // Sum real KB daily costs over the selected places, then scale by tier.
+  // budget tier leans toward the KB budget column; premium scales mid up.
+  const list = placeKeys.length ? placeKeys : Object.keys(PLACE_DATA).slice(0, 1);
+  const bud = list.reduce((s, k) => s + (PLACE_DATA[k]?.daily_budget || 0), 0) / list.length;
+  const mid = list.reduce((s, k) => s + (PLACE_DATA[k]?.daily_mid || 0), 0) / list.length;
+  return {
+    budget: Math.round((bud + mid) / 2 * TIER_FACTORS.budget),
+    mid: Math.round(mid * TIER_FACTORS.mid),
+    premium: Math.round(mid * TIER_FACTORS.premium),
+  };
+}
+
+function renderTierEstimates() {
+  const picks = [...document.querySelectorAll(".pick:checked")].map(c => c.value);
+  const c = tierCosts(picks);
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = `~$${v}/day`; };
+  set("tier-budget-est", c.budget); set("tier-mid-est", c.mid); set("tier-premium-est", c.premium);
+}
+
+document.getElementById("plan-tier")?.addEventListener("click", (e) => {
+  const btn = e.target.closest(".tier-btn");
+  if (!btn) return;
+  currentTier = btn.dataset.tier || "mid";
+  document.querySelectorAll("#plan-tier .tier-btn").forEach(b => b.classList.toggle("is-active", b === btn));
+});
+// Re-estimate when the selection changes (pick checkboxes are .pick inputs)
+document.getElementById("spots")?.addEventListener("change", renderTierEstimates);
+renderTierEstimates();
+
 planForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const days = document.getElementById("plan-days").value;
@@ -221,7 +256,7 @@ planForm?.addEventListener("submit", async (e) => {
     const res = await fetch("/api/plan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ days: parseInt(days), who, places: picks }),
+      body: JSON.stringify({ days: parseInt(days), who, places: picks, tier: currentTier }),
     });
     let data = null;
     try { data = await res.json(); } catch {}
@@ -245,6 +280,8 @@ function renderPlan(data, picks) {
     who: (document.getElementById("plan-who").value || "family").slice(0, 60),
     places: (picks || []).map(k => PLACE_DATA[k]?.name || k),
     budget: (budget || "").slice(0, 120),
+    tier: TIER_LABELS[currentTier] || "mid-range",
+    estPerDay: tierCosts(picks)[currentTier] || null,
   };
   try {
     const identity = window.netlifyIdentity;
@@ -268,8 +305,15 @@ function renderPlan(data, picks) {
     placeKeys: (picks || []).slice(),
   };
   try { sessionStorage.setItem("rdo_last_trip", JSON.stringify(lastTrip)); } catch {}
+  const est = tierCosts(picks)[currentTier];
+  const daysN = (data.days || []).length;
   planOut.innerHTML = `
     <div class="plan-route"><strong>${names}</strong></div>
+    ${est ? `<div class="plan-totals">
+      <div class="pt"><i>${TIER_LABELS[currentTier]} · per person/day</i><b>~$${est}</b></div>
+      <div class="pt"><i>estimated trip total</i><b>~$${(est * daysN).toLocaleString()}</b></div>
+      <div class="pt"><i>for ${daysN} days · excl. flights</i><b></b></div>
+    </div>` : ""}
     ${(data.days || []).map(d => `
       <div class="plan-day">
         <span class="plan-dnum">Day ${d.day}</span>
@@ -278,7 +322,7 @@ function renderPlan(data, picks) {
       </div>`).join("")}
     ${budget ? `<div class="plan-budget"><strong>Budget feel:</strong> ${budget}</div>` : ""}
     <div class="plan-export" id="plan-export"></div>
-    <p class="plan-note">AI-drafted plan. Check opening days and book the first night before you fly.</p>`;
+    <p class="plan-note">AI-drafted ${TIER_LABELS[currentTier]} plan. Check opening days and book the first night before you fly.</p>`;
   import("./trip-export.js").then(m => m.exportButtons(lastTrip, document.getElementById("plan-export")));
 }
 

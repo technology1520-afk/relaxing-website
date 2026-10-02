@@ -52,6 +52,7 @@
   .trip .t-del { color: #E5A9A0; }
   .trip .t-del:hover { border-color: #E5A9A0; color: #E5A9A0; }
   .t-synced { color: var(--sc-accent); font-weight: 400; }
+  .t-tier { color: var(--sc-accent); font-family: var(--sc-font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .empty { color: var(--sc-ink-soft); font-size: 0.92rem; }
   .empty a { color: var(--sc-accent); }
   .btn-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1rem; }
@@ -118,7 +119,7 @@ async function renderTrips(user) {
   }
   box.innerHTML = mine.slice().reverse().map(t => `
     <div class="trip" data-id="${esc(t.id || "")}">
-      <div class="t-title">${esc(t.days)} days · ${esc(t.who)}${t.id ? ' <span class="t-synced" title="Synced to your account">✓</span>' : ' <span class="t-synced" title="Saved on this device only">·</span>'}</div>
+      <div class="t-title">${esc(t.days)} days${t.tier ? ` · <span class="t-tier">${esc(t.tier)}</span>` : ""}${t.tier && t.estPerDay ? ` · ~$${esc(t.estPerDay)}/day` : ""}${t.id ? ' <span class="t-synced" title="Synced to your account">✓</span>' : ' <span class="t-synced" title="Saved on this device only">·</span>'}</div>
       <div class="t-places">${esc((t.places || []).join(" · "))}</div>
       <div class="t-meta">saved ${new Date(t.at).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}${t.budget ? " · " + esc(t.budget) : ""}</div>
       <div class="t-export">

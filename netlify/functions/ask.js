@@ -97,6 +97,8 @@ exports.handler = async (req) => {
     days: Math.min(21, Math.max(1, parseInt(ctx.trip.days) || 0)),
     places: Array.isArray(ctx.trip.places) ? ctx.trip.places.slice(0, 8).map(p => String(p).slice(0, 60)) : [],
     budget: String(ctx.trip.budget || "").slice(0, 120),
+    tier: ["budget", "mid-range", "premium"].includes(ctx.trip.tier) ? ctx.trip.tier : null,
+    estPerDay: Number.isFinite(ctx.trip.estPerDay) ? ctx.trip.estPerDay : null,
   } : null;
   const hasTrip = trip && trip.places.length > 0;
 
@@ -133,7 +135,7 @@ exports.handler = async (req) => {
     : `The site covers ${ALL_PLACES.length} destinations. Featured (deepest data): ${ALL_PLACES.filter(p => p.kind === "featured").map(p => p.name).join("; ")}. Others include ${PLACE_NAMES.filter(n => !["Faroe Islands","Iceland","Kyoto","Lofoten","Na Pali Coast","Wadi Rum","Whitehaven Beach","Yasawa Islands"].includes(n)).slice(0, 12).join(", ")}, and more. Tag topics you can match: ${Object.keys(TAG_HINTS).join(", ")}. When the visitor wants a vibe or activity (camping, beach, food...), recommend the best-matching destinations by tag.`;
 
   const tripBlock = hasTrip
-    ? `\nThe visitor has a planned trip on this site: ${trip.days} days for ${trip.who || "their group"}, visiting ${trip.places.join("; ")}. Budget feel: ${trip.budget || "not set"}. Answer with THIS trip in mind — use their places, group and day count when relevant; do not suggest other destinations unless they ask.`
+    ? `\nThe visitor has a planned trip on this site: ${trip.days} days for ${trip.who || "their group"}${trip.tier ? `, ${trip.tier} budget tier${trip.estPerDay ? ` (~$${trip.estPerDay}/day)` : ""}` : ""}, visiting ${trip.places.join("; ")}. Budget feel: ${trip.budget || "not set"}. Answer with THIS trip in mind — use their places, group, day count and ${trip.tier ? trip.tier + " tier" : "budget"} when relevant; do not suggest other destinations unless they ask.`
     : "";
 
   // Ground the AI with the actual matching entries for any detected vibe/tag.

@@ -1,8 +1,24 @@
-// Netlify function: POST /api/plan { days, who, places: [keys] }
-// Returns { days: [{day, title, plan}], budget } using OpenRouter free models.
+// Netlify function: POST /api/plan { days, who, places: [keys], tier }
+// tier: budget | mid | premium — shapes the daily plan and cost framing.
+// Returns { days: [{day, title, plan}], budget, tier } using OpenRouter free models.
 // The API key never reaches the browser.
 
 const { logAdmin } = require("./_log.js");
+
+const TIERS = {
+  budget: {
+    label: "budget",
+    guidance: "Budget tier: hostels/guesthouses or budget hotels, street food and local eateries, public transport, free or cheap activities. Name the money-saving choice in each day's plan where relevant.",
+  },
+  mid: {
+    label: "mid-range",
+    guidance: "Mid-range tier: comfortable 3-4 star hotels, a mix of local and mid-range restaurants, one paid tour or activity per day, taxis where sensible.",
+  },
+  premium: {
+    label: "premium",
+    guidance: "Premium tier: design hotels or luxury resorts, private transfers, fine dining or the best table in town, private guides and skip-the-line access. Mention the splurge-worthy pick per day.",
+  },
+};
 
 const NAMES = {
   iceland: "Blue Lagoon, Iceland",
@@ -34,6 +50,8 @@ exports.handler = async (req) => {
   const who = String(body.who || "a family with kids").slice(0, 300);
   const places = (Array.isArray(body.places) ? body.places : []).filter(k => NAMES[k]).slice(0, 8);
   if (!places.length) return json(400, { error: "Pick at least one place." }, cors);
+  const tier = TIERS[body.tier] ? body.tier : "mid";
+  const T = TIERS[tier];
 
   const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
   if (!key) return json(503, { error: "The planner is warming up. Add AI_API_KEY in your deploy settings." }, cors);
@@ -41,13 +59,14 @@ exports.handler = async (req) => {
   const list = places.map(k => NAMES[k]).join("; ");
   const budgetFeel = places.map(k => BUDGETS[k]).join(", ");
   const prompt =
-`Plan a ${days}-day trip for ${who} visiting: ${list}.
+`Plan a ${days}-day ${T.label} trip for ${who} visiting: ${list}.
 
+${T.guidance}
 Trip character: slow, restorative travel. Nature and quiet over shopping and nightlife.
 Route logic: group geographically, do not zigzag across the planet twice. Suggest a sensible order and, if two places need a long flight between them, say so in that day's plan.
 
 Reply ONLY with minified JSON:
-{"days":[{"day":1,"title":"short title","plan":"2-3 sentences: what to do, one kid-friendly note, one practical note (transport, booking, weather)"}],"budget":"one sentence: which legs cost the most and the total feel for a mid-range ${who}, given these destinations are ${budgetFeel}"}
+{"days":[{"day":1,"title":"short title","plan":"2-3 sentences at ${T.label} level: what to do, one kid-friendly note, one practical note (transport, booking, weather)"}],"budget":"one sentence: which legs cost the most and the total ${T.label} feel for ${who}, given these destinations are ${budgetFeel}"}
 Keep each "plan" under 45 words and the whole reply under 900 tokens.`;
 
   try {
@@ -74,30 +93,30 @@ Keep each "plan" under 45 words and the whole reply under 900 tokens.`;
         signal: ctrl.signal,
       });
     } finally { clearTimeout(timer); }
-    if (!r.ok) return json(200, fallbackPlan(days, who, places), cors);
+    if (!r.ok) return json(200, fallbackPlan(days, who, places, tier), cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
     const m = text.match(/\{[\s\S]*\}/);
     let parsed = null;
     try { parsed = m ? JSON.parse(m[0]) : null; } catch { parsed = null; }
     if (!parsed || !Array.isArray(parsed.days) || !parsed.days.length) {
-      return json(200, fallbackPlan(days, who, places), cors);
+      return json(200, fallbackPlan(days, who, places, tier), cors);
     }
     const outDays = parsed.days.slice(0, days).map((d, i) => ({
       day: i + 1,
       title: String(d.title || "").slice(0, 80),
       plan: String(d.plan || "").slice(0, 700),
     }));
-    await logAdmin("trip", { at: Date.now(), days: outDays.length, who: who.slice(0, 60), places: places.map(k => NAMES[k]), budget: String(parsed.budget || "").slice(0, 120) });
-    return json(200, { days: outDays, budget: String(parsed.budget || "").slice(0, 400) }, cors);
+    await logAdmin("trip", { at: Date.now(), days: outDays.length, who: who.slice(0, 60), places: places.map(k => NAMES[k]), budget: String(parsed.budget || "").slice(0, 120), tier });
+    return json(200, { days: outDays, budget: String(parsed.budget || "").slice(0, 400), tier }, cors);
   } catch {
-    return json(200, fallbackPlan(days, who, places), cors);
+    return json(200, fallbackPlan(days, who, places, tier), cors);
   }
 };
 
 // Deterministic no-AI itinerary: always returns within the gateway window.
 // Same response shape as the AI path, so the frontend needs no special casing.
-function fallbackPlan(days, who, places) {
+function fallbackPlan(days, who, places, tier = "mid") {
   const NOTES = {
     iceland: "Book lagoon entry ahead; layers and a waterproof shell matter more than the forecast app suggests.",
     lofoten: "Rent a car — the villages are spread out; groceries close early in the shoulder season.",
@@ -113,6 +132,11 @@ function fallbackPlan(days, who, places) {
     expensive: "expect $150-300 a day mid-range before flights",
     moderate: "expect $70-150 a day mid-range before flights",
   };
+  const TIER_NOTES = {
+    budget: "Keep it cheap: guesthouses, street food, public transport, one paid activity.",
+    mid: "Comfortable mid-range: 3-4 star stays, a mix of eateries, one tour a day.",
+    premium: "Premium: design hotels, private transfers, the best table in town, private guides.",
+  };
   const names = places.map(k => NAMES[k]);
   const feel = places.map(k => BUDGETS[k]).join(", ");
   const out = [];
@@ -122,12 +146,13 @@ function fallbackPlan(days, who, places) {
     out.push({
       day: i + 1,
       title: first ? `${name.split(",")[0]} at ease` : `${name.split(",")[0]}, slower`,
-      plan: `A gentle day in ${name}: one unhurried highlight in the morning, a long lunch, then free wandering. ${NOTES[places[i % places.length]]} ${first ? "" : "Revisit yesterday's favourite spot if the weather turns."}`,
+      plan: `A gentle day in ${name}: one unhurried highlight in the morning, a long lunch, then free wandering. ${NOTES[places[i % places.length]]} ${TIER_NOTES[tier]} ${first ? "" : "Revisit yesterday's favourite spot if the weather turns."}`,
     });
   }
   return {
     days: out,
     budget: `Rough guide: these destinations feel ${feel} — for ${who}, ${BUDGET_LINES[BUDGETS[places[0]]]}. (Offline plan — Relaxagent was briefly unavailable; try planning again later for a richer itinerary.)`,
+    tier,
     engine: "fallback",
   };
 }

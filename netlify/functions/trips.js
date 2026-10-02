@@ -27,6 +27,8 @@ function cleanTrip(t) {
     at: Number(t.at) || Date.now(),
     days: Math.min(21, Math.max(1, parseInt(t.days) || 1)),
     who: String(t.who || "").slice(0, 60),
+    tier: ["budget", "mid-range", "premium"].includes(t.tier) ? t.tier : null,
+    estPerDay: Number.isFinite(t.estPerDay) && t.estPerDay > 0 ? Math.round(t.estPerDay) : null,
     places: Array.isArray(t.places) ? t.places.slice(0, 8).map(p => String(p).slice(0, 60)) : [],
     budget: String(t.budget || "").slice(0, 120),
     daysPlan: Array.isArray(t.daysPlan)

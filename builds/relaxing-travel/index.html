@@ -351,6 +351,22 @@
   .plan-opts input[type="number"] { width: 5rem; }
   .plan-row { margin-top: 1rem; }
   .plan-out { margin-top: 1.4rem; font-size: 0.92rem; color: var(--sc-ink-soft); }
+  .plan-tier { gap: 0.5rem; display: flex; flex-wrap: wrap; }
+  .tier-btn {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem;
+    background: transparent; border: 1.5px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
+    border-radius: 10px; padding: 0.5rem 0.9rem; font: inherit; cursor: pointer;
+    transition: all 140ms var(--sc-ease-out);
+  }
+  .tier-btn strong { color: var(--sc-ink); font-weight: 500; font-size: 0.9rem; }
+  .tier-btn span { font-family: var(--sc-font-mono); font-size: 0.72rem; color: var(--sc-ink-soft); }
+  .tier-btn:hover { border-color: var(--sc-ink); }
+  .tier-btn.is-active { border-color: var(--sc-accent); background: color-mix(in srgb, var(--sc-accent) 10%, transparent); }
+  .tier-btn.is-active strong { color: var(--sc-accent); }
+  .plan-totals { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 0.6rem 0 0.4rem; }
+  .plan-totals .pt { display: flex; flex-direction: column; }
+  .plan-totals .pt i { font-style: normal; font-size: 0.72rem; color: var(--sc-ink-soft); }
+  .plan-totals .pt b { font-family: var(--sc-font-display); font-size: 1.15rem; color: var(--sc-ink); }
   .plan-route { font-size: 1rem; color: var(--sc-ink); margin-bottom: 1rem; }
   .plan-day { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0.9rem; padding: 0.7rem 0; border-top: 1px solid color-mix(in srgb, var(--sc-ink) 7%, transparent); }
   .plan-dnum { font-family: var(--sc-font-display); font-weight: 600; color: var(--sc-accent); font-size: 0.95rem; }
@@ -931,6 +947,17 @@
           <label>Days: <input id="plan-days" type="number" min="1" max="21" value="7"></label>
           <label>Who is going: <input id="plan-who" type="text" placeholder="a family with two kids (5 and 9)"></label>
         </div>
+        <div class="plan-opts plan-tier" id="plan-tier" role="radiogroup" aria-label="Budget tier">
+          <button type="button" class="tier-btn" data-tier="budget" title="Hostels, street food, public transport">
+            <strong>Budget</strong><span id="tier-budget-est">~$--/day</span>
+          </button>
+          <button type="button" class="tier-btn is-active" data-tier="mid" title="Mid-range hotels, mix of restaurants, a tour or two">
+            <strong>Mid-range</strong><span id="tier-mid-est">~$--/day</span>
+          </button>
+          <button type="button" class="tier-btn" data-tier="premium" title="Design stays, private transfers, fine dining">
+            <strong>Premium</strong><span id="tier-premium-est">~$--/day</span>
+          </button>
+        </div>
         <p class="atlas-note" id="pick-hint">Tick places in the panels above, then Relaxagent plans the days:</p>
         <form id="plan-form" class="plan-row">
           <button type="submit" id="plan-go" class="cta">Plan it, Relaxagent</button>
@@ -1009,7 +1036,7 @@
   import { buildPlanner } from "./js/planner.js";
   buildPlanner();
 </script>
-<script src="js/assistant.js?v=8"></script>
+<script src="js/assistant.js?v=9"></script>
 <script type="module">
   import { buildExplorer } from "./js/explorer.js?v=8";
   buildExplorer();

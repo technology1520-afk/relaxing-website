@@ -45,6 +45,7 @@ function tripContext() {
       .map(i => i.value).filter(Boolean);
     const who = document.getElementById("plan-who")?.value || "";
     const days = parseInt(document.getElementById("plan-days")?.value) || 0;
+    const tierBtn = document.querySelector("#plan-tier .tier-btn.is-active");
     const last = JSON.parse(localStorage.getItem("sw_trips") || "[]").slice(-1)[0];
     if (picked.length || last) {
       trip = {
@@ -52,6 +53,8 @@ function tripContext() {
         days: days || last?.days || 0,
         places: (picked.length ? picked.map(k => PLACE_DATA()?.[k]?.name || k) : (last?.places || [])).slice(0, 8),
         budget: last?.budget || "",
+        tier: (tierBtn?.dataset.tier === "budget" ? "budget" : tierBtn?.dataset.tier === "premium" ? "premium" : tierBtn?.dataset.tier === "mid" ? "mid-range" : null) || last?.tier || null,
+        estPerDay: last?.estPerDay || null,
       };
     }
   } catch {}
