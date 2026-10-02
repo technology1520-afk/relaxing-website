@@ -164,6 +164,16 @@ window.netlifyIdentity?.on("login", boot);
 window.netlifyIdentity?.on("logout", () => location.href = "log-in.html");
 if (window.netlifyIdentity?.currentUser()) boot(window.netlifyIdentity.currentUser());
 setTimeout(() => { if (!window.netlifyIdentity) { gate.textContent = "Auth is not available in this environment. Deploy to Netlify and enable Identity."; } }, 4000);
+// Don't leave visitors stuck on "Checking your session…" when Identity is slow
+// to resolve: after 4s with no user and no UI, hand off to the login page.
+setTimeout(() => {
+  if (!content.hidden) return;
+  if (window.netlifyIdentity?.currentUser?.()) return;
+  gate.textContent = "Not logged in — taking you to log in…";
+  setTimeout(() => {
+    if (content.hidden && !window.netlifyIdentity?.currentUser?.()) location.href = "log-in.html";
+  }, 900);
+}, 4000);
 document.getElementById("logout").addEventListener("click", () => window.netlifyIdentity?.logout());
 </script>
 </body>

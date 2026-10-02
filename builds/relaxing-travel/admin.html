@@ -181,7 +181,15 @@ function render(d) {
 function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 
 document.getElementById("logout").addEventListener("click", () => window.netlifyIdentity?.logout());
-gateLogin.addEventListener("click", () => { gateLogin.hidden = true; window.netlifyIdentity?.open("login"); });
+gateLogin.addEventListener("click", () => {
+  gateLogin.hidden = true;
+  const identity = window.netlifyIdentity;
+  if (!identity) { gateMsg.textContent = "Auth unavailable here. Deploy to Netlify with Identity enabled."; return; }
+  // The widget's iframe modal can render an empty Netlify promo page before
+  // (or instead of) the login form — the standalone login page is reliable.
+  gateMsg.innerHTML = "Opening the <a href=\"log-in.html\" style=\"color:var(--sc-accent)\">login page</a>…";
+  setTimeout(() => { location.href = "log-in.html?next=admin"; }, 400);
+});
 
 window.netlifyIdentity?.on("init", () => load());
 window.netlifyIdentity?.on("login", () => load());

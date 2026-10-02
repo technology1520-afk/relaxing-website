@@ -117,7 +117,11 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     const user = await new Promise((resolve, reject) => {
       identity.login(email, pass, true, (err, u) => err ? reject(err) : resolve(u));
     });
-    if (user?.token?.access_token) location.href = "account.html";
+    if (user?.token?.access_token) {
+      // honor ?next= (admin console hands off its login here)
+      const next = new URLSearchParams(location.search).get("next");
+      location.href = next === "admin" ? "admin.html" : "account.html";
+    }
     else { msg.textContent = "Check your email to confirm the account first."; msg.classList.add("err"); }
   } catch (err) {
     msg.className = "auth-msg err";

@@ -12,12 +12,14 @@ const VIBE_MAP = {
   city: ["city", "urban", "nightlife", "museums", "art", "energy"],
   budget: ["budget", "cheap", "affordable", "backpack", "low cost"],
   luxury: ["luxury", "expensive", "lux", "splurge", "honeymoon"],
-  food: ["foodie", "food", "street food", "cooking", "restaurants", "tapas", "tacos"],
+  // Keys MUST be tag values that exist in data/kb/index.json (foodie, romantic…)
+  // — a key with no matching tag silently zeroes the vibe bonus for everyone.
+  foodie: ["food", "street food", "cooking", "restaurants", "tapas", "tacos", "foodie"],
   nature: ["nature", "waterfalls", "lakes", "gardens", "scenic", "wild"],
   camping: ["camping", "campsite", "tent", "tents", "stargazing", "dark sky", "wild camping", "campsites", "fire pits"],
   culture: ["culture", "historic", "temples", "tradition", "museums", "old town"],
   adventure: ["adventure", "adrenaline", "bungee", "surf", "dive", "hiking"],
-  romance: ["romantic", "honeymoon", "sunset", "couple"],
+  romantic: ["romance", "honeymoon", "sunset", "couple", "romantic"],
   wellness: ["wellness", "yoga", "spa", "retreat", "meditate"],
   winter: ["aurora", "northern lights", "snow", "winter"],
 };
@@ -37,12 +39,20 @@ function scorePlace(item, query) {
   if (!q) return 0;
   let score = 0;
   const words = q.split(/[^a-z]+/).filter(Boolean);
-  // direct matches
-  for (const w of words) {
-    if (item.city.toLowerCase().includes(w) || item.country.toLowerCase().includes(w)) score += 6;
-    if (item.tags.some(t => t.includes(w))) score += 4;
+  // Ignore 1-2 letter words and grammar/stop words: "a", "under", "day" would
+  // otherwise substring-match random fields ("Whitsundays".includes("day")).
+  const STOP = new Set(["the", "and", "for", "with", "under", "per", "day", "days", "trip", "place", "places", "near", "from", "that"]);
+  const sig = words.filter(w => w.length >= 3 && !STOP.has(w));
+  const cityWords = item.city.toLowerCase().split(/[^a-z]+/);
+  const countryWords = item.country.toLowerCase().split(/[^a-z]+/);
+  for (const w of sig) {
+    if (cityWords.some(cw => cw === w || (w.length >= 4 && cw.startsWith(w))) ||
+        countryWords.some(cw => cw === w || (w.length >= 4 && cw.startsWith(w)))) score += 6;
+    if (item.tags.some(t => t.toLowerCase() === w)) score += 4;      // exact tag
+    else if (item.tags.some(t => t.toLowerCase().split(/[^a-z]+/).includes(w))) score += 3; // word inside tag
     if (item.best_for.some(b => b.toLowerCase().includes(w))) score += 3;
-    // vibe synonyms
+    // vibe synonyms: keyed on the canonical tag names that exist in the data
+    // (foodie, romantic, wellness…), checked per word so "foodie city" works
     for (const [vibe, syns] of Object.entries(VIBE_MAP)) {
       if (w.includes(vibe) || syns.some(s => s.startsWith(w) && w.length > 2)) {
         if (item.tags.includes(vibe)) score += 5;
@@ -57,7 +67,13 @@ function scorePlace(item, query) {
     else if (item.daily_budget <= cap) score += 3;
     else score -= 4;
   }
-  if ((q.includes("cheap") || q.includes("budget") || q.includes("affordable")) && item.priceLevel === "cheap") score += 5;
+  if ((q.includes("cheap") || q.includes("budget") || q.includes("affordable"))) {
+    // No entry carries priceLevel "cheap" (14 moderate / 16 pricey), so reward
+    // genuinely low daily cost instead of a level that never matches.
+    if (item.daily_mid <= 60) score += 5;
+    else if (item.daily_mid <= 100) score += 2;
+    else if (item.priceLevel === "cheap") score += 5;
+  }
   if ((q.includes("luxury") || q.includes("fancy")) && item.priceLevel === "pricey") score += 3;
   return score;
 }
@@ -173,7 +189,9 @@ export async function buildExplorer() {
   const results = document.getElementById("wx-results");
   const run = () => {
     const scored = world.map(w => ({ w, s: scorePlace(w, input.value) })).filter(x => x.s > 0)
-      .sort((a, b) => b.s - a.s).slice(0, 6);
+      // tiebreak on lower daily cost so the top-6 cap doesn't drop equally
+      // scored matches purely by data-file order (cost: Zanzibar lost to Naviti)
+      .sort((a, b) => b.s - a.s || a.w.daily_mid - b.w.daily_mid).slice(0, 8);
     results.innerHTML = scored.length
       ? scored.map(x => cardHTML(x.w)).join("")
       : `<div class="wx-none">No match for that. Try a vibe word like "quiet", "beach", "foodie" — or a budget like "under 60 a day".</div>`;
