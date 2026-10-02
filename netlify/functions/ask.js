@@ -28,6 +28,21 @@ function tagMatches(s) {
   return Object.keys(TAG_HINTS).filter(t => s.includes(t));
 }
 
+// Great-circle distance in km between two lat/lng points.
+function haversine(a, b) {
+  const R = 6371, toRad = d => d * Math.PI / 180;
+  const dLat = toRad(b.lat - a.lat), dLng = toRad(b.lng - a.lng);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(h)));
+}
+// Rough flight time (cruise ~850km/h + 45min taxi/climb overhead) and a note
+// for very long hauls. Non-stop feasibility rough cutoff ~11000km.
+function flightTime(km) {
+  const h = km / 850 + 0.75;
+  const note = km > 11000 ? " — usually no non-stop, expect a connection" : km > 7000 ? " — long haul" : "";
+  return h < 1 ? "under an hour" : `${h < 10 ? h.toFixed(h < 3 ? 1 : 0) : Math.round(h)} hours${note}`;
+}
+
 // Places the assistant is recommending in this reply, for photo cards in the
 // widget: ones actually named in the AI text, else the tag matches, else the
 // place whose card the visitor is reading. Max 3, each with an image if one
@@ -85,6 +100,27 @@ exports.handler = async (req) => {
   } : null;
   const hasTrip = trip && trip.places.length > 0;
 
+  // Distance questions are answered by exact math on KB lat/lng, not by the
+  // model — guaranteed correct, and faster than an AI round-trip.
+  const DIST_HINTS = ["how far", "distance", "flight time", "flight from", "hours away", "get from", "travel from", "between "];
+  const qs = question.toLowerCase();
+  if (DIST_HINTS.some(h => qs.includes(h))) {
+    const named = ALL_PLACES.filter(p =>
+      qs.includes(String(p.name || "").toLowerCase().split(",")[0]) ||
+      qs.includes(String(p.key || "").replace(/-/g, " ")) ||
+      (p.city && qs.includes(String(p.city).toLowerCase())));
+    const uniq = [...new Map(named.map(p => [p.key, p])).values()];
+    if (uniq.length >= 2) {
+      const [a, b] = uniq;
+      const km = haversine(a, b);
+      const dir = km < 800 ? "a hop - likely one short flight or a train/bus combo"
+        : km < 3000 ? "a medium flight"
+        : "a long-haul flight";
+      const answer = `Great-circle distance ${a.name} → ${b.name}: about ${km.toLocaleString()} km (${Math.round(km * 0.621).toLocaleString()} miles) as the crow flies. That's ${dir}, roughly ${flightTime(km)} in the air. Check the Documents & visas section for both countries if you're connecting between them.`;
+      return json(200, { answer, picks: buildPicks(answer, null, []), engine: "distance-calc" }, cors);
+    }
+  }
+
   const key = process.env.AI_API_KEY || process.env.OPENROUTER_API_KEY;
   if (!key) {
     // No key configured: answer from the site's own data. Relaxagent never goes silent.
@@ -110,6 +146,8 @@ exports.handler = async (req) => {
 
   const prompt =
 `You are Relaxagent, the trip guide of relaxdayoff.com ("Relax Day Off"), a travel site about the world's quietest places. Your name is Relaxagent. When asked who you are, say you are Relaxagent, the day-off planner of relaxdayoff.com. A visitor asks: "${question}"
+
+You can recommend "the best" for any vibe by ranking the real data below (cheapest = lowest daily_mid, quietest = calm/quiet tags, islands = island/islands/tropical tags). When the user asks for the best/cheapest/quietest, name 2-3 concrete winners from the data with their price, not vague advice.
 
 ${placeBlock}
 ${tripBlock}${tagBlock}
@@ -184,6 +222,57 @@ function localAnswer(q, placeKey) {
   const ALL_NAMES = ALL_PLACES.map(p => p.name).join("; ");
 
   const has = (...words) => words.some(w => s.includes(w));
+
+  // topic: distance between two named places ("how far is X from Y", "distance
+  // from Kyoto to Wadi Rum", "flight time between..."). Answers from exact
+  // lat/lng in the KB — works even when the AI engine is up (handled there too).
+  if (has("how far", "distance", "flight time", "flight from", "hours away", "get from", "travel from", "between ")) {
+    const named = ALL_PLACES.filter(p =>
+      s.includes(String(p.name || "").toLowerCase().split(",")[0]) ||
+      s.includes(String(p.key || "").replace(/-/g, " ")) ||
+      (p.city && s.includes(String(p.city).toLowerCase())));
+    const uniq = [...new Map(named.map(p => [p.key, p])).values()];
+    if (uniq.length >= 2) {
+      const [a, b] = uniq;
+      const km = haversine(a, b);
+      const dir = km < 800 ? "a hop - likely one short flight or a train/bus combo"
+        : km < 3000 ? "a medium flight"
+        : "a long-haul flight";
+      return `Great-circle distance ${a.name} → ${b.name}: about ${km.toLocaleString()} km (${Math.round(km * 0.621).toLocaleString()} miles) as the crow flies. That's ${dir}, roughly ${flightTime(km)} in the air. Check the Documents & visas section for both countries if you're connecting between them.`;
+    }
+    if (uniq.length === 1)
+      return `Name the second place and I'll measure it - I can calculate the distance and rough flight time between any two destinations on this site (all ${ALL_PLACES.length} of them).`;
+  }
+
+  // topic: best / top / cheapest / quietest ranking ("what is the best island",
+  // "cheapest city on the site", "quietest place"). Ranks the real KB data.
+  if (has("best", "top", "cheapest", "most affordable", "quietest", "calmest", "most beautiful", "most romantic", "which island", "which city", "which place")) {
+    const byMid = [...ALL_PLACES].sort((a, b) => (a.daily_mid || 9e9) - (b.daily_mid || 9e9));
+    const cheapest = byMid.slice(0, 3).map(p => `${p.name} (~$${p.daily_mid}/day)`);
+    const hasTag = t => ALL_PLACES.filter(p => (p.tags || []).includes(t));
+    if (has("cheapest", "most affordable") && !has("island")) {
+      return `The three most affordable destinations on the site: ${cheapest.join(", ")}. Budget day costs run from $${byMid[0].daily_budget} there. The World Explorer search box filters every city by "under N a day" if you want the full list.`;
+    }
+    if (has("island")) {
+      const islands = hasTag("island").concat(hasTag("islands")).concat(hasTag("tropical"));
+      const u = [...new Map(islands.map(p => [p.key, p])).values()];
+      if (u.length) {
+        const top = u.slice(0, 3).map(p => `${p.flag || ""} ${p.name} (${p.country}) - best ${p.bestMonths}, ~$${p.daily_mid}/day mid-range`.trim());
+        return `The islands on this site, quietest first: ${top.join("; ")}. Naviti Island in Fiji and Zanzibar's Stone Town coast are the calmest picks with the warmest water.`;
+      }
+    }
+    if (has("beautiful", "view")) {
+      return `For beauty, the cards' best-view picks are hard to beat: Reinebringen over Reine at 23:00 in June, Oia's sunset in Santorini, and the Nāpali Coast from the water. Each destination card names its single best view and the exact time to be there.`;
+    }
+    if (has("quietest", "calmest")) {
+      const quiet = hasTag("calm").concat(hasTag("quiet")).slice(0, 3).map(p => `${p.name} (${p.country})`);
+      if (quiet.length) return `Quietest picks from our data: ${quiet.join(", ")}. Every destination card has a Crowds section naming the exact hours and months to avoid the few people there are.`;
+    }
+    if (has("best", "top") && (has("place", "destination", "where"))) {
+      const q = [...ALL_PLACES].filter(p => (p.tags || []).includes("calm") || (p.tags || []).includes("quiet")).slice(0, 3).map(p => `${p.flag || ""} ${p.name}`);
+      return `It depends on your vibe - but the site's quiet-first shortlist: ${q.join(", ")}. Tell me one sentence about your week (tired, restless, dreamy) and I'll narrow it to one.`;
+    }
+  }
 
   // topic: who/what are you
   if (has("who are you", "your name", "what are you"))

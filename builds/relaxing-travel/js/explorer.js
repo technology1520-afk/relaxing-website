@@ -87,6 +87,7 @@ function priceBadge(level) {
 function cardHTML(item) {
   return `
   <article class="wx-card" data-key="${item.key}">
+    <div class="wx-photo"><img src="assets/${item.key}.jpg" alt="${esc(item.city)}, ${esc(item.country)}" loading="lazy" width="640" height="420"></div>
     <div class="wx-top">
       <span class="wx-flag">${esc(item.flag)}</span>
       <div class="wx-names"><strong>${esc(item.city)}</strong><span>${esc(item.country)}</span></div>
@@ -130,6 +131,7 @@ async function openDetail(key) {
   modal.innerHTML = `
     <div class="wx-modal-card">
       <button class="wx-close" aria-label="Close">×</button>
+      <div class="wx-modal-photo"><img src="assets/${esc(key)}.jpg" alt="${esc(d.city)}, ${esc(d.country)}" width="800" height="440"></div>
       <div class="wx-top"><span class="wx-flag">${esc(d.flag)}</span>
         <div class="wx-names"><strong>${esc(d.city)}</strong><span>${esc(d.country)} · ${esc(d.currency)}</span></div></div>
       ${daily}

@@ -221,7 +221,8 @@ function localPicks(q, ctx) {
     const d = DESTS.find(x => x.id === k || x.key === k);
     if (d && !seen.has(d.key || d.id)) {
       seen.add(d.key || d.id);
-      out.push({ key: d.key || d.id, name: d.name, flag: d.flag || "", image: null,
+      out.push({ key: d.key || d.id, name: d.name, flag: d.flag || "",
+        image: `assets/${d.key || d.id}.jpg`,
         tagline: d.bestMonths || "", daily_mid: d.daily_mid || null });
     }
   };

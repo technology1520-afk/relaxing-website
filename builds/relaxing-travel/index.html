@@ -393,8 +393,14 @@
     background: var(--sc-canvas); border: 1.5px solid color-mix(in srgb, var(--sc-ink) 20%, transparent);
     border-radius: 12px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem;
     transition: transform 160ms var(--sc-ease-out), box-shadow 160ms var(--sc-ease-out);
+    overflow: hidden;
   }
   .wx-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--sc-ink); }
+  .wx-photo { margin: -1rem -1.1rem 0; height: 8.5rem; overflow: hidden; position: relative; }
+  .wx-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 400ms var(--sc-ease-out); }
+  .wx-card:hover .wx-photo img { transform: scale(1.05); }
+  .wx-modal-photo { margin: 0; height: 11rem; overflow: hidden; }
+  .wx-modal-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .wx-top { display: flex; align-items: center; gap: 0.6rem; }
   .wx-flag { font-size: 1.4rem; }
   .wx-names { display: flex; flex-direction: column; line-height: 1.2; }
@@ -1003,7 +1009,7 @@
   import { buildPlanner } from "./js/planner.js";
   buildPlanner();
 </script>
-<script src="js/assistant.js?v=7"></script>
+<script src="js/assistant.js?v=8"></script>
 <script type="module">
   import { buildExplorer } from "./js/explorer.js?v=8";
   buildExplorer();
