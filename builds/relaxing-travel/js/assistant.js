@@ -227,7 +227,7 @@ function localPicks(q, ctx) {
     if (d && !seen.has(d.key || d.id)) {
       seen.add(d.key || d.id);
       out.push({ key: d.key || d.id, name: d.name, flag: d.flag || "",
-        image: `assets/${d.key || d.id}.jpg`,
+        image: `assets/${d.key || d.id}.webp`,
         tagline: d.bestMonths || "", daily_mid: d.daily_mid || null });
     }
   };

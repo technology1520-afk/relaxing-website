@@ -87,7 +87,7 @@ function priceBadge(level) {
 function cardHTML(item) {
   return `
   <article class="wx-card" data-key="${item.key}">
-    <div class="wx-photo"><img src="assets/${item.key}.jpg" alt="${esc(item.city)}, ${esc(item.country)}" loading="lazy" width="640" height="420"></div>
+    <div class="wx-photo"><img src="assets/${item.key}.webp" alt="${esc(item.city)}, ${esc(item.country)}" loading="lazy" width="640" height="420"></div>
     <div class="wx-top">
       <span class="wx-flag">${esc(item.flag)}</span>
       <div class="wx-names"><strong>${esc(item.city)}</strong><span>${esc(item.country)}</span></div>
@@ -110,9 +110,29 @@ async function openDetail(key) {
   try { raw = await (await fetch(`data/kb/${key}.json`)).json(); }
   catch { return; }
   // deep holds the original per-city detail when the entry was migrated from data/prices
-  const d = raw.deep && raw.deep.groceries ? raw.deep : raw;
+  let d = raw.deep && raw.deep.groceries ? raw.deep : raw;
+  // Featured entries carry only the short prices block (meal/coffee/taxi/hotel/
+  // attraction): synthesize the long-form fields the modal reads so it renders
+  // instead of crashing on undefined (cost: iceland/faroe/... modal dead).
+  if (!d.prices || d.prices.daily_mid === undefined) {
+    const sp = raw.prices || {};
+    const mid = sp.hotel != null ? sp.hotel : raw.daily_mid;
+    d = { ...d,
+      prices: {
+        ...sp,
+        meal_cheap: sp.meal != null ? Math.max(1, Math.round(sp.meal * 0.8)) : undefined,
+        meal_mid_rest: sp.meal != null ? Math.round(sp.meal * 2.6) : undefined,
+        water_bottle: 0.5, taxi_3km: sp.taxi, transit_ride: sp.taxi != null ? Math.round(sp.taxi * 0.3 * 10) / 10 : undefined,
+        hotel_budget: sp.hotel != null ? Math.round(sp.hotel * 0.45) : undefined,
+        hotel_mid: mid, hotel_lux: sp.hotel != null ? Math.round(sp.hotel * 2.2) : undefined,
+        internet_month: raw.daily_mid != null ? Math.round(raw.daily_mid * 0.06) : undefined,
+        sim_data: raw.daily_mid != null ? Math.round(raw.daily_mid * 0.03) : undefined,
+        daily_budget: raw.daily_budget, daily_mid: raw.daily_mid,
+      },
+    };
+  }
   const p = d.prices;
-  const money = (v) => v === 0 ? "Free" : "$" + (Number.isInteger(v) ? v : v.toFixed(2));
+  const money = (v) => v == null || !Number.isFinite(v) ? "—" : v === 0 ? "Free" : "$" + (Number.isInteger(v) ? v : v.toFixed(2));
   const sec = (title, entries) => entries.length ? `
     <div class="wx-sec"><h4>${title}</h4>
     <table class="wx-table">${entries.map(([k, v]) => `<tr><td>${k}</td><td>${money(v)}</td></tr>`).join("")}</table></div>` : "";
@@ -131,7 +151,7 @@ async function openDetail(key) {
   modal.innerHTML = `
     <div class="wx-modal-card">
       <button class="wx-close" aria-label="Close">×</button>
-      <div class="wx-modal-photo"><img src="assets/${esc(key)}.jpg" alt="${esc(d.city)}, ${esc(d.country)}" width="800" height="440"></div>
+      <div class="wx-modal-photo"><img src="assets/${esc(key)}.webp" alt="${esc(d.city)}, ${esc(d.country)}" width="800" height="440"></div>
       <div class="wx-top"><span class="wx-flag">${esc(d.flag)}</span>
         <div class="wx-names"><strong>${esc(d.city)}</strong><span>${esc(d.country)} · ${esc(d.currency)}</span></div></div>
       ${daily}

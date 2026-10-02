@@ -25,8 +25,8 @@ function promptEntry(e) {
     visa: e.visa ? `${e.visa.note} (source: ${e.visa.source})` : null,
     daily_mid: e.daily_mid || null, daily_budget: e.daily_budget || null,
     priceLevel: e.priceLevel || null, tags: e.tags || [],
-    // Photo exists on the site for every destination (assets/<key>.jpg).
-    image: `assets/${e.key}.jpg`,
+    // Photo exists on the site for every destination (assets/<key>.webp).
+    image: `assets/${e.key}.webp`,
   };
 }
 
