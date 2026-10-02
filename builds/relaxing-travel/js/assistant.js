@@ -89,7 +89,9 @@ function addMsg(text, cls) {
 
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function addThinking() {
+function addThinking(q) {
+  if (window.relaxThinking) return window.relaxThinking.add(q);
+  // fallback (thinking.js failed to load): the original dot pulse
   const d = document.createElement("div");
   d.className = "ai-msg ai-msg--bot ai-msg--wait ai-thinking";
   d.setAttribute("aria-label", "Relaxagent is thinking");
@@ -145,7 +147,7 @@ async function ask(q) {
   log.querySelector(".ai-sugs")?.remove();
   addMsg(q, "ai-msg--you");
   input.value = "";
-  const wait = addThinking();
+  const wait = addThinking(q);
   const ctx = currentContext();
   try {
     const res = await fetch("/api/ask", {
