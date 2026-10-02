@@ -1,0 +1,117 @@
+{
+  "key": "el-nido",
+  "kind": "city",
+  "name": "El Nido",
+  "city": "El Nido",
+  "country": "Philippines",
+  "flag": "🇵🇭",
+  "lat": 11.18,
+  "lng": 119.39,
+  "tz": null,
+  "currency": "PHP ~57/$",
+  "tags": [
+    "island",
+    "lagoons",
+    "beach",
+    "boat tours",
+    "tropical",
+    "snorkel"
+  ],
+  "deep": {
+    "key": "el-nido",
+    "city": "El Nido",
+    "country": "Philippines",
+    "flag": "🇵🇭",
+    "lat": 11.18,
+    "lng": 119.39,
+    "currency": "PHP ~57/$",
+    "prices": {
+      "meal_cheap": 3.5,
+      "coffee": 2.2,
+      "beer": 1.9,
+      "taxi_3km": 2.5,
+      "transit_ride": 0.9,
+      "hotel_budget": 17,
+      "hotel_mid": 45,
+      "hotel_lux": 150,
+      "internet_month": 25,
+      "sim_data": 8,
+      "meal_mid_rest": 11,
+      "water_bottle": 0.5,
+      "daily_budget": 45,
+      "daily_mid": 95
+    },
+    "tags": [
+      "island",
+      "lagoons",
+      "beach",
+      "boat tours",
+      "tropical",
+      "snorkel"
+    ],
+    "best_for": [
+      "lagoon island-hopping",
+      "limestone cliffs",
+      "beach towns"
+    ],
+    "groceries": {
+      "milk_l": 2.2,
+      "bread": 1.6,
+      "eggs_12": 2.4,
+      "rice_kg": 1.2,
+      "chicken_kg": 3.2,
+      "fruit_kg": 1.5,
+      "market_meal": 2.2
+    },
+    "leisure": {
+      "cinema": 5,
+      "cocktail": 4.5,
+      "gym_month": 30,
+      "laundry": 1.5,
+      "massage_hr": 10
+    },
+    "transport_extra": {
+      "tricycle_town": 0.9,
+      "scooter_day": 10,
+      "van_puerto_princesa": 15
+    },
+    "activities": {
+      "island_tour_a": 27,
+      "island_tour_c": 30,
+      "nacpan_beach_day": 12
+    },
+    "monthly": {
+      "budget": 900,
+      "comfortable": 1600
+    },
+    "seasons": "Dry Dec-May is prime; Amihan season calms the sea. Jun-Nov brings rain and some typhoon risk.",
+    "airports": "ENI (Lio, flights from Manila) or 6h van from Puerto Princesa (PPS)",
+    "notes": "Town is walkable; Corong-Corong 10min away is 20-30% cheaper. Tours A and C are the iconic lagoons. Cash only in most places — ATMs fail often, bring pesos.",
+    "docs": {
+      "entry": "Philippines visa-free 30 days for most nationalities (extendable).",
+      "insurance": "Get cover with boat activities; nearest decompression/hyperbaric care is far.",
+      "special": [
+        "₱400 environmental fee (ETDF) paid once, valid 10 days",
+        "Bring cash — card payments and ATMs are unreliable"
+      ],
+      "health": "None required; reef-safe sunscreen and jellyfish caution in some seasons.",
+      "agency": "No visa agency needed; tours are bought walk-in at the pier."
+    }
+  },
+  "bestMonths": "Best Dec, Jan, Feb, Mar, Apr, May; Amihan season calms the sea. Jun-Nov brings rain and some typhoon risk.",
+  "crowd": "Busy at the pier at tour-launch time (8-9am), calm by late afternoon; Corong-Corong stays sleepy.",
+  "prices": {
+    "meal": 3.5,
+    "coffee": 2.2,
+    "taxi": 2.5,
+    "hotel": 45
+  },
+  "daily_budget": 45,
+  "daily_mid": 95,
+  "priceLevel": "moderate",
+  "best_for": [
+    "lagoon island-hopping",
+    "limestone cliffs",
+    "beach towns"
+  ]
+}

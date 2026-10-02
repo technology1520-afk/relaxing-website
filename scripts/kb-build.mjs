@@ -71,12 +71,25 @@ function monthsLabel(months) {
   if (months.length === 12) return "Year-round";
   if (!months.length) return "";
   const N = ["", "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const set = new Set(months);
+  // Start the walk at the true beginning of a run: the month whose cyclic
+  // predecessor is missing. Handles year-wraps (Nov,Dec,Jan… = Nov–Apr) that
+  // used to render as a broken "Jan–Apr, Nov, Dec".
+  let start = months.find(m => !set.has(m === 1 ? 12 : m - 1));
+  if (start === undefined) start = months[0];
+  // Rotate the sorted list so it starts at the run start (do NOT walk month by
+  // month — that would invent months that aren't in the set).
+  const idx = months.indexOf(start);
+  const ordered = months.slice(idx).concat(months.slice(0, idx));
   const runs = [];
-  let start = months[0], prev = months[0];
-  for (const m of months.slice(1).concat([13])) {
-    if (m !== prev + 1) { runs.push([start, prev]); start = m; }
-    prev = m;
+  let st = ordered[0];
+  let prev = ordered[0];
+  for (const x of ordered.slice(1)) {
+    const expected = prev === 12 ? 1 : prev + 1;
+    if (x !== expected) { runs.push([st, prev]); st = x; }
+    prev = x;
   }
+  runs.push([st, prev]);
   return runs.map(([a, b]) => a === b ? N[a] : `${N[a]}–${N[b]}`).join(", ");
 }
 

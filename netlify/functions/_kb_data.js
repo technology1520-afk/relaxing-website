@@ -1,5 +1,5 @@
 // GENERATED FILE — do not edit. Run: node scripts/sync-kb-bundle.js
-// Source: builds/relaxing-travel/data/kb/*.json (30 entries)
+// Source: builds/relaxing-travel/data/kb/*.json (35 entries)
 module.exports = {
  "bali-ubud": {
   "key": "bali-ubud",
@@ -699,6 +699,123 @@ module.exports = {
    "culture"
   ]
  },
+ "el-nido": {
+  "key": "el-nido",
+  "kind": "city",
+  "name": "El Nido",
+  "city": "El Nido",
+  "country": "Philippines",
+  "flag": "🇵🇭",
+  "lat": 11.18,
+  "lng": 119.39,
+  "tz": null,
+  "currency": "PHP ~57/$",
+  "tags": [
+   "island",
+   "lagoons",
+   "beach",
+   "boat tours",
+   "tropical",
+   "snorkel"
+  ],
+  "deep": {
+   "key": "el-nido",
+   "city": "El Nido",
+   "country": "Philippines",
+   "flag": "🇵🇭",
+   "lat": 11.18,
+   "lng": 119.39,
+   "currency": "PHP ~57/$",
+   "prices": {
+    "meal_cheap": 3.5,
+    "coffee": 2.2,
+    "beer": 1.9,
+    "taxi_3km": 2.5,
+    "transit_ride": 0.9,
+    "hotel_budget": 17,
+    "hotel_mid": 45,
+    "hotel_lux": 150,
+    "internet_month": 25,
+    "sim_data": 8,
+    "meal_mid_rest": 11,
+    "water_bottle": 0.5,
+    "daily_budget": 45,
+    "daily_mid": 95
+   },
+   "tags": [
+    "island",
+    "lagoons",
+    "beach",
+    "boat tours",
+    "tropical",
+    "snorkel"
+   ],
+   "best_for": [
+    "lagoon island-hopping",
+    "limestone cliffs",
+    "beach towns"
+   ],
+   "groceries": {
+    "milk_l": 2.2,
+    "bread": 1.6,
+    "eggs_12": 2.4,
+    "rice_kg": 1.2,
+    "chicken_kg": 3.2,
+    "fruit_kg": 1.5,
+    "market_meal": 2.2
+   },
+   "leisure": {
+    "cinema": 5,
+    "cocktail": 4.5,
+    "gym_month": 30,
+    "laundry": 1.5,
+    "massage_hr": 10
+   },
+   "transport_extra": {
+    "tricycle_town": 0.9,
+    "scooter_day": 10,
+    "van_puerto_princesa": 15
+   },
+   "activities": {
+    "island_tour_a": 27,
+    "island_tour_c": 30,
+    "nacpan_beach_day": 12
+   },
+   "monthly": {
+    "budget": 900,
+    "comfortable": 1600
+   },
+   "seasons": "Dry Dec-May is prime; Amihan season calms the sea. Jun-Nov brings rain and some typhoon risk.",
+   "airports": "ENI (Lio, flights from Manila) or 6h van from Puerto Princesa (PPS)",
+   "notes": "Town is walkable; Corong-Corong 10min away is 20-30% cheaper. Tours A and C are the iconic lagoons. Cash only in most places — ATMs fail often, bring pesos.",
+   "docs": {
+    "entry": "Philippines visa-free 30 days for most nationalities (extendable).",
+    "insurance": "Get cover with boat activities; nearest decompression/hyperbaric care is far.",
+    "special": [
+     "₱400 environmental fee (ETDF) paid once, valid 10 days",
+     "Bring cash — card payments and ATMs are unreliable"
+    ],
+    "health": "None required; reef-safe sunscreen and jellyfish caution in some seasons.",
+    "agency": "No visa agency needed; tours are bought walk-in at the pier."
+   }
+  },
+  "bestMonths": "Best Dec, Jan, Feb, Mar, Apr, May; Amihan season calms the sea. Jun-Nov brings rain and some typhoon risk.",
+  "crowd": "Busy at the pier at tour-launch time (8-9am), calm by late afternoon; Corong-Corong stays sleepy.",
+  "prices": {
+   "meal": 3.5,
+   "coffee": 2.2,
+   "taxi": 2.5,
+   "hotel": 45
+  },
+  "daily_budget": 45,
+  "daily_mid": 95,
+  "priceLevel": "moderate",
+  "best_for": [
+   "lagoon island-hopping",
+   "limestone cliffs",
+   "beach towns"
+  ]
+ },
  "faroe": {
   "key": "faroe",
   "name": "Sørvágsvatn",
@@ -753,6 +870,122 @@ module.exports = {
    "scenic"
   ],
   "city": "Sørvágsvatn"
+ },
+ "gili-air": {
+  "key": "gili-air",
+  "kind": "city",
+  "name": "Gili Air",
+  "city": "Gili Air",
+  "country": "Indonesia",
+  "flag": "🇮🇩",
+  "lat": -8.36,
+  "lng": 116.08,
+  "tz": null,
+  "currency": "IDR ~16,000/$",
+  "tags": [
+   "island",
+   "beach",
+   "snorkel",
+   "tropical",
+   "calm",
+   "car-free"
+  ],
+  "deep": {
+   "key": "gili-air",
+   "city": "Gili Air",
+   "country": "Indonesia",
+   "flag": "🇮🇩",
+   "lat": -8.36,
+   "lng": 116.08,
+   "currency": "IDR ~16,000/$",
+   "prices": {
+    "meal_cheap": 2.5,
+    "coffee": 1.8,
+    "beer": 3.2,
+    "taxi_3km": 3.5,
+    "transit_ride": 1.5,
+    "hotel_budget": 20,
+    "hotel_mid": 55,
+    "hotel_lux": 160,
+    "internet_month": 22,
+    "sim_data": 6,
+    "meal_mid_rest": 9,
+    "water_bottle": 0.4,
+    "daily_budget": 38,
+    "daily_mid": 88
+   },
+   "tags": [
+    "island",
+    "beach",
+    "snorkel",
+    "tropical",
+    "calm",
+    "car-free"
+   ],
+   "best_for": [
+    "snorkeling with turtles",
+    "no cars or scooters",
+    "couples"
+   ],
+   "groceries": {
+    "milk_l": 2.2,
+    "bread": 1.8,
+    "eggs_12": 2.6,
+    "rice_kg": 1.2,
+    "chicken_kg": 3.4,
+    "fruit_kg": 1.6,
+    "market_meal": 2
+   },
+   "leisure": {
+    "cinema": 6,
+    "cocktail": 7,
+    "gym_month": 35,
+    "laundry": 1.5,
+    "massage_hr": 12
+   },
+   "transport_extra": {
+    "bicycle_day": 4,
+    "cidomo_ride": 3,
+    "fastboat_bali": 35
+   },
+   "activities": {
+    "snorkel_trip_3islands": 12,
+    "open_water_course": 380,
+    "underwater_statues": 12
+   },
+   "monthly": {
+    "budget": 750,
+    "comfortable": 1400
+   },
+   "seasons": "Dry May-Sep is prime. Nov-Mar brings rain showers but warm sea year-round.",
+   "airports": "LOP (Lombok) + fast boat from Bali (LOP) — no airport on island",
+   "notes": "Car-free island, walkable end to end in 90 minutes. East side for sunrise, west for sunset. ATMs exist but often empty — bring cash from Lombok or Bali.",
+   "docs": {
+    "entry": "Indonesia visa on arrival (~$35, 30 days, extendable once) or e-VOA online before flying.",
+    "insurance": "Get cover that includes boat transfers and snorkeling/diving.",
+    "special": [
+     "Fast boat from Bali or Lombok is the only way in — book reputable operators, seas can be rough"
+    ],
+    "health": "No required shots; reef-safe sunscreen, and watch currents between islands.",
+    "agency": "No agency needed; e-VOA direct at molina.imigrasi.go.id."
+   }
+  },
+  "bestMonths": "Dry May-Sep is prime. Nov-Mar brings rain showers but warm sea year-round.",
+  "crowd": "Quieter than Gili Trawangan, busier than Gili Meno. Day-trippers thin out after 4pm.",
+  "prices": {
+   "meal": 2.5,
+   "coffee": 1.8,
+   "taxi": 3.5,
+   "hotel": 55
+  },
+  "daily_budget": 38,
+  "daily_mid": 88,
+  "priceLevel": "moderate",
+  "best_for": [
+   "snorkeling with turtles",
+   "no cars or scooters",
+   "couples"
+  ]
  },
  "hoi-an": {
   "key": "hoi-an",
@@ -1043,6 +1276,238 @@ module.exports = {
    }
   },
   "visa": null
+ },
+ "kampot": {
+  "key": "kampot",
+  "kind": "city",
+  "name": "Kampot",
+  "city": "Kampot",
+  "country": "Cambodia",
+  "flag": "🇰🇭",
+  "lat": 10.61,
+  "lng": 104.18,
+  "tz": null,
+  "currency": "USD (official) + KHR",
+  "tags": [
+   "river",
+   "colonial",
+   "budget",
+   "foodie",
+   "calm",
+   "long stays"
+  ],
+  "deep": {
+   "key": "kampot",
+   "city": "Kampot",
+   "country": "Cambodia",
+   "flag": "🇰🇭",
+   "lat": 10.61,
+   "lng": 104.18,
+   "currency": "USD (official) + KHR",
+   "prices": {
+    "meal_cheap": 2.3,
+    "coffee": 1.5,
+    "beer": 1,
+    "taxi_3km": 2.5,
+    "transit_ride": 1,
+    "hotel_budget": 12,
+    "hotel_mid": 32,
+    "hotel_lux": 90,
+    "internet_month": 14,
+    "sim_data": 5,
+    "meal_mid_rest": 7.5,
+    "water_bottle": 0.35,
+    "daily_budget": 25,
+    "daily_mid": 60
+   },
+   "tags": [
+    "river",
+    "colonial",
+    "budget",
+    "foodie",
+    "calm",
+    "long stays"
+   ],
+   "best_for": [
+    "river sunsets",
+    "long stays",
+    "pepper farms & Bokor"
+   ],
+   "groceries": {
+    "milk_l": 1.7,
+    "bread": 1.2,
+    "eggs_12": 1.8,
+    "rice_kg": 1,
+    "chicken_kg": 2.7,
+    "fruit_kg": 1.1,
+    "market_meal": 1.5
+   },
+   "leisure": {
+    "cinema": 4,
+    "cocktail": 3,
+    "gym_month": 25,
+    "laundry": 0.9,
+    "massage_hr": 6
+   },
+   "transport_extra": {
+    "scooter_day": 6,
+    "fuel_l": 1.2,
+    "tuk_tuk_town": 2
+   },
+   "activities": {
+    "bokor_national_park": 25,
+    "pepper_farm_tour": 6,
+    "river_boat_sunset": 6
+   },
+   "monthly": {
+    "budget": 500,
+    "comfortable": 850
+   },
+   "seasons": "Dry Nov-Apr. Green season Jun-Oct is lush, cheap and still sunny half the day.",
+   "airports": "None — 3h road from Phnom Penh (PNH), 40min from Sihanoukville flight route is unreliable",
+   "notes": "Riverside shophouses, world-famous pepper, growing nomad community. Monthly apartments $200-300. Pair with Kep (40min away) for the coast.",
+   "docs": {
+    "entry": "Cambodia e-visa (~$36) or visa on arrival ($30) for most nationalities; 30 days.",
+    "insurance": "Basic cover fine; serious care means Phnom Penh.",
+    "special": [
+     "Everything priced in USD; carry small notes"
+    ],
+    "health": "None required; dengue exists, use repellent at dusk.",
+    "agency": "No agency needed — e-visa at evisa.gov.kh is official."
+   }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb, Mar, Apr for dry days and river sunsets. May-Oct is rainy, though lush and cheap.",
+  "crowd": "Slow expat and nomad riverside town; quiet on almost any week of the year.",
+  "prices": {
+   "meal": 2.3,
+   "coffee": 1.5,
+   "taxi": 2.5,
+   "hotel": 32
+  },
+  "daily_budget": 25,
+  "daily_mid": 60,
+  "priceLevel": "cheap",
+  "best_for": [
+   "river sunsets",
+   "long stays",
+   "pepper farms & Bokor"
+  ]
+ },
+ "kep": {
+  "key": "kep",
+  "kind": "city",
+  "name": "Kep",
+  "city": "Kep",
+  "country": "Cambodia",
+  "flag": "🇰🇭",
+  "lat": 10.48,
+  "lng": 104.31,
+  "tz": null,
+  "currency": "USD (official) + KHR",
+  "tags": [
+   "seafood",
+   "beach",
+   "calm",
+   "budget",
+   "markets",
+   "coast"
+  ],
+  "deep": {
+   "key": "kep",
+   "city": "Kep",
+   "country": "Cambodia",
+   "flag": "🇰🇭",
+   "lat": 10.48,
+   "lng": 104.31,
+   "currency": "USD (official) + KHR",
+   "prices": {
+    "meal_cheap": 2.5,
+    "coffee": 1.6,
+    "beer": 1.2,
+    "taxi_3km": 3,
+    "transit_ride": 1,
+    "hotel_budget": 14,
+    "hotel_mid": 38,
+    "hotel_lux": 110,
+    "internet_month": 16,
+    "sim_data": 5,
+    "meal_mid_rest": 8,
+    "water_bottle": 0.4,
+    "daily_budget": 28,
+    "daily_mid": 66
+   },
+   "tags": [
+    "seafood",
+    "beach",
+    "calm",
+    "budget",
+    "markets",
+    "coast"
+   ],
+   "best_for": [
+    "crab market lunches",
+    "slow coastal days",
+    "pairing with Kampot"
+   ],
+   "groceries": {
+    "milk_l": 1.8,
+    "bread": 1.3,
+    "eggs_12": 1.9,
+    "rice_kg": 1,
+    "chicken_kg": 2.8,
+    "fruit_kg": 1.2,
+    "market_meal": 1.5
+   },
+   "leisure": {
+    "cinema": 4,
+    "cocktail": 3.5,
+    "gym_month": 25,
+    "laundry": 1,
+    "massage_hr": 7
+   },
+   "transport_extra": {
+    "tuk_tuk_day": 15,
+    "scooter_day": 7,
+    "ferry_rabbit_island": 8
+   },
+   "activities": {
+    "crab_market_lunch": 8,
+    "rabbit_island_daytrip": 15,
+    "kek_national_park": 3
+   },
+   "monthly": {
+    "budget": 550,
+    "comfortable": 950
+   },
+   "seasons": "Dry Nov-Apr is best. May-Oct monsoon is quiet and green; sea can be choppy.",
+   "airports": "None — 3h road transfer from Phnom Penh (PNH) or 40min from Kampot",
+   "notes": "Former French resort town gone beautifully sleepy. The crab market (fresh pepper crab) is the ritual. Kep Beach is small; Rabbit Island 20min by boat has the better sand.",
+   "docs": {
+    "entry": "Cambodia e-visa (~$36) or visa on arrival ($30) for most nationalities; 30 days.",
+    "insurance": "Basic cover fine; nearest serious hospital is Phnom Penh.",
+    "special": [
+     "US dollars are the everyday currency — small change comes in Cambodian riel"
+    ],
+    "health": "None required; dengue exists, use repellent at dusk.",
+    "agency": "No agency needed — e-visa at evisa.gov.kh is official."
+   }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb, Mar, Apr for dry days and calm sea. May-Oct is monsoon; quiet and green but choppy.",
+  "crowd": "Sleepy even in high season; weekend day-trippers from Phnom Penh, empty by Monday.",
+  "prices": {
+   "meal": 2.5,
+   "coffee": 1.6,
+   "taxi": 3,
+   "hotel": 38
+  },
+  "daily_budget": 28,
+  "daily_mid": 66,
+  "priceLevel": "cheap",
+  "best_for": [
+   "crab market lunches",
+   "slow coastal days",
+   "pairing with Kampot"
+  ]
  },
  "kotor": {
   "key": "kotor",
@@ -1580,6 +2045,123 @@ module.exports = {
    "beach"
   ],
   "city": "Reine"
+ },
+ "luang-prabang": {
+  "key": "luang-prabang",
+  "kind": "city",
+  "name": "Luang Prabang",
+  "city": "Luang Prabang",
+  "country": "Laos",
+  "flag": "🇱🇦",
+  "lat": 19.89,
+  "lng": 102.14,
+  "tz": null,
+  "currency": "LAK ~21,000/$",
+  "tags": [
+   "temples",
+   "unesco",
+   "river",
+   "calm",
+   "culture",
+   "waterfalls"
+  ],
+  "deep": {
+   "key": "luang-prabang",
+   "city": "Luang Prabang",
+   "country": "Laos",
+   "flag": "🇱🇦",
+   "lat": 19.89,
+   "lng": 102.14,
+   "currency": "LAK ~21,000/$",
+   "prices": {
+    "meal_cheap": 2,
+    "coffee": 1.8,
+    "beer": 1.5,
+    "taxi_3km": 3,
+    "transit_ride": 0.8,
+    "hotel_budget": 14,
+    "hotel_mid": 42,
+    "hotel_lux": 130,
+    "internet_month": 18,
+    "sim_data": 6,
+    "meal_mid_rest": 9,
+    "water_bottle": 0.4,
+    "daily_budget": 30,
+    "daily_mid": 72
+   },
+   "tags": [
+    "temples",
+    "unesco",
+    "river",
+    "calm",
+    "culture",
+    "waterfalls"
+   ],
+   "best_for": [
+    "dawn alms ceremony",
+    "Kuang Si falls",
+    "Mekong slow boats"
+   ],
+   "groceries": {
+    "milk_l": 1.9,
+    "bread": 1.3,
+    "eggs_12": 2.1,
+    "rice_kg": 1,
+    "chicken_kg": 2.9,
+    "fruit_kg": 1.2,
+    "market_meal": 1.5
+   },
+   "leisure": {
+    "cinema": 4.5,
+    "cocktail": 4,
+    "gym_month": 28,
+    "laundry": 1,
+    "massage_hr": 8
+   },
+   "transport_extra": {
+    "bicycle_day": 2.5,
+    "scooter_day": 9,
+    "songthaew_ride": 0.8
+   },
+   "activities": {
+    "kuang_si_falls": 3,
+    "mount_phousi": 1,
+    "pak_ou_caves_boat": 12
+   },
+   "monthly": {
+    "budget": 600,
+    "comfortable": 1000
+   },
+   "seasons": "Best Nov-Feb (cool, dry, festival season). Mar-Apr burning-season haze. May-Oct is green and wet.",
+   "airports": "LPQ (direct from Bangkok, Hanoi, Chiang Mai, Siem Reap)",
+   "notes": "UNESCO peninsula between the Mekong and Nam Khan. Dawn alms (5:30am) is the ritual — watch respectfully from across the street. Night market and Mount Phousi sunset bookend each day.",
+   "docs": {
+    "entry": "Laos visa on arrival ($30-42 cash) or e-visa ($35-50) at laoevisa.gov.la; 30 days.",
+    "insurance": "Get cover including boat trips; hospitals are basic locally.",
+    "special": [
+     "Bring crisp USD cash for visa on arrival — cards not accepted",
+     "ATM fees are high (~$2-3 per withdrawal)"
+    ],
+    "health": "None required; drink bottled water.",
+    "agency": "No agency needed — e-visa portal is official."
+   }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb (cool and dry, festival season). Mar-Apr burning-season haze. May-Oct is green and wet.",
+  "crowd": "Quiet temple town; Nov-Feb high season brings tour groups to alms and falls, still calm at dawn.",
+  "prices": {
+   "meal": 2,
+   "coffee": 1.8,
+   "taxi": 3,
+   "hotel": 42
+  },
+  "daily_budget": 30,
+  "daily_mid": 72,
+  "priceLevel": "cheap",
+  "best_for": [
+   "dawn alms ceremony",
+   "Kuang Si falls",
+   "Mekong slow boats"
+  ]
  },
  "marrakech": {
   "key": "marrakech",

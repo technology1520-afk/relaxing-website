@@ -1,0 +1,117 @@
+{
+  "key": "luang-prabang",
+  "kind": "city",
+  "name": "Luang Prabang",
+  "city": "Luang Prabang",
+  "country": "Laos",
+  "flag": "🇱🇦",
+  "lat": 19.89,
+  "lng": 102.14,
+  "tz": null,
+  "currency": "LAK ~21,000/$",
+  "tags": [
+    "temples",
+    "unesco",
+    "river",
+    "calm",
+    "culture",
+    "waterfalls"
+  ],
+  "deep": {
+    "key": "luang-prabang",
+    "city": "Luang Prabang",
+    "country": "Laos",
+    "flag": "🇱🇦",
+    "lat": 19.89,
+    "lng": 102.14,
+    "currency": "LAK ~21,000/$",
+    "prices": {
+      "meal_cheap": 2,
+      "coffee": 1.8,
+      "beer": 1.5,
+      "taxi_3km": 3,
+      "transit_ride": 0.8,
+      "hotel_budget": 14,
+      "hotel_mid": 42,
+      "hotel_lux": 130,
+      "internet_month": 18,
+      "sim_data": 6,
+      "meal_mid_rest": 9,
+      "water_bottle": 0.4,
+      "daily_budget": 30,
+      "daily_mid": 72
+    },
+    "tags": [
+      "temples",
+      "unesco",
+      "river",
+      "calm",
+      "culture",
+      "waterfalls"
+    ],
+    "best_for": [
+      "dawn alms ceremony",
+      "Kuang Si falls",
+      "Mekong slow boats"
+    ],
+    "groceries": {
+      "milk_l": 1.9,
+      "bread": 1.3,
+      "eggs_12": 2.1,
+      "rice_kg": 1,
+      "chicken_kg": 2.9,
+      "fruit_kg": 1.2,
+      "market_meal": 1.5
+    },
+    "leisure": {
+      "cinema": 4.5,
+      "cocktail": 4,
+      "gym_month": 28,
+      "laundry": 1,
+      "massage_hr": 8
+    },
+    "transport_extra": {
+      "bicycle_day": 2.5,
+      "scooter_day": 9,
+      "songthaew_ride": 0.8
+    },
+    "activities": {
+      "kuang_si_falls": 3,
+      "mount_phousi": 1,
+      "pak_ou_caves_boat": 12
+    },
+    "monthly": {
+      "budget": 600,
+      "comfortable": 1000
+    },
+    "seasons": "Best Nov-Feb (cool, dry, festival season). Mar-Apr burning-season haze. May-Oct is green and wet.",
+    "airports": "LPQ (direct from Bangkok, Hanoi, Chiang Mai, Siem Reap)",
+    "notes": "UNESCO peninsula between the Mekong and Nam Khan. Dawn alms (5:30am) is the ritual — watch respectfully from across the street. Night market and Mount Phousi sunset bookend each day.",
+    "docs": {
+      "entry": "Laos visa on arrival ($30-42 cash) or e-visa ($35-50) at laoevisa.gov.la; 30 days.",
+      "insurance": "Get cover including boat trips; hospitals are basic locally.",
+      "special": [
+        "Bring crisp USD cash for visa on arrival — cards not accepted",
+        "ATM fees are high (~$2-3 per withdrawal)"
+      ],
+      "health": "None required; drink bottled water.",
+      "agency": "No agency needed — e-visa portal is official."
+    }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb (cool and dry, festival season). Mar-Apr burning-season haze. May-Oct is green and wet.",
+  "crowd": "Quiet temple town; Nov-Feb high season brings tour groups to alms and falls, still calm at dawn.",
+  "prices": {
+    "meal": 2,
+    "coffee": 1.8,
+    "taxi": 3,
+    "hotel": 42
+  },
+  "daily_budget": 30,
+  "daily_mid": 72,
+  "priceLevel": "cheap",
+  "best_for": [
+    "dawn alms ceremony",
+    "Kuang Si falls",
+    "Mekong slow boats"
+  ]
+}

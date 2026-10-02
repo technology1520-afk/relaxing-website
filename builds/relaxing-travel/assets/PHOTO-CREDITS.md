@@ -28,3 +28,13 @@ All images served from the destination's Wikipedia lead image, linked below with
 - `assets/hoi-an.jpg` — Commons file File:Hội An, Ancient Town, 2020-01 CN-06.jpg — CC BY-SA 4.0 — Steffen Schmitz (more photos) — https://commons.wikimedia.org/wiki/File:H%E1%BB%99i_An,_Ancient_Town,_2020-01_CN-06.jpg
 
 - `assets/sardinia.jpg` — Commons file File:Dorgali - Cala Gonone - Panorama (05).JPG — CC BY-SA 4.0 — Gianni Careddu — https://commons.wikimedia.org/wiki/File:Dorgali_-_Cala_Gonone_-_Panorama_(05).JPG
+
+- `assets/luang-prabang.jpg` — File:Phou_si_Luang_Prabang_Laos_プーシーの丘_ラオス・ルアンプラバーン_DSCF6777.jpg (via "Luang Prabang") — CC BY-SA 3.0 — 松岡明芳 — https://commons.wikimedia.org/wiki/File:Phou_si_Luang_Prabang_Laos_%E3%83%97%E3%83%BC%E3%82%B7%E3%83%BC%E3%81%AE%E4%B8%98_%E3%83%A9%E3%82%AA%E3%82%B9%E3%83%BB%E3%83%AB%E3%82%A2%E3%83%B3%E3%83%97%E3%83%A9%E3%83%90%E3%83%BC%E3%83%B3_DSCF6777.jpg
+
+- `assets/kampot.jpg` — File:2016_Kampot,_Budynek_ze_sklepami.jpg (via "Kampot, Cambodia") — CC BY-SA 4.0 — Marcin Konsek — https://commons.wikimedia.org/wiki/File:2016_Kampot,_Budynek_ze_sklepami.jpg
+
+- `assets/kep.jpg` — File:Aerial_View_of_Kep_Province_Hall.jpg (via "Kep, Cambodia") — CC BY-SA 3.0 — Kiensvay — https://commons.wikimedia.org/wiki/File:Aerial_View_of_Kep_Province_Hall.jpg
+
+- `assets/gili-air.jpg` — File:Gili Air Island from Gili Meno Island, Indonesia.jpg (via "Gili Air beach") — CC BY 4.0 — Vyacheslav Argenberg — https://commons.wikimedia.org/wiki/File:Gili_Air_Island_from_Gili_Meno_Island,_Indonesia.jpg
+
+- `assets/el-nido.jpg` — File:El_Nido_Bay_December_2018.jpg (via "El Nido, Palawan") — CC BY-SA 4.0 — Kalithecat00 — https://commons.wikimedia.org/wiki/File:El_Nido_Bay_December_2018.jpg

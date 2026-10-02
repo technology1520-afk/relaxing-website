@@ -1,0 +1,116 @@
+{
+  "key": "gili-air",
+  "kind": "city",
+  "name": "Gili Air",
+  "city": "Gili Air",
+  "country": "Indonesia",
+  "flag": "🇮🇩",
+  "lat": -8.36,
+  "lng": 116.08,
+  "tz": null,
+  "currency": "IDR ~16,000/$",
+  "tags": [
+    "island",
+    "beach",
+    "snorkel",
+    "tropical",
+    "calm",
+    "car-free"
+  ],
+  "deep": {
+    "key": "gili-air",
+    "city": "Gili Air",
+    "country": "Indonesia",
+    "flag": "🇮🇩",
+    "lat": -8.36,
+    "lng": 116.08,
+    "currency": "IDR ~16,000/$",
+    "prices": {
+      "meal_cheap": 2.5,
+      "coffee": 1.8,
+      "beer": 3.2,
+      "taxi_3km": 3.5,
+      "transit_ride": 1.5,
+      "hotel_budget": 20,
+      "hotel_mid": 55,
+      "hotel_lux": 160,
+      "internet_month": 22,
+      "sim_data": 6,
+      "meal_mid_rest": 9,
+      "water_bottle": 0.4,
+      "daily_budget": 38,
+      "daily_mid": 88
+    },
+    "tags": [
+      "island",
+      "beach",
+      "snorkel",
+      "tropical",
+      "calm",
+      "car-free"
+    ],
+    "best_for": [
+      "snorkeling with turtles",
+      "no cars or scooters",
+      "couples"
+    ],
+    "groceries": {
+      "milk_l": 2.2,
+      "bread": 1.8,
+      "eggs_12": 2.6,
+      "rice_kg": 1.2,
+      "chicken_kg": 3.4,
+      "fruit_kg": 1.6,
+      "market_meal": 2
+    },
+    "leisure": {
+      "cinema": 6,
+      "cocktail": 7,
+      "gym_month": 35,
+      "laundry": 1.5,
+      "massage_hr": 12
+    },
+    "transport_extra": {
+      "bicycle_day": 4,
+      "cidomo_ride": 3,
+      "fastboat_bali": 35
+    },
+    "activities": {
+      "snorkel_trip_3islands": 12,
+      "open_water_course": 380,
+      "underwater_statues": 12
+    },
+    "monthly": {
+      "budget": 750,
+      "comfortable": 1400
+    },
+    "seasons": "Dry May-Sep is prime. Nov-Mar brings rain showers but warm sea year-round.",
+    "airports": "LOP (Lombok) + fast boat from Bali (LOP) — no airport on island",
+    "notes": "Car-free island, walkable end to end in 90 minutes. East side for sunrise, west for sunset. ATMs exist but often empty — bring cash from Lombok or Bali.",
+    "docs": {
+      "entry": "Indonesia visa on arrival (~$35, 30 days, extendable once) or e-VOA online before flying.",
+      "insurance": "Get cover that includes boat transfers and snorkeling/diving.",
+      "special": [
+        "Fast boat from Bali or Lombok is the only way in — book reputable operators, seas can be rough"
+      ],
+      "health": "No required shots; reef-safe sunscreen, and watch currents between islands.",
+      "agency": "No agency needed; e-VOA direct at molina.imigrasi.go.id."
+    }
+  },
+  "bestMonths": "Dry May-Sep is prime. Nov-Mar brings rain showers but warm sea year-round.",
+  "crowd": "Quieter than Gili Trawangan, busier than Gili Meno. Day-trippers thin out after 4pm.",
+  "prices": {
+    "meal": 2.5,
+    "coffee": 1.8,
+    "taxi": 3.5,
+    "hotel": 55
+  },
+  "daily_budget": 38,
+  "daily_mid": 88,
+  "priceLevel": "moderate",
+  "best_for": [
+    "snorkeling with turtles",
+    "no cars or scooters",
+    "couples"
+  ]
+}

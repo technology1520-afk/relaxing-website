@@ -1,0 +1,116 @@
+{
+  "key": "kampot",
+  "kind": "city",
+  "name": "Kampot",
+  "city": "Kampot",
+  "country": "Cambodia",
+  "flag": "🇰🇭",
+  "lat": 10.61,
+  "lng": 104.18,
+  "tz": null,
+  "currency": "USD (official) + KHR",
+  "tags": [
+    "river",
+    "colonial",
+    "budget",
+    "foodie",
+    "calm",
+    "long stays"
+  ],
+  "deep": {
+    "key": "kampot",
+    "city": "Kampot",
+    "country": "Cambodia",
+    "flag": "🇰🇭",
+    "lat": 10.61,
+    "lng": 104.18,
+    "currency": "USD (official) + KHR",
+    "prices": {
+      "meal_cheap": 2.3,
+      "coffee": 1.5,
+      "beer": 1,
+      "taxi_3km": 2.5,
+      "transit_ride": 1,
+      "hotel_budget": 12,
+      "hotel_mid": 32,
+      "hotel_lux": 90,
+      "internet_month": 14,
+      "sim_data": 5,
+      "meal_mid_rest": 7.5,
+      "water_bottle": 0.35,
+      "daily_budget": 25,
+      "daily_mid": 60
+    },
+    "tags": [
+      "river",
+      "colonial",
+      "budget",
+      "foodie",
+      "calm",
+      "long stays"
+    ],
+    "best_for": [
+      "river sunsets",
+      "long stays",
+      "pepper farms & Bokor"
+    ],
+    "groceries": {
+      "milk_l": 1.7,
+      "bread": 1.2,
+      "eggs_12": 1.8,
+      "rice_kg": 1,
+      "chicken_kg": 2.7,
+      "fruit_kg": 1.1,
+      "market_meal": 1.5
+    },
+    "leisure": {
+      "cinema": 4,
+      "cocktail": 3,
+      "gym_month": 25,
+      "laundry": 0.9,
+      "massage_hr": 6
+    },
+    "transport_extra": {
+      "scooter_day": 6,
+      "fuel_l": 1.2,
+      "tuk_tuk_town": 2
+    },
+    "activities": {
+      "bokor_national_park": 25,
+      "pepper_farm_tour": 6,
+      "river_boat_sunset": 6
+    },
+    "monthly": {
+      "budget": 500,
+      "comfortable": 850
+    },
+    "seasons": "Dry Nov-Apr. Green season Jun-Oct is lush, cheap and still sunny half the day.",
+    "airports": "None — 3h road from Phnom Penh (PNH), 40min from Sihanoukville flight route is unreliable",
+    "notes": "Riverside shophouses, world-famous pepper, growing nomad community. Monthly apartments $200-300. Pair with Kep (40min away) for the coast.",
+    "docs": {
+      "entry": "Cambodia e-visa (~$36) or visa on arrival ($30) for most nationalities; 30 days.",
+      "insurance": "Basic cover fine; serious care means Phnom Penh.",
+      "special": [
+        "Everything priced in USD; carry small notes"
+      ],
+      "health": "None required; dengue exists, use repellent at dusk.",
+      "agency": "No agency needed — e-visa at evisa.gov.kh is official."
+    }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb, Mar, Apr for dry days and river sunsets. May-Oct is rainy, though lush and cheap.",
+  "crowd": "Slow expat and nomad riverside town; quiet on almost any week of the year.",
+  "prices": {
+    "meal": 2.3,
+    "coffee": 1.5,
+    "taxi": 2.5,
+    "hotel": 32
+  },
+  "daily_budget": 25,
+  "daily_mid": 60,
+  "priceLevel": "cheap",
+  "best_for": [
+    "river sunsets",
+    "long stays",
+    "pepper farms & Bokor"
+  ]
+}

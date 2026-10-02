@@ -1,0 +1,116 @@
+{
+  "key": "kep",
+  "kind": "city",
+  "name": "Kep",
+  "city": "Kep",
+  "country": "Cambodia",
+  "flag": "🇰🇭",
+  "lat": 10.48,
+  "lng": 104.31,
+  "tz": null,
+  "currency": "USD (official) + KHR",
+  "tags": [
+    "seafood",
+    "beach",
+    "calm",
+    "budget",
+    "markets",
+    "coast"
+  ],
+  "deep": {
+    "key": "kep",
+    "city": "Kep",
+    "country": "Cambodia",
+    "flag": "🇰🇭",
+    "lat": 10.48,
+    "lng": 104.31,
+    "currency": "USD (official) + KHR",
+    "prices": {
+      "meal_cheap": 2.5,
+      "coffee": 1.6,
+      "beer": 1.2,
+      "taxi_3km": 3,
+      "transit_ride": 1,
+      "hotel_budget": 14,
+      "hotel_mid": 38,
+      "hotel_lux": 110,
+      "internet_month": 16,
+      "sim_data": 5,
+      "meal_mid_rest": 8,
+      "water_bottle": 0.4,
+      "daily_budget": 28,
+      "daily_mid": 66
+    },
+    "tags": [
+      "seafood",
+      "beach",
+      "calm",
+      "budget",
+      "markets",
+      "coast"
+    ],
+    "best_for": [
+      "crab market lunches",
+      "slow coastal days",
+      "pairing with Kampot"
+    ],
+    "groceries": {
+      "milk_l": 1.8,
+      "bread": 1.3,
+      "eggs_12": 1.9,
+      "rice_kg": 1,
+      "chicken_kg": 2.8,
+      "fruit_kg": 1.2,
+      "market_meal": 1.5
+    },
+    "leisure": {
+      "cinema": 4,
+      "cocktail": 3.5,
+      "gym_month": 25,
+      "laundry": 1,
+      "massage_hr": 7
+    },
+    "transport_extra": {
+      "tuk_tuk_day": 15,
+      "scooter_day": 7,
+      "ferry_rabbit_island": 8
+    },
+    "activities": {
+      "crab_market_lunch": 8,
+      "rabbit_island_daytrip": 15,
+      "kek_national_park": 3
+    },
+    "monthly": {
+      "budget": 550,
+      "comfortable": 950
+    },
+    "seasons": "Dry Nov-Apr is best. May-Oct monsoon is quiet and green; sea can be choppy.",
+    "airports": "None — 3h road transfer from Phnom Penh (PNH) or 40min from Kampot",
+    "notes": "Former French resort town gone beautifully sleepy. The crab market (fresh pepper crab) is the ritual. Kep Beach is small; Rabbit Island 20min by boat has the better sand.",
+    "docs": {
+      "entry": "Cambodia e-visa (~$36) or visa on arrival ($30) for most nationalities; 30 days.",
+      "insurance": "Basic cover fine; nearest serious hospital is Phnom Penh.",
+      "special": [
+        "US dollars are the everyday currency — small change comes in Cambodian riel"
+      ],
+      "health": "None required; dengue exists, use repellent at dusk.",
+      "agency": "No agency needed — e-visa at evisa.gov.kh is official."
+    }
+  },
+  "bestMonths": "Best Nov, Dec, Jan, Feb, Mar, Apr for dry days and calm sea. May-Oct is monsoon; quiet and green but choppy.",
+  "crowd": "Sleepy even in high season; weekend day-trippers from Phnom Penh, empty by Monday.",
+  "prices": {
+    "meal": 2.5,
+    "coffee": 1.6,
+    "taxi": 3,
+    "hotel": 38
+  },
+  "daily_budget": 28,
+  "daily_mid": 66,
+  "priceLevel": "cheap",
+  "best_for": [
+    "crab market lunches",
+    "slow coastal days",
+    "pairing with Kampot"
+  ]
+}
