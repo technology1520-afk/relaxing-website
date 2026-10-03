@@ -150,11 +150,25 @@ async function ask(q) {
   const wait = addThinking(q);
   const ctx = currentContext();
   try {
-    const res = await fetch("/api/ask", {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 40000);
+    let res = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: q, context: ctx }),
+      signal: ctrl.signal,
     });
+    // The AI provider can be slow; one silent retry before giving up on the server.
+    if (!res.ok) {
+      await new Promise(r => setTimeout(r, 800));
+      res = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: q, context: ctx }),
+        signal: ctrl.signal,
+      });
+    }
+    clearTimeout(timer);
     let data = null;
     try { data = await res.json(); } catch { /* non-JSON: function backend absent */ }
     wait.remove();
@@ -256,7 +270,7 @@ function localFallback(q, ctx) {
       s.includes(d.name.toLowerCase().split(", ")[1] || "###"));
   }
   const has = (...w) => w.some(x => s.includes(x));
-  if (has("who are you", "your name")) return "I'm Relaxagent, the day-off guide of this site. I know the eight quiet places here - their views, seasons, prices and paperwork. Ask me anything about them.";
+  if (has("who are you", "your name")) return "I'm Relaxagent, the day-off guide of this site. I know every place here - their views, seasons, prices and paperwork. Ask me anything about them.";
   if (has("visa", "passport", "document")) return (place ? `${place.name}: ` : "") + "visa rules depend on your passport - the Documents & visas section lists every rule with official links, and builds you a checklist.";
   if (has("price", "cost", "expensive", "budget", "cheap")) return (place ? `${place.name}: ` : "") + "every city in the World Explorer has a full price table - meals, hotels, taxis, monthly totals. Use the fair-price checker to test any quote.";
   if (has("weather", "when", "season", "rain")) return (place ? `${place.name}: ` : "") + "each destination card shows a live 5-day forecast and the best months. Tell me a specific place for its season.";
@@ -264,7 +278,7 @@ function localFallback(q, ctx) {
   if (has("view", "photo", "see")) return (place ? `Best view at ${place.name}: ` : "") + "each card names its single best view and exact time to be there.";
   if (has("where", "suggest", "recommend", "which")) return "Tell me how you want to feel, or try the World Explorer search: type 'quiet beach' or 'foodie city under 100 a day'.";
   if (place) return `${place.name}: one of the quietest places on this map. Ask me about prices, weather, visa, kids or the best view there.`;
-  return "I know the eight quiet places on this site. Name one - Iceland, Kyoto, Wadi Rum, Fiji - or tell me how you want to feel, and I'll point you somewhere.";
+  return "I know every place on this site. Name one - or tell me how you want to feel, and I'll point you somewhere.";
 }
 
 // Quick action: the bubble shows a contextual hint after scrolling

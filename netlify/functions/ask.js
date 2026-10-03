@@ -160,6 +160,8 @@ After answering their question, if they mention a specific place or seem unsure 
 Answer in 2-4 short sentences, warm and concrete. Use the curated facts where they fit; if the question goes beyond them (visas, flights from a specific city), answer from general knowledge and say what to double-check with official sources. Never invent exact prices beyond the curated ones. No exclamation marks. Plain text only.`;
 
   try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 25000);
     const r = await fetch(`${process.env.AI_BASE_URL || "https://api.xkiro.com/v1"}/chat/completions`, {
       method: "POST",
       headers: {
@@ -175,7 +177,9 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
         max_tokens: 300,
         temperature: 0.5,
       }),
+      signal: ctrl.signal,
     });
+    clearTimeout(timer);
         if (!r.ok) return json(200, { answer: localAnswer(question, placeKey), picks: buildPicks(localAnswer(question, placeKey), placeKey, tags), engine: "site-data-fallback" }, cors);
     const data = await r.json();
     const text = (data.choices?.[0]?.message?.content || "").trim();
@@ -377,7 +381,7 @@ function localAnswer(q, placeKey) {
   }
 
   // default: overview of what Relaxagent can do
-  return `I can help with every place on this site - the eight featured spots (Iceland, Kyoto, Wadi Rum and more) plus 20+ cities and islands. Ask about views, seasons, crowds, prices, camping, beaches, documents, or what works with kids. Name a place or tell me how you want to feel, and I'll point you somewhere.`;
+  return `I cover every destination on this site - 35 places, from Iceland and Kyoto to Kep and Kampot. Ask about views, seasons, crowds, prices, camping, beaches, documents, or what works with kids. Name a place or tell me how you want to feel, and I'll point you somewhere.`;
 }
 
 function json(status, obj, cors) {
