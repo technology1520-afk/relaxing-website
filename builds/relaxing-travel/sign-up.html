@@ -153,18 +153,17 @@ document.getElementById("signup-form").addEventListener("submit", async (e) => {
 
   btn.disabled = true; msg.textContent = "Creating your account…";
   try {
-    const user = await new Promise((resolve, reject) => {
-      identity.signup(email, pass, { full_name: name }, (err, u) => err ? reject(err) : resolve(u));
-    });
-    // Netlify Identity sends a confirmation email; the widget shows that state.
+    // The widget object itself has no signup()/login() — those live on its
+    // internal GoTrue client (identity.gotrue), which also stores the session
+    // so account.html sees the user via netlifyIdentity.currentUser().
+    await identity.gotrue.signup(email, pass, { full_name: name });
+    await identity.gotrue.login(email, pass, true); // autoconfirm is ON: straight in
     msg.className = "auth-msg ok";
-    msg.textContent = user?.token?.access_token
-      ? "Welcome. Taking you to your account…"
-      : "Almost there: check your email and click the confirmation link, then log in.";
-    if (user?.token?.access_token) setTimeout(() => location.href = "account.html", 1200);
+    msg.textContent = "Welcome. Taking you to your account…";
+    setTimeout(() => location.href = "account.html", 900);
   } catch (err) {
     msg.className = "auth-msg err";
-    const m = String(err?.message || err?.msg || err);
+    const m = String(err?.message || err?.msg || err?.json?.msg || err);
     msg.textContent = m.includes("already been registered") || m.includes("already exists")
       ? "That email already has an account. Try logging in."
       : m.replace(/Validation Error[^:]*:?\s*/i, "").slice(0, 160) || "Sign-up failed. Try again.";

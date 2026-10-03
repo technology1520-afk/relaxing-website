@@ -114,9 +114,8 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   if (!identity) { msg.textContent = "Auth is not available in this environment. Deploy to Netlify and enable Identity."; msg.classList.add("err"); return; }
   btn.disabled = true; msg.textContent = "Logging in…";
   try {
-    const user = await new Promise((resolve, reject) => {
-      identity.login(email, pass, true, (err, u) => err ? reject(err) : resolve(u));
-    });
+    // identity.login doesn't exist on the widget — the GoTrue client does.
+    const user = await identity.gotrue.login(email, pass, true);
     if (user?.token?.access_token) {
       // honor ?next= (admin console hands off its login here)
       const next = new URLSearchParams(location.search).get("next");
