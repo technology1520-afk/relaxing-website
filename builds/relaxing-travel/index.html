@@ -488,6 +488,48 @@
   .wx-docs ul { margin: 0.2rem 0 0.2rem 1.1rem; padding: 0; }
   .wx-docs li { font-size: 0.85rem; color: var(--sc-ink-soft); margin-bottom: 0.2rem; }
 
+  /* ---------- Escape Radar ---------- */
+  .escape-sec { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
+  .esc-box {
+    background: var(--sc-surface); border: 1.5px solid var(--sc-ink); border-radius: 16px;
+    box-shadow: 6px 6px 0 color-mix(in srgb, var(--sc-ink) 88%, transparent);
+    padding: clamp(1.4rem, 3vw, 2rem); margin-top: 1.8rem;
+  }
+  .esc-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .esc-row input {
+    flex: 1; min-width: 14rem; background: var(--sc-canvas); color: var(--sc-ink);
+    border: 1.5px solid color-mix(in srgb, var(--sc-ink) 25%, transparent);
+    border-radius: 10px; padding: 0.8rem 1rem; font: inherit; font-size: 0.98rem;
+  }
+  .esc-row input:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 1px; }
+  .esc-btn {
+    background: var(--sc-ink); color: var(--sc-canvas); border: 1.5px solid var(--sc-ink);
+    border-radius: 10px; padding: 0.8rem 1.3rem; font: inherit; font-size: 0.92rem; font-weight: 600;
+    cursor: pointer; transition: all 140ms var(--sc-ease-out);
+  }
+  .esc-btn:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  .esc-btn--ghost { background: transparent; color: var(--sc-ink); }
+  .esc-btn--ghost:hover { background: var(--sc-accent); color: var(--sc-accent-ink); }
+  .esc-status { font-size: 0.88rem; color: var(--sc-ink-soft); margin: 0.9rem 0 0; }
+  .esc-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.9rem; margin-top: 1.2rem; }
+  .esc-card {
+    background: var(--sc-canvas); border: 1.5px solid color-mix(in srgb, var(--sc-ink) 20%, transparent);
+    border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+    transition: transform 160ms var(--sc-ease-out), box-shadow 160ms var(--sc-ease-out);
+  }
+  .esc-card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--sc-ink); }
+  .esc-photo { height: 8rem; overflow: hidden; }
+  .esc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 400ms var(--sc-ease-out); }
+  .esc-card:hover .esc-photo img { transform: scale(1.05); }
+  .esc-body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .esc-names { display: flex; flex-direction: column; line-height: 1.25; }
+  .esc-names strong { font-family: var(--sc-font-display); color: var(--sc-ink); font-size: 0.98rem; }
+  .esc-names span { color: var(--sc-ink-soft); font-size: 0.8rem; }
+  .esc-dist { display: flex; flex-direction: column; }
+  .esc-dist b { font-family: var(--sc-font-display); font-size: 1.3rem; color: var(--sc-accent); }
+  .esc-dist span { font-size: 0.78rem; color: var(--sc-ink-soft); }
+  .esc-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; font-size: 0.76rem; color: var(--sc-ink-soft); }
+
   /* ---------- Documents & Visas ---------- */
   .docs-sec { max-width: 78rem; margin: 0 auto; padding: clamp(3.5rem, 7vh, 6rem) clamp(1.25rem, 5vw, 5rem) 3rem; }
   .docs-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.6rem; margin-top: 1.8rem; align-items: start; }
@@ -1046,6 +1088,16 @@
     </div>
   </section>
 
+  <!-- 11.55 · ESCAPE RADAR: quiet places from your city -->
+  <section id="escape-sec" class="sc-section" data-sc-act="flow" data-sc-drift="#F1EDE2">
+    <div class="escape-sec sc-stack" data-sc-in data-sc-stagger="70">
+      <span class="at">10.5 — Escape radar</span>
+      <h2 class="sc-display sc-display--lg">Stuck in the city? Escape it.</h2>
+      <p class="atlas-note">Tell us where you are. We measure every quiet place on the site from you — nearest first, with the real trip shape and what it costs.</p>
+      <div id="escape"></div>
+    </div>
+  </section>
+
   <!-- 11.6 · DOCUMENTS & VISAS -->
   <section id="documents" class="sc-section" data-sc-act="flow" data-sc-drift="#F3EFE7">
     <div class="docs-sec sc-stack" data-sc-in data-sc-stagger="70">
@@ -1110,6 +1162,7 @@
 <script type="module">
   import { buildExplorer } from "./js/explorer.js?v=9";
   buildExplorer();
+  import("./js/escape.js?v=1").then(m => m.buildEscape());
   import("./js/docs.js?v=6").then(m => m.buildDocs());
 </script>
 <script src="https://unpkg.com/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
