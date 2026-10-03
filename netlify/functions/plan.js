@@ -81,6 +81,7 @@ Keep each "plan" under 45 words and the whole reply under 900 tokens.`;
         headers: {
           "Authorization": `Bearer ${key}`,
           "Content-Type": "application/json",
+          "User-Agent": "RelaxDayOff/1.0 (+https://relaxdayoff.com)",
           "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
           "X-Title": "Relax Day Off",
         },

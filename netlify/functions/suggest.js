@@ -43,6 +43,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
       headers: {
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
+        "User-Agent": "RelaxDayOff/1.0 (+https://relaxdayoff.com)",
         "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
         "X-Title": "Relax Day Off",
       },

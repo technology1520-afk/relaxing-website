@@ -165,6 +165,7 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
       headers: {
         "Authorization": `Bearer ${key}`,
         "Content-Type": "application/json",
+        "User-Agent": "RelaxDayOff/1.0 (+https://relaxdayoff.com)",
         "HTTP-Referer": process.env.SITE_URL || "https://relaxdayoff.com",
         "X-Title": "Relax Day Off",
       },
