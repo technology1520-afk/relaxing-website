@@ -161,7 +161,7 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
 
   try {
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 25000);
+    const timer = setTimeout(() => ctrl.abort(), 35000);
     const r = await fetch(`${process.env.AI_BASE_URL || "https://api.xkiro.com/v1"}/chat/completions`, {
       method: "POST",
       headers: {
