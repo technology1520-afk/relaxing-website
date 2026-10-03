@@ -172,7 +172,7 @@ Answer in 2-4 short sentences, warm and concrete. Use the curated facts where th
         "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
-        model: process.env.AI_MODEL || "openai/gpt-6-luna",
+        model: process.env.AI_MODEL || "google/gemini-3-flash",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 300,
         temperature: 0.5,

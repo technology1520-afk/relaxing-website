@@ -86,7 +86,7 @@ Keep each "plan" under 45 words and the whole reply under 900 tokens.`;
           "X-Title": "Relax Day Off",
         },
         body: JSON.stringify({
-          model: process.env.AI_MODEL || "openai/gpt-6-luna",
+          model: process.env.AI_MODEL || "google/gemini-3-flash",
           messages: [{ role: "user", content: prompt }],
           max_tokens: 900,
           temperature: 0.5,

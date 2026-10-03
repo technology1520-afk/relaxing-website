@@ -48,7 +48,7 @@ Reply ONLY with minified JSON: {"ids":["one_or_two_ids"],"line":"one short warm 
         "X-Title": "Relax Day Off",
       },
       body: JSON.stringify({
-        model: process.env.AI_MODEL || "openai/gpt-6-luna",
+        model: process.env.AI_MODEL || "google/gemini-3-flash",
         messages: [{ role: "user", content: prompt }],
         max_tokens: 120,
         temperature: 0.6,
