@@ -9,6 +9,11 @@
   NODE_VERSION = "22"
 
 [[redirects]]
+  from = "/agent"
+  to = "/agent.html"
+  status = 200
+
+[[redirects]]
   from = "/api/suggest"
   to = "/.netlify/functions/suggest"
   status = 200
